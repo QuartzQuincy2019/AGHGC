@@ -11,13 +11,15 @@
     </head>
     <body>
         <h1>Augmented Graphic HSR Gacha Calculator - AGHGC</h1>
-        <h3>vβ1.0</h3>
-        <p>卡池选择：目前支持输入“5_1_3”和“5_1_4”。</p>
+        <h3>vβ2.0</h3>
+        <p>卡池选择：目前支持5.1和5.0部分卡池。</p>
         <p>抽取总次数：任意。只显示4星和5星物品。</p>
         <p>筛选器：仅查看选取的角色的抽取记录。</p>
         <form id="MainForm">
-            卡池选择：<input id="Form_CharacterPoolInput" title="Select Pool" type="text"><br>
+            卡池选择：<select id="Form_CharacterPoolInput" title="Select Pool"></select>
+            <br>
             抽取总次数：<input id="Form_PullInput" title="Simulate Times" type="number">
+            <div class="SubmitButton" onclick="applyAll();">确认抽取</div>
             <br>
             筛选器：<select id="Form_CharacterFilterSelect" title="Filter"></select>
         </form>

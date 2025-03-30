@@ -156,8 +156,9 @@ for (var i = 0; i < CHARACTER_LIST.length; i++) {
     CHARACTER_CODES.push(CHARACTER_LIST[i].code);
 }
 
-
+var ALL_CHARACTER_WARP_POOLS = [];
 var CHARACTER_EVENT_WARPS = {
+    //5.1
     "5_1_3": [
         ['myde'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
@@ -175,5 +176,70 @@ var CHARACTER_EVENT_WARPS = {
             'hert', 'hook', 'luka', 'lynx', 'marP',
             'moze', 'mish', 'pela', 'qque', 'samp',
             'serv', 'ssha', 'tyun', 'ykon']
+    ],
+    "5_1_1": [
+        ['trib'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['lynx', 'hook', 'guin'],
+        ['arla', 'asta', 'dhen', 'gall', 'hany',
+            'hert', 'luka', 'marP', 'moze', 'mish',
+            'nata', 'pela', 'qque', 'samp', 'serv',
+            'ssha', 'tyun', 'xuey', 'ykon']
+    ],
+    "5_1_2": [
+        ['yunl'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['lynx', 'hook', 'guin'],
+        ['arla', 'asta', 'dhen', 'gall', 'hany',
+            'hert', 'luka', 'marP', 'moze', 'mish',
+            'nata', 'pela', 'qque', 'samp', 'serv',
+            'ssha', 'tyun', 'xuey', 'ykon']
+    ],
+    //5.0
+    "5_0_3": [
+        ['agla'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['tyun', 'hany', 'ssha'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hert', 'hook', 'luka', 'lynx', 'marP',
+            'moze', 'mish', 'nata', 'pela', 'qque',
+            'samp', 'serv', 'xuey', 'ykon']
+    ],
+    "5_0_4-1": [
+        ['boot'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['tyun', 'hany', 'ssha'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hert', 'hook', 'luka', 'lynx', 'marP',
+            'moze', 'mish', 'nata', 'pela', 'qque',
+            'samp', 'serv', 'xuey', 'ykon']
+    ],
+    "5_0_4-2": [
+        ['robi'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['tyun', 'hany', 'ssha'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hert', 'hook', 'luka', 'lynx', 'marP',
+            'moze', 'mish', 'nata', 'pela', 'qque',
+            'samp', 'serv', 'xuey', 'ykon']
+    ],
+    "5_0_4-3": [
+        ['swol'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['tyun', 'hany', 'ssha'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hert', 'hook', 'luka', 'lynx', 'marP',
+            'moze', 'mish', 'nata', 'pela', 'qque',
+            'samp', 'serv', 'xuey', 'ykon']
     ]
 }
+function refreshCharacterPoolCode() {
+    ALL_CHARACTER_WARP_POOLS = Object.keys(CHARACTER_EVENT_WARPS);
+    for (var i = 0; i < ALL_CHARACTER_WARP_POOLS.length; i++) {
+        ALL_CHARACTER_WARP_POOLS[i] = {
+            code: ALL_CHARACTER_WARP_POOLS[i],
+            upName: findCharacter(CHARACTER_EVENT_WARPS[ALL_CHARACTER_WARP_POOLS[i]][0][0]).fullName[LANGUAGE]
+        }
+    }
+}
+refreshCharacterPoolCode();

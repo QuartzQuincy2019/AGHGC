@@ -31,6 +31,24 @@ div.RecordBox p {
     font-size: 60%;
 }
 
+div.SubmitButton{
+    text-align: center;
+    display: block;
+    width: 70px;
+    padding: 8px;
+    border: 3px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition-duration: 300ms;
+    transition-property: all;
+}
+div.SubmitButton:hover{
+    background-color: aquamarine;
+}
+div.SubmitButton:active{
+    background-color: #f9ff7f;
+}
+
 .BoldRed{
     color: red;
     font-weight: 1000;

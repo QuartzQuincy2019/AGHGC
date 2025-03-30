@@ -16,22 +16,23 @@ function refreshCFS() {
     star5 = unique.filter((code) => findCharacter(code).star == 5);
     star4 = unique.filter((code) => findCharacter(code).star == 4);
     unique = [...star5, ...star4];
-    E_Form_CFS.innerHTML="";
+    E_Form_CFS.innerHTML = "";
     for (var j = 0; j < unique.length; j++) {
         var opt = this.document.createElement('option');
-        opt.setAttribute('value',unique[j]);
+        opt.setAttribute('value', unique[j]);
         opt.innerHTML = findCharacter(unique[j]).fullName[LANGUAGE];
         E_Form_CFS.appendChild(opt);
     }
 }
-E_Form_PullInput.addEventListener('change',function(){
-    OBTAINED_ITEMS=[];
+
+function repull() {
+    OBTAINED_ITEMS = [];
     globalInitalize();
     warpCharacterWithInfoFor(E_Form_PullInput.value);
     showAllObtainedInfo();
     refreshCFS();
-});
-
+}
+//----------------------------------------
 function selectPool(poolName) {
     if (CHARACTER_EVENT_WARPS[poolName] == undefined) return;
     Sup = deepClone(CHARACTER_EVENT_WARPS[poolName][0]);
@@ -39,9 +40,22 @@ function selectPool(poolName) {
     Rup = deepClone(CHARACTER_EVENT_WARPS[poolName][2]);
     Rcommon = deepClone(CHARACTER_EVENT_WARPS[poolName][3]);
 }
-E_Form_CharacterPoolInput.addEventListener('change', function () {
+function applyPool() {
     selectPool(E_Form_CharacterPoolInput.value);
-})
+}
+E_Form_CharacterPoolInput.addEventListener('change', function () {
+    applyPool();
+});
+function refreshCharacterPoolSelector() {
+    for (var j = 0; j < ALL_CHARACTER_WARP_POOLS.length; j++) {
+        var opt = document.createElement('option');
+        opt.setAttribute('value', ALL_CHARACTER_WARP_POOLS[j].code);
+        opt.innerHTML = ALL_CHARACTER_WARP_POOLS[j].code + "-----" + ALL_CHARACTER_WARP_POOLS[j].upName;
+        E_Form_CharacterPoolInput.appendChild(opt);
+    }
+}
+refreshCharacterPoolSelector();
+
 
 function showObtainedInfo(obj, destination) {
     var record = document.createElement("div")
@@ -57,18 +71,30 @@ function showObtainedInfo(obj, destination) {
 }
 
 function showAllObtainedInfo() {
-    E_ResultDisplayer.innerHTML="";
+    E_ResultDisplayer.innerHTML = "";
     for (var i = 0; i < OBTAINED_ITEMS.length; i++) {
         showObtainedInfo(OBTAINED_ITEMS[i], E_ResultDisplayer);
     }
     return 0;
 }
 
-window.addEventListener('change', function () {
+function refreshFilterBoxDisplay(){
     var code = E_Form_CFS.value;
     E_FilterResult.innerHTML = '';
     var results = collectRecordsByCodeName(OBTAINED_ITEMS, code);
     for (var i = 0; i < results.length; i++) {
         showObtainedInfo(results[i], E_FilterResult);
     }
+}
+
+E_Form_CFS.addEventListener('change', function () {
+    refreshFilterBoxDisplay();
 })
+
+function applyAll() {
+    OBTAINED_ITEMS = [];
+    applyPool();
+    repull();
+    refreshCFS();
+    refreshFilterBoxDisplay();
+}
