@@ -11,9 +11,10 @@
     </head>
     <body>
         <h1>Augmented Graphic HSR Gacha Calculator - AGHGC</h1>
-        <h3>vβ2.0</h3>
-        <p>卡池选择：目前支持5.1和5.0部分卡池。</p>
-        <p>抽取总次数：任意。只显示4星和5星物品。</p>
+        <h3>vβ2.0.1</h3>
+        <p style="color: red;"><strong>版本局限</strong>：vβ2.0.1暂不支持四星光锥的抽取，因为数据库中未录入光锥信息。因此vβ2.0.1抽取到的4星物品默认为4星角色，后续版本会添加光锥抽取的逻辑。vβ2.0.1尚未具备统计功能，后续版本会添加相关逻辑。</p>
+        <p>卡池选择：目前支持3.1和3.0部分卡池。</p>
+        <p>抽取总次数：任意。只显示4星和5星角色。</p>
         <p>筛选器：仅查看选取的角色的抽取记录。</p>
         <form id="MainForm">
             卡池选择：<select id="Form_CharacterPoolInput" title="Select Pool"></select>
@@ -23,8 +24,10 @@
             <br>
             筛选器：<select id="Form_CharacterFilterSelect" title="Filter"></select>
         </form>
-        <div class="BoxedExhibition" id="FilterResult"></div>
         <hr>
+        <p>筛选结果：</p>
+        <div class="BoxedExhibition" id="FilterResult"></div>
+        <hr><p>角色获取总览：</p>
         <div class="BoxedExhibition" id="ResultDisplayer"></div>
         <script src="./js/warp.js"></script>
         <script src="./js/display.js"></script>

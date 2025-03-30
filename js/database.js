@@ -158,8 +158,8 @@ for (var i = 0; i < CHARACTER_LIST.length; i++) {
 
 var ALL_CHARACTER_WARP_POOLS = [];
 var CHARACTER_EVENT_WARPS = {
-    //5.1
-    "5_1_3": [
+    //3.1
+    "3_1_3": [
         ['myde'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['arla', 'xuey', 'nata'],
@@ -168,7 +168,7 @@ var CHARACTER_EVENT_WARPS = {
             'moze', 'mish', 'pela', 'qque', 'samp',
             'serv', 'ssha', 'tyun', 'ykon']
     ],
-    "5_1_4": [
+    "3_1_4": [
         ['hhuo'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['arla', 'xuey', 'nata'],
@@ -177,7 +177,7 @@ var CHARACTER_EVENT_WARPS = {
             'moze', 'mish', 'pela', 'qque', 'samp',
             'serv', 'ssha', 'tyun', 'ykon']
     ],
-    "5_1_1": [
+    "3_1_1": [
         ['trib'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['lynx', 'hook', 'guin'],
@@ -186,7 +186,7 @@ var CHARACTER_EVENT_WARPS = {
             'nata', 'pela', 'qque', 'samp', 'serv',
             'ssha', 'tyun', 'xuey', 'ykon']
     ],
-    "5_1_2": [
+    "3_1_2": [
         ['yunl'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['lynx', 'hook', 'guin'],
@@ -195,8 +195,8 @@ var CHARACTER_EVENT_WARPS = {
             'nata', 'pela', 'qque', 'samp', 'serv',
             'ssha', 'tyun', 'xuey', 'ykon']
     ],
-    //5.0
-    "5_0_3": [
+    //3.0
+    "3_0_3": [
         ['agla'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['tyun', 'hany', 'ssha'],
@@ -205,7 +205,7 @@ var CHARACTER_EVENT_WARPS = {
             'moze', 'mish', 'nata', 'pela', 'qque',
             'samp', 'serv', 'xuey', 'ykon']
     ],
-    "5_0_4-1": [
+    "3_0_4-1": [
         ['boot'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['tyun', 'hany', 'ssha'],
@@ -214,7 +214,7 @@ var CHARACTER_EVENT_WARPS = {
             'moze', 'mish', 'nata', 'pela', 'qque',
             'samp', 'serv', 'xuey', 'ykon']
     ],
-    "5_0_4-2": [
+    "3_0_4-2": [
         ['robi'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['tyun', 'hany', 'ssha'],
@@ -223,7 +223,7 @@ var CHARACTER_EVENT_WARPS = {
             'moze', 'mish', 'nata', 'pela', 'qque',
             'samp', 'serv', 'xuey', 'ykon']
     ],
-    "5_0_4-3": [
+    "3_0_4-3": [
         ['swol'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['tyun', 'hany', 'ssha'],
