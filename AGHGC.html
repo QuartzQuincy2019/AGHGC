@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="./js/ZERBO.js"></script>
+        <script src="./js/settings.js"></script>
+        <script src="./js/core.js"></script>
+        <script src="./js/lang.js"></script>
+        <script src="./js/database.js"></script>
+        <link rel="stylesheet" href=".\css\l.css">
+    </head>
+    <body>
+        <h1>Augmented Graphic HSR Gacha Calculator - AGHGC</h1>
+        <h3>vβ1.0</h3>
+        <p>卡池选择：目前支持输入“5_1_3”和“5_1_4”。</p>
+        <p>抽取总次数：任意。只显示4星和5星物品。</p>
+        <p>筛选器：仅查看选取的角色的抽取记录。</p>
+        <form id="MainForm">
+            卡池选择：<input id="Form_CharacterPoolInput" title="Select Pool" type="text"><br>
+            抽取总次数：<input id="Form_PullInput" title="Simulate Times" type="number">
+            <br>
+            筛选器：<select id="Form_CharacterFilterSelect" title="Filter"></select>
+        </form>
+        <div class="BoxedExhibition" id="FilterResult"></div>
+        <hr>
+        <div class="BoxedExhibition" id="ResultDisplayer"></div>
+        <script src="./js/warp.js"></script>
+        <script src="./js/display.js"></script>
+        <p>Copyright Quartz Studio 2019-2025 & By Quincy K.</p>
+    </body>
+</html>

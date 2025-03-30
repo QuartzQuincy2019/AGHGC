@@ -1,0 +1,1 @@
+var LANGUAGE = "zh-CN";
