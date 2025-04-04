@@ -2,6 +2,7 @@
 // 第三版 祈愿逻辑（2024/3/23）
 // 第四版 祈愿逻辑（2024/4/5）更新武器逻辑，集录卡池逻辑等待下一次整改
 // 2025/3/29 适配星铁
+// 第五版 祈愿和初步统计逻辑（2025/4/4）更新筛选器和重复计数
 // 祈愿。储存祈愿逻辑。
 
 /**
@@ -115,7 +116,10 @@ function globalInitalize() {
     GLOBAL_WARP_STATUS.total = totalWarps;
 }
 
-
+/**
+ * 抽取结果类
+ * 包含结果代号（不分角色或光锥）和类型（Sup/Scommon/Rup/Rcommon/3星）
+ */
 class ResultStatus {
     codeName;
     category;
@@ -319,16 +323,23 @@ function warpCharacterWithInfoFor(pulls) {
  * obj接收：rStatus, wStatus
  */
 function translateWarpInfo(obj) {
-    let chara = findCharacter(obj.rStatus.codeName);
+    let item = findItem(obj.rStatus.codeName);
     var parag = document.createElement('p');
 
     var span0 = document.createElement('span');
     if (Scommon.includes(obj.rStatus.codeName)) span0.classList.add("BoldRed");
     if (Sup.includes(obj.rStatus.codeName)) span0.classList.add("BoldBlue");
-    span0.innerHTML = chara.fullName[LANGUAGE];
+    span0.innerHTML = item.fullName[LANGUAGE];
 
+    var itemType = getItemType(item);
     var span0e = document.createElement('span');
-    span0e.innerHTML = "/ " + lang[LANGUAGE]._CombatType[chara.combatType] + " " + lang[LANGUAGE]._Path[chara.path] + "<br>";
+    if (itemType == 'Character') {
+        span0e.innerHTML = "/ " + lang[LANGUAGE]._CombatType[item.combatType] + " " + lang[LANGUAGE]._Path[item.path] + "<br>";
+    }
+    if (itemType == 'Lightcone') {
+        span0e.innerHTML = "/ " + lang[LANGUAGE]._Path[item.path] + "<br>";
+    }
+
 
     var span0f = document.createElement('span');
     let t1 = lang[LANGUAGE]["totalCount"] + lang[LANGUAGE]["colon"];
@@ -343,7 +354,7 @@ function translateWarpInfo(obj) {
     if (obj.wStatus.SCount >= 80) {
         span1.classList.add('BoldRed');
     }
-    if (obj.wStatus.SCount <= 30 && obj.rStatus.codeName in Sup) {
+    if (obj.wStatus.SCount <= 40 && Sup.includes(obj.rStatus.codeName)) {
         span1.classList.add('BoldGreen');
     };
     span1.innerHTML = obj.wStatus.SCount;

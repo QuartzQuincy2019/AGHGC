@@ -27,10 +27,18 @@ function getQuotient(dividend, divisor) {
  */
 function findCharacter(characterCode) {
     var _chara = characterMap[characterCode];
-    if (_chara == undefined) {
-        throw new Error("findCharacter：没有找到代号为" + characterCode + "的角色。");
-    }
     return _chara;
+}
+
+function findLightcone(lightconeCode) {
+    var _lc = lightconeMap[lightconeCode];
+    return _lc;
+}
+
+function findItem(code){
+    if(characterMap.hasOwnProperty(code)) return findCharacter(code);
+    if(lightconeMap.hasOwnProperty(code)) return findLightcone(code);
+    throw new Error("findItem: 没有找到代号为"+code+"的对象。");
 }
 
 /**
@@ -94,4 +102,29 @@ function findUnique(_arr) {
         }
     }
     return result;
+}
+
+
+function findUniqueWithCount(_arr) {
+    const seen = Object.create(null);  // 记录元素是否已首次出现
+    const countMap = Object.create(null);  // 统计元素总次数
+    const result = [];
+    const len = _arr.length;
+
+    for (let i = 0; i < len; i++) {
+        const num = _arr[i];
+        // 统计元素次数
+        countMap[num] = (countMap[num] || 0) + 1;
+        // 维护唯一顺序
+        if (!seen[num]) {
+            seen[num] = true;
+            result.push(num);
+        }
+    }
+
+    // 转换为对象数组
+    return result.map(element => ({
+        element: element,
+        duplication: countMap[element]
+    }));
 }

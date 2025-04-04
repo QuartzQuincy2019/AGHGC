@@ -7,7 +7,7 @@ div.BoxedExhibition {
 }
 
 div.RecordBox {
-    width: 160px;
+    width: 190px;
     margin: 8px;
     padding: 0;
     border: 2px solid;
@@ -54,7 +54,7 @@ div.SubmitButton:active{
     font-weight: 1000;
 }
 .BoldGreen{
-    color: #00960f;
+    color: #00bc13;
     font-weight: 1000;
 }
 .BoldBlue{

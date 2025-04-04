@@ -30,13 +30,11 @@ var STAR_NUMBER = [4, 5];
 class Character {
     code;//角色识别名（不是英文名）
     star;//角色星数
-    //pfile;//Charaicon对应文件路径
-    //wfile;//WishArtworks对应文件路径
     combatType;//角色属性
     path;//角色命途
     fullName;//全名
 
-    p40;//40*40肖像
+    icon;//40*40肖像
     /**
      * 
      * @param {String} code 
@@ -48,12 +46,40 @@ class Character {
     constructor(code, star, combatType, path, fullName) {
         this.code = code;
         this.star = star;
-        this.p40 = './img/p40/' + this.code + '.png';
-        //this.wfile = PATH_FULLWISH + 'w_' + this.name + '.png';
+        this.icon = './img/p40/' + this.code + '.png';
         this.combatType = combatType;
         this.path = path;
         this.fullName = fullName;
     }
+}
+
+class Lightcone {
+    code;
+    star;
+    path;//命途
+    fullName;//光锥名称
+
+    icon;//74*74
+    /**
+     * 
+     * @param {string} code 
+     * @param {number} star 
+     * @param {Path} path 
+     * @param {object} fullName 
+     */
+    constructor(code, star, path, fullName) {
+        this.code = code;
+        this.star = star;
+        this.icon = './img/lc74/' + this.code + '.png';
+        this.path = path;
+        this.fullName = fullName;
+    }
+}
+
+function getItemType(item) {
+    if (item instanceof Character) return 'Character';
+    if (item instanceof Lightcone) return 'Lightcone';
+    throw new Error("getItemType: " + item + "不属于Character或Lightcone");
 }
 
 var CHARACTER_LIST = [
@@ -145,6 +171,38 @@ var CHARACTER_LIST = [
 
 ];
 
+var LIGHTCONE_LIST = [
+    new Lightcone("aftert4", 4, Path.erudition, { "zh-CN": "谐乐静默之后" }),
+    new Lightcone("asecre3", 4, Path.destruction, { "zh-CN": "秘密誓心" }),
+    new Lightcone("boundl2", 4, Path.nihility, { "zh-CN": "无边曼舞" }),
+    new Lightcone("concer3", 4, Path.preservation, { "zh-CN": "两个人的演唱会" }),
+    new Lightcone("danced3", 4, Path.harmony, { "zh-CN": "舞！舞！舞！" }),
+    new Lightcone("dayone6", 4, Path.preservation, { "zh-CN": "余生的第一天" }),
+    new Lightcone("dreams2", 4, Path.abundance, { "zh-CN": "梦的蒙太奇" }),
+    new Lightcone("eyesof4", 4, Path.nihility, { "zh-CN": "猎物的视线" }),
+    new Lightcone("geniusr", 4, Path.erudition, { "zh-CN": "天才们的休憩" }),
+    new Lightcone("goodni5", 4, Path.nihility, { "zh-CN": "晚安与睡颜" }),
+    new Lightcone("indeli2", 4, Path.destruction, { "zh-CN": "铭记于心的约定" }),
+    new Lightcone("landau2", 4, Path.preservation, { "zh-CN": "朗道的选择" }),
+    new Lightcone("maketh4", 4, Path.erudition, { "zh-CN": "别让世界静下来" }),
+    new Lightcone("memori4", 4, Path.harmony, { "zh-CN": "记忆中的模样" }),
+    new Lightcone("onlysi3", 4, Path.thehunt, { "zh-CN": "唯有沉默" }),
+    new Lightcone("perfec2", 4, Path.abundance, { "zh-CN": "此时恰好" }),
+    new Lightcone("planet2", 4, Path.harmony, { "zh-CN": "与行星相会" }),
+    new Lightcone("poised3", 4, Path.harmony, { "zh-CN": "芳华待灼" }),
+    new Lightcone("postop2", 4, Path.abundance, { "zh-CN": "一场术后对话" }),
+    new Lightcone("resolu6", 4, Path.nihility, { "zh-CN": "决心如汗珠般闪耀" }),
+    new Lightcone("shadow3", 4, Path.thehunt, { "zh-CN": "黑夜如影随行" }),
+    new Lightcone("shared2", 4, Path.abundance, { "zh-CN": "同一种心情" }),
+    new Lightcone("subscr3", 4, Path.thehunt, { "zh-CN": "点个关注吧！" }),
+    new Lightcone("swordp1", 4, Path.thehunt, { "zh-CN": "论剑" }),
+    new Lightcone("thebir5", 4, Path.erudition, { "zh-CN": "「我」的诞生" }),
+    new Lightcone("themol4", 4, Path.destruction, { "zh-CN": "鼹鼠党欢迎你" }),
+    new Lightcone("trendo5", 4, Path.preservation, { "zh-CN": "宇宙市场趋势" }),
+    new Lightcone("undert4", 4, Path.destruction, { "zh-CN": "在蓝天下" }),
+    new Lightcone("geniusg", 4, Path.remembrance, { "zh-CN": "天才们的问候" }),
+];
+
 var characterMap = {};//角色代号->角色对象
 for (var i = 0; i < CHARACTER_LIST.length; i++) {//建立由角色代号到角色对象的映射
     var character = CHARACTER_LIST[i];
@@ -156,8 +214,88 @@ for (var i = 0; i < CHARACTER_LIST.length; i++) {
     CHARACTER_CODES.push(CHARACTER_LIST[i].code);
 }
 
+var lightconeMap = {};
+for (var i = 0; i < LIGHTCONE_LIST.length; i++) {
+    var lc = LIGHTCONE_LIST[i];
+    lightconeMap[lc.code] = lc;
+}
+
+var LIGHTCONE_CODES = [];//所有光锥的代号
+for (var i = 0; i < LIGHTCONE_LIST.length; i++) {
+    LIGHTCONE_CODES.push(LIGHTCONE_LIST[i].code);
+}
+
 var ALL_CHARACTER_WARP_POOLS = [];
 var CHARACTER_EVENT_WARPS = {
+    //3.2
+    "3_2_1": [
+        ['cast'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['pela', 'gall', 'lynx'],
+        ['arla', 'asta', 'dhen', 'guin', 'hany',
+            'hert', 'hook', 'luka', 'marP', 'moze',
+            'mish', 'nata', 'qque', 'samp', 'serv',
+            'ssha', 'tyun', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', 'swordp1', 'thebir5',
+            'themol4', 'trendo5', 'undert4', 'geniusg'
+        ]
+    ],
+    "3_2_2-1": [
+        ['fugu'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['pela', 'gall', 'lynx'],
+        ['arla', 'asta', 'dhen', 'guin', 'hany',
+            'hert', 'hook', 'luka', 'marP', 'moze',
+            'mish', 'nata', 'qque', 'samp', 'serv',
+            'ssha', 'tyun', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', 'swordp1', 'thebir5',
+            'themol4', 'trendo5', 'undert4', 'geniusg'
+        ]
+    ],
+    "3_2_2-2": [
+        ['jqiu'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['pela', 'gall', 'lynx'],
+        ['arla', 'asta', 'dhen', 'guin', 'hany',
+            'hert', 'hook', 'luka', 'marP', 'moze',
+            'mish', 'nata', 'qque', 'samp', 'serv',
+            'ssha', 'tyun', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', 'swordp1', 'thebir5',
+            'themol4', 'trendo5', 'undert4', 'geniusg'
+        ]
+    ],
+    "3_2_2-3": [
+        ['ache'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['pela', 'gall', 'lynx'],
+        ['arla', 'asta', 'dhen', 'guin', 'hany',
+            'hert', 'hook', 'luka', 'marP', 'moze',
+            'mish', 'nata', 'qque', 'samp', 'serv',
+            'ssha', 'tyun', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', 'swordp1', 'thebir5',
+            'themol4', 'trendo5', 'undert4', 'geniusg'
+        ]
+    ],
     //3.1
     "3_1_3": [
         ['myde'],
@@ -166,7 +304,15 @@ var CHARACTER_EVENT_WARPS = {
         ['asta', 'dhen', 'gall', 'guin', 'hany',
             'hert', 'hook', 'luka', 'lynx', 'marP',
             'moze', 'mish', 'pela', 'qque', 'samp',
-            'serv', 'ssha', 'tyun', 'ykon']
+            'serv', 'ssha', 'tyun', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', 'swordp1', 'thebir5',
+            'themol4', 'trendo5', 'undert4', 'geniusg'
+        ]
     ],
     "3_1_4": [
         ['hhuo'],
@@ -175,7 +321,15 @@ var CHARACTER_EVENT_WARPS = {
         ['asta', 'dhen', 'gall', 'guin', 'hany',
             'hert', 'hook', 'luka', 'lynx', 'marP',
             'moze', 'mish', 'pela', 'qque', 'samp',
-            'serv', 'ssha', 'tyun', 'ykon']
+            'serv', 'ssha', 'tyun', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', 'swordp1', 'thebir5',
+            'themol4', 'trendo5', 'undert4', 'geniusg'
+        ]
     ],
     "3_1_1": [
         ['trib'],
@@ -184,7 +338,14 @@ var CHARACTER_EVENT_WARPS = {
         ['arla', 'asta', 'dhen', 'gall', 'hany',
             'hert', 'luka', 'marP', 'moze', 'mish',
             'nata', 'pela', 'qque', 'samp', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon']
+            'ssha', 'tyun', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', 'swordp1', 'thebir5',
+            'themol4', 'trendo5', 'undert4', 'geniusg']
     ],
     "3_1_2": [
         ['yunl'],
@@ -193,7 +354,14 @@ var CHARACTER_EVENT_WARPS = {
         ['arla', 'asta', 'dhen', 'gall', 'hany',
             'hert', 'luka', 'marP', 'moze', 'mish',
             'nata', 'pela', 'qque', 'samp', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon']
+            'ssha', 'tyun', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', 'swordp1', 'thebir5',
+            'themol4', 'trendo5', 'undert4', 'geniusg']
     ],
     //3.0
     "3_0_3": [
@@ -203,7 +371,14 @@ var CHARACTER_EVENT_WARPS = {
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hert', 'hook', 'luka', 'lynx', 'marP',
             'moze', 'mish', 'nata', 'pela', 'qque',
-            'samp', 'serv', 'xuey', 'ykon']
+            'samp', 'serv', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', 'swordp1', 'thebir5',
+            'themol4', 'trendo5', 'undert4', 'geniusg']
     ],
     "3_0_4-1": [
         ['boot'],
@@ -212,7 +387,14 @@ var CHARACTER_EVENT_WARPS = {
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hert', 'hook', 'luka', 'lynx', 'marP',
             'moze', 'mish', 'nata', 'pela', 'qque',
-            'samp', 'serv', 'xuey', 'ykon']
+            'samp', 'serv', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', 'swordp1', 'thebir5',
+            'themol4', 'trendo5', 'undert4', 'geniusg']
     ],
     "3_0_4-2": [
         ['robi'],
@@ -221,7 +403,14 @@ var CHARACTER_EVENT_WARPS = {
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hert', 'hook', 'luka', 'lynx', 'marP',
             'moze', 'mish', 'nata', 'pela', 'qque',
-            'samp', 'serv', 'xuey', 'ykon']
+            'samp', 'serv', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', 'swordp1', 'thebir5',
+            'themol4', 'trendo5', 'undert4', 'geniusg']
     ],
     "3_0_4-3": [
         ['swol'],
@@ -230,9 +419,20 @@ var CHARACTER_EVENT_WARPS = {
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hert', 'hook', 'luka', 'lynx', 'marP',
             'moze', 'mish', 'nata', 'pela', 'qque',
-            'samp', 'serv', 'xuey', 'ykon']
+            'samp', 'serv', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', 'swordp1', 'thebir5',
+            'themol4', 'trendo5', 'undert4', 'geniusg']
     ]
 }
+
+/**
+ * 根据所选语言，更新卡池Sup的名字
+ */
 function refreshCharacterPoolCode() {
     ALL_CHARACTER_WARP_POOLS = Object.keys(CHARACTER_EVENT_WARPS);
     for (var i = 0; i < ALL_CHARACTER_WARP_POOLS.length; i++) {

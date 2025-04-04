@@ -1,3 +1,4 @@
+//display.js
 var E_ResultDisplayer = document.getElementById("ResultDisplayer");
 var E_FilterResult = document.getElementById("FilterResult");
 
@@ -11,16 +12,19 @@ function refreshCFS() {
     for (var i = 0; i < OBTAINED_ITEMS.length; i++) {
         names.push(OBTAINED_ITEMS[i].rStatus.codeName);
     }
-    var unique = findUnique(names);
-    let star5 = [], star4 = [];
-    star5 = unique.filter((code) => findCharacter(code).star == 5);
-    star4 = unique.filter((code) => findCharacter(code).star == 4);
-    unique = [...star5, ...star4];
+    var unique = findUniqueWithCount(names);
+    let star5C = [], star4C = [], star5L = [], star4L = [];
+    star5C = unique.filter((ele) => findItem(ele.element).star == 5 && findItem(ele.element) instanceof Character);
+    star4C = unique.filter((ele) => findItem(ele.element).star == 4 && findItem(ele.element) instanceof Character);
+    star5L = unique.filter((ele) => findItem(ele.element).star == 5 && findItem(ele.element) instanceof Lightcone);
+    star4L = unique.filter((ele) => findItem(ele.element).star == 4 && findItem(ele.element) instanceof Lightcone);
+    unique = [...star5C, ...star4C, ...star5L, ...star4L];
     E_Form_CFS.innerHTML = "";
     for (var j = 0; j < unique.length; j++) {
         var opt = this.document.createElement('option');
-        opt.setAttribute('value', unique[j]);
-        opt.innerHTML = findCharacter(unique[j]).fullName[LANGUAGE];
+        let code = unique[j].element;
+        opt.setAttribute('value', code);
+        opt.innerHTML = findItem(code).fullName[LANGUAGE] + "&nbsp;&nbsp;&nbsp;[x" + unique[j].duplication + "]";
         E_Form_CFS.appendChild(opt);
     }
 }
@@ -61,9 +65,9 @@ function showObtainedInfo(obj, destination) {
     var record = document.createElement("div")
     record.classList.add("RecordBox");
     var element_p = translateWarpInfo(obj);
-    var character = findCharacter(obj.rStatus.codeName);
+    var item = findItem(obj.rStatus.codeName);
     var img = document.createElement("img");
-    img.src = character.p40;
+    img.src = item.icon;
     record.appendChild(img);
     record.appendChild(element_p);
     destination.appendChild(record);
@@ -72,15 +76,17 @@ function showObtainedInfo(obj, destination) {
 
 function showAllObtainedInfo() {
     E_ResultDisplayer.innerHTML = "";
+    if (E_Form_PullInput.value > 10000) return 0;
     for (var i = 0; i < OBTAINED_ITEMS.length; i++) {
         showObtainedInfo(OBTAINED_ITEMS[i], E_ResultDisplayer);
     }
     return 0;
 }
 
-function refreshFilterBoxDisplay(){
+function refreshFilterBoxDisplay() {
     var code = E_Form_CFS.value;
     E_FilterResult.innerHTML = '';
+    if (E_Form_PullInput.value > 100000) return 0;
     var results = collectRecordsByCodeName(OBTAINED_ITEMS, code);
     for (var i = 0; i < results.length; i++) {
         showObtainedInfo(results[i], E_FilterResult);
@@ -92,6 +98,10 @@ E_Form_CFS.addEventListener('change', function () {
 })
 
 function applyAll() {
+    if (E_Form_PullInput.value > 5000000){
+        alert("“抽取总次数”大于允许的最大值！");
+        return -1;
+    };
     OBTAINED_ITEMS = [];
     applyPool();
     repull();

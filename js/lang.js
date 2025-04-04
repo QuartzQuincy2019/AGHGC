@@ -38,6 +38,7 @@ var lang = {
         "RCount":"4星垫数",
         "SCount":"5星垫数",
         "totalCount":"总抽数",
-        "character":"角色"
+        "character":"角色",
+        "lightcone":"光锥"
     }
 }
