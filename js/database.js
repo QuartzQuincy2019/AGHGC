@@ -200,7 +200,7 @@ var LIGHTCONE_LIST = [
     new Lightcone("themol4", 4, Path.destruction, { "zh-CN": "鼹鼠党欢迎你", "en": "The Moles Welcome You" }),
     new Lightcone("trendo5", 4, Path.preservation, { "zh-CN": "宇宙市场趋势", "en": "Trend of the Universal Market" }),
     new Lightcone("undert4", 4, Path.destruction, { "zh-CN": "在蓝天下", "en": "Under the Blue Sky" }),
-    new Lightcone("geniusg", 4, Path.remembrance, { "zh-CN": "天才们的问候", "en": "Geniuses' Greetings" }),
+    new Lightcone("geniusg", 4, Path.remembrance, { "zh-CN": "天才们的问候", "en": "Geniuses' Greetings" })
 ];
 
 var characterMap = {};//角色代号->角色对象
@@ -228,7 +228,7 @@ for (var i = 0; i < LIGHTCONE_LIST.length; i++) {
 var ALL_CHARACTER_WARP_POOLS = [];
 var CHARACTER_EVENT_WARPS = {
     //3.2
-    "3_2_1": [
+    "C3_2_1": [
         ['cast'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['pela', 'gall', 'lynx'],
@@ -242,10 +242,10 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg'
+            'themol4', 'trendo5', 'undert4'
         ]
     ],
-    "3_2_2-1": [
+    "C3_2_2-1": [
         ['fugu'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['pela', 'gall', 'lynx'],
@@ -259,10 +259,10 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg'
+            'themol4', 'trendo5', 'undert4'
         ]
     ],
-    "3_2_2-2": [
+    "C3_2_2-2": [
         ['jqiu'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['pela', 'gall', 'lynx'],
@@ -276,10 +276,10 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg'
+            'themol4', 'trendo5', 'undert4'
         ]
     ],
-    "3_2_2-3": [
+    "C3_2_2-3": [
         ['ache'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['pela', 'gall', 'lynx'],
@@ -293,11 +293,11 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg'
+            'themol4', 'trendo5', 'undert4'
         ]
     ],
     //3.1
-    "3_1_3": [
+    "C3_1_3": [
         ['myde'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['arla', 'xuey', 'nata'],
@@ -311,10 +311,10 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg'
+            'themol4', 'trendo5', 'undert4'
         ]
     ],
-    "3_1_4": [
+    "C3_1_4": [
         ['hhuo'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['arla', 'xuey', 'nata'],
@@ -328,10 +328,10 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg'
+            'themol4', 'trendo5', 'undert4'
         ]
     ],
-    "3_1_1": [
+    "C3_1_1": [
         ['trib'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['lynx', 'hook', 'guin'],
@@ -345,9 +345,9 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg']
+            'themol4', 'trendo5', 'undert4']
     ],
-    "3_1_2": [
+    "C3_1_2": [
         ['yunl'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['lynx', 'hook', 'guin'],
@@ -361,10 +361,10 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg']
+            'themol4', 'trendo5', 'undert4']
     ],
     //3.0
-    "3_0_3": [
+    "C3_0_3": [
         ['agla'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['tyun', 'hany', 'ssha'],
@@ -378,9 +378,9 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg']
+            'themol4', 'trendo5', 'undert4']
     ],
-    "3_0_4-1": [
+    "C3_0_4-1": [
         ['boot'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['tyun', 'hany', 'ssha'],
@@ -394,9 +394,9 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg']
+            'themol4', 'trendo5', 'undert4']
     ],
-    "3_0_4-2": [
+    "C3_0_4-2": [
         ['robi'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['tyun', 'hany', 'ssha'],
@@ -410,9 +410,9 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg']
+            'themol4', 'trendo5', 'undert4']
     ],
-    "3_0_4-3": [
+    "C3_0_4-3": [
         ['swol'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['tyun', 'hany', 'ssha'],
@@ -426,9 +426,9 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg']
+            'themol4', 'trendo5', 'undert4']
     ],
-    "3_0_1": [
+    "C3_0_1": [
         ['ther'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['nata', 'asta', 'moze'],
@@ -442,9 +442,9 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg']
+            'themol4', 'trendo5', 'undert4']
     ],
-    "3_0_2-1": [
+    "C3_0_2-1": [
         ['lsha'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['nata', 'asta', 'moze'],
@@ -458,9 +458,9 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg']
+            'themol4', 'trendo5', 'undert4']
     ],
-    "3_0_2-2": [
+    "C3_0_2-2": [
         ['fxia'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['nata', 'asta', 'moze'],
@@ -474,9 +474,9 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg']
+            'themol4', 'trendo5', 'undert4']
     ],
-    "3_0_2-3": [
+    "C3_0_2-3": [
         ['jade'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['nata', 'asta', 'moze'],
@@ -490,10 +490,10 @@ var CHARACTER_EVENT_WARPS = {
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
             'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4', 'geniusg']
+            'themol4', 'trendo5', 'undert4']
     ],
     //2.7
-    "2_7_3": [
+    "C2_7_3": [
         ['fugu'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['gall', 'ykon', 'mish'],
@@ -509,7 +509,7 @@ var CHARACTER_EVENT_WARPS = {
             'shadow3', 'shared2', 'swordp1', 'thebir5',
             'themol4', 'trendo5', 'undert4']
     ],
-    "2_7_4": [
+    "C2_7_4": [
         ['fire'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
         ['gall', 'ykon', 'mish'],
@@ -527,16 +527,25 @@ var CHARACTER_EVENT_WARPS = {
     ]
 }
 
+var ALL_LIGHTCONE_WARP_POOLS = [];
+var LIGHTCONE_EVENT_WARPS = {};
+
+
+var ALL_WARP_POOLS = [];//盛放全部卡池代号："C3_1_2"...
+var TOTAL_EVENT_WARPS = { ...CHARACTER_EVENT_WARPS, ...LIGHTCONE_EVENT_WARPS };
+
 /**
  * 根据所选语言，更新卡池Sup的名字
  */
-function refreshCharacterPoolCode() {
+function refreshAllPoolSupCode() {
     ALL_CHARACTER_WARP_POOLS = Object.keys(CHARACTER_EVENT_WARPS);
-    for (var i = 0; i < ALL_CHARACTER_WARP_POOLS.length; i++) {
-        ALL_CHARACTER_WARP_POOLS[i] = {
-            code: ALL_CHARACTER_WARP_POOLS[i],
-            upName: findCharacter(CHARACTER_EVENT_WARPS[ALL_CHARACTER_WARP_POOLS[i]][0][0]).fullName[LANGUAGE]
+    ALL_LIGHTCONE_WARP_POOLS = Object.keys(LIGHTCONE_EVENT_WARPS);
+    ALL_WARP_POOLS = [...ALL_CHARACTER_WARP_POOLS, ...ALL_LIGHTCONE_WARP_POOLS];
+    for (var i = 0; i < ALL_WARP_POOLS.length; i++) {
+        ALL_WARP_POOLS[i] = {
+            code: ALL_WARP_POOLS[i],
+            upName: findItem(TOTAL_EVENT_WARPS[ALL_WARP_POOLS[i]][0][0]).fullName[LANGUAGE]
         }
     }
 }
-refreshCharacterPoolCode();
+refreshAllPoolSupCode();

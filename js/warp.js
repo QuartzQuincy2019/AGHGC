@@ -173,71 +173,7 @@ function determineUp() {
     return 0;
 }
 
-/**
- * @param {WarpStatus} status 跃迁信息对象
- * 进行一次单抽
- */
-function warpCharacter(status) {
-    var item = [null, null];
-    //随机数抽取（决定：5/4/3）
-    item[0] = determineQuality(status);
-
-    if (status.SupSwitch == true) {
-        item[1] = 10;
-    } else if (status.RupSwitch == true) {
-        item[1] = 10;
-    } else {
-        //随机数抽取（决定：10/0）
-        item[1] = determineUp();
-    }
-
-    //mode
-    var mode = item[0] + item[1];
-    status.total += 1;
-    switch (mode) {
-        case 15: {
-            OBTAINED_ITEMS.push(Sup[0]);
-            status.RCount += 1;
-            status.SCount = 0;
-            status.SupSwitch = false;
-            break;
-        }
-        case 5: {
-            OBTAINED_ITEMS.push(getRandomElement(Scommon));
-            status.RCount += 1;
-            status.SCount = 0;
-            status.SupSwitch = true;
-            break;
-        }
-        case 14: {
-            OBTAINED_ITEMS.push(getRandomElement(Rup));
-            status.RCount = 0;
-            status.SCount += 1;
-            status.RupSwitch = false;
-            break;
-        }
-        case 4: {
-            OBTAINED_ITEMS.push(getRandomElement(Rcommon));
-            status.RCount = 0;
-            status.SCount += 1;
-            status.RupSwitch = true;
-            break;
-        }
-        case 3: {
-            status.RCount += 1;
-            status.SCount += 1;
-            break;
-        }
-        case 13: {
-            status.RCount += 1;
-            status.SCount += 1;
-            break;
-        }
-        default: throw new Error("未出现预期情况。");
-    }
-}
-
-function warpCharacterWithInfo(status) {
+function warpWithInfo(status) {
     var item = [null, null];
     //随机数抽取（决定：5/4/3）
     item[0] = determineQuality(status);
@@ -310,15 +246,9 @@ function warpCharacterWithInfo(status) {
     }
 }
 
-function warpCharacterFor(pulls) {
+function warpWithInfoFor(pulls) {
     for (var i = 0; i < pulls; i++) {
-        warpCharacter(GLOBAL_WARP_STATUS);
-    }
-}
-
-function warpCharacterWithInfoFor(pulls) {
-    for (var i = 0; i < pulls; i++) {
-        warpCharacterWithInfo(GLOBAL_WARP_STATUS);
+        warpWithInfo(GLOBAL_WARP_STATUS);
     }
 }
 

@@ -66,20 +66,20 @@ var lang = {
             7:"Abundance",
             8:"Remembrance"
         },
-        "R":"Star4",
-        "S":"Star5",
+        "R":"4-Star",
+        "S":"5-Star",
         _RGuarantee:{
-            true:"4-Gua",
-            false:"4-Not"
+            true:"4-Guaranteed",
+            false:"On 4-Star 50/50"
         },
         _SGuarantee:{
-            true:"5-Gua",
-            false:"5-Not"
+            true:"Guaranteed",
+            false:"On 50/50"
         },
-        "RCount":"Star4 Counts",
-        "SCount":"Star5 Counts",
+        "RCount":"4Star Pity Counts",
+        "SCount":"Pity Counts",
         "totalCount":"#",
-        "character":"sharacter",
+        "character":"character",
         "lightcone":"lightcone"
     }
 }

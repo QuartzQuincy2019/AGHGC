@@ -32,17 +32,17 @@ function refreshCFS() {
 function repull() {
     OBTAINED_ITEMS = [];
     globalInitalize();
-    warpCharacterWithInfoFor(E_Form_PullInput.value);
+    warpWithInfoFor(E_Form_PullInput.value);
     showAllObtainedInfo();
     refreshCFS();
 }
 //----------------------------------------
 function selectPool(poolName) {
-    if (CHARACTER_EVENT_WARPS[poolName] == undefined) return;
-    Sup = deepClone(CHARACTER_EVENT_WARPS[poolName][0]);
-    Scommon = deepClone(CHARACTER_EVENT_WARPS[poolName][1]);
-    Rup = deepClone(CHARACTER_EVENT_WARPS[poolName][2]);
-    Rcommon = deepClone(CHARACTER_EVENT_WARPS[poolName][3]);
+    if (TOTAL_EVENT_WARPS[poolName] == undefined) return;
+    Sup = deepClone(TOTAL_EVENT_WARPS[poolName][0]);
+    Scommon = deepClone(TOTAL_EVENT_WARPS[poolName][1]);
+    Rup = deepClone(TOTAL_EVENT_WARPS[poolName][2]);
+    Rcommon = deepClone(TOTAL_EVENT_WARPS[poolName][3]);
 }
 function applyPool() {
     selectPool(E_Form_CharacterPoolInput.value);
@@ -50,15 +50,15 @@ function applyPool() {
 E_Form_CharacterPoolInput.addEventListener('change', function () {
     applyPool();
 });
-function refreshCharacterPoolSelector() {
-    for (var j = 0; j < ALL_CHARACTER_WARP_POOLS.length; j++) {
+function refreshPoolSelector(destination) {
+    for (var j = 0; j < ALL_WARP_POOLS.length; j++) {
         var opt = document.createElement('option');
-        opt.setAttribute('value', ALL_CHARACTER_WARP_POOLS[j].code);
-        opt.innerHTML = ALL_CHARACTER_WARP_POOLS[j].code + "-----" + ALL_CHARACTER_WARP_POOLS[j].upName;
-        E_Form_CharacterPoolInput.appendChild(opt);
+        opt.setAttribute('value', ALL_WARP_POOLS[j].code);
+        opt.innerHTML = ALL_WARP_POOLS[j].code + "-----" + ALL_WARP_POOLS[j].upName;
+        destination.appendChild(opt);
     }
 }
-refreshCharacterPoolSelector();
+refreshPoolSelector(E_Form_CharacterPoolInput);
 
 /**
  * obj接收：rStatus, wStatus

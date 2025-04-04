@@ -1,1 +1,1 @@
-var LANGUAGE = "en";//vβ3.0.0目前只允许zh-CN（简体中文）
+var LANGUAGE = "zh-CN";

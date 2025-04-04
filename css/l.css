@@ -48,6 +48,9 @@ div.SubmitButton{
     border: 3px solid #000000;
     border-radius: 5px;
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
     transition-duration: 300ms;
     transition-property: all;
 }
