@@ -136,16 +136,16 @@ class ResultStatus {
  */
 function getProbability(status) {
     //[s,r] 抽到五星概率 0-s   四星概率 [s-r]
-    if (status.SCount == 90) {
+    if (status.SCount + 1 == 90) {
         return [1, 1];
     }
-    if (status.RCount >= 10) {
+    if (status.RCount + 1 >= 10) {
         return [0, 1]
     }
-    if (status.SCount <= 73) {
+    if (status.SCount + 1 <= 73) {
         return [0.006, 0.006 + 0.051];
     } else {
-        let s = (status.SCount - 73) * 0.06 + 0.006;
+        let s = (status.SCount + 1 - 72) * 0.06 + 0.006;
         return [s, s + 0.051];
     }
 }
@@ -253,8 +253,11 @@ function warpCharacterWithInfo(status) {
 
     //mode
     var mode = item[0] + item[1];
-    var currentInfo = deepClone(status);
-    status.total += 1;
+    status.total += 1;//这两者顺序不能颠倒
+    //currentInfo应记录：
+    //1.这一抽是第几抽，因此total应先加一
+    //2.在这一抽之前，有多少抽未出5星（即垫数）
+    var currentInfo = deepClone(status);//这两者顺序不能颠倒
     var result;
     var resultStatus;
     switch (mode) {
@@ -329,20 +332,11 @@ function translateWarpInfo(obj) {
     var span0 = document.createElement('span');
     if (Scommon.includes(obj.rStatus.codeName)) span0.classList.add("BoldRed");
     if (Sup.includes(obj.rStatus.codeName)) span0.classList.add("BoldBlue");
-    span0.innerHTML = item.fullName[LANGUAGE];
-
-    var itemType = getItemType(item);
-    var span0e = document.createElement('span');
-    if (itemType == 'Character') {
-        span0e.innerHTML = "/ " + lang[LANGUAGE]._CombatType[item.combatType] + " " + lang[LANGUAGE]._Path[item.path] + "<br>";
-    }
-    if (itemType == 'Lightcone') {
-        span0e.innerHTML = "/ " + lang[LANGUAGE]._Path[item.path] + "<br>";
-    }
+    span0.innerHTML = item.fullName[LANGUAGE] + '<br>';
 
 
     var span0f = document.createElement('span');
-    let t1 = lang[LANGUAGE]["totalCount"] + lang[LANGUAGE]["colon"];
+    let t1 = lang[LANGUAGE]["totalCount"];
     t1 += obj.wStatus.total;
     let t2 = lang[LANGUAGE]._SGuarantee[obj.wStatus.SupSwitch];
     span0f.innerHTML = t1 + '<br>' + t2 + '<br>';
@@ -351,14 +345,14 @@ function translateWarpInfo(obj) {
     span1e.innerHTML = lang[LANGUAGE]["SCount"] + lang[LANGUAGE]["colon"];
 
     span1 = document.createElement('span');
-    if (obj.wStatus.SCount >= 80) {
+    if (obj.wStatus.SCount >= 77) {
         span1.classList.add('BoldRed');
     }
-    if (obj.wStatus.SCount <= 40 && Sup.includes(obj.rStatus.codeName)) {
+    if (obj.wStatus.SCount <= 35 && Sup.includes(obj.rStatus.codeName)) {
         span1.classList.add('BoldGreen');
     };
     span1.innerHTML = obj.wStatus.SCount;
 
-    parag.append(span0, span0e, span0f, span1e, span1);
+    parag.append(span0, span0f, span1e, span1);
     return parag;
 }

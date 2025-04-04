@@ -32,12 +32,12 @@ var lang = {
             false:"4星小保底"
         },
         _SGuarantee:{
-            true:"5星大保底",
-            false:"5星小保底"
+            true:"大保底",
+            false:"小保底"
         },
         "RCount":"4星垫数",
-        "SCount":"5星垫数",
-        "totalCount":"总抽数",
+        "SCount":"垫数",
+        "totalCount":"#",
         "character":"角色",
         "lightcone":"光锥"
     }

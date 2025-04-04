@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <script src="./js/ZERBO.js"></script>
-        <script src="./js/settings.js"></script>
-        <script src="./js/core.js"></script>
-        <script src="./js/lang.js"></script>
-        <script src="./js/database.js"></script>
-        <link rel="stylesheet" href=".\css\l.css">
-    </head>
-    <body>
-        <h1>Augmented Graphic HSR Gacha Calculator - AGHGC</h1>
-        <h3>vβ3.0.0</h3>
-        <p style="color: red;"><strong>版本局限</strong>：vβ3.0.0尚未具备完整统计功能，后续版本会添加相关逻辑。</p>
-        <p>卡池选择：目前仅支持3.2、3.1和3.0部分卡池。</p>
-        <p>抽取总次数：任意。只显示4星和5星角色。</p>
-        <p>筛选器：仅查看选取的角色的抽取记录。</p>
-        <p style="color: red;">考虑到设备性能，抽数大于10000抽，不显示“获取总览”；大于100000抽，不显示“筛选结果”，但<strong>始终可以</strong>从“筛选器”中可以看到抽取到的角色数量。</p>
-        <p>抽取总次数允许输入的最大值为<strong>5000000</strong></p>
-        <form id="MainForm">
-            卡池选择：<select id="Form_CharacterPoolInput" title="Select Pool"></select>
-            <br>
-            抽取总次数：<input id="Form_PullInput" title="Simulate Times" type="number" min="1" max="5000000">
-            <div class="SubmitButton" onclick="applyAll();" >确认抽取</div>
-            <br>
-            筛选器：<select id="Form_CharacterFilterSelect" title="Filter" style="min-width: 100px;"></select>
-        </form>
-        <hr>
-        <p>筛选结果：</p>
-        <div class="BoxedExhibition" id="FilterResult"></div>
-        <hr><p>获取总览：</p>
-        <div class="BoxedExhibition" id="ResultDisplayer"></div>
-        <script src="./js/warp.js"></script>
-        <script src="./js/display.js"></script>
-        <p>Copyright Quartz Studio 2019-2025 & By Quincy K.</p>
-    </body>
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./js/ZERBO.js"></script>
+    <script src="./js/settings.js"></script>
+    <script src="./js/core.js"></script>
+    <script src="./js/lang.js"></script>
+    <script src="./js/database.js"></script>
+    <link rel="stylesheet" href=".\css\l.css">
+    <link rel="stylesheet" href=".\css\i.css">
+</head>
+
+<body>
+    <h1>Augmented Graphic HSR Gacha Calculator - AGHGC</h1>
+    <h3>vβ3.1.0</h3>
+    <p style="color: red;"><strong>版本局限</strong>：vβ3.1.0尚未具备完整统计功能，后续版本会添加相关逻辑。</p>
+    <p>卡池选择：目前仅支持部分角色卡池。</p>
+    <p>抽取总次数：任意。只显示4星和5星角色。</p>
+    <p>筛选器：仅查看选取的角色的抽取记录。</p>
+    <p>垫数：在这一抽之前，有多少抽未出5星。即自上一次抽出5星到这一抽，未出5星总共的专票数。</p>
+    <p style="color: red;">考虑到设备性能，抽数大于10000抽，不显示“获取总览”；大于100000抽，不显示“筛选结果”，但<strong>始终可以</strong>从“筛选器”中可以看到抽取到的角色数量。
+    </p>
+    <p>抽取总次数允许输入的最大值为<strong>5000000</strong></p>
+    <form id="MainForm">
+        <p>卡池选择：</p><select id="Form_CharacterPoolInput" title="Select Pool"></select>
+        <br>
+        <p>抽取总次数：</p><input id="Form_PullInput" title="Simulate Times" type="number" min="1" max="5000000">
+        <div class="SubmitButton" onclick="applyAll();">确认抽取</div>
+        <br>
+        <p>筛选器：</p><select id="Form_CharacterFilterSelect" title="Filter" style="min-width: 100px;"></select>
+    </form>
+    <hr>
+    <p>筛选结果：</p>
+    <div class="BoxedExhibition" id="FilterResult"></div>
+    <hr>
+    <p>获取总览：</p>
+    <div class="BoxedExhibition" id="ResultDisplayer"></div>
+    <script src="./js/warp.js"></script>
+    <script src="./js/display.js"></script>
+    <p>Copyright Quartz Studio 2019-2025 & By Quincy K.</p>
+</body>
+
 </html>

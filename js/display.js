@@ -60,17 +60,41 @@ function refreshCharacterPoolSelector() {
 }
 refreshCharacterPoolSelector();
 
-
-function showObtainedInfo(obj, destination) {
-    var record = document.createElement("div")
+/**
+ * obj接收：rStatus, wStatus
+ */
+function translateItemInfo(obj){
+    var record = document.createElement("div");
     record.classList.add("RecordBox");
     var element_p = translateWarpInfo(obj);
     var item = findItem(obj.rStatus.codeName);
     var img = document.createElement("img");
+    img.classList.add("ItemIcon");
     img.src = item.icon;
+    var rightDiv = document.createElement("div");
+    rightDiv.classList.add("RightColumn");
+    var upDiv = document.createElement("div");
+    upDiv.classList.add("MiniIcon");
+    let img_path = document.createElement("img");
+    img_path.src = './img/i16/p_' + item.path + '.png';
+    upDiv.appendChild(img_path);
+    if(getItemType(item)!='Lightcone'){
+        let img_ct = document.createElement("img");
+        img_ct.src = './img/i16/ct_' + item.combatType + '.png';
+        upDiv.appendChild(img_ct);
+    }
+    if(Sup.includes(obj.rStatus.codeName)){
+        record.classList.add("Target");
+    }
+    rightDiv.appendChild(upDiv);
+    rightDiv.appendChild(element_p);
     record.appendChild(img);
-    record.appendChild(element_p);
-    destination.appendChild(record);
+    record.appendChild(rightDiv);
+    return record;
+}
+
+function showObtainedInfo(obj, destination) {
+    destination.appendChild(translateItemInfo(obj));
     return 0;
 }
 
