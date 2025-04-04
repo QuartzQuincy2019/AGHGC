@@ -1,7 +1,8 @@
 /* i.css */
 div.RecordBox img.ItemIcon{
-    width: 3.3em;
-    height: 3.3em;
+    width: 3.9em;
+    height: 3.9em;
+    align-self: center;
     box-sizing: border-box;
     margin: 0 0.2em 0 0.2em;
     border: 1px solid #808080;
@@ -10,10 +11,10 @@ div.RecordBox img.ItemIcon{
 }
 
 div.MiniIcon{
-    height: 1.2em;
+    height: 1em;
     padding: 0;
     background-color: #565656;
 }
 div.MiniIcon img{
-    height: 1.2em;
+    height: 1em;
 }

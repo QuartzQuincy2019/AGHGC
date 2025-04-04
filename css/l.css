@@ -7,20 +7,21 @@ div.BoxedExhibition {
     padding: 1%;
     width: 98%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); /* 自动填充，最小200px */
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); /* 自动填充，最小200px */
     gap: 0.7em;
 }
 
 div.RecordBox {
-    width: 9rem;
-    min-width: 9rem;
+    width: 11rem;
+    min-width: 11rem;
+    max-height: 7em;
     margin: 0.3rem;
     padding: 0;
     border: 1px solid;
     border-radius: 4px;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     overflow:hidden;
 }
 
@@ -30,6 +31,7 @@ div.RecordBox.Target {
 
 div.RightColumn{
     width: 100%;
+    flex-grow: 1;
 }
 
 div.RecordBox p {
@@ -54,6 +56,10 @@ div.SubmitButton:hover{
 }
 div.SubmitButton:active{
     background-color: #f9ff7f;
+}
+
+.ItemTitle{
+    font-size: 0.85rem;
 }
 
 .BoldRed{

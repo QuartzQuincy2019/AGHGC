@@ -330,6 +330,7 @@ function translateWarpInfo(obj) {
     var parag = document.createElement('p');
 
     var span0 = document.createElement('span');
+    span0.classList.add("ItemTitle");
     if (Scommon.includes(obj.rStatus.codeName)) span0.classList.add("BoldRed");
     if (Sup.includes(obj.rStatus.codeName)) span0.classList.add("BoldBlue");
     span0.innerHTML = item.fullName[LANGUAGE] + '<br>';
@@ -346,10 +347,10 @@ function translateWarpInfo(obj) {
 
     span1 = document.createElement('span');
     if (obj.wStatus.SCount >= 77) {
-        span1.classList.add('BoldRed');
+        span1.classList.add('BoldRed','ItemTitle');
     }
     if (obj.wStatus.SCount <= 35 && Sup.includes(obj.rStatus.codeName)) {
-        span1.classList.add('BoldGreen');
+        span1.classList.add('BoldGreen','ItemTitle');
     };
     span1.innerHTML = obj.wStatus.SCount;
 

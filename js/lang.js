@@ -40,5 +40,46 @@ var lang = {
         "totalCount":"#",
         "character":"角色",
         "lightcone":"光锥"
+    },
+    "en": {
+        "languangeName": "English",
+        "colon": ": ",
+        "breakLine": "\n",
+        "CombatType": "Combat Type",
+        _CombatType:{
+            1: "Physical",
+            2: "Fire",
+            3: "Ice",
+            4: "Lightning",
+            5: "Wind",
+            6: "Quantum",
+            7: "Imaginary"
+        },
+        "Path":"Path",
+        _Path:{
+            1:"Destruction",
+            2:"The Hunt",
+            3:"Erudition",
+            4:"Harmony",
+            5:"Nihility",
+            6:"Preservation",
+            7:"Abundance",
+            8:"Remembrance"
+        },
+        "R":"Star4",
+        "S":"Star5",
+        _RGuarantee:{
+            true:"4-Gua",
+            false:"4-Not"
+        },
+        _SGuarantee:{
+            true:"5-Gua",
+            false:"5-Not"
+        },
+        "RCount":"Star4 Counts",
+        "SCount":"Star5 Counts",
+        "totalCount":"#",
+        "character":"sharacter",
+        "lightcone":"lightcone"
     }
 }
