@@ -1,13 +1,18 @@
 /* l.css */
-form p{
+form p {
     display: inline;
+}
+
+form * {
+    margin: 0.3em;
 }
 
 div.BoxedExhibition {
     padding: 1%;
     width: 98%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); /* 自动填充，最小200px */
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    /* 自动填充，最小200px */
     gap: 0.7em;
 }
 
@@ -22,14 +27,14 @@ div.RecordBox {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 div.RecordBox.Target {
     background-color: #fff7de;
 }
 
-div.RightColumn{
+div.RightColumn {
     width: 100%;
     flex-grow: 1;
 }
@@ -41,10 +46,11 @@ div.RecordBox p {
     font-size: 0.6rem;
 }
 
-div.SubmitButton{
+div.SubmitButton {
     text-align: center;
     display: block;
-    width: 13em;
+    width: 8em;
+    padding: 0.5em;
     border: 3px solid #000000;
     border-radius: 5px;
     cursor: pointer;
@@ -54,26 +60,56 @@ div.SubmitButton{
     transition-duration: 300ms;
     transition-property: all;
 }
-div.SubmitButton:hover{
+
+div.SubmitButton:hover {
     background-color: aquamarine;
 }
-div.SubmitButton:active{
+
+div.SubmitButton:active {
     background-color: #f9ff7f;
 }
 
-.ItemTitle{
+.ItemTitle {
     font-size: 0.85rem;
 }
 
-.BoldRed{
+.BoldRed {
     color: red;
     font-weight: 1000;
 }
-.BoldGreen{
+
+.BoldGreen {
     color: #00bc13;
     font-weight: 1000;
 }
-.BoldBlue{
+
+.BoldBlue {
     color: #1b5cff;
     font-weight: 1000;
+}
+
+
+table {
+    margin: 0.1em;
+    max-height: 2em;
+}
+
+td {
+    padding: 0.2em;
+    border: 1px solid #000;
+    max-height: 1em;
+}
+
+td:first-child {
+    font-weight: 1000;
+}
+
+tr:nth-child(2) {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 800;
+}
+
+input#PreForm_SupInput {
+    margin: 0;
+    font-weight: 800;
 }

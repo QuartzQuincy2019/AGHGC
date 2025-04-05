@@ -7,6 +7,14 @@ var E_MainForm = document.getElementById("MainForm");
 var E_Form_PullInput = document.getElementById("Form_PullInput");
 
 var E_Form_CFS = document.getElementById("Form_CharacterFilterSelect");
+var P_Form_PFS = document.getElementById("PreForm_PoolInput");
+
+/**
+ * 即\<p id="PreForm_SupTargetDisplay">//Sup//\</p>
+ */
+var P_Form_STD = document.getElementById("PreForm_SupTargetDisplay");
+var P_Form_PredictionTableArea = document.getElementById("PredictionTableArea");
+
 function refreshCFS() {
     var names = [];
     for (var i = 0; i < OBTAINED_ITEMS.length; i++) {
@@ -31,19 +39,12 @@ function refreshCFS() {
 
 function repull() {
     OBTAINED_ITEMS = [];
-    globalInitalize();
+    globalInitalize(GLOBAL_WARP_STATUS);
     warpWithInfoFor(E_Form_PullInput.value);
     showAllObtainedInfo();
     refreshCFS();
 }
 //----------------------------------------
-function selectPool(poolName) {
-    if (TOTAL_EVENT_WARPS[poolName] == undefined) return;
-    Sup = deepClone(TOTAL_EVENT_WARPS[poolName][0]);
-    Scommon = deepClone(TOTAL_EVENT_WARPS[poolName][1]);
-    Rup = deepClone(TOTAL_EVENT_WARPS[poolName][2]);
-    Rcommon = deepClone(TOTAL_EVENT_WARPS[poolName][3]);
-}
 function applyPool() {
     selectPool(E_Form_CharacterPoolInput.value);
 }
@@ -132,3 +133,9 @@ function applyAll() {
     refreshCFS();
     refreshFilterBoxDisplay();
 }
+
+P_Form_PFS.addEventListener('change',function(){
+    var pool = TOTAL_EVENT_WARPS[P_Form_PFS.value];
+    var txt=findItem(pool[0][0]).fullName[LANGUAGE];
+    P_Form_STD.innerHTML='<strong>'+txt+' x</strong>'
+})

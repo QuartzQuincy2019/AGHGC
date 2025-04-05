@@ -14,17 +14,30 @@
 
 <body>
     <h1>Augmented Graphic HSR Gacha Calculator - AGHGC</h1>
-    <h3>vβ3.2.2</h3>
-    <p style="color: red;"><strong>版本局限</strong>：vβ3.2.2尚未具备完整统计功能，后续版本会添加相关逻辑。</p>
-    <p>卡池选择：目前仅支持部分角色卡池。</p>
-    <p>抽取总次数：任意。只显示4星和5星角色。</p>
+    <h3>vβ4.0.0</h3>
+    <p>卡池选择：目前仅支持部分角色卡池。光锥跃迁将于后续版本更新。</p>
+    </p>
+    <hr>
+    <h3>出货预测功能</h3>
+    <form id="PredictionForm">
+        <p>卡池选择：</p><select id="PreForm_PoolInput" title="Select Pool"></select><br>
+        <p>是否5星大保底（是：1；否：0）</p><input id="PreForm_GuaranteeInput" title="Is Guaranteed" type="number" min="0" max="1" value="0"><br>
+        <p>已多少抽未出五星（若上一抽是5星，则为0，以此类推）</p><input id="PreForm_SCountInput" title="SCount Input" type="number" min="0" max="89" value="0"><br>
+        <p>囤积票数(最大值:1000)：</p><input id="PreForm_PullInput" title="Simulate Times" type="number" min="1" max="1000"><br>
+        <p>抽取目标数量：</p>
+        <p id="PreForm_SupTargetDisplay">该卡池5星Up角色/光锥 x</p><input id="PreForm_SupInput" title="Target: Sup" type="number" min="0" max="30" value="2"><br>
+        <div class="SubmitButton" onclick="startPrediction(getPredictionFormValue());">开始预测</div>
+    </form>
+    <div id="PredictionTableArea"></div>
+    <hr>
+    <hr>
+    <h3>抽卡模拟功能</h3>
+    <p>抽取总次数：任意。只显示4星和5星物品。</p>
     <p>筛选器：仅查看选取的角色的抽取记录。</p>
     <p>垫数：在这一抽之前，有多少抽未出5星。即自上一次抽出5星到这一抽，未出5星总共的专票数。</p>
     <p style="color: red;">考虑到设备性能，抽数大于10000抽，不显示“获取总览”；大于100000抽，不显示“筛选结果”，但<strong>始终可以</strong>从“筛选器”中可以看到抽取到的角色数量。
-    </p>
     <p>抽取总次数允许输入的最大值为<strong>5000000</strong></p>
     <hr>
-    <p>抽卡模拟功能</p>
     <form id="MainForm">
         <p>卡池选择：</p><select id="Form_CharacterPoolInput" title="Select Pool"></select>
         <br>
@@ -33,18 +46,6 @@
         <br>
         <p>筛选器：</p><select id="Form_CharacterFilterSelect" title="Filter" style="min-width: 100px;"></select>
     </form>
-    <hr>
-    <p>出货预测功能(暂未开发完毕)</p>
-    <form id="PredictionForm">
-        <p>卡池选择：</p><select id="PreForm_PoolInput" title="Select Pool"></select><br>
-        <p>是否5星大保底（是：1；否：0）</p><input id="PreForm_GuaranteeInput" title="Is Guaranteed" type="number" min="0" max="1" value="0"><br>
-        <p>已多少抽未出五星（若上一抽是5星，则为0，以此类推）</p><input id="PreForm_SCountInput" title="SCount Input" type="number" min="0" max="89" value="0"><br>
-        <p>囤积票数：</p><input id="PreForm_PullInput" title="Simulate Times" type="number" min="1" max="1000"><br>
-        <p>抽取目标数量：</p>
-        <p id="PreForm_SupTargetDisplay">//Sup//</p><input id="PreForm_SupInput" title="Target: Sup" type="number" min="0" max="30"><br>
-        <div class="SubmitButton" onclick="startPrediction(getPredictionFormValue());">开始预测</div>
-    </form>
-    <hr>
     <p>筛选结果：</p>
     <div class="BoxedExhibition" id="FilterResult"></div>
     <hr>

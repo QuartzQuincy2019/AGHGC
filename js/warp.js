@@ -101,19 +101,19 @@ var GLOBAL_WARP_STATUS = new WarpStatus(
     RGuaranteeCounter, SGuaranteeCounter,
     totalWarps);
 
-function globalInitalize() {
-    GLOBAL_WARP_STATUS.initialize();
+function globalInitalize(globalStatus) {
+    globalStatus.initialize();
     isRupObtained = false;
     isSupObtained = false;
     RGuaranteeCounter = 0;
     SGuaranteeCounter = 0;
     totalWarps = 0;
     OBTAINED_ITEMS = [];
-    GLOBAL_WARP_STATUS.RupSwitch = isRupObtained;
-    GLOBAL_WARP_STATUS.SupSwitch = isSupObtained;
-    GLOBAL_WARP_STATUS.RCount = RGuaranteeCounter;
-    GLOBAL_WARP_STATUS.SCount = SGuaranteeCounter;
-    GLOBAL_WARP_STATUS.total = totalWarps;
+    globalStatus.RupSwitch = isRupObtained;
+    globalStatus.SupSwitch = isSupObtained;
+    globalStatus.RCount = RGuaranteeCounter;
+    globalStatus.SCount = SGuaranteeCounter;
+    globalStatus.total = totalWarps;
 }
 
 /**
@@ -173,7 +173,7 @@ function determineUp() {
     return 0;
 }
 
-function warpWithInfo(status) {
+function warpWithInfo(status,obtained) {
     var item = [null, null];
     //随机数抽取（决定：5/4/3）
     item[0] = determineQuality(status);
@@ -242,13 +242,13 @@ function warpWithInfo(status) {
         default: throw new Error("未出现预期情况。");
     }
     if (mode % 10 != 3) {
-        OBTAINED_ITEMS.push({ rStatus: resultStatus, wStatus: currentInfo });
+        obtained.push({ rStatus: resultStatus, wStatus: currentInfo });
     }
 }
 
 function warpWithInfoFor(pulls) {
     for (var i = 0; i < pulls; i++) {
-        warpWithInfo(GLOBAL_WARP_STATUS);
+        warpWithInfo(GLOBAL_WARP_STATUS,OBTAINED_ITEMS);
     }
 }
 

@@ -35,10 +35,10 @@ function findLightcone(lightconeCode) {
     return _lc;
 }
 
-function findItem(code){
-    if(characterMap.hasOwnProperty(code)) return findCharacter(code);
-    if(lightconeMap.hasOwnProperty(code)) return findLightcone(code);
-    throw new Error("findItem: 没有找到代号为"+code+"的对象。");
+function findItem(code) {
+    if (characterMap.hasOwnProperty(code)) return findCharacter(code);
+    if (lightconeMap.hasOwnProperty(code)) return findLightcone(code);
+    throw new Error("findItem: 没有找到代号为" + code + "的对象。");
 }
 
 /**
@@ -127,4 +127,22 @@ function findUniqueWithCount(_arr) {
         element: element,
         duplication: countMap[element]
     }));
+}
+
+/**
+ * 格式化浮点数
+ * @param {number} value - 原始值
+ * @param {number} decimals - 要保留的小数位数
+ * @param {boolean} returnString - 是否返回字符串（默认 true）
+ * @returns {string|number}
+ */
+function formatFloat(value, decimals = 4, returnString = true) {
+    if (isNaN(value)) return returnString ? "NaN" : NaN;
+
+    const factor = Math.pow(10, decimals);
+    const rounded = Math.round(value * factor) / factor;
+
+    return returnString
+        ? rounded.toFixed(decimals)
+        : rounded;
 }

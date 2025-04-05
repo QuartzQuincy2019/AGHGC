@@ -549,3 +549,16 @@ function refreshAllPoolSupCode() {
     }
 }
 refreshAllPoolSupCode();
+
+/**
+ * 为Sup,Scommon,Rup,Rcommon根据库存的卡池代号进行赋值
+ * @param {string} poolName - 从TOTAL_EVENT_WARPS中选取的卡池代号
+ * @returns 
+ */
+function selectPool(poolName) {
+    if (TOTAL_EVENT_WARPS[poolName] == undefined) return;
+    Sup = deepClone(TOTAL_EVENT_WARPS[poolName][0]);
+    Scommon = deepClone(TOTAL_EVENT_WARPS[poolName][1]);
+    Rup = deepClone(TOTAL_EVENT_WARPS[poolName][2]);
+    Rcommon = deepClone(TOTAL_EVENT_WARPS[poolName][3]);
+}
