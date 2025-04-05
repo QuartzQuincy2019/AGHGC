@@ -132,21 +132,37 @@ class ResultStatus {
 /**
  * 
  * @param {WarpStatus} status 
- * @returns 
+ * @returns {[number, number]} 
  */
 function getProbability(status) {
-    //[s,r] 抽到五星概率 0-s   四星概率 [s-r]
-    if (Number(status.SCount + 1) >= 90) {
-        return [2, 2];
+    const sCount = Number(status.SCount);
+    const rCount = Number(status.RCount);
+
+    // 处理五星保底
+    if (sCount + 1 >= 90) {
+        return [1, 1]; // 五星概率100%，四星概率0%
     }
-    if (Number(status.RCount + 1) >= 10) {
-        return [0, 1]
+
+    // 处理四星保底
+    if (rCount + 1 >= 10) {
+        let s = calculateSProbability(sCount);
+        return [s, 1]; // 四星概率 = 1 - 五星概率 = 1 - s
     }
-    if (Number(status.SCount + 1) <= 73) {
-        return [0.006, 0.006 + 0.051];
+
+    // 常规概率计算
+    const s = calculateSProbability(sCount);
+    const r = 0.051; // 四星基础概率
+    return [s, s+r];
+}
+
+/**
+ * 计算五星基础概率（内部辅助函数）
+ */
+function calculateSProbability(sCount) {
+    if (sCount + 1 <= 73) {
+        return 0.006;
     } else {
-        let s = (Number(status.SCount) - 72) * 0.06 + 0.006;
-        return [s, s + 0.051];
+        return 0.006 + (sCount + 1 - 73) * 0.06;
     }
 }
 
@@ -157,7 +173,7 @@ function getProbability(status) {
 function determineQuality(status) {
     var probArray = getProbability(status);
     var randomed = Math.random();
-    // console.log(randomed);
+    // console.log("randomed="+randomed,'probArray='+probArray);
     if (randomed < probArray[0]) {
         return 5;//S
     } else if (randomed < probArray[1]) {
@@ -165,7 +181,6 @@ function determineQuality(status) {
     } else {
         return 3;//3星
     }
-
 }
 
 function determineUp() {
@@ -190,6 +205,7 @@ function warpWithInfo(status,obtained) {
 
     //mode
     var mode = item[0] + item[1];
+    // console.log("mode="+mode);
     status.total ++;//这两者顺序不能颠倒
     //currentInfo应记录：
     //1.这一抽是第几抽，因此total应先加一

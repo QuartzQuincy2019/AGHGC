@@ -36,7 +36,7 @@ self.onmessage = function (event) {
         //开始处理数据
         var x = 0;
         for (var i = 0; i < obtained.length; i++) {
-            // console.log("轮数:"+testSequence,"length="+obtained.length+"obtained中的["+i+"]记录：",obtained[i].rStatus.codeName);
+            // console.log("轮数:"+testSequence," length="+obtained.length+" obtained中的["+i+"]记录：",obtained[i].rStatus.codeName);
             if (Sup.includes(obtained[i].rStatus.codeName)) x += 1;
         }
         count[x] += 1;

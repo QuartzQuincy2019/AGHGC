@@ -57,16 +57,16 @@ function startPrediction(predictionFormValueObj) {
         var parag = document.createElement('p');
         let final = 0;
         for (var i = predictionFormValueObj.targetQty; i < count.length; i++) {
-            if (count[i] == 0) break;
             final = final + count[i] / testMaximum;
         }
-        parag.innerHTML = '均值（数学期望）<span class="BoldBlue">' + formatFloat(PREDICTION_RESULTS.E, 2)
+        parag.innerHTML = '均值（数学期望）<span class="BoldBlue">'
+            + formatFloat(PREDICTION_RESULTS.E, 5)
             + '</span>个，目标达成概率：<span class="BoldBlue">'
             + formatFloat(final * 100, 3) + "%</span>";
         FINAL_PREDICTED_P = final;
         //-----------------
         if (final >= 0.85) {
-            parag.innerHTML += "<br><span class='BoldGreen'>此抽卡规划一般会实现。</span>";
+            parag.innerHTML += "<br><span class='BoldGreen'>此抽卡规划基本会实现。</span>";
         }
         if (final < 0.85 && final >= 0.4) {
             parag.innerHTML += "<br><span class='BoldBlue'>此抽卡规划是否实现值得期待。</span>";

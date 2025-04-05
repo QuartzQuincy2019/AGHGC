@@ -14,7 +14,7 @@
 
 <body>
     <h1>Augmented Graphic HSR Gacha Calculator - AGHGC</h1>
-    <h3>vβ4.2.0</h3>
+    <h3>vβ4.2.2</h3>
     <p>卡池选择：目前仅支持部分角色卡池。<strong>光锥跃迁</strong>将于后续版本更新。</p>
     <div class="SubmitButton" onclick="switchLanguage();">切换数据库语言</div>
     <hr>
@@ -44,7 +44,7 @@
         <p>是否4星大保底（是：1；否：0）</p><input id="Form_4StarGuaranteeInput" title="Is 4-star Guaranteed" type="number" min="0" max="1" value="0"><br>
         <p>已多少抽未出5星（若上一抽是5星，则为0，以此类推）</p><input id="Form_SCountInput" title="SCount Input" type="number" min="0" max="89" value="0"><br>
         <p>已多少抽未出4星（若上一抽是4星，则为0，以此类推）</p><input id="Form_RCountInput" title="RCount Input" type="number" min="0" max="10" value="0"><br>
-        <p>抽取总次数：</p><input id="Form_PullInput" class="KeyNumberInput" title="Simulate Times" type="number" min="1" max="5000000">
+        <p>抽取总次数：</p><input id="Form_PullInput" class="KeyNumberInput" title="Simulate Times" type="number" min="1" max="5000000" value="0">
         <div class="SubmitButton" onclick="applyAll();">确认抽取</div>
         <br>
         <p>筛选器：</p><select id="Form_CharacterFilterSelect" title="Filter" style="min-width: 100px;"></select>
