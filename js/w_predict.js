@@ -16,15 +16,11 @@ self.onmessage = function (event) {
         globalInitalize(innerStatus);
         selectPool(predictionFormValueObj.selectedPool);
         obtained=[];
-        isRupObtained = false;
-        isSupObtained = predictionFormValueObj.isGuaranteed;
-        RGuaranteeCounter = 0;
-        SGuaranteeCounter = predictionFormValueObj.SCount;
-        innerStatus.RupSwitch = isRupObtained;
-        innerStatus.SupSwitch = isSupObtained;
-        innerStatus.RCount = RGuaranteeCounter;
-        innerStatus.SCount = SGuaranteeCounter;
-        innerStatus.total = totalWarps;
+        innerStatus.RupSwitch = false;
+        innerStatus.SupSwitch = predictionFormValueObj.isGuaranteed;
+        innerStatus.RCount = 0;
+        innerStatus.SCount = predictionFormValueObj.SCount;
+        innerStatus.total = 0;
     }
     innerReset();
     var count = [];
@@ -32,12 +28,15 @@ self.onmessage = function (event) {
         count.push(0);
     }
     for (var testSequence = 0; testSequence < totalRound; testSequence++) {
+        //单轮：
+        //模拟predictionFormValueObj.pulls次抽取
         for (var i = 0; i < predictionFormValueObj.pulls; i++) {
             warpWithInfo(innerStatus,obtained);
         }
         //开始处理数据
         var x = 0;
         for (var i = 0; i < obtained.length; i++) {
+            // console.log("轮数:"+testSequence,"length="+obtained.length+"obtained中的["+i+"]记录：",obtained[i].rStatus.codeName);
             if (Sup.includes(obtained[i].rStatus.codeName)) x += 1;
         }
         count[x] += 1;

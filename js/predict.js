@@ -21,6 +21,7 @@ function getPredictionFormValue() {
 }
 
 var PREDICTION_RESULTS;
+var FINAL_PREDICTED_P = 1;
 function startPrediction(predictionFormValueObj) {
     OBTAINED_ITEMS = [];
     var roundsPerWorker = testMaximum / 10;
@@ -54,9 +55,28 @@ function startPrediction(predictionFormValueObj) {
         document.getElementById("PredictionTableArea").appendChild(_table);
         //----------------
         var parag = document.createElement('p');
-        parag.innerHTML = '均值（数学期望）' + formatFloat(PREDICTION_RESULTS.E, 2)
-            + '个，目标达成概率：'
-            + formatFloat(count[predictionFormValueObj.targetQty] / testMaximum * 100, 3) + "%";
+        let final = 0;
+        for (var i = predictionFormValueObj.targetQty; i < count.length; i++) {
+            if (count[i] == 0) break;
+            final = final + count[i] / testMaximum;
+        }
+        parag.innerHTML = '均值（数学期望）<span class="BoldBlue">' + formatFloat(PREDICTION_RESULTS.E, 2)
+            + '</span>个，目标达成概率：<span class="BoldBlue">'
+            + formatFloat(final * 100, 3) + "%</span>";
+        FINAL_PREDICTED_P = final;
+        //-----------------
+        if (final >= 0.85) {
+            parag.innerHTML += "<br><span class='BoldGreen'>此抽卡规划一般会实现。</span>";
+        }
+        if (final < 0.85 && final >= 0.4) {
+            parag.innerHTML += "<br><span class='BoldBlue'>此抽卡规划是否实现值得期待。</span>";
+        }
+        if (final < 0.4 && final >= 0.1) {
+            parag.innerHTML += "<br><span class='BoldYellow'>此抽卡规划一般不会实现。</span>";
+        }
+        if (final < 0.1) {
+            parag.innerHTML += "<br><span class='BoldRed'>此抽卡规划不会实现。</span>";
+        }
         document.getElementById("PredictionTableArea").appendChild(parag);
     }
     function merge() {
@@ -88,7 +108,7 @@ function startPrediction(predictionFormValueObj) {
     function startWorkerBatch(index = 0) {
         var batchSize = 1;
         for (let i = 0; i < batchSize && index < 10; i++, index++) {
-            console.log(index);
+            // console.log(index);
             var worker = new Worker('./js/w_predict.js');
             worker.addEventListener('error', (event) => {
                 console.error(index + ' Worker 加载失败:', event.message);

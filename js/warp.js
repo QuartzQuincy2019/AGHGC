@@ -136,16 +136,16 @@ class ResultStatus {
  */
 function getProbability(status) {
     //[s,r] 抽到五星概率 0-s   四星概率 [s-r]
-    if (status.SCount + 1 == 90) {
-        return [1, 1];
+    if (Number(status.SCount + 1) >= 90) {
+        return [2, 2];
     }
-    if (status.RCount + 1 >= 10) {
+    if (Number(status.RCount + 1) >= 10) {
         return [0, 1]
     }
-    if (status.SCount + 1 <= 73) {
+    if (Number(status.SCount + 1) <= 73) {
         return [0.006, 0.006 + 0.051];
     } else {
-        let s = (status.SCount + 1 - 72) * 0.06 + 0.006;
+        let s = (Number(status.SCount) - 72) * 0.06 + 0.006;
         return [s, s + 0.051];
     }
 }
@@ -157,6 +157,7 @@ function getProbability(status) {
 function determineQuality(status) {
     var probArray = getProbability(status);
     var randomed = Math.random();
+    // console.log(randomed);
     if (randomed < probArray[0]) {
         return 5;//S
     } else if (randomed < probArray[1]) {
@@ -189,7 +190,7 @@ function warpWithInfo(status,obtained) {
 
     //mode
     var mode = item[0] + item[1];
-    status.total += 1;//这两者顺序不能颠倒
+    status.total ++;//这两者顺序不能颠倒
     //currentInfo应记录：
     //1.这一抽是第几抽，因此total应先加一
     //2.在这一抽之前，有多少抽未出5星（即垫数）
@@ -200,7 +201,7 @@ function warpWithInfo(status,obtained) {
         case 15: {
             result = Sup[0];
             resultStatus = new ResultStatus(result, 15);
-            status.RCount += 1;
+            status.RCount ++;
             status.SCount = 0;
             status.SupSwitch = false;
             break;
@@ -208,7 +209,7 @@ function warpWithInfo(status,obtained) {
         case 5: {
             result = getRandomElement(Scommon);
             resultStatus = new ResultStatus(result, 5);
-            status.RCount += 1;
+            status.RCount ++;
             status.SCount = 0;
             status.SupSwitch = true;
             break;
@@ -217,7 +218,7 @@ function warpWithInfo(status,obtained) {
             result = getRandomElement(Rup);
             resultStatus = new ResultStatus(result, 14);
             status.RCount = 0;
-            status.SCount += 1;
+            status.SCount ++;
             status.RupSwitch = false;
             break;
         }
@@ -225,23 +226,24 @@ function warpWithInfo(status,obtained) {
             result = getRandomElement(Rcommon);
             resultStatus = new ResultStatus(result, 4);
             status.RCount = 0;
-            status.SCount += 1;
+            status.SCount ++;
             status.RupSwitch = true;
             break;
         }
         case 3: {
-            status.RCount += 1;
-            status.SCount += 1;
+            status.RCount ++;
+            status.SCount ++;
             break;
         }
         case 13: {
-            status.RCount += 1;
-            status.SCount += 1;
+            status.RCount ++;
+            status.SCount ++;
             break;
         }
         default: throw new Error("未出现预期情况。");
     }
     if (mode % 10 != 3) {
+        // console.log(currentInfo);
         obtained.push({ rStatus: resultStatus, wStatus: currentInfo });
     }
 }

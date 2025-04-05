@@ -6,6 +6,26 @@ var E_Form_CharacterPoolInput = document.getElementById("Form_CharacterPoolInput
 var E_MainForm = document.getElementById("MainForm");
 var E_Form_PullInput = document.getElementById("Form_PullInput");
 
+/**
+ * 即第二模块“是否5星大保底（是：1；否：0）”后的input
+ */
+var E_Form_GuaranteeInput = document.getElementById("Form_GuaranteeInput");
+/**
+ * 即第二模块“是否4星大保底（是：1；否：0）”后的input
+ */
+var E_Form_4StarGuaranteeInput = document.getElementById("Form_4StarGuaranteeInput");
+/**
+ * 即第二模块“已多少抽未出5星（若上一抽是5星，则为0，以此类推）”之后的input
+ */
+var E_Form_SCountInput = document.getElementById("Form_SCountInput");
+/**
+ * 即第二模块“已多少抽未出4星（若上一抽是5星，则为0，以此类推）”之后的input
+ */
+var E_Form_RCountInput = document.getElementById("Form_RCountInput");
+
+/**
+ * 第二模块的Form_CharacterFilterSelect筛选器下拉菜单
+ */
 var E_Form_CFS = document.getElementById("Form_CharacterFilterSelect");
 var P_Form_PFS = document.getElementById("PreForm_PoolInput");
 
@@ -39,7 +59,6 @@ function refreshCFS() {
 
 function repull() {
     OBTAINED_ITEMS = [];
-    globalInitalize(GLOBAL_WARP_STATUS);
     warpWithInfoFor(E_Form_PullInput.value);
     showAllObtainedInfo();
     refreshCFS();
@@ -51,7 +70,13 @@ function applyPool() {
 E_Form_CharacterPoolInput.addEventListener('change', function () {
     applyPool();
 });
+
+/**
+ * 根据当前LANGUAGE，刷新某个selector的选项
+ * @param {Element} destination 
+ */
 function refreshPoolSelector(destination) {
+    destination.innerHTML = '';
     for (var j = 0; j < ALL_WARP_POOLS.length; j++) {
         var opt = document.createElement('option');
         opt.setAttribute('value', ALL_WARP_POOLS[j].code);
@@ -64,7 +89,7 @@ refreshPoolSelector(E_Form_CharacterPoolInput);
 /**
  * obj接收：rStatus, wStatus
  */
-function translateItemInfo(obj){
+function translateItemInfo(obj) {
     var record = document.createElement("div");
     record.classList.add("RecordBox");
     var element_p = translateWarpInfo(obj);
@@ -79,12 +104,12 @@ function translateItemInfo(obj){
     let img_path = document.createElement("img");
     img_path.src = './img/i16/p_' + item.path + '.png';
     upDiv.appendChild(img_path);
-    if(getItemType(item)!='Lightcone'){
+    if (getItemType(item) != 'Lightcone') {
         let img_ct = document.createElement("img");
         img_ct.src = './img/i16/ct_' + item.combatType + '.png';
         upDiv.appendChild(img_ct);
     }
-    if(Sup.includes(obj.rStatus.codeName)){
+    if (Sup.includes(obj.rStatus.codeName)) {
         record.classList.add("Target");
     }
     rightDiv.appendChild(upDiv);
@@ -108,6 +133,10 @@ function showAllObtainedInfo() {
     return 0;
 }
 
+/**
+ * 刷新筛选器
+ * @returns 
+ */
 function refreshFilterBoxDisplay() {
     var code = E_Form_CFS.value;
     E_FilterResult.innerHTML = '';
@@ -123,10 +152,21 @@ E_Form_CFS.addEventListener('change', function () {
 })
 
 function applyAll() {
-    if (E_Form_PullInput.value > 5000000){
+    if (E_Form_PullInput.value > 5000000) {
         alert("“抽取总次数”大于允许的最大值！");
         return -1;
     };
+    GLOBAL_WARP_STATUS.initialize();
+    isRupObtained = E_Form_4StarGuaranteeInput.value == 1 ? true : false;
+    isSupObtained = E_Form_GuaranteeInput.value == 1 ? true : false;
+    RGuaranteeCounter = E_Form_RCountInput.value;
+    SGuaranteeCounter = E_Form_SCountInput.value;
+    totalWarps = 0;
+    GLOBAL_WARP_STATUS.RupSwitch = isRupObtained;
+    GLOBAL_WARP_STATUS.SupSwitch = isSupObtained;
+    GLOBAL_WARP_STATUS.RCount = RGuaranteeCounter;
+    GLOBAL_WARP_STATUS.SCount = SGuaranteeCounter;
+    GLOBAL_WARP_STATUS.total = totalWarps;
     OBTAINED_ITEMS = [];
     applyPool();
     repull();
@@ -134,8 +174,8 @@ function applyAll() {
     refreshFilterBoxDisplay();
 }
 
-P_Form_PFS.addEventListener('change',function(){
+P_Form_PFS.addEventListener('change', function () {
     var pool = TOTAL_EVENT_WARPS[P_Form_PFS.value];
-    var txt=findItem(pool[0][0]).fullName[LANGUAGE];
-    P_Form_STD.innerHTML='<strong>'+txt+' x</strong>'
+    var txt = findItem(pool[0][0]).fullName[LANGUAGE];
+    P_Form_STD.innerHTML = '<strong>' + txt + ' x</strong>'
 })

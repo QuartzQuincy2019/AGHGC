@@ -550,6 +550,18 @@ function refreshAllPoolSupCode() {
 }
 refreshAllPoolSupCode();
 
+function switchLanguage(){
+    if(LANGUAGE=='zh-CN'){
+        LANGUAGE='en';
+    }else{
+        LANGUAGE='zh-CN';
+    }
+    refreshAllPoolSupCode();
+    refreshFilterBoxDisplay();
+    refreshPoolSelector(E_Form_CharacterPoolInput);
+    refreshPoolSelector(P_Form_PFS);
+}
+
 /**
  * 为Sup,Scommon,Rup,Rcommon根据库存的卡池代号进行赋值
  * @param {string} poolName - 从TOTAL_EVENT_WARPS中选取的卡池代号
