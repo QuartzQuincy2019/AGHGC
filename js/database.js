@@ -225,6 +225,23 @@ for (var i = 0; i < LIGHTCONE_LIST.length; i++) {
     LIGHTCONE_CODES.push(LIGHTCONE_LIST[i].code);
 }
 
+
+class Version{
+    versionCode;
+    date;
+    constructor(_code,_date){
+        this.versionCode=_code;
+        this.date=_date;
+    }
+}
+var OFFICIAL_VERSIONS = {
+    "3_2":new Version("3.2","2025-04-09"),
+    "3_1":new Version("3.1","2025-02-26"),
+    "3_0":new Version("3.1","2025-01-15"),
+    "2_7":new Version("2.7","2025-12-04"),
+    "2_6":new Version("2.6","2025-10-23")
+}
+
 var ALL_CHARACTER_WARP_POOLS = [];
 var CHARACTER_EVENT_WARPS = {
     //3.2
@@ -241,8 +258,8 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4'
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
         ]
     ],
     "C3_2_2-1": [
@@ -258,8 +275,8 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4'
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
         ]
     ],
     "C3_2_2-2": [
@@ -275,8 +292,8 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4'
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
         ]
     ],
     "C3_2_2-3": [
@@ -292,8 +309,8 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4'
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
         ]
     ],
     //3.1
@@ -310,8 +327,8 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4'
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
         ]
     ],
     "C3_1_4": [
@@ -327,8 +344,8 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4'
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
         ]
     ],
     "C3_1_1": [
@@ -344,8 +361,9 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4']
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
     ],
     "C3_1_2": [
         ['yunl'],
@@ -360,8 +378,9 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4']
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
     ],
     //3.0
     "C3_0_3": [
@@ -377,8 +396,9 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4']
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
     ],
     "C3_0_4-1": [
         ['boot'],
@@ -393,8 +413,9 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4']
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
     ],
     "C3_0_4-2": [
         ['robi'],
@@ -409,8 +430,9 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4']
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
     ],
     "C3_0_4-3": [
         ['swol'],
@@ -425,8 +447,9 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4']
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
     ],
     "C3_0_1": [
         ['ther'],
@@ -441,8 +464,9 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4']
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
     ],
     "C3_0_2-1": [
         ['lsha'],
@@ -457,8 +481,9 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4']
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
     ],
     "C3_0_2-2": [
         ['fxia'],
@@ -473,8 +498,9 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4']
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
     ],
     "C3_0_2-3": [
         ['jade'],
@@ -489,8 +515,9 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4']
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
     ],
     //2.7
     "C2_7_3": [
@@ -506,8 +533,9 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4']
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
     ],
     "C2_7_4": [
         ['fire'],
@@ -522,8 +550,114 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', 'swordp1', 'thebir5',
-            'themol4', 'trendo5', 'undert4']
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ],
+    //2024-12-04
+    "C2_7_1": [
+        ['sund'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['qque', 'arla', 'tyun'],
+        ['asta', 'dhen', 'gall', 'guin', 'hany',
+            'hert', 'hook', 'luka', 'lynx', 'marP',
+            'mish', 'moze', 'nata', 'pela', 'samp',
+            'serv', 'ssha', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ],
+    "C2_7_2": [
+        ['jyua'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['qque', 'arla', 'tyun'],
+        ['asta', 'dhen', 'gall', 'guin', 'hany',
+            'hert', 'hook', 'luka', 'lynx', 'marP',
+            'mish', 'moze', 'nata', 'pela', 'samp',
+            'serv', 'ssha', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ],
+    //2024-11-13
+    "C2_6_3": [
+        ['ache'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['marP', 'pela', 'samp',],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'mish', 'moze', 'nata', 'qque', 'serv',
+            'ssha', 'tyun', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ],
+    "C2_6_4": [
+        ['aven'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['marP', 'pela', 'samp',],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'mish', 'moze', 'nata', 'qque', 'serv',
+            'ssha', 'tyun', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ],
+    //2024-10-23
+    "C2_6_1": [
+        ['rapp'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['lynx', 'xuey', 'ykon'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'moze', 'nata', 'pela', 'qque',
+            'samp', 'serv', 'ssha', 'tyun',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ],
+    "C2_6_2": [
+        ['dhil'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['lynx', 'xuey', 'ykon'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'moze', 'nata', 'pela', 'qque',
+            'samp', 'serv', 'ssha', 'tyun',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
     ]
 }
 
@@ -550,11 +684,11 @@ function refreshAllPoolSupCode() {
 }
 refreshAllPoolSupCode();
 
-function switchLanguage(){
-    if(LANGUAGE=='zh-CN'){
-        LANGUAGE='en';
-    }else{
-        LANGUAGE='zh-CN';
+function switchLanguage() {
+    if (LANGUAGE == 'zh-CN') {
+        LANGUAGE = 'en';
+    } else {
+        LANGUAGE = 'zh-CN';
     }
     refreshAllPoolSupCode();
     refreshFilterBoxDisplay();

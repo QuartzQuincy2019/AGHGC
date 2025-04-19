@@ -80,7 +80,9 @@ function refreshPoolSelector(destination) {
     for (var j = 0; j < ALL_WARP_POOLS.length; j++) {
         var opt = document.createElement('option');
         opt.setAttribute('value', ALL_WARP_POOLS[j].code);
-        opt.innerHTML = ALL_WARP_POOLS[j].code + "-----" + ALL_WARP_POOLS[j].upName;
+        let cod = ALL_WARP_POOLS[j].code;
+        let ver = OFFICIAL_VERSIONS[cod.slice(1,4)];
+        opt.innerHTML = "["+ cod + "] (v"+ ver.versionCode+")@" +ver.date  +"-----" + ALL_WARP_POOLS[j].upName;
         destination.appendChild(opt);
     }
 }
