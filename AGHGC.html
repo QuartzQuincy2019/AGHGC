@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 
 <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title>Augmented Graphic HSR Gacha Calculator - AGHGC</title>
     <script src="./js/ZERBO.js"></script>
     <script src="./js/settings.js"></script>
     <script src="./js/core.js"></script>
@@ -14,11 +15,11 @@
 
 <body>
     <h1>Augmented Graphic HSR Gacha Calculator - AGHGC</h1>
-    <h3>vβ5.0.0</h3>
-    <p>卡池选择：目前支持部分角色和光锥卡池。其他卡池将于后续版本更新。</p>
+    <h3>vβ5.0.3</h3>
+    <p>目前支持部分角色和光锥卡池。其他卡池将于后续版本更新。</p>
     <div class="SubmitButton" onclick="switchLanguage();">切换数据库语言</div>
     <hr>
-    <h2>出货预测模块</h2>
+    <h2>出货预测模块 - Frequency Distribution Prediction</h2>
     <p>将你目前的“囤积票数”全部投入后，查看能获得五星Up的个数的概率分布列（用频率估计概率）。</p>
     <form id="PredictionForm">
         <p>卡池选择：</p><select id="PreForm_PoolInput" title="Select Pool"></select><br>
@@ -32,7 +33,7 @@
     <div id="PredictionTableArea"></div>
     <hr>
     <hr>
-    <h2>抽卡模拟模块</h2>
+    <h2>抽卡模拟模块 - Simple Pull Simulation</h2>
     <p>抽取总次数：最大值5000000。</p>
     <p>筛选器：仅查看选取的角色的抽取记录。</p>
     <p>垫数：在这一抽之前，有多少抽未出5星。即自上一次抽出5星到这一抽，未出5星总共的专票数。</p>

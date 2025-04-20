@@ -4,21 +4,21 @@ form p {
 }
 
 form * {
-    margin: 0.3em;
+    margin: 0.1em;
 }
 
 div.BoxedExhibition {
-    padding: 1%;
+    padding: 0;
     width: 98%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
     /* 自动填充，最小200px */
-    gap: 0.7em;
+    gap: 0.3em;
 }
 
 div.RecordBox {
-    width: 11rem;
-    min-width: 11rem;
+    width: 9rem;
+    min-width: 9rem;
     max-height: 7em;
     margin: 0.3rem;
     padding: 0;
@@ -70,7 +70,7 @@ div.SubmitButton:active {
 }
 
 .ItemTitle {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 .BoldRed {

@@ -178,6 +178,6 @@ function applyAll() {
 
 P_Form_PFS.addEventListener('change', function () {
     var pool = TOTAL_EVENT_WARPS[P_Form_PFS.value];
-    var txt = findItem(pool[0][0]).fullName[LANGUAGE];
-    P_Form_STD.innerHTML = '<strong>' + txt + ' x</strong>'
+    var txt = findItem(pool["contents"][0][0]).fullName[LANGUAGE];
+    P_Form_STD.innerHTML = '<strong class="BoldBlue">' + txt + ' </strong>X'
 })
