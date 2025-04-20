@@ -226,439 +226,557 @@ for (var i = 0; i < LIGHTCONE_LIST.length; i++) {
 }
 
 
-class Version{
+class Version {
     versionCode;
+    session;
     date;
-    constructor(_code,_date){
-        this.versionCode=_code;
-        this.date=_date;
+
+    /**
+     * 
+     * @param {string} _code - 版本号
+     * @param {number} _session - 上半：1；下半：2
+     * @param {session} _date - 更新日期
+     */
+    constructor(_code, _session, _date) {
+        this.versionCode = _code;
+        this.session = _session;
+        this.date = _date;
     }
 }
 var OFFICIAL_VERSIONS = {
-    "3_2":new Version("3.2","2025-04-09"),
-    "3_1":new Version("3.1","2025-02-26"),
-    "3_0":new Version("3.1","2025-01-15"),
-    "2_7":new Version("2.7","2025-12-04"),
-    "2_6":new Version("2.6","2025-10-23")
+    "3.2@2": new Version("3.2", 2, "2025-04-30"),
+    "3.2@1": new Version("3.2", 1, "2025-04-09"),
+    "3.1@2": new Version("3.1", 2, "2025-03-19"),
+    "3.1@1": new Version("3.1", 1, "2025-02-26"),
+    "3.0@2": new Version("3.0", 2, "2025-02-05"),
+    "3.0@1": new Version("3.0", 1, "2025-01-15"),
+    "2.7@2": new Version("2.7", 2, "2024-12-25"),
+    "2.7@1": new Version("2.7", 1, "2024-12-04"),
+    "2.6@2": new Version("2.6", 2, "2024-11-13"),
+    "2.6@1": new Version("2.6", 1, "2024-10-23"),
+    "2.5@2": new Version("2.5", 2, "2024-10-02"),
+    "2.5@1": new Version("2.5", 1, "2024-09-10"),
+    "2.4@2": new Version("2.4", 2, "2024-08-21"),
+    "2.4@1": new Version("2.4", 1, "2024-07-31"),
+    "2.3@2": new Version("2.3", 2, "2024-07-10"),
+    "2.3@1": new Version("2.3", 1, "2024-06-19"),
+    "2.2@2": new Version("2.2", 2, "2024-05-29"),
+    "2.2@1": new Version("2.2", 1, "2024-05-08")
 }
 
 var ALL_CHARACTER_WARP_POOLS = [];
 var CHARACTER_EVENT_WARPS = {
     //3.2
-    "C3_2_1": [
-        ['cast'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['pela', 'gall', 'lynx'],
-        ['arla', 'asta', 'dhen', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'marP', 'moze',
-            'mish', 'nata', 'qque', 'samp', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_2_2-1": [
-        ['fugu'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['pela', 'gall', 'lynx'],
-        ['arla', 'asta', 'dhen', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'marP', 'moze',
-            'mish', 'nata', 'qque', 'samp', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_2_2-2": [
-        ['jqiu'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['pela', 'gall', 'lynx'],
-        ['arla', 'asta', 'dhen', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'marP', 'moze',
-            'mish', 'nata', 'qque', 'samp', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_2_2-3": [
-        ['ache'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['pela', 'gall', 'lynx'],
-        ['arla', 'asta', 'dhen', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'marP', 'moze',
-            'mish', 'nata', 'qque', 'samp', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
+    "C3_2_1": {
+        "versionInfo": "3.2@1",
+        "contents":
+            [
+                ['cast'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['pela', 'gall', 'lynx'],
+                ['arla', 'asta', 'dhen', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'marP', 'moze',
+                    'mish', 'nata', 'qque', 'samp', 'serv',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ],
+            ],
+    },
+    "C3_2_2-1": {
+        "versionInfo": "3.2@1",
+        "contents":
+            [
+                ['fugu'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['pela', 'gall', 'lynx'],
+                ['arla', 'asta', 'dhen', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'marP', 'moze',
+                    'mish', 'nata', 'qque', 'samp', 'serv',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C3_2_2-2": {
+        "versionInfo": "3.2@1",
+        "contents":
+            [
+                ['jqiu'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['pela', 'gall', 'lynx'],
+                ['arla', 'asta', 'dhen', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'marP', 'moze',
+                    'mish', 'nata', 'qque', 'samp', 'serv',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C3_2_2-3": {
+        "versionInfo": "3.2@1",
+        "contents":
+            [
+                ['ache'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['pela', 'gall', 'lynx'],
+                ['arla', 'asta', 'dhen', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'marP', 'moze',
+                    'mish', 'nata', 'qque', 'samp', 'serv',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
     //3.1
-    "C3_1_3": [
-        ['myde'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['arla', 'xuey', 'nata'],
-        ['asta', 'dhen', 'gall', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'moze', 'mish', 'pela', 'qque', 'samp',
-            'serv', 'ssha', 'tyun', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_1_4": [
-        ['hhuo'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['arla', 'xuey', 'nata'],
-        ['asta', 'dhen', 'gall', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'moze', 'mish', 'pela', 'qque', 'samp',
-            'serv', 'ssha', 'tyun', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_1_1": [
-        ['trib'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['lynx', 'hook', 'guin'],
-        ['arla', 'asta', 'dhen', 'gall', 'hany',
-            'hert', 'luka', 'marP', 'moze', 'mish',
-            'nata', 'pela', 'qque', 'samp', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_1_2": [
-        ['yunl'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['lynx', 'hook', 'guin'],
-        ['arla', 'asta', 'dhen', 'gall', 'hany',
-            'hert', 'luka', 'marP', 'moze', 'mish',
-            'nata', 'pela', 'qque', 'samp', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
+    "C3_1_3": {
+        "versionInfo": "3.1@2",
+        "contents":
+            [
+                ['myde'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['arla', 'xuey', 'nata'],
+                ['asta', 'dhen', 'gall', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'moze', 'mish', 'pela', 'qque', 'samp',
+                    'serv', 'ssha', 'tyun', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C3_1_4": {
+        "versionInfo": "3.1@2",
+        "contents":
+            [
+                ['hhuo'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['arla', 'xuey', 'nata'],
+                ['asta', 'dhen', 'gall', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'moze', 'mish', 'pela', 'qque', 'samp',
+                    'serv', 'ssha', 'tyun', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C3_1_1": {
+        "versionInfo": "3.1@1",
+        "contents":
+            [
+                ['trib'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['lynx', 'hook', 'guin'],
+                ['arla', 'asta', 'dhen', 'gall', 'hany',
+                    'hert', 'luka', 'marP', 'moze', 'mish',
+                    'nata', 'pela', 'qque', 'samp', 'serv',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C3_1_2": {
+        "versionInfo": "3.1@1",
+        "contents":
+            [
+                ['yunl'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['lynx', 'hook', 'guin'],
+                ['arla', 'asta', 'dhen', 'gall', 'hany',
+                    'hert', 'luka', 'marP', 'moze', 'mish',
+                    'nata', 'pela', 'qque', 'samp', 'serv',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
     //3.0
-    "C3_0_3": [
-        ['agla'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['tyun', 'hany', 'ssha'],
-        ['arla', 'asta', 'dhen', 'gall', 'guin',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'moze', 'mish', 'nata', 'pela', 'qque',
-            'samp', 'serv', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_0_4-1": [
-        ['boot'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['tyun', 'hany', 'ssha'],
-        ['arla', 'asta', 'dhen', 'gall', 'guin',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'moze', 'mish', 'nata', 'pela', 'qque',
-            'samp', 'serv', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_0_4-2": [
-        ['robi'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['tyun', 'hany', 'ssha'],
-        ['arla', 'asta', 'dhen', 'gall', 'guin',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'moze', 'mish', 'nata', 'pela', 'qque',
-            'samp', 'serv', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_0_4-3": [
-        ['swol'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['tyun', 'hany', 'ssha'],
-        ['arla', 'asta', 'dhen', 'gall', 'guin',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'moze', 'mish', 'nata', 'pela', 'qque',
-            'samp', 'serv', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_0_1": [
-        ['ther'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['nata', 'asta', 'moze'],
-        ['arla', 'dhen', 'gall', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'mish', 'pela', 'qque', 'samp', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_0_2-1": [
-        ['lsha'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['nata', 'asta', 'moze'],
-        ['arla', 'dhen', 'gall', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'mish', 'pela', 'qque', 'samp', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_0_2-2": [
-        ['fxia'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['nata', 'asta', 'moze'],
-        ['arla', 'dhen', 'gall', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'mish', 'pela', 'qque', 'samp', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C3_0_2-3": [
-        ['jade'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['nata', 'asta', 'moze'],
-        ['arla', 'dhen', 'gall', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'mish', 'pela', 'qque', 'samp', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
+    "C3_0_3": {
+        "versionInfo": "3.0@2",
+        "contents":
+            [
+                ['agla'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['tyun', 'hany', 'ssha'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'moze', 'mish', 'nata', 'pela', 'qque',
+                    'samp', 'serv', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C3_0_4-1": {
+        "versionInfo": "3.0@2",
+        "contents":
+            [
+                ['boot'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['tyun', 'hany', 'ssha'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'moze', 'mish', 'nata', 'pela', 'qque',
+                    'samp', 'serv', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C3_0_4-2": {
+        "versionInfo": "3.0@2",
+        "contents":
+            [
+                ['robi'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['tyun', 'hany', 'ssha'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'moze', 'mish', 'nata', 'pela', 'qque',
+                    'samp', 'serv', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C3_0_4-3": {
+        "versionInfo": "3.0@2",
+        "contents":
+            [
+                ['swol'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['tyun', 'hany', 'ssha'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'moze', 'mish', 'nata', 'pela', 'qque',
+                    'samp', 'serv', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C3_0_1": {
+        "versionInfo": "3.0@1",
+        "contents":
+            [
+                ['ther'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['nata', 'asta', 'moze'],
+                ['arla', 'dhen', 'gall', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'mish', 'pela', 'qque', 'samp', 'serv',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C3_0_2-1": {
+        "versionInfo": "3.0@1",
+        "contents":
+            [
+                ['lsha'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['nata', 'asta', 'moze'],
+                ['arla', 'dhen', 'gall', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'mish', 'pela', 'qque', 'samp', 'serv',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C3_0_2-2": {
+        "versionInfo": "3.0@1",
+        "contents":
+            [
+                ['fxia'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['nata', 'asta', 'moze'],
+                ['arla', 'dhen', 'gall', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'mish', 'pela', 'qque', 'samp', 'serv',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C3_0_2-3": {
+        "versionInfo": "3.0@1",
+        "contents":
+            [
+                ['jade'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['nata', 'asta', 'moze'],
+                ['arla', 'dhen', 'gall', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'mish', 'pela', 'qque', 'samp', 'serv',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
     //2.7
-    "C2_7_3": [
-        ['fugu'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['gall', 'ykon', 'mish'],
-        ['arla', 'asta', 'dhen', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'moze', 'nata', 'pela', 'qque', 'samp',
-            'serv', 'ssha', 'tyun', 'xuey',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C2_7_4": [
-        ['fire'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['gall', 'ykon', 'mish'],
-        ['arla', 'asta', 'dhen', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'moze', 'nata', 'pela', 'qque', 'samp',
-            'serv', 'ssha', 'tyun', 'xuey',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
+    "C2_7_3": {
+        "versionInfo": "2.7@2",
+        "contents":
+            [
+                ['fugu'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['gall', 'ykon', 'mish'],
+                ['arla', 'asta', 'dhen', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'moze', 'nata', 'pela', 'qque', 'samp',
+                    'serv', 'ssha', 'tyun', 'xuey',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C2_7_4": {
+        "versionInfo": "2.7@2",
+        "contents":
+            [
+                ['fire'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['gall', 'ykon', 'mish'],
+                ['arla', 'asta', 'dhen', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'moze', 'nata', 'pela', 'qque', 'samp',
+                    'serv', 'ssha', 'tyun', 'xuey',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
     //2024-12-04
-    "C2_7_1": [
-        ['sund'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['qque', 'arla', 'tyun'],
-        ['asta', 'dhen', 'gall', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'mish', 'moze', 'nata', 'pela', 'samp',
-            'serv', 'ssha', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C2_7_2": [
-        ['jyua'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['qque', 'arla', 'tyun'],
-        ['asta', 'dhen', 'gall', 'guin', 'hany',
-            'hert', 'hook', 'luka', 'lynx', 'marP',
-            'mish', 'moze', 'nata', 'pela', 'samp',
-            'serv', 'ssha', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
+    "C2_7_1": {
+        "versionInfo": "2.7@1",
+        "contents":
+            [
+                ['sund'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['qque', 'arla', 'tyun'],
+                ['asta', 'dhen', 'gall', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'mish', 'moze', 'nata', 'pela', 'samp',
+                    'serv', 'ssha', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C2_7_2": {
+        "versionInfo": "2.7@1",
+        "contents":
+            [
+                ['jyua'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['qque', 'arla', 'tyun'],
+                ['asta', 'dhen', 'gall', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'mish', 'moze', 'nata', 'pela', 'samp',
+                    'serv', 'ssha', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
     //2024-11-13
-    "C2_6_3": [
-        ['ache'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['marP', 'pela', 'samp',],
-        ['arla', 'asta', 'dhen', 'gall', 'guin',
-            'hany', 'hert', 'hook', 'luka', 'lynx',
-            'mish', 'moze', 'nata', 'qque', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C2_6_4": [
-        ['aven'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['marP', 'pela', 'samp',],
-        ['arla', 'asta', 'dhen', 'gall', 'guin',
-            'hany', 'hert', 'hook', 'luka', 'lynx',
-            'mish', 'moze', 'nata', 'qque', 'serv',
-            'ssha', 'tyun', 'xuey', 'ykon',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
+    "C2_6_3": {
+        "versionInfo": "2.6@2",
+        "contents":
+            [
+                ['ache'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['marP', 'pela', 'samp',],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'mish', 'moze', 'nata', 'qque', 'serv',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C2_6_4": {
+        "versionInfo": "2.6@2",
+        "contents":
+            [
+                ['aven'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['marP', 'pela', 'samp',],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'mish', 'moze', 'nata', 'qque', 'serv',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
     //2024-10-23
-    "C2_6_1": [
-        ['rapp'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['lynx', 'xuey', 'ykon'],
-        ['arla', 'asta', 'dhen', 'gall', 'guin',
-            'hany', 'hert', 'hook', 'luka', 'marP',
-            'mish', 'moze', 'nata', 'pela', 'qque',
-            'samp', 'serv', 'ssha', 'tyun',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ],
-    "C2_6_2": [
-        ['dhil'],
-        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
-        ['lynx', 'xuey', 'ykon'],
-        ['arla', 'asta', 'dhen', 'gall', 'guin',
-            'hany', 'hert', 'hook', 'luka', 'marP',
-            'mish', 'moze', 'nata', 'pela', 'qque',
-            'samp', 'serv', 'ssha', 'tyun',
-            'asecre3', 'aftert4', 'boundl2', 'concer3',
-            'danced3', 'dayone6', 'dreams2', 'eyesof4',
-            'geniusr', 'goodni5', 'indeli2', 'landau2',
-            'maketh4', 'memori4', 'onlysi3', 'perfec2',
-            'planet2', 'poised3', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
-            'thebir5', 'themol4', 'trendo5', 'undert4'
-        ]
-    ]
+    "C2_6_1": {
+        "versionInfo": "2.6@1",
+        "contents":
+            [
+                ['rapp'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['lynx', 'xuey', 'ykon'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'marP',
+                    'mish', 'moze', 'nata', 'pela', 'qque',
+                    'samp', 'serv', 'ssha', 'tyun',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    },
+    "C2_6_2": {
+        "versionInfo": "2.6@1",
+        "contents":
+            [
+                ['dhil'],
+                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                ['lynx', 'xuey', 'ykon'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'marP',
+                    'mish', 'moze', 'nata', 'pela', 'qque',
+                    'samp', 'serv', 'ssha', 'tyun',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ]
+            ]
+    }
 }
 
 var ALL_LIGHTCONE_WARP_POOLS = [];
@@ -678,7 +796,7 @@ function refreshAllPoolSupCode() {
     for (var i = 0; i < ALL_WARP_POOLS.length; i++) {
         ALL_WARP_POOLS[i] = {
             code: ALL_WARP_POOLS[i],
-            upName: findItem(TOTAL_EVENT_WARPS[ALL_WARP_POOLS[i]][0][0]).fullName[LANGUAGE]
+            upName: findItem(TOTAL_EVENT_WARPS[ALL_WARP_POOLS[i]]["contents"][0][0]).fullName[LANGUAGE]
         }
     }
 }
@@ -703,8 +821,8 @@ function switchLanguage() {
  */
 function selectPool(poolName) {
     if (TOTAL_EVENT_WARPS[poolName] == undefined) return;
-    Sup = deepClone(TOTAL_EVENT_WARPS[poolName][0]);
-    Scommon = deepClone(TOTAL_EVENT_WARPS[poolName][1]);
-    Rup = deepClone(TOTAL_EVENT_WARPS[poolName][2]);
-    Rcommon = deepClone(TOTAL_EVENT_WARPS[poolName][3]);
+    Sup = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][0]);
+    Scommon = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][1]);
+    Rup = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][2]);
+    Rcommon = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][3]);
 }
