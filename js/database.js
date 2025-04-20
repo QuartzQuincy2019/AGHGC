@@ -200,7 +200,19 @@ var LIGHTCONE_LIST = [
     new Lightcone("themol4", 4, Path.destruction, { "zh-CN": "鼹鼠党欢迎你", "en": "The Moles Welcome You" }),
     new Lightcone("trendo5", 4, Path.preservation, { "zh-CN": "宇宙市场趋势", "en": "Trend of the Universal Market" }),
     new Lightcone("undert4", 4, Path.destruction, { "zh-CN": "在蓝天下", "en": "Under the Blue Sky" }),
-    new Lightcone("geniusg", 4, Path.remembrance, { "zh-CN": "天才们的问候", "en": "Geniuses' Greetings" })
+    new Lightcone("geniusg", 4, Path.remembrance, { "zh-CN": "天才们的问候", "en": "Geniuses' Greetings" }),
+    //5 stars
+    new Lightcone("alongt4", 5, Path.nihility, { "zh-CN": "行于流逝的岸", "en": "Along the Passing Shore" }),
+    new Lightcone("butthe5", 5, Path.harmony, { "zh-CN": "但战斗还未结束", "en": "But the Battle Isn't Over" }),
+    new Lightcone("inthen6", 5, Path.nihility, { "zh-CN": "以世界之名", "en": "In the Name of the World" }),
+    new Lightcone("longro4", 5, Path.nihility, { "zh-CN": "长路终有归途", "en": "Long Road Leads Home" }),
+    new Lightcone("makefa4", 5, Path.remembrance, { "zh-CN": "让告别，更美一些", "en": "Make Farewells More Beautiful" }),
+    new Lightcone("moment3", 5, Path.preservation, { "zh-CN": "制胜的瞬间", "en": "Moment of Victory" }),
+    new Lightcone("nighto5", 5, Path.erudition, { "zh-CN": "银河铁道之夜", "en": "Night on the Milky Way" }),
+    new Lightcone("sleepl4", 5, Path.thehunt, { "zh-CN": "如泥酣眠", "en": "Sleep Like the Dead" }),
+    new Lightcone("someth2", 5, Path.destruction, { "zh-CN": "无可取代的东西", "en": "Something Irreplaceable" }),
+    new Lightcone("thosem3", 5, Path.nihility, { "zh-CN": "那无数个春天", "en": "Those Many Springs" }),
+    new Lightcone("timewa5", 5, Path.abundance, { "zh-CN": "时节不居", "en": "Time Waits for No One" }),
 ];
 
 var characterMap = {};//角色代号->角色对象
@@ -780,7 +792,96 @@ var CHARACTER_EVENT_WARPS = {
 }
 
 var ALL_LIGHTCONE_WARP_POOLS = [];
-var LIGHTCONE_EVENT_WARPS = {};
+var LIGHTCONE_EVENT_WARPS = {
+    "L3_2_1": {
+        "versionInfo": "3.2@1",
+        "contents":
+            [
+                ['makefa4'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['goodni5', 'postop2', 'boundl2'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'concer3', 'danced3',
+                    'dayone6', 'dreams2', 'eyesof4', 'geniusr',
+                    'indeli2', 'landau2', 'maketh4', 'memori4',
+                    'onlysi3', 'perfec2', 'planet2', 'poised3',
+                    'resolu6', 'shadow3', 'shared2', "subscr3",
+                    'swordp1', 'thebir5', 'themol4', 'trendo5',
+                    'undert4'
+                ],
+            ],
+    },
+    "L3_2_2-1": {
+        "versionInfo": "3.2@1",
+        "contents":
+            [
+                ['longro4'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['goodni5', 'postop2', 'boundl2'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'concer3', 'danced3',
+                    'dayone6', 'dreams2', 'eyesof4', 'geniusr',
+                    'indeli2', 'landau2', 'maketh4', 'memori4',
+                    'onlysi3', 'perfec2', 'planet2', 'poised3',
+                    'resolu6', 'shadow3', 'shared2', "subscr3",
+                    'swordp1', 'thebir5', 'themol4', 'trendo5',
+                    'undert4'
+                ],
+            ],
+    },
+    "L3_2_2-2": {
+        "versionInfo": "3.2@1",
+        "contents":
+            [
+                ['thosem3'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['goodni5', 'postop2', 'boundl2'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'concer3', 'danced3',
+                    'dayone6', 'dreams2', 'eyesof4', 'geniusr',
+                    'indeli2', 'landau2', 'maketh4', 'memori4',
+                    'onlysi3', 'perfec2', 'planet2', 'poised3',
+                    'resolu6', 'shadow3', 'shared2', "subscr3",
+                    'swordp1', 'thebir5', 'themol4', 'trendo5',
+                    'undert4'
+                ],
+            ],
+    },
+    "L3_2_2-3": {
+        "versionInfo": "3.2@1",
+        "contents":
+            [
+                ['alongt4'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['goodni5', 'postop2', 'boundl2'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'concer3', 'danced3',
+                    'dayone6', 'dreams2', 'eyesof4', 'geniusr',
+                    'indeli2', 'landau2', 'maketh4', 'memori4',
+                    'onlysi3', 'perfec2', 'planet2', 'poised3',
+                    'resolu6', 'shadow3', 'shared2', "subscr3",
+                    'swordp1', 'thebir5', 'themol4', 'trendo5',
+                    'undert4'
+                ],
+            ],
+    },
+};
 
 
 var ALL_WARP_POOLS = [];//盛放全部卡池代号："C3_1_2"...

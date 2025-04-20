@@ -46,7 +46,7 @@ function refreshCFS() {
     star4C = unique.filter((ele) => findItem(ele.element).star == 4 && findItem(ele.element) instanceof Character);
     star5L = unique.filter((ele) => findItem(ele.element).star == 5 && findItem(ele.element) instanceof Lightcone);
     star4L = unique.filter((ele) => findItem(ele.element).star == 4 && findItem(ele.element) instanceof Lightcone);
-    unique = [...star5C, ...star4C, ...star5L, ...star4L];
+    unique = [...star5C, ...star5L, ...star4C, ...star4L];
     E_Form_CFS.innerHTML = "";
     for (var j = 0; j < unique.length; j++) {
         var opt = this.document.createElement('option');
@@ -81,8 +81,8 @@ function refreshPoolSelector(destination) {
         var opt = document.createElement('option');
         opt.setAttribute('value', ALL_WARP_POOLS[j].code);
         let cod = ALL_WARP_POOLS[j].code;
-        let ver = OFFICIAL_VERSIONS[CHARACTER_EVENT_WARPS[cod].versionInfo];
-        opt.innerHTML = "["+ cod + "] (v"+ ver.versionCode+":#"+ver.session+")@" +ver.date  +"-----" + ALL_WARP_POOLS[j].upName;
+        let ver = OFFICIAL_VERSIONS[TOTAL_EVENT_WARPS[cod].versionInfo];
+        opt.innerHTML = "[" + cod + "] (v" + ver.versionCode + ":#" + ver.session + ")@" + ver.date + "-----" + ALL_WARP_POOLS[j].upName;
         destination.appendChild(opt);
     }
 }
