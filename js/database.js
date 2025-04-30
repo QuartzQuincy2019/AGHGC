@@ -237,11 +237,22 @@ for (var i = 0; i < LIGHTCONE_LIST.length; i++) {
     LIGHTCONE_CODES.push(LIGHTCONE_LIST[i].code);
 }
 
+/**
+ * 今天对应的简化儒略日(MJD)
+ */
+var TODAY = 0;
+{
+    let now = new Date();
+    TODAY = dateToMJD(now);
+}
+
+
 
 class Version {
     versionCode;
     session;
     date;
+    dateMJD;
 
     /**
      * 
@@ -253,6 +264,7 @@ class Version {
         this.versionCode = _code;
         this.session = _session;
         this.date = _date;
+        this.dateMJD = dateToMJD(_date);
     }
 }
 var OFFICIAL_VERSIONS = {
@@ -276,6 +288,9 @@ var OFFICIAL_VERSIONS = {
     "2.2@1": new Version("2.2", 1, "2024-05-08")
 }
 
+var excluded_Scommon = ['blad', 'fxua', 'seel'];
+var included_Scommon = ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'];
+
 var ALL_CHARACTER_WARP_POOLS = [];
 var CHARACTER_EVENT_WARPS = {
     //3.2
@@ -284,7 +299,7 @@ var CHARACTER_EVENT_WARPS = {
         "contents":
             [
                 ['cast'],
-                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                included_Scommon,
                 ['pela', 'gall', 'lynx'],
                 ['arla', 'asta', 'dhen', 'guin', 'hany',
                     'hert', 'hook', 'luka', 'marP', 'moze',
@@ -305,7 +320,7 @@ var CHARACTER_EVENT_WARPS = {
         "contents":
             [
                 ['fugu'],
-                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                included_Scommon,
                 ['pela', 'gall', 'lynx'],
                 ['arla', 'asta', 'dhen', 'guin', 'hany',
                     'hert', 'hook', 'luka', 'marP', 'moze',
@@ -326,7 +341,7 @@ var CHARACTER_EVENT_WARPS = {
         "contents":
             [
                 ['jqiu'],
-                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                included_Scommon,
                 ['pela', 'gall', 'lynx'],
                 ['arla', 'asta', 'dhen', 'guin', 'hany',
                     'hert', 'hook', 'luka', 'marP', 'moze',
@@ -347,7 +362,7 @@ var CHARACTER_EVENT_WARPS = {
         "contents":
             [
                 ['ache'],
-                ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+                included_Scommon,
                 ['pela', 'gall', 'lynx'],
                 ['arla', 'asta', 'dhen', 'guin', 'hany',
                     'hert', 'hook', 'luka', 'marP', 'moze',

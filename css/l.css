@@ -119,3 +119,16 @@ input.KeyNumberInput {
     font-weight: 800;
     font-size: 120%;
 }
+
+div.ScommonSelectors {
+    border-style: solid;
+    border-color: #000;
+    border-width: 0.1em;
+    border-radius: 2px;
+    padding: 0.5em
+}
+
+div.ScommonSelectors div div.card {
+    display: inline-block;
+    margin: 0.3em;
+}

@@ -27,6 +27,10 @@ var E_Form_RCountInput = document.getElementById("Form_RCountInput");
  * 第二模块的Form_CharacterFilterSelect筛选器下拉菜单
  */
 var E_Form_CFS = document.getElementById("Form_CharacterFilterSelect");
+
+/**
+ * 第一模块的卡池下拉菜单
+ */
 var P_Form_PFS = document.getElementById("PreForm_PoolInput");
 
 /**
@@ -34,6 +38,11 @@ var P_Form_PFS = document.getElementById("PreForm_PoolInput");
  */
 var P_Form_STD = document.getElementById("PreForm_SupTargetDisplay");
 var P_Form_PredictionTableArea = document.getElementById("PredictionTableArea");
+
+/**
+ * 五星常驻自选
+ */
+var E_ScommonSelector = document.getElementById("ScommonSelector");
 
 function refreshCFS() {
     var names = [];
@@ -67,8 +76,47 @@ function repull() {
 function applyPool() {
     selectPool(E_Form_CharacterPoolInput.value);
 }
+
+function modifiedScommonVersionDetection(){
+    var pool = TOTAL_EVENT_WARPS[E_Form_CharacterPoolInput.value];
+    var version = OFFICIAL_VERSIONS[pool["versionInfo"]];
+    var versionMJD = version.dateMJD;
+    // console.log(versionMJD);
+    if (versionMJD >= 60774) {
+        E_ScommonSelector.style.display = "";
+        document.getElementById("ScommonSelector_Inclusion").innerHTML = "";
+        document.getElementById("ScommonSelector_Exclusion").innerHTML = "";
+        for (var i = 0; i < included_Scommon.length; i++) {
+            let member = document.createElement("div");
+            member.innerHTML = findItem(included_Scommon[i]).fullName[LANGUAGE];
+            member.title = "点击可切换该成员位置";
+            member.classList.add("card");
+            member["data-namecode"] = included_Scommon[i];
+            member.onclick = function () {
+                moveInclusion(this);
+            }
+            document.getElementById("ScommonSelector_Inclusion").appendChild(member);
+        }
+        for (var i = 0; i < excluded_Scommon.length; i++) {
+            let member = document.createElement("div");
+            member.innerHTML = findItem(excluded_Scommon[i]).fullName[LANGUAGE];
+            member.title = "点击可切换该成员位置";
+            member.classList.add("card");
+            member["data-namecode"] = excluded_Scommon[i];
+            member.onclick = function () {
+                moveInclusion(this);
+            }
+            document.getElementById("ScommonSelector_Exclusion").appendChild(member);
+        }
+    } else {
+        E_ScommonSelector.style.display = "none";
+        excluded_Scommon = ['blad', 'fxua', 'seel'];
+        included_Scommon = ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'];
+    }
+}
 E_Form_CharacterPoolInput.addEventListener('change', function () {
     applyPool();
+    modifiedScommonVersionDetection();
 });
 
 /**
@@ -176,8 +224,40 @@ function applyAll() {
     refreshFilterBoxDisplay();
 }
 
+/**
+ * 
+ * @param {Element} card - 被移动的元素
+ * @param {string} destination - 目的地元素的ID
+ */
+function cardMove(card, destination) {
+    var origin = card.parentElement.getAttribute("id");
+    var temp = card;
+    document.getElementById(origin).removeChild(card);
+    document.getElementById(destination).appendChild(temp);
+}
+
+function moveInclusion(card) {
+    var code = card["data-namecode"];
+    var E_in_id = "ScommonSelector_Inclusion";
+    var E_ex_id = "ScommonSelector_Exclusion";
+    if (card.parentElement.getAttribute("id") == E_in_id) {
+        let dest = E_ex_id;
+        cardMove(card,dest);
+        included_Scommon.deleteElement(code);
+        excluded_Scommon.push(code);
+    }else if (card.parentElement.getAttribute("id") == E_ex_id) {
+        let dest = E_in_id;
+        cardMove(card,dest);
+        excluded_Scommon.deleteElement(code);
+        included_Scommon.push(code);
+    }
+}
+
 P_Form_PFS.addEventListener('change', function () {
     var pool = TOTAL_EVENT_WARPS[P_Form_PFS.value];
     var txt = findItem(pool["contents"][0][0]).fullName[LANGUAGE];
     P_Form_STD.innerHTML = '<strong class="BoldBlue">' + txt + ' </strong>X'
 })
+
+
+modifiedScommonVersionDetection();//  这个只能放在最后，否则就会报错。
