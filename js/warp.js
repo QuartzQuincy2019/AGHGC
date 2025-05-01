@@ -288,7 +288,7 @@ function translateWarpInfo(obj) {
     let t1 = lang[LANGUAGE]["totalCount"];
     t1 += obj.wStatus.total;
     let t2 = lang[LANGUAGE]._SGuarantee[obj.wStatus.SupSwitch];
-    span0f.innerHTML = t1 + '<br>' + t2 + '<br>';
+    span0f.innerHTML = t1 + ' ' + t2 + '<br>';
 
     span1e = document.createElement('span');
     span1e.innerHTML = lang[LANGUAGE]["SCount"] + lang[LANGUAGE]["colon"];

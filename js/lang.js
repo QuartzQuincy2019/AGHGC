@@ -32,8 +32,8 @@ var lang = {
             false:"4星小保底"
         },
         _SGuarantee:{
-            true:"大保底",
-            false:"小保底"
+            true:"@大",
+            false:"@小"
         },
         "RCount":"4星垫数",
         "SCount":"垫数",
@@ -73,11 +73,11 @@ var lang = {
             false:"On 4-Star 50/50"
         },
         _SGuarantee:{
-            true:"Guaranteed",
-            false:"On 50/50"
+            true:"Guar.",
+            false:"50/50"
         },
         "RCount":"4Star Pity Counts",
-        "SCount":"Pity Counts",
+        "SCount":"Pity",
         "totalCount":"#",
         "character":"character",
         "lightcone":"lightcone"

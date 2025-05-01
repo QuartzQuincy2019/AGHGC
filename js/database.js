@@ -203,8 +203,10 @@ var LIGHTCONE_LIST = [
     new Lightcone("geniusg", 4, Path.remembrance, { "zh-CN": "天才们的问候", "en": "Geniuses' Greetings" }),
     //5 stars
     new Lightcone("alongt4", 5, Path.nihility, { "zh-CN": "行于流逝的岸", "en": "Along the Passing Shore" }),
+    new Lightcone("baptis4", 5, Path.thehunt, { "zh-CN": "纯粹思维的洗礼", "en": "Baptism of Pure Thought" }),
     new Lightcone("butthe5", 5, Path.harmony, { "zh-CN": "但战斗还未结束", "en": "But the Battle Isn't Over" }),
     new Lightcone("inthen6", 5, Path.nihility, { "zh-CN": "以世界之名", "en": "In the Name of the World" }),
+    new Lightcone("lifesh6", 5, Path.erudition, { "zh-CN": "生命当付之一炬", "en": "Life Should Be Cast to Flames" }),
     new Lightcone("longro4", 5, Path.nihility, { "zh-CN": "长路终有归途", "en": "Long Road Leads Home" }),
     new Lightcone("makefa4", 5, Path.remembrance, { "zh-CN": "让告别，更美一些", "en": "Make Farewells More Beautiful" }),
     new Lightcone("moment3", 5, Path.preservation, { "zh-CN": "制胜的瞬间", "en": "Moment of Victory" }),
@@ -287,6 +289,7 @@ var OFFICIAL_VERSIONS = {
     "2.2@2": new Version("2.2", 2, "2024-05-29"),
     "2.2@1": new Version("2.2", 1, "2024-05-08")
 }
+var OFFICIAL_VERSIONS_KEYS = Object.keys(OFFICIAL_VERSIONS);
 
 var excluded_Scommon = ['blad', 'fxua', 'seel'];
 var included_Scommon = ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'];
@@ -294,8 +297,53 @@ var included_Scommon = ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'];
 var ALL_CHARACTER_WARP_POOLS = [];
 var CHARACTER_EVENT_WARPS = {
     //3.2
+    "C3_2_3": {
+        "versionInfo": "3.2@2",
+        "type": "character",
+        "contents":
+            [
+                ['anax'],
+                included_Scommon,
+                ['dhen', 'serv', 'moze'],
+                ['arla', 'asta', 'gall', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'mish', 'nata', 'pela', 'qque', 'samp',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ],
+            ],
+    },
+    "C3_2_4": {
+        "versionInfo": "3.2@2",
+        "type": "character",
+        "contents":
+            [
+                ['rati'],
+                included_Scommon,
+                ['dhen', 'serv', 'moze'],
+                ['arla', 'asta', 'gall', 'guin', 'hany',
+                    'hert', 'hook', 'luka', 'lynx', 'marP',
+                    'mish', 'nata', 'pela', 'qque', 'samp',
+                    'ssha', 'tyun', 'xuey', 'ykon',
+                    'asecre3', 'aftert4', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'planet2', 'poised3', 'postop2', 'resolu6',
+                    'shadow3', 'shared2', "subscr3", 'swordp1',
+                    'thebir5', 'themol4', 'trendo5', 'undert4'
+                ],
+            ],
+    },
     "C3_2_1": {
         "versionInfo": "3.2@1",
+        "type": "character",
         "contents":
             [
                 ['cast'],
@@ -317,6 +365,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_2_2-1": {
         "versionInfo": "3.2@1",
+        "type": "character",
         "contents":
             [
                 ['fugu'],
@@ -338,6 +387,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_2_2-2": {
         "versionInfo": "3.2@1",
+        "type": "character",
         "contents":
             [
                 ['jqiu'],
@@ -359,6 +409,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_2_2-3": {
         "versionInfo": "3.2@1",
+        "type": "character",
         "contents":
             [
                 ['ache'],
@@ -381,6 +432,7 @@ var CHARACTER_EVENT_WARPS = {
     //3.1
     "C3_1_3": {
         "versionInfo": "3.1@2",
+        "type": "character",
         "contents":
             [
                 ['myde'],
@@ -402,6 +454,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_1_4": {
         "versionInfo": "3.1@2",
+        "type": "character",
         "contents":
             [
                 ['hhuo'],
@@ -423,6 +476,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_1_1": {
         "versionInfo": "3.1@1",
+        "type": "character",
         "contents":
             [
                 ['trib'],
@@ -444,6 +498,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_1_2": {
         "versionInfo": "3.1@1",
+        "type": "character",
         "contents":
             [
                 ['yunl'],
@@ -466,6 +521,7 @@ var CHARACTER_EVENT_WARPS = {
     //3.0
     "C3_0_3": {
         "versionInfo": "3.0@2",
+        "type": "character",
         "contents":
             [
                 ['agla'],
@@ -487,6 +543,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_0_4-1": {
         "versionInfo": "3.0@2",
+        "type": "character",
         "contents":
             [
                 ['boot'],
@@ -508,6 +565,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_0_4-2": {
         "versionInfo": "3.0@2",
+        "type": "character",
         "contents":
             [
                 ['robi'],
@@ -529,6 +587,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_0_4-3": {
         "versionInfo": "3.0@2",
+        "type": "character",
         "contents":
             [
                 ['swol'],
@@ -550,6 +609,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_0_1": {
         "versionInfo": "3.0@1",
+        "type": "character",
         "contents":
             [
                 ['ther'],
@@ -571,6 +631,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_0_2-1": {
         "versionInfo": "3.0@1",
+        "type": "character",
         "contents":
             [
                 ['lsha'],
@@ -592,6 +653,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_0_2-2": {
         "versionInfo": "3.0@1",
+        "type": "character",
         "contents":
             [
                 ['fxia'],
@@ -613,6 +675,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C3_0_2-3": {
         "versionInfo": "3.0@1",
+        "type": "character",
         "contents":
             [
                 ['jade'],
@@ -635,6 +698,7 @@ var CHARACTER_EVENT_WARPS = {
     //2.7
     "C2_7_3": {
         "versionInfo": "2.7@2",
+        "type": "character",
         "contents":
             [
                 ['fugu'],
@@ -656,6 +720,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C2_7_4": {
         "versionInfo": "2.7@2",
+        "type": "character",
         "contents":
             [
                 ['fire'],
@@ -678,6 +743,7 @@ var CHARACTER_EVENT_WARPS = {
     //2024-12-04
     "C2_7_1": {
         "versionInfo": "2.7@1",
+        "type": "character",
         "contents":
             [
                 ['sund'],
@@ -699,6 +765,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C2_7_2": {
         "versionInfo": "2.7@1",
+        "type": "character",
         "contents":
             [
                 ['jyua'],
@@ -721,6 +788,7 @@ var CHARACTER_EVENT_WARPS = {
     //2024-11-13
     "C2_6_3": {
         "versionInfo": "2.6@2",
+        "type": "character",
         "contents":
             [
                 ['ache'],
@@ -742,6 +810,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C2_6_4": {
         "versionInfo": "2.6@2",
+        "type": "character",
         "contents":
             [
                 ['aven'],
@@ -764,6 +833,7 @@ var CHARACTER_EVENT_WARPS = {
     //2024-10-23
     "C2_6_1": {
         "versionInfo": "2.6@1",
+        "type": "character",
         "contents":
             [
                 ['rapp'],
@@ -785,6 +855,7 @@ var CHARACTER_EVENT_WARPS = {
     },
     "C2_6_2": {
         "versionInfo": "2.6@1",
+        "type": "character",
         "contents":
             [
                 ['dhil'],
@@ -808,8 +879,55 @@ var CHARACTER_EVENT_WARPS = {
 
 var ALL_LIGHTCONE_WARP_POOLS = [];
 var LIGHTCONE_EVENT_WARPS = {
+    "L3_2_3": {
+        "versionInfo": "3.2@2",
+        "type": "lightcone",
+        "contents":
+            [
+                ['lifesh6'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['trendo5', 'aftert4', 'themol4'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'asecre3', 'boundl2', 'concer3', 'danced3',
+                    'dayone6', 'dreams2', 'eyesof4', 'geniusr',
+                    'goodni5', 'indeli2', 'landau2', 'maketh4',
+                    'memori4', 'onlysi3', 'perfec2', 'planet2',
+                    'poised3', 'postop2', 'resolu6', 'shadow3',
+                    'shared2', "subscr3", 'swordp1', 'thebir5',
+                    'undert4'
+                ],
+            ],
+    },
+    "L3_2_4": {
+        "versionInfo": "3.2@2",
+        "type": "lightcone",
+        "contents":
+            [
+                ['baptis4'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['trendo5', 'aftert4', 'themol4'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'asecre3', 'boundl2', 'concer3', 'danced3',
+                    'dayone6', 'dreams2', 'eyesof4', 'geniusr',
+                    'goodni5', 'indeli2', 'landau2', 'maketh4',
+                    'memori4', 'onlysi3', 'perfec2', 'planet2',
+                    'poised3', 'postop2', 'resolu6', 'shadow3',
+                    'shared2', "subscr3", 'swordp1', 'thebir5',
+                    'undert4'
+                ],
+            ],
+    },
     "L3_2_1": {
         "versionInfo": "3.2@1",
+        "type": "lightcone",
         "contents":
             [
                 ['makefa4'],
@@ -832,6 +950,7 @@ var LIGHTCONE_EVENT_WARPS = {
     },
     "L3_2_2-1": {
         "versionInfo": "3.2@1",
+        "type": "lightcone",
         "contents":
             [
                 ['longro4'],
@@ -854,6 +973,7 @@ var LIGHTCONE_EVENT_WARPS = {
     },
     "L3_2_2-2": {
         "versionInfo": "3.2@1",
+        "type": "lightcone",
         "contents":
             [
                 ['thosem3'],
@@ -876,6 +996,7 @@ var LIGHTCONE_EVENT_WARPS = {
     },
     "L3_2_2-3": {
         "versionInfo": "3.2@1",
+        "type": "lightcone",
         "contents":
             [
                 ['alongt4'],
@@ -903,12 +1024,27 @@ var ALL_WARP_POOLS = [];//盛放全部卡池代号："C3_1_2"...
 var TOTAL_EVENT_WARPS = { ...CHARACTER_EVENT_WARPS, ...LIGHTCONE_EVENT_WARPS };
 
 /**
- * 根据所选语言，更新卡池Sup的名字
+ * 镶嵌型函数。必须与refreshAllPoolSupCode合用
+ * 对ALL_WARP_POOLS进行排序
  */
-function refreshAllPoolSupCode() {
+function rearrangeAllWarpPools() {
     ALL_CHARACTER_WARP_POOLS = Object.keys(CHARACTER_EVENT_WARPS);
     ALL_LIGHTCONE_WARP_POOLS = Object.keys(LIGHTCONE_EVENT_WARPS);
-    ALL_WARP_POOLS = [...ALL_CHARACTER_WARP_POOLS, ...ALL_LIGHTCONE_WARP_POOLS];
+    ALL_WARP_POOLS = Object.keys(TOTAL_EVENT_WARPS);
+    rearranged = [];
+    for (var i = 0; i < OFFICIAL_VERSIONS_KEYS.length; i++) {
+        let inThisVersion = ALL_WARP_POOLS.filter((every) => TOTAL_EVENT_WARPS[every].versionInfo == OFFICIAL_VERSIONS_KEYS[i]);
+        rearranged = [...rearranged, ...inThisVersion];
+    }
+    ALL_WARP_POOLS = rearranged;
+}
+
+
+/**
+ * 根据所选语言，更新卡池Sup的名字，同时为ALL_WARP_POOLS进行排序
+ */
+function refreshAllPoolSupCode() {
+    rearrangeAllWarpPools();
     for (var i = 0; i < ALL_WARP_POOLS.length; i++) {
         ALL_WARP_POOLS[i] = {
             code: ALL_WARP_POOLS[i],
@@ -928,6 +1064,7 @@ function switchLanguage() {
     refreshFilterBoxDisplay();
     refreshPoolSelector(E_Form_CharacterPoolInput);
     refreshPoolSelector(P_Form_PFS);
+    modifiedScommonVersionDetection();
 }
 
 /**
@@ -937,8 +1074,28 @@ function switchLanguage() {
  */
 function selectPool(poolName) {
     if (TOTAL_EVENT_WARPS[poolName] == undefined) return;
+    var version = OFFICIAL_VERSIONS[TOTAL_EVENT_WARPS[poolName]["versionInfo"]];
+    var versionMJD = version.dateMJD;
+    //-------------------------------
     Sup = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][0]);
-    Scommon = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][1]);
+    //console.log("selectPool被调用后，此时的TOTAL_EVENT_WARPS[poolName]['contents'][1]:\n",TOTAL_EVENT_WARPS[poolName]["contents"][1],"而此时的include:\n",included_Scommon);
+    if (versionMJD >= 60774 && TOTAL_EVENT_WARPS[poolName]["type"] == 'character') {
+        Scommon = included_Scommon;
+        /**
+         * 如果Scommon直接用TOTAL_EVENT_WARPS[poolName]["contents"][1]进行赋值，
+         * 它会采用include修改之前的结果，
+         * 而不会直接被赋值include.
+         * 我不知道这个问题的成因，目前只能添加一步versionMJD>=60774的逻辑，
+         * 并单独考虑直接用include赋值给Scommon的情况
+         */
+        Scommon = deepClone(Scommon);
+    } else {
+        Scommon = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][1]);
+    }
+    if (Scommon.length != 7) {
+        alert("错误：允许获取的5星常驻项目的数目不为7。");
+        throw new Error("selectPool: Scommon的元素数目不为7！");
+    }
     Rup = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][2]);
     Rcommon = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][3]);
 }

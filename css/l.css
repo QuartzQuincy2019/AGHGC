@@ -123,12 +123,40 @@ input.KeyNumberInput {
 div.ScommonSelectors {
     border-style: solid;
     border-color: #000;
-    border-width: 0.1em;
-    border-radius: 2px;
-    padding: 0.5em
+    border-width: 2px;
+    border-radius: 4px;
+    padding: 0.4em
 }
 
 div.ScommonSelectors div div.card {
     display: inline-block;
-    margin: 0.3em;
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 0.3em;
+    margin: 0.2em;
+    cursor: pointer;
+    transition-property: all;
+    transition-duration: 200ms;
+}
+
+div.ScommonSelectors div div.card:hover {
+    color: #fff;
+    background-color: #9f9f9f;
+    text-shadow: 1px 1px 3px #fff;
+}
+
+.CenteredText {
+    text-align: center;
+}
+
+div#ScommonSelector_Inclusion div::before {
+    content: "✓ ";
+    color: #00bc13;
+    font-weight: 1000;
+    
+}
+div#ScommonSelector_Exclusion div::before {
+    color: red;
+    font-weight: 1000;
+    content: "× ";
 }

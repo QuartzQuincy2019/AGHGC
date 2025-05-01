@@ -73,16 +73,22 @@ function repull() {
     refreshCFS();
 }
 //----------------------------------------
+
+/**
+ * 读取抽卡模拟模块的卡池选择信息，并刷新Sup,Scommon,Rup,Rcommon的值
+ */
 function applyPool() {
+    // console.log("SelectPool之前的include:\n" + included_Scommon + "\nScommon:" + Scommon);
     selectPool(E_Form_CharacterPoolInput.value);
+    // console.log("SelectPool之后的include:\n" + included_Scommon + "\nScommon:" + Scommon);
 }
 
-function modifiedScommonVersionDetection(){
+function modifiedScommonVersionDetection() {
     var pool = TOTAL_EVENT_WARPS[E_Form_CharacterPoolInput.value];
     var version = OFFICIAL_VERSIONS[pool["versionInfo"]];
     var versionMJD = version.dateMJD;
-    // console.log(versionMJD);
-    if (versionMJD >= 60774) {
+    // console.log("modifiedScommonVersionDetection(): \n调整前：", excluded_Scommon, included_Scommon);
+    if (versionMJD >= 60774) {//版本号日期在3.2之后的情况
         E_ScommonSelector.style.display = "";
         document.getElementById("ScommonSelector_Inclusion").innerHTML = "";
         document.getElementById("ScommonSelector_Exclusion").innerHTML = "";
@@ -113,6 +119,7 @@ function modifiedScommonVersionDetection(){
         excluded_Scommon = ['blad', 'fxua', 'seel'];
         included_Scommon = ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'];
     }
+    // console.log("modifiedScommonVersionDetection(): \n调整后：",excluded_Scommon,included_Scommon);
 }
 E_Form_CharacterPoolInput.addEventListener('change', function () {
     applyPool();
@@ -137,7 +144,9 @@ function refreshPoolSelector(destination) {
 refreshPoolSelector(E_Form_CharacterPoolInput);
 
 /**
- * obj接收：rStatus, wStatus
+ * 给定rStatus和wStatus的组合对象，返回一个record元素
+ * @param {object} obj - obj接收：{rStatus, wStatus}.
+ * @returns 返回一个record元素
  */
 function translateItemInfo(obj) {
     var record = document.createElement("div");
@@ -242,12 +251,12 @@ function moveInclusion(card) {
     var E_ex_id = "ScommonSelector_Exclusion";
     if (card.parentElement.getAttribute("id") == E_in_id) {
         let dest = E_ex_id;
-        cardMove(card,dest);
+        cardMove(card, dest);
         included_Scommon.deleteElement(code);
         excluded_Scommon.push(code);
-    }else if (card.parentElement.getAttribute("id") == E_ex_id) {
+    } else if (card.parentElement.getAttribute("id") == E_ex_id) {
         let dest = E_in_id;
-        cardMove(card,dest);
+        cardMove(card, dest);
         excluded_Scommon.deleteElement(code);
         included_Scommon.push(code);
     }

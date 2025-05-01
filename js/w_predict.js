@@ -1,5 +1,6 @@
 // Worker
 importScripts("./core.js");
+importScripts("./plugins/mjd.js");
 importScripts("./settings.js");
 importScripts("./database.js");
 importScripts("./warp.js");
