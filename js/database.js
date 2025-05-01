@@ -1073,12 +1073,16 @@ function switchLanguage() {
     modifiedScommonVersionDetection();
 }
 
+
+
+var SELECTED_POOL_NAME = "";
 /**
  * 为Sup,Scommon,Rup,Rcommon根据库存的卡池代号进行赋值
  * @param {string} poolName - 从TOTAL_EVENT_WARPS中选取的卡池代号，如"C2_6_2"
  */
 function selectPool(poolName) {
     if (TOTAL_EVENT_WARPS[poolName] == undefined) return;
+    SELECTED_POOL_NAME = poolName;
     Sup = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][0]);
     Scommon = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][1]);
     /**

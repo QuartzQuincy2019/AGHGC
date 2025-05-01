@@ -4,8 +4,11 @@ var E_FilterResult = document.getElementById("FilterResult");
 
 var E_Form_CharacterPoolInput = document.getElementById("Form_CharacterPoolInput");
 var E_MainForm = document.getElementById("MainForm");
-var E_Form_PullInput = document.getElementById("Form_PullInput");
 
+/**
+ * 第二模块的“抽取次数”
+ */
+var E_Form_PullInput = document.getElementById("Form_PullInput");
 /**
  * 即第二模块“是否5星大保底（是：1；否：0）”后的input
  */
@@ -44,6 +47,27 @@ var P_Form_PredictionTableArea = document.getElementById("PredictionTableArea");
  */
 var E_ScommonSelector = document.getElementById("ScommonSelector");
 
+/**
+ * 在展示“所有记录”时，若大于this抽，则不再显示记录
+ */
+var MAX_GENERAL_RECORD_QUANTITY = 10000;
+document.getElementById("E_MAX_GENERAL_RECORD_QUANTITY").innerHTML=MAX_GENERAL_RECORD_QUANTITY;
+/**
+ * 在展示“筛选记录”时，若大于this抽，则不再显示记录
+ */
+var MAX_FILTERED_RECORD_QUANTITY = 100000;
+document.getElementById("E_MAX_FILTERED_RECORD_QUANTITY").innerHTML=MAX_FILTERED_RECORD_QUANTITY;
+/**
+ * 在展示“筛选记录”时，若大于this抽，则不再显示记录
+ */
+var MAX_ALLOWED_PULLS = 5000000;
+document.getElementById("E_MAX_ALLOWED_PULLS").innerHTML=MAX_ALLOWED_PULLS;
+E_Form_PullInput.setAttribute('max',MAX_ALLOWED_PULLS);
+
+
+/**
+ * 刷新第二模块的物品筛选器下拉菜单，前提是OBTAINED_ITEMS有货
+ */
 function refreshCFS() {
     var names = [];
     for (var i = 0; i < OBTAINED_ITEMS.length; i++) {
@@ -55,7 +79,11 @@ function refreshCFS() {
     star4C = unique.filter((ele) => findItem(ele.element).star == 4 && findItem(ele.element) instanceof Character);
     star5L = unique.filter((ele) => findItem(ele.element).star == 5 && findItem(ele.element) instanceof Lightcone);
     star4L = unique.filter((ele) => findItem(ele.element).star == 4 && findItem(ele.element) instanceof Lightcone);
-    unique = [...star5C, ...star5L, ...star4C, ...star4L];
+    if (TOTAL_EVENT_WARPS[SELECTED_POOL_NAME]["type"] == 'character') {
+        unique = [...star5C, ...star5L, ...star4C, ...star4L];
+    }else{
+        unique = [...star5L, ...star5C, ...star4L, ...star4C];
+    }
     E_Form_CFS.innerHTML = "";
     for (var j = 0; j < unique.length; j++) {
         var opt = this.document.createElement('option');
@@ -66,23 +94,17 @@ function refreshCFS() {
     }
 }
 
-function repull() {
-    OBTAINED_ITEMS = [];
-    warpWithInfoFor(E_Form_PullInput.value);
-    showAllObtainedInfo();
-    refreshCFS();
-}
-//----------------------------------------
-
 /**
  * 读取抽卡模拟模块的卡池选择信息，并刷新Sup,Scommon,Rup,Rcommon的值
+ * @param {Element} fromWhom - 应为select元素
  */
-function applyPool() {
-    // console.log("SelectPool之前的include:\n" + included_Scommon + "\nScommon:" + Scommon);
-    selectPool(E_Form_CharacterPoolInput.value);
-    // console.log("SelectPool之后的include:\n" + included_Scommon + "\nScommon:" + Scommon);
+function applyPool(fromWhom) {
+    selectPool(fromWhom.value);
 }
 
+/**
+ * 如果所选的卡池对应的版本大于3.2，则展示“星缘相邀”，并填充内容
+ */
 function modifiedScommonVersionDetection() {
     var pool = TOTAL_EVENT_WARPS[E_Form_CharacterPoolInput.value];
     var version = OFFICIAL_VERSIONS[pool["versionInfo"]];
@@ -122,7 +144,7 @@ function modifiedScommonVersionDetection() {
     // console.log("modifiedScommonVersionDetection(): \n调整后：",excluded_Scommon,included_Scommon);
 }
 E_Form_CharacterPoolInput.addEventListener('change', function () {
-    applyPool();
+    applyPool(E_Form_CharacterPoolInput);
     modifiedScommonVersionDetection();
 });
 
@@ -183,9 +205,13 @@ function showObtainedInfo(obj, destination) {
     return 0;
 }
 
+/**
+ * 用于第二模块，根据OBTAINED_ITEMS中的所有信息，展示“所有记录”
+ * @returns 0
+ */
 function showAllObtainedInfo() {
     E_ResultDisplayer.innerHTML = "";
-    if (E_Form_PullInput.value > 10000) return 0;
+    if (E_Form_PullInput.value > MAX_GENERAL_RECORD_QUANTITY) return 0;
     for (var i = 0; i < OBTAINED_ITEMS.length; i++) {
         showObtainedInfo(OBTAINED_ITEMS[i], E_ResultDisplayer);
     }
@@ -193,13 +219,13 @@ function showAllObtainedInfo() {
 }
 
 /**
- * 刷新筛选器
- * @returns 
+ * 用于第二模块，展示筛选出来的记录
+ * @returns 0
  */
 function refreshFilterBoxDisplay() {
     var code = E_Form_CFS.value;
     E_FilterResult.innerHTML = '';
-    if (E_Form_PullInput.value > 100000) return 0;
+    if (E_Form_PullInput.value > MAX_FILTERED_RECORD_QUANTITY) return 0;
     var results = collectRecordsByCodeName(OBTAINED_ITEMS, code);
     for (var i = 0; i < results.length; i++) {
         showObtainedInfo(results[i], E_FilterResult);
@@ -210,8 +236,12 @@ E_Form_CFS.addEventListener('change', function () {
     refreshFilterBoxDisplay();
 })
 
+/**
+ * 用户点击“确认抽取”后，执行的函数。
+ * @returns 0
+ */
 function applyAll() {
-    if (E_Form_PullInput.value > 5000000) {
+    if (E_Form_PullInput.value > MAX_ALLOWED_PULLS) {
         alert("“抽取总次数”大于允许的最大值！");
         return -1;
     };
@@ -227,14 +257,15 @@ function applyAll() {
     GLOBAL_WARP_STATUS.SCount = SGuaranteeCounter;
     GLOBAL_WARP_STATUS.total = totalWarps;
     OBTAINED_ITEMS = [];
-    applyPool();
-    repull();
+    applyPool(E_Form_CharacterPoolInput);
+    warpWithInfoFor(E_Form_PullInput.value);
+    showAllObtainedInfo();
     refreshCFS();
     refreshFilterBoxDisplay();
 }
 
 /**
- * 
+ * 将某个元素从一个位置移到另一个位置
  * @param {Element} card - 被移动的元素
  * @param {string} destination - 目的地元素的ID
  */
@@ -245,6 +276,10 @@ function cardMove(card, destination) {
     document.getElementById(destination).appendChild(temp);
 }
 
+/**
+ * 将被点击移动的物品名移动到另一个状态区域中，并刷新对应数组included_Scommon和exluded_Scommon
+ * @param {Element} card - 被点击移动的元素
+ */
 function moveInclusion(card) {
     var code = card["data-namecode"];
     var E_in_id = "ScommonSelector_Inclusion";

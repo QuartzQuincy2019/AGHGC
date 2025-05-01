@@ -16,7 +16,7 @@
 
 <body>
     <h1>Augmented Graphic HSR Gacha Calculator - AGHGC</h1>
-    <h3>vβ5.2.1</h3>
+    <h3>vβ5.2.3</h3>
     <p>目前支持部分角色和光锥卡池。其他卡池将于后续版本更新。</p>
     <div class="SubmitButton" onclick="switchLanguage();">切换数据库语言</div>
     <hr>
@@ -35,10 +35,10 @@
     <hr>
     <hr>
     <h2>抽卡模拟模块 - Simple Pull Simulation</h2>
-    <p>抽取总次数：最大值5000000。</p>
+    <p>抽取总次数：最大值<span id="E_MAX_ALLOWED_PULLS" class="BoldRed">?</span>。</p>
     <p>筛选器：仅查看选取的角色的抽取记录。</p>
     <p>垫数：在这一抽之前，有多少抽未出5星。即自上一次抽出5星到这一抽，未出5星总共的专票数。</p>
-    <p class="BoldRed">考虑到设备性能，抽数大于10000抽，不显示“获取总览”；大于100000抽，不显示“筛选结果”，但<span class="BoldBlue">始终可以</span>从“筛选器”中可以看到抽取到的角色数量。
+    <p class="BoldRed">考虑到设备性能，抽数大于<span id="E_MAX_GENERAL_RECORD_QUANTITY">?</span>抽，不显示“获取总览”；大于<span id="E_MAX_FILTERED_RECORD_QUANTITY"></span>抽，不显示“筛选结果”，但<span class="BoldBlue">始终可以</span>从“筛选器”中可以看到抽取到的角色数量。
     <hr>
     <div id="ScommonSelector" class="ScommonSelectors">
         <p class="CenteredText"><span class="BoldGreen">♥ 星 缘 相 邀</span></p>
