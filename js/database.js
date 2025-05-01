@@ -300,8 +300,8 @@ var CHARACTER_EVENT_WARPS = {
     "C3_2_3": {
         "versionInfo": "3.2@2",
         "type": "character",
-        "contents":
-            [
+        get contents() {//getter函数，于vβ5.2.1新增
+            return [
                 ['anax'],
                 included_Scommon,
                 ['dhen', 'serv', 'moze'],
@@ -317,13 +317,14 @@ var CHARACTER_EVENT_WARPS = {
                     'shadow3', 'shared2', "subscr3", 'swordp1',
                     'thebir5', 'themol4', 'trendo5', 'undert4'
                 ],
-            ],
+            ];
+        }
     },
     "C3_2_4": {
         "versionInfo": "3.2@2",
         "type": "character",
-        "contents":
-            [
+        get contents() {
+            return [
                 ['rati'],
                 included_Scommon,
                 ['dhen', 'serv', 'moze'],
@@ -339,13 +340,14 @@ var CHARACTER_EVENT_WARPS = {
                     'shadow3', 'shared2', "subscr3", 'swordp1',
                     'thebir5', 'themol4', 'trendo5', 'undert4'
                 ],
-            ],
+            ];
+        }
     },
     "C3_2_1": {
         "versionInfo": "3.2@1",
         "type": "character",
-        "contents":
-            [
+        get contents() {
+            return [
                 ['cast'],
                 included_Scommon,
                 ['pela', 'gall', 'lynx'],
@@ -361,13 +363,14 @@ var CHARACTER_EVENT_WARPS = {
                     'shadow3', 'shared2', "subscr3", 'swordp1',
                     'thebir5', 'themol4', 'trendo5', 'undert4'
                 ],
-            ],
+            ];
+        }
     },
     "C3_2_2-1": {
         "versionInfo": "3.2@1",
         "type": "character",
-        "contents":
-            [
+        get contents() {
+            return [
                 ['fugu'],
                 included_Scommon,
                 ['pela', 'gall', 'lynx'],
@@ -383,13 +386,14 @@ var CHARACTER_EVENT_WARPS = {
                     'shadow3', 'shared2', "subscr3", 'swordp1',
                     'thebir5', 'themol4', 'trendo5', 'undert4'
                 ]
-            ]
+            ];
+        }
     },
     "C3_2_2-2": {
         "versionInfo": "3.2@1",
         "type": "character",
-        "contents":
-            [
+        get contents() {
+            return [
                 ['jqiu'],
                 included_Scommon,
                 ['pela', 'gall', 'lynx'],
@@ -405,13 +409,14 @@ var CHARACTER_EVENT_WARPS = {
                     'shadow3', 'shared2', "subscr3", 'swordp1',
                     'thebir5', 'themol4', 'trendo5', 'undert4'
                 ]
-            ]
+            ];
+        }
     },
     "C3_2_2-3": {
         "versionInfo": "3.2@1",
         "type": "character",
-        "contents":
-            [
+        get contents() {
+            return [
                 ['ache'],
                 included_Scommon,
                 ['pela', 'gall', 'lynx'],
@@ -427,7 +432,8 @@ var CHARACTER_EVENT_WARPS = {
                     'shadow3', 'shared2', "subscr3", 'swordp1',
                     'thebir5', 'themol4', 'trendo5', 'undert4'
                 ]
-            ]
+            ];
+        }
     },
     //3.1
     "C3_1_3": {
@@ -1069,29 +1075,20 @@ function switchLanguage() {
 
 /**
  * 为Sup,Scommon,Rup,Rcommon根据库存的卡池代号进行赋值
- * @param {string} poolName - 从TOTAL_EVENT_WARPS中选取的卡池代号
- * @returns 
+ * @param {string} poolName - 从TOTAL_EVENT_WARPS中选取的卡池代号，如"C2_6_2"
  */
 function selectPool(poolName) {
     if (TOTAL_EVENT_WARPS[poolName] == undefined) return;
-    var version = OFFICIAL_VERSIONS[TOTAL_EVENT_WARPS[poolName]["versionInfo"]];
-    var versionMJD = version.dateMJD;
-    //-------------------------------
     Sup = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][0]);
-    //console.log("selectPool被调用后，此时的TOTAL_EVENT_WARPS[poolName]['contents'][1]:\n",TOTAL_EVENT_WARPS[poolName]["contents"][1],"而此时的include:\n",included_Scommon);
-    if (versionMJD >= 60774 && TOTAL_EVENT_WARPS[poolName]["type"] == 'character') {
-        Scommon = included_Scommon;
-        /**
-         * 如果Scommon直接用TOTAL_EVENT_WARPS[poolName]["contents"][1]进行赋值，
-         * 它会采用include修改之前的结果，
-         * 而不会直接被赋值include.
-         * 我不知道这个问题的成因，目前只能添加一步versionMJD>=60774的逻辑，
-         * 并单独考虑直接用include赋值给Scommon的情况
-         */
-        Scommon = deepClone(Scommon);
-    } else {
-        Scommon = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][1]);
-    }
+    Scommon = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][1]);
+    /**
+     * 在之前(vβ5.2.0)，我为了使Scommon能直接获取最新的included的数据，不得不
+     * 添加了一个判断版本时间的逻辑。即，若版本大于3.2，更新Scommon的contents的
+     * [1]对included的地址引用，然后再进行一次deepClone，这显然是非常繁琐的。
+     * 而在vβ5.2.1，我采用了Getter函数动态管理included的引用，解决了此处的所有问
+     * 题，代码得以统一。
+     * Getter函数在处理动态的对象成员数据时，的确非常好用。
+     */
     if (Scommon.length != 7) {
         alert("错误：允许获取的5星常驻项目的数目不为7。");
         throw new Error("selectPool: Scommon的元素数目不为7！");
