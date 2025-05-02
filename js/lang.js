@@ -81,5 +81,46 @@ var lang = {
         "totalCount":"#",
         "character":"character",
         "lightcone":"lightcone"
+    },
+    "jp": {
+        "languangeName": "日本語",
+        "colon": ": ",
+        "breakLine": "\n",
+        "CombatType": "戦闘属性",
+        _CombatType:{
+            1: "物理",
+            2: "炎",
+            3: "氷",
+            4: "雷",
+            5: "風",
+            6: "量子",
+            7: "虚数"
+        },
+        "Path":"運命",
+        _Path:{
+            1:"壊滅",
+            2:"巡狩",
+            3:"知恵",
+            4:"調和",
+            5:"虚無",
+            6:"存護",
+            7:"豊穣",
+            8:"記憶"
+        },
+        "R":"★4",
+        "S":"★5",
+        _RGuarantee:{
+            true:"★4確定",
+            false:"★4通常"
+        },
+        _SGuarantee:{
+            true:"確定",
+            false:"通常"
+        },
+        "RCount":"★4進捗",
+        "SCount":"★5進捗",
+        "totalCount":"#",
+        "character":"キャラクター",
+        "lightcone":"光円錐"
     }
 }

@@ -206,6 +206,7 @@ function translateItemInfo(obj) {
         }
     }
     if (Scommon.includes(obj.rStatus.codeName)) img.classList.add("RecordScommon");
+    img.title = lang[LANGUAGE]._Path[item.path];
     rightDiv.appendChild(upDiv);
     rightDiv.appendChild(element_p);
     record.appendChild(img);
