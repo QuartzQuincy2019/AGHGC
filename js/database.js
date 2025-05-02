@@ -205,40 +205,43 @@ var LIGHTCONE_LIST = [
     new Lightcone("alongt4", 5, Path.nihility, { "zh-CN": "行于流逝的岸", "en": "Along the Passing Shore" }),
     new Lightcone("baptis4", 5, Path.thehunt, { "zh-CN": "纯粹思维的洗礼", "en": "Baptism of Pure Thought" }),
     new Lightcone("butthe5", 5, Path.harmony, { "zh-CN": "但战斗还未结束", "en": "But the Battle Isn't Over" }),
+    new Lightcone("dancea3", 5, Path.destruction, { "zh-CN": "落日时起舞", "en": "Dance at Sunset" }),
+    new Lightcone("flameo6", 5, Path.destruction, { "zh-CN": "血火啊，燃烧前路", "en": "Flame of Blood, Blaze My Path" }),
+    new Lightcone("flowin2", 5, Path.harmony, { "zh-CN": "夜色流光溢彩", "en": "Flowing Nightglow" }),
+    new Lightcone("iftime5", 5, Path.harmony, { "zh-CN": "如果时间是一朵花", "en": "If Time Were a Flower" }),
+    new Lightcone("incess2", 5, Path.nihility, { "zh-CN": "雨一直下", "en": "Incessant Rain" }),
     new Lightcone("inthen6", 5, Path.nihility, { "zh-CN": "以世界之名", "en": "In the Name of the World" }),
     new Lightcone("lifesh6", 5, Path.erudition, { "zh-CN": "生命当付之一炬", "en": "Life Should Be Cast to Flames" }),
     new Lightcone("longro4", 5, Path.nihility, { "zh-CN": "长路终有归途", "en": "Long Road Leads Home" }),
     new Lightcone("makefa4", 5, Path.remembrance, { "zh-CN": "让告别，更美一些", "en": "Make Farewells More Beautiful" }),
     new Lightcone("moment3", 5, Path.preservation, { "zh-CN": "制胜的瞬间", "en": "Moment of Victory" }),
+    new Lightcone("nighto3", 5, Path.abundance, { "zh-CN": "惊魂夜", "en": "Night of Fright" }),
     new Lightcone("nighto5", 5, Path.erudition, { "zh-CN": "银河铁道之夜", "en": "Night on the Milky Way" }),
+    new Lightcone("saling5", 5, Path.thehunt, { "zh-CN": "驶向第二次生命", "en": "Sailing Towards a Second Life" }),
     new Lightcone("sleepl4", 5, Path.thehunt, { "zh-CN": "如泥酣眠", "en": "Sleep Like the Dead" }),
     new Lightcone("someth2", 5, Path.destruction, { "zh-CN": "无可取代的东西", "en": "Something Irreplaceable" }),
     new Lightcone("thosem3", 5, Path.nihility, { "zh-CN": "那无数个春天", "en": "Those Many Springs" }),
     new Lightcone("timewa5", 5, Path.abundance, { "zh-CN": "时节不居", "en": "Time Waits for No One" }),
+    new Lightcone("timewo4", 5, Path.remembrance, { "zh-CN": "将光阴织成黄金", "en": "Time Woven Into Gold" }),
 ];
-
 var characterMap = {};//角色代号->角色对象
 for (var i = 0; i < CHARACTER_LIST.length; i++) {//建立由角色代号到角色对象的映射
     var character = CHARACTER_LIST[i];
     characterMap[character.code] = character;
 }
-
 var CHARACTER_CODES = [];//所有角色的代号
 for (var i = 0; i < CHARACTER_LIST.length; i++) {
     CHARACTER_CODES.push(CHARACTER_LIST[i].code);
 }
-
 var lightconeMap = {};
 for (var i = 0; i < LIGHTCONE_LIST.length; i++) {
     var lc = LIGHTCONE_LIST[i];
     lightconeMap[lc.code] = lc;
 }
-
 var LIGHTCONE_CODES = [];//所有光锥的代号
 for (var i = 0; i < LIGHTCONE_LIST.length; i++) {
     LIGHTCONE_CODES.push(LIGHTCONE_LIST[i].code);
 }
-
 /**
  * 今天对应的简化儒略日(MJD)
  */
@@ -247,9 +250,6 @@ var TODAY = 0;
     let now = new Date();
     TODAY = dateToMJD(now);
 }
-
-
-
 class Version {
     versionCode;
     session;
@@ -1020,6 +1020,190 @@ var LIGHTCONE_EVENT_WARPS = {
                     'resolu6', 'shadow3', 'shared2', "subscr3",
                     'swordp1', 'thebir5', 'themol4', 'trendo5',
                     'undert4'
+                ],
+            ],
+    },
+    "L3_1_3": {
+        "versionInfo": "3.1@2",
+        "type": "lightcone",
+        "contents":
+            [
+                ['flameo6'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['perfec2', 'asecre3', 'memori4'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'aftert4', 'boundl2', 'concer3', 'danced3',
+                    'dayone6', 'dreams2', 'eyesof4', 'geniusr',
+                    'goodni5', 'indeli2', 'landau2', 'maketh4',
+                    'onlysi3', 'planet2', 'poised3', 'postop2',
+                    'resolu6', 'shadow3', 'shared2', "subscr3",
+                    'swordp1', 'thebir5', 'themol4', 'trendo5',
+                    'undert4'
+                ],
+            ],
+    },
+    "L3_1_4": {
+        "versionInfo": "3.1@2",
+        "type": "lightcone",
+        "contents":
+            [
+                ['nighto3'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['perfec2', 'asecre3', 'memori4'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'aftert4', 'boundl2', 'concer3', 'danced3',
+                    'dayone6', 'dreams2', 'eyesof4', 'geniusr',
+                    'goodni5', 'indeli2', 'landau2', 'maketh4',
+                    'onlysi3', 'planet2', 'poised3', 'postop2',
+                    'resolu6', 'shadow3', 'shared2', "subscr3",
+                    'swordp1', 'thebir5', 'themol4', 'trendo5',
+                    'undert4'
+                ],
+            ],
+    },
+    "L3_1_1": {
+        "versionInfo": "3.1@1",
+        "type": "lightcone",
+        "contents":
+            [
+                ['iftime5'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['planet2', 'postop2', 'trendo5'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'aftert4', 'asecre3', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'poised3', 'resolu6', 'shadow3', 'shared2',
+                    "subscr3", 'swordp1', 'thebir5', 'themol4',
+                    'undert4'
+                ],
+            ],
+    },
+    "L3_1_2": {
+        "versionInfo": "3.1@1",
+        "type": "lightcone",
+        "contents":
+            [
+                ['dancea3'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['planet2', 'postop2', 'trendo5'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'aftert4', 'asecre3', 'boundl2', 'concer3',
+                    'danced3', 'dayone6', 'dreams2', 'eyesof4',
+                    'geniusr', 'goodni5', 'indeli2', 'landau2',
+                    'maketh4', 'memori4', 'onlysi3', 'perfec2',
+                    'poised3', 'resolu6', 'shadow3', 'shared2',
+                    "subscr3", 'swordp1', 'thebir5', 'themol4',
+                    'undert4'
+                ],
+            ],
+    },
+    "L3_0_3": {
+        "versionInfo": "3.0@2",
+        "type": "lightcone",
+        "contents":
+            [
+                ['timewo4'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['geniusg', "subscr3", 'danced3'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'aftert4', 'asecre3', 'boundl2', 'concer3',
+                    'dayone6', 'dreams2', 'eyesof4', 'geniusr',
+                    'goodni5', 'indeli2', 'landau2', 'maketh4',
+                    'memori4', 'onlysi3', 'perfec2', 'planet2',
+                    'poised3', 'postop2', 'resolu6', 'shadow3',
+                    'shared2', 'swordp1', 'thebir5', 'themol4',
+                    'trendo5', 'undert4'
+                ],
+            ],
+    },
+    "L3_0_4-1": {
+        "versionInfo": "3.0@2",
+        "type": "lightcone",
+        "contents":
+            [
+                ['saling5'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['geniusg', "subscr3", 'danced3'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'aftert4', 'asecre3', 'boundl2', 'concer3',
+                    'dayone6', 'dreams2', 'eyesof4', 'geniusr',
+                    'goodni5', 'indeli2', 'landau2', 'maketh4',
+                    'memori4', 'onlysi3', 'perfec2', 'planet2',
+                    'poised3', 'postop2', 'resolu6', 'shadow3',
+                    'shared2', 'swordp1', 'thebir5', 'themol4',
+                    'trendo5', 'undert4'
+                ],
+            ],
+    },
+    "L3_0_4-2": {
+        "versionInfo": "3.0@2",
+        "type": "lightcone",
+        "contents":
+            [
+                ['flowin2'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['geniusg', "subscr3", 'danced3'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'aftert4', 'asecre3', 'boundl2', 'concer3',
+                    'dayone6', 'dreams2', 'eyesof4', 'geniusr',
+                    'goodni5', 'indeli2', 'landau2', 'maketh4',
+                    'memori4', 'onlysi3', 'perfec2', 'planet2',
+                    'poised3', 'postop2', 'resolu6', 'shadow3',
+                    'shared2', 'swordp1', 'thebir5', 'themol4',
+                    'trendo5', 'undert4'
+                ],
+            ],
+    },
+    "L3_0_4-3": {
+        "versionInfo": "3.0@2",
+        "type": "lightcone",
+        "contents":
+            [
+                ['incess2'],
+                ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+                ['geniusg', "subscr3", 'danced3'],
+                ['arla', 'asta', 'dhen', 'gall', 'guin',
+                    'hany', 'hert', 'hook', 'luka', 'lynx',
+                    'marP', 'moze', 'mish', 'nata', 'pela',
+                    'qque', 'samp', 'serv', 'ssha', 'tyun',
+                    'xuey', 'ykon',
+                    'aftert4', 'asecre3', 'boundl2', 'concer3',
+                    'dayone6', 'dreams2', 'eyesof4', 'geniusr',
+                    'goodni5', 'indeli2', 'landau2', 'maketh4',
+                    'memori4', 'onlysi3', 'perfec2', 'planet2',
+                    'poised3', 'postop2', 'resolu6', 'shadow3',
+                    'shared2', 'swordp1', 'thebir5', 'themol4',
+                    'trendo5', 'undert4'
                 ],
             ],
     },

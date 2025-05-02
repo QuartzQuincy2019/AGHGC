@@ -4,10 +4,9 @@ div.RecordBox img.ItemIcon{
     height: 3.9em;
     align-self: center;
     box-sizing: border-box;
-    margin: 0 0.2em 0 0.2em;
-    border: 1px solid #808080;
-    border-radius: 3px;
-    box-shadow: 1px 1px 3px #808080;
+    margin: 0.2em;
+    border-style: solid;
+    border-radius: 5px;
 }
 
 div.MiniIcon{
@@ -17,4 +16,35 @@ div.MiniIcon{
 }
 div.MiniIcon img{
     height: 1em;
+}
+
+.RecordStar5{
+    border-width: 2px;
+    border-color: #ffd643;
+}
+
+.RecordStar4{
+    border-width: 2px;
+    border-color: #c71dff;
+}
+
+.RecordSup{
+    background-image: linear-gradient(135deg,
+    #ffbb0ba0,#00d3eca0,#ff15bba0,#ffbb0ba0,#00eacda0,#00d3eca0,#ff15bba0
+    );
+    background-size: 300%,300%;
+    animation: gradient-move-total 15s linear infinite alternate;
+    box-shadow: 0px 0px 4px #e4ac03, 2px 2px 3px #ff7418, -1px -1px 1px #cd9000;
+}
+
+.RecordSupSymplified{
+    background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+    box-shadow: 0px 0px 4px #e4ac03, 2px 2px 3px #ff7418, -1px -1px 1px #cd9000;
+}
+
+
+
+
+.RecordScommon{
+    background-color: #ff8888;
 }

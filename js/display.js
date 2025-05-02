@@ -50,19 +50,19 @@ var E_ScommonSelector = document.getElementById("ScommonSelector");
 /**
  * 在展示“所有记录”时，若大于this抽，则不再显示记录
  */
-var MAX_GENERAL_RECORD_QUANTITY = 10000;
-document.getElementById("E_MAX_GENERAL_RECORD_QUANTITY").innerHTML=MAX_GENERAL_RECORD_QUANTITY;
+var MAX_GENERAL_RECORD_QUANTITY = 5000;
+document.getElementById("E_MAX_GENERAL_RECORD_QUANTITY").innerHTML = MAX_GENERAL_RECORD_QUANTITY;
 /**
  * 在展示“筛选记录”时，若大于this抽，则不再显示记录
  */
-var MAX_FILTERED_RECORD_QUANTITY = 100000;
-document.getElementById("E_MAX_FILTERED_RECORD_QUANTITY").innerHTML=MAX_FILTERED_RECORD_QUANTITY;
+var MAX_FILTERED_RECORD_QUANTITY = 50000;
+document.getElementById("E_MAX_FILTERED_RECORD_QUANTITY").innerHTML = MAX_FILTERED_RECORD_QUANTITY;
 /**
  * 在展示“筛选记录”时，若大于this抽，则不再显示记录
  */
 var MAX_ALLOWED_PULLS = 5000000;
-document.getElementById("E_MAX_ALLOWED_PULLS").innerHTML=MAX_ALLOWED_PULLS;
-E_Form_PullInput.setAttribute('max',MAX_ALLOWED_PULLS);
+document.getElementById("E_MAX_ALLOWED_PULLS").innerHTML = MAX_ALLOWED_PULLS;
+E_Form_PullInput.setAttribute('max', MAX_ALLOWED_PULLS);
 
 
 /**
@@ -81,7 +81,7 @@ function refreshCFS() {
     star4L = unique.filter((ele) => findItem(ele.element).star == 4 && findItem(ele.element) instanceof Lightcone);
     if (TOTAL_EVENT_WARPS[SELECTED_POOL_NAME]["type"] == 'character') {
         unique = [...star5C, ...star5L, ...star4C, ...star4L];
-    }else{
+    } else {
         unique = [...star5L, ...star5C, ...star4L, ...star4C];
     }
     E_Form_CFS.innerHTML = "";
@@ -174,7 +174,12 @@ function translateItemInfo(obj) {
     var record = document.createElement("div");
     record.classList.add("RecordBox");
     var element_p = translateWarpInfo(obj);
+
+    /**
+     * 抽取到的物品的对象实例
+     */
     var item = findItem(obj.rStatus.codeName);
+
     var img = document.createElement("img");
     img.classList.add("ItemIcon");
     img.src = item.icon;
@@ -190,9 +195,17 @@ function translateItemInfo(obj) {
         img_ct.src = './img/i16/ct_' + item.combatType + '.png';
         upDiv.appendChild(img_ct);
     }
+    //img本身的样式
+    if (item.star == 5) img.classList.add("RecordStar5");
+    if (item.star == 4) img.classList.add("RecordStar4");
     if (Sup.includes(obj.rStatus.codeName)) {
-        record.classList.add("Target");
+        if (Number(E_Form_PullInput.value) <= MAX_FILTERED_RECORD_QUANTITY / 2) {
+            img.classList.add("RecordSup");
+        } else {
+            img.classList.add("RecordSupSymplified");
+        }
     }
+    if (Scommon.includes(obj.rStatus.codeName)) img.classList.add("RecordScommon");
     rightDiv.appendChild(upDiv);
     rightDiv.appendChild(element_p);
     record.appendChild(img);

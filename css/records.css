@@ -1,0 +1,29 @@
+div.RecordBox {
+    width: 9rem;
+    min-width: 9rem;
+    max-height: 7em;
+    margin: 0.3rem;
+    padding: 0;
+    border: 1px solid;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow: hidden;
+}
+
+div.RightColumn {
+    width: 100%;
+    flex-grow: 1;
+}
+
+div.RecordBox p {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-size: 0.6rem;
+}
+
+.ItemTitle {
+    font-size: 0.8rem;
+}

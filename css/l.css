@@ -16,35 +16,6 @@ div.BoxedExhibition {
     gap: 0.3em;
 }
 
-div.RecordBox {
-    width: 9rem;
-    min-width: 9rem;
-    max-height: 7em;
-    margin: 0.3rem;
-    padding: 0;
-    border: 1px solid;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    overflow: hidden;
-}
-
-div.RecordBox.Target {
-    background-color: #fff7de;
-}
-
-div.RightColumn {
-    width: 100%;
-    flex-grow: 1;
-}
-
-div.RecordBox p {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    font-size: 0.6rem;
-}
 
 div.SubmitButton {
     text-align: center;
@@ -67,10 +38,6 @@ div.SubmitButton:hover {
 
 div.SubmitButton:active {
     background-color: #f9ff7f;
-}
-
-.ItemTitle {
-    font-size: 0.8rem;
 }
 
 .BoldRed {
@@ -159,4 +126,26 @@ div#ScommonSelector_Exclusion div::before {
     color: red;
     font-weight: 1000;
     content: "× ";
+}
+
+@keyframes gradient-move-total {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    25% {
+        background-position: 0% 100%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    75% {
+        background-position: 100% 0%;
+    }
+
+    100% {
+        background-position: 0% 0%;
+    }
 }
