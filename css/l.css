@@ -60,6 +60,15 @@ div.SubmitButton:active {
     font-weight: 1000;
 }
 
+.SupItemTitle{
+    color: #1b5cff;
+    text-shadow: 1px 1px 2px #5e8bff;
+    background-color: #c5ffa8;
+}
+
+#CurrentSupCharacters{
+    font-weight: 1000;
+}
 
 table {
     margin: 0.1em;

@@ -280,7 +280,9 @@ function translateWarpInfo(obj) {
     var span0 = document.createElement('span');
     span0.classList.add("ItemTitle");
     if (Scommon.includes(obj.rStatus.codeName)) span0.classList.add("BoldRed");
-    if (Sup.includes(obj.rStatus.codeName)) span0.classList.add("BoldBlue");
+    if (Sup.includes(obj.rStatus.codeName)) {
+        span0.classList.add("BoldBlue","SupItemTitle");
+    };
     span0.innerHTML = item.fullName[LANGUAGE] + '<br>';
 
 

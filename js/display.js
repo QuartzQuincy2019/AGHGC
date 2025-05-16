@@ -64,6 +64,15 @@ var MAX_ALLOWED_PULLS = 5000000;
 document.getElementById("E_MAX_ALLOWED_PULLS").innerHTML = MAX_ALLOWED_PULLS;
 E_Form_PullInput.setAttribute('max', MAX_ALLOWED_PULLS);
 
+var E_SPAN_CurrentSupCharacters = document.getElementById("CurrentSupCharacters");
+
+document.getElementById("VersionDisplayer").innerHTML = OFFICIAL_VERSIONS[detectStage(TODAY)].versionCode + ":#" + OFFICIAL_VERSIONS[detectStage(TODAY)].session;
+{
+    let t = getVersionSupCharacters(detectStage(TODAY));
+    for (var i = 0; i < t.length; i++) {
+        E_SPAN_CurrentSupCharacters.innerHTML += "&nbsp;&nbsp;" + findItem(t[i]).fullName[LANGUAGE] + "&nbsp;&nbsp;";
+    }
+}
 
 /**
  * 刷新第二模块的物品筛选器下拉菜单，前提是OBTAINED_ITEMS有货
