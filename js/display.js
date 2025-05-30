@@ -64,13 +64,20 @@ var MAX_ALLOWED_PULLS = 5000000;
 document.getElementById("E_MAX_ALLOWED_PULLS").innerHTML = MAX_ALLOWED_PULLS;
 E_Form_PullInput.setAttribute('max', MAX_ALLOWED_PULLS);
 
+document.getElementById("VersionDisplayer").innerHTML = OFFICIAL_VERSIONS[detectStage(TODAY)].versionCode + "&nbsp;&nbsp;#" + OFFICIAL_VERSIONS[detectStage(TODAY)].session;
+//当前Up角色和光锥的显示功能
 var E_SPAN_CurrentSupCharacters = document.getElementById("CurrentSupCharacters");
-
-document.getElementById("VersionDisplayer").innerHTML = OFFICIAL_VERSIONS[detectStage(TODAY)].versionCode + ":#" + OFFICIAL_VERSIONS[detectStage(TODAY)].session;
 {
     let t = getVersionSupCharacters(detectStage(TODAY));
     for (var i = 0; i < t.length; i++) {
-        E_SPAN_CurrentSupCharacters.innerHTML += "&nbsp;&nbsp;" + findItem(t[i]).fullName[LANGUAGE] + "&nbsp;&nbsp;";
+        E_SPAN_CurrentSupCharacters.innerHTML += "&nbsp;&nbsp;&nbsp;" + findItem(t[i]).fullName[LANGUAGE] + "&nbsp;&nbsp;&nbsp;";
+    }
+}
+var E_SPAN_CurrentSupLightcones = document.getElementById("CurrentSupLightcones");
+{
+    let t = getVersionSupLightcones(detectStage(TODAY));
+    for (var i = 0; i < t.length; i++) {
+        E_SPAN_CurrentSupLightcones.innerHTML += "&nbsp;&nbsp;&nbsp;" + findItem(t[i]).fullName[LANGUAGE] + "&nbsp;&nbsp;&nbsp;";
     }
 }
 
@@ -215,7 +222,7 @@ function translateItemInfo(obj) {
         }
     }
     if (Scommon.includes(obj.rStatus.codeName)) img.classList.add("RecordScommon");
-    img.title = lang[LANGUAGE]._Path[item.path];
+    img.title = item.fullName[LANGUAGE];
     rightDiv.appendChild(upDiv);
     rightDiv.appendChild(element_p);
     record.appendChild(img);

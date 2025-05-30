@@ -39,7 +39,8 @@ var lang = {
         "SCount":"垫数",
         "totalCount":"#",
         "character":"角色",
-        "lightcone":"光锥"
+        "lightcone":"光锥",
+        "FileNotFound":"文件不存在"
     },
     "en": {
         "languangeName": "English",
@@ -80,7 +81,8 @@ var lang = {
         "SCount":"Pity",
         "totalCount":"#",
         "character":"character",
-        "lightcone":"lightcone"
+        "lightcone":"lightcone",
+        "FileNotFound":"The file doesn't exist."
     },
     "jp": {
         "languangeName": "日本語",
@@ -121,6 +123,7 @@ var lang = {
         "SCount":"★5進捗",
         "totalCount":"#",
         "character":"キャラクター",
-        "lightcone":"光円錐"
+        "lightcone":"光円錐",
+        "FileNotFound":"ファイルは存在しません"
     }
 }
