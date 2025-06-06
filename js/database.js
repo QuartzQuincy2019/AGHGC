@@ -328,6 +328,7 @@ function detectStage(mjd) {
 
 var excluded_Scommon = ['blad', 'fxua', 'seel'];
 var included_Scommon = ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'];
+const DEFAULT_INCLUDED_SCOMMON = ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'];
 
 var ALL_CHARACTER_WARP_POOLS = [];
 var CHARACTER_EVENT_WARPS = {
