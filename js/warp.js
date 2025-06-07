@@ -185,7 +185,7 @@ function determineQuality(status) {
 
 function determineUp() {
     var u = Math.random();
-    if (u <= 0.50) return 10;
+    if (u <= 0.625) return 10;//未确定
     return 0;
 }
 
