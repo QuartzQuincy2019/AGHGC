@@ -104,7 +104,13 @@ class KeywordsGenerator {
             }
             if (getItemType(item) == 'Lightcone') {
                 output.push(lang[LANGUAGE].lightcone);
-                
+                for(var i =0;i<CHARACTER_LIST.length;i++){
+                    if(CHARACTER_LIST[i].params.exclusiveLc){
+                        if(CHARACTER_LIST[i].params.exclusiveLc==this.itemCode){
+                            output.push(CHARACTER_LIST[i].fullName[LANGUAGE]);
+                        }
+                    }
+                }
             }
         };
         if (this.versionCode) {
