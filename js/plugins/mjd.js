@@ -46,3 +46,7 @@ function dateToMJD(_date) {
     var dateString = y + '-' + M + '-' + d;
     return dateStringToMJD(dateString);
 }
+
+function MJDToDateString(mjd) {
+    return new Date((mjd - 40587) * 86400000).toISOString().slice(0, 10);
+}

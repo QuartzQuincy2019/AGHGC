@@ -35,6 +35,7 @@ class Character {
     fullName;//全名
 
     icon;//40*40肖像
+    params;//其他信息
     /**
      * 
      * @param {String} code 
@@ -43,13 +44,14 @@ class Character {
      * @param {Path} path
      * @param {Object} fullName 
      */
-    constructor(code, star, combatType, path, fullName) {
+    constructor(code, star, combatType, path, fullName, _params = {}) {
         this.code = code;
         this.star = star;
         this.icon = './img/p40/' + this.code + '.png';
         this.combatType = combatType;
         this.path = path;
         this.fullName = fullName;
+        this.params = _params;
     }
 }
 
@@ -82,17 +84,70 @@ function getItemType(item) {
     throw new Error("getItemType: " + item + "不属于Character或Lightcone");
 }
 
+class KeywordsGenerator {
+    itemCode;
+    versionCode;
+    get keywords() {
+        var output = [];
+        if (this.itemCode) {
+            var item = findItem(this.itemCode);
+            output.push(item.code, item.star,
+                lang[LANGUAGE]._Path[item.path],
+                item.fullName[LANGUAGE]
+            );
+            if (getItemType(item) == 'Character') {
+                output.push(lang[LANGUAGE].character);
+                output.push(lang[LANGUAGE]._CombatType[item.combatType]);
+                if (item.params.exclusiveLc) {
+                    output.push(findItem(item.params.exclusiveLc).fullName[LANGUAGE]);
+                }
+            }
+            if (getItemType(item) == 'Lightcone') {
+                output.push(lang[LANGUAGE].lightcone);
+                
+            }
+        };
+        if (this.versionCode) {
+            output.push(OFFICIAL_VERSIONS[this.versionCode].versionCode);
+            let startDateMJD = OFFICIAL_VERSIONS[this.versionCode].dateMJD;
+            let endDateMJD = dateStringToMJD(OFFICIAL_VERSIONS[this.versionCode].endDate);
+            for (var i = deepClone(startDateMJD); i <= endDateMJD; i++) {
+                output.push(MJDToDateString(i));
+            }
+        }
+        return output;
+    }
+}
+
+class Pool {
+    code;
+    versionInfo;
+    type;
+    contents;
+    keywords = [];
+    constructor(_code, _versionInfo, _type, _contents) {
+        this.code = _code;
+        this.versionInfo = _versionInfo;
+        this.type = _type;
+        this.contents = _contents;
+        let kg = new KeywordsGenerator();
+        kg.itemCode = this.contents[0][0];
+        kg.versionCode = this.versionInfo;
+        this.keywords = kg.keywords;
+    }
+}
+
 var CHARACTER_LIST = [
     //1.0
     new Character("arla", 4, CombatType.lightning, Path.destruction, { "zh-CN": "阿兰", "en": "Arlan", "jp": "アーラン" }),
     new Character("asta", 4, CombatType.fire, Path.harmony, { "zh-CN": "艾丝妲", "en": "Asta", "jp": "アスター" }),
-    new Character("bail", 5, CombatType.lightning, Path.abundance, { "zh-CN": "白露", "en": "Bailu", "jp": "白露" }),
-    new Character("bron", 5, CombatType.wind, Path.harmony, { "zh-CN": "布洛妮娅", "en": "Bronya", "jp": "ブローニャ" }),
-    new Character("clar", 5, CombatType.physical, Path.destruction, { "zh-CN": "克拉拉", "en": "Clara", "jp": "クラーラ" }),
+    new Character("bail", 5, CombatType.lightning, Path.abundance, { "zh-CN": "白露", "en": "Bailu", "jp": "白露" }, { "exclusiveLc": "timewa5" }),
+    new Character("bron", 5, CombatType.wind, Path.harmony, { "zh-CN": "布洛妮娅", "en": "Bronya", "jp": "ブローニャ" }, { "exclusiveLc": "butthe5" }),
+    new Character("clar", 5, CombatType.physical, Path.destruction, { "zh-CN": "克拉拉", "en": "Clara", "jp": "クラーラ" }, { "exclusiveLc": "someth2" }),
     new Character("dhen", 4, CombatType.wind, Path.thehunt, { "zh-CN": "丹恒", "en": "Dan Heng", "jp": "丹恒" }),
-    new Character("gepa", 5, CombatType.ice, Path.preservation, { "zh-CN": "杰帕德", "en": "Gepard", "jp": "ジェパード" }),
+    new Character("gepa", 5, CombatType.ice, Path.preservation, { "zh-CN": "杰帕德", "en": "Gepard", "jp": "ジェパード" }, { "exclusiveLc": "moment3" }),
     new Character("hert", 4, CombatType.ice, Path.erudition, { "zh-CN": "黑塔", "en": "Herta", "jp": "ヘルタ" }),
-    new Character("hime", 5, CombatType.fire, Path.erudition, { "zh-CN": "姬子", "en": "Himeko", "jp": "姫子" }),
+    new Character("hime", 5, CombatType.fire, Path.erudition, { "zh-CN": "姬子", "en": "Himeko", "jp": "姫子" }, { "exclusiveLc": "nighto5" }),
     new Character("hook", 4, CombatType.fire, Path.destruction, { "zh-CN": "虎克", "en": "Hook", "jp": "フック" }),
     new Character("jyua", 5, CombatType.lightning, Path.erudition, { "zh-CN": "景元", "en": "Jing Yuan", "jp": "景元" }),
     new Character("marP", 4, CombatType.ice, Path.preservation, { "zh-CN": "三月七", "en": "March 7th", "jp": "三月なのか" }),
@@ -104,11 +159,11 @@ var CHARACTER_LIST = [
     new Character("serv", 4, CombatType.lightning, Path.erudition, { "zh-CN": "希露瓦", "en": "Serval", "jp": "セーバル" }),
     new Character("ssha", 4, CombatType.physical, Path.thehunt, { "zh-CN": "素裳", "en": "Sushang", "jp": "素裳" }),
     new Character("tyun", 4, CombatType.lightning, Path.harmony, { "zh-CN": "停云", "en": "Tingyun", "jp": "停雲" }),
-    new Character("welt", 5, CombatType.imaginary, Path.nihility, { "zh-CN": "瓦尔特", "en": "Welt", "jp": "ヴェルト" }),
-    new Character("yqin", 5, CombatType.ice, Path.thehunt, { "zh-CN": "彦卿", "en": "Yanqing", "jp": "彦卿" }),
+    new Character("welt", 5, CombatType.imaginary, Path.nihility, { "zh-CN": "瓦尔特", "en": "Welt", "jp": "ヴェルト" }, { "exclusiveLc": "inthen6" }),
+    new Character("yqin", 5, CombatType.ice, Path.thehunt, { "zh-CN": "彦卿", "en": "Yanqing", "jp": "彦卿" }, { "exclusiveLc": "sleepl4" }),
     //1.1
     new Character("lcha", 5, CombatType.imaginary, Path.abundance, { "zh-CN": "罗刹", "en": "Luocha", "jp": "羅刹" }),
-    new Character("swol", 5, CombatType.quantum, Path.nihility, { "zh-CN": "银狼", "en": "Silver Wolf", "jp": "銀狼" }),
+    new Character("swol", 5, CombatType.quantum, Path.nihility, { "zh-CN": "银狼", "en": "Silver Wolf", "jp": "銀狼" }, { "exclusiveLc": "incess2" }),
     new Character("ykon", 4, CombatType.imaginary, Path.harmony, { "zh-CN": "驭空", "en": "Yukong", "jp": "御空" }),
     //1.2
     new Character("blad", 5, CombatType.wind, Path.destruction, { "zh-CN": "刃", "en": "Blade", "jp": "刃" }),
@@ -125,9 +180,9 @@ var CHARACTER_LIST = [
     //1.5
     new Character("arge", 5, CombatType.physical, Path.erudition, { "zh-CN": "银枝", "en": "Argenti", "jp": "アルジェンティ" }),
     new Character("hany", 4, CombatType.physical, Path.harmony, { "zh-CN": "寒鸦", "en": "Hanya", "jp": "寒鴉" }),
-    new Character("hhuo", 5, CombatType.wind, Path.abundance, { "zh-CN": "藿藿", "en": "Huohuo", "jp": "フォフォ" }),
+    new Character("hhuo", 5, CombatType.wind, Path.abundance, { "zh-CN": "藿藿", "en": "Huohuo", "jp": "フォフォ" }, { "exclusiveLc": "nighto3" }),
     //1.6
-    new Character("rati", 5, CombatType.imaginary, Path.thehunt, { "zh-CN": "真理医生", "en": "Dr.Ratio", "jp": "Dr.レイシオ" }),
+    new Character("rati", 5, CombatType.imaginary, Path.thehunt, { "zh-CN": "真理医生", "en": "Dr.Ratio", "jp": "Dr.レイシオ" }, { "exclusiveLc": "baptis4" }),
     new Character("rmei", 5, CombatType.ice, Path.harmony, { "zh-CN": "阮·梅", "en": "Ruan Mei", "jp": "ルアン・メェイ" }),
     new Character("xuey", 4, CombatType.quantum, Path.destruction, { "zh-CN": "雪衣", "en": "Xueyi", "jp": "雪衣" }),
     //2.0
@@ -139,36 +194,36 @@ var CHARACTER_LIST = [
     new Character("aven", 5, CombatType.imaginary, Path.preservation, { "zh-CN": "砂金", "en": "Aventurine", "jp": "アベンチュリン" }),
     new Character("gall", 4, CombatType.fire, Path.abundance, { "zh-CN": "加拉赫", "en": "Gallagher", "jp": "ギャラガー" }),
     //2.2
-    new Character("boot", 5, CombatType.physical, Path.thehunt, { "zh-CN": "波提欧", "en": "Boothill", "jp": "ブートヒル" }),
-    new Character("robi", 5, CombatType.physical, Path.harmony, { "zh-CN": "知更鸟", "en": "Robin", "jp": "ロビン" }),
+    new Character("boot", 5, CombatType.physical, Path.thehunt, { "zh-CN": "波提欧", "en": "Boothill", "jp": "ブートヒル" }, { "exclusiveLc": "saling5" }),
+    new Character("robi", 5, CombatType.physical, Path.harmony, { "zh-CN": "知更鸟", "en": "Robin", "jp": "ロビン" }, { "exclusiveLc": "flowin2" }),
     //2.3
-    new Character("fire", 5, CombatType.fire, Path.destruction, { "zh-CN": "流萤", "en": "Firefly", "jp": "ホタル" }),
-    new Character("jade", 5, CombatType.quantum, Path.erudition, { "zh-CN": "翡翠", "en": "Jade", "jp": "ジェイド" }),
+    new Character("fire", 5, CombatType.fire, Path.destruction, { "zh-CN": "流萤", "en": "Firefly", "jp": "ホタル" }, { "exclusiveLc": "wherea4" }),
+    new Character("jade", 5, CombatType.quantum, Path.erudition, { "zh-CN": "翡翠", "en": "Jade", "jp": "ジェイド" }, { "exclusiveLc": "yethop4" }),
     //2.4
-    new Character("jqiu", 5, CombatType.fire, Path.nihility, { "zh-CN": "椒丘", "en": "Jiaoqiu", "jp": "椒丘" }),
+    new Character("jqiu", 5, CombatType.fire, Path.nihility, { "zh-CN": "椒丘", "en": "Jiaoqiu", "jp": "椒丘" }, { "exclusiveLc": "thosem3" }),
     new Character("marH", 4, CombatType.imaginary, Path.thehunt, { "zh-CN": "三月七", "en": "March 7th", "jp": "三月なのか" }),
-    new Character("yunl", 5, CombatType.physical, Path.destruction, { "zh-CN": "云璃", "en": "Yunli", "jp": "雲璃" }),
+    new Character("yunl", 5, CombatType.physical, Path.destruction, { "zh-CN": "云璃", "en": "Yunli", "jp": "雲璃" }, { "exclusiveLc": "dancea3" }),
     //2.5
-    new Character("fxia", 5, CombatType.wind, Path.thehunt, { "zh-CN": "飞霄", "en": "Feixiao", "jp": "飛霄" }),
-    new Character("lsha", 5, CombatType.fire, Path.abundance, { "zh-CN": "灵砂", "en": "Lingsha", "jp": "霊砂" }),
+    new Character("fxia", 5, CombatType.wind, Path.thehunt, { "zh-CN": "飞霄", "en": "Feixiao", "jp": "飛霄" }, { "exclusiveLc": "iventu5" }),
+    new Character("lsha", 5, CombatType.fire, Path.abundance, { "zh-CN": "灵砂", "en": "Lingsha", "jp": "霊砂" }, { "exclusiveLc": "scenta4" }),
     new Character("moze", 4, CombatType.lightning, Path.thehunt, { "zh-CN": "貊泽", "en": "Moze", "jp": "モゼ" }),
     //2.6
     new Character("rapp", 5, CombatType.imaginary, Path.erudition, { "zh-CN": "乱破", "en": "Rappa", "jp": "乱破" }),
     //2.7
-    new Character("fugu", 5, CombatType.fire, Path.nihility, { "zh-CN": "忘归人", "en": "Fugue", "jp": "帰忘の流離人" }),
+    new Character("fugu", 5, CombatType.fire, Path.nihility, { "zh-CN": "忘归人", "en": "Fugue", "jp": "帰忘の流離人" }, { "exclusiveLc": "longro4" }),
     new Character("sund", 5, CombatType.imaginary, Path.harmony, { "zh-CN": "星期日", "en": "Sunday", "jp": "サンデー" }),
     //3.0
-    new Character("agla", 5, CombatType.lightning, Path.remembrance, { "zh-CN": "阿格莱雅", "en": "Aglaea", "jp": "アグライア" }),
-    new Character("ther", 5, CombatType.ice, Path.erudition, { "zh-CN": "大黑塔", "en": "The Herta", "jp": "マダム・ヘルタ" }),
+    new Character("agla", 5, CombatType.lightning, Path.remembrance, { "zh-CN": "阿格莱雅", "en": "Aglaea", "jp": "アグライア" }, { "exclusiveLc": "timewo4" }),
+    new Character("ther", 5, CombatType.ice, Path.erudition, { "zh-CN": "大黑塔", "en": "The Herta", "jp": "マダム・ヘルタ" }, { "exclusiveLc": "intoth4" }),
     //3.1
-    new Character("myde", 5, CombatType.imaginary, Path.destruction, { "zh-CN": "万敌", "en": "Mydei", "jp": "モーディス" }),
-    new Character("trib", 5, CombatType.quantum, Path.harmony, { "zh-CN": "缇宝", "en": "Tribbie", "jp": "トリビー" }),
+    new Character("myde", 5, CombatType.imaginary, Path.destruction, { "zh-CN": "万敌", "en": "Mydei", "jp": "モーディス" }, { "exclusiveLc": "flameo6" }),
+    new Character("trib", 5, CombatType.quantum, Path.harmony, { "zh-CN": "缇宝", "en": "Tribbie", "jp": "トリビー" }, { "exclusiveLc": "iftime5" }),
     //3.2
-    new Character("cast", 5, CombatType.quantum, Path.remembrance, { "zh-CN": "遐蝶", "en": "Castorice", "jp": "キャストリス" }),
-    new Character("anax", 5, CombatType.wind, Path.erudition, { "zh-CN": "那刻夏", "en": "Anaxa", "jp": "アナイクス" }),
+    new Character("cast", 5, CombatType.quantum, Path.remembrance, { "zh-CN": "遐蝶", "en": "Castorice", "jp": "キャストリス" }, { "exclusiveLc": "makefa4" }),
+    new Character("anax", 5, CombatType.wind, Path.erudition, { "zh-CN": "那刻夏", "en": "Anaxa", "jp": "アナイクス" }, { "exclusiveLc": "lifesh6" }),
     //3.3
-    new Character("hyac", 5, CombatType.wind, Path.remembrance, { "zh-CN": "风堇", "en": "Hyacine", "jp": "ヒアンシー" }),
-    new Character("ciph", 5, CombatType.quantum, Path.nihility, { "zh-CN": "赛飞儿", "en": "Cipher", "jp": "サフェル" }),
+    new Character("hyac", 5, CombatType.wind, Path.remembrance, { "zh-CN": "风堇", "en": "Hyacine", "jp": "ヒアンシー" }, { "exclusiveLc": "longma6" }),
+    new Character("ciph", 5, CombatType.quantum, Path.nihility, { "zh-CN": "赛飞儿", "en": "Cipher", "jp": "サフェル" }, { "exclusiveLc": "liesda5" }),
     //3.4
     new Character("phai", 5, CombatType.physical, Path.destruction, { "zh-CN": "白厄", "en": "Phainon", "jp": "ファイノン" }),
 
@@ -270,37 +325,37 @@ class Version {
      * @param {session} _date - 更新日期
      * @param {session} _endDate - 结束日期 
      */
-    constructor(_code, _session, _date, _endDate) {
+    constructor(_code, _session, _date) {
         this.versionCode = _code;
         this.session = _session;
         this.date = _date;
         this.dateMJD = dateToMJD(_date);
-        this.endDate = _endDate;
+        this.endDate = MJDToDateString(dateStringToMJD(_date) + 20);
     }
 }
-var _TBP = "2033-04-26";
+var _TBP = "2026-04-26";
 var OFFICIAL_VERSIONS = {
-    "3.4@1": new Version("3.4", 1, "2025-07-02", _TBP),
-    "3.3@2": new Version("3.3", 2, "2025-06-11", "2025-07-01"),
-    "3.3@1": new Version("3.3", 1, "2025-05-21", "2025-06-10"),
-    "3.2@2": new Version("3.2", 2, "2025-04-30", "2025-05-20"),
-    "3.2@1": new Version("3.2", 1, "2025-04-09", "2025-04-29"),
-    "3.1@2": new Version("3.1", 2, "2025-03-19", "2025-04-08"),
-    "3.1@1": new Version("3.1", 1, "2025-02-26", "2025-03-18"),
-    "3.0@2": new Version("3.0", 2, "2025-02-05", "2025-02-25"),
-    "3.0@1": new Version("3.0", 1, "2025-01-15", "2025-02-04"),
-    "2.7@2": new Version("2.7", 2, "2024-12-25", "2025-01-14"),
-    "2.7@1": new Version("2.7", 1, "2024-12-04", "2024-12-24"),
-    "2.6@2": new Version("2.6", 2, "2024-11-13", "2024-12-03"),
-    "2.6@1": new Version("2.6", 1, "2024-10-23", "2024-11-12"),
-    "2.5@2": new Version("2.5", 2, "2024-10-02", "2024-10-22"),
-    "2.5@1": new Version("2.5", 1, "2024-09-10", "2024-10-01"),
-    "2.4@2": new Version("2.4", 2, "2024-08-21", "2024-09-09"),
-    "2.4@1": new Version("2.4", 1, "2024-07-31", "2024-08-20"),
-    "2.3@2": new Version("2.3", 2, "2024-07-10", "2024-07-30"),
-    "2.3@1": new Version("2.3", 1, "2024-06-19", "2024-07-09"),
-    "2.2@2": new Version("2.2", 2, "2024-05-29", "2024-06-18"),
-    "2.2@1": new Version("2.2", 1, "2024-05-08", "2024-05-28")
+    "3.4@1": new Version("3.4", 1, "2025-07-02"),
+    "3.3@2": new Version("3.3", 2, "2025-06-11"),
+    "3.3@1": new Version("3.3", 1, "2025-05-21"),
+    "3.2@2": new Version("3.2", 2, "2025-04-30"),
+    "3.2@1": new Version("3.2", 1, "2025-04-09"),
+    "3.1@2": new Version("3.1", 2, "2025-03-19"),
+    "3.1@1": new Version("3.1", 1, "2025-02-26"),
+    "3.0@2": new Version("3.0", 2, "2025-02-05"),
+    "3.0@1": new Version("3.0", 1, "2025-01-15"),
+    "2.7@2": new Version("2.7", 2, "2024-12-25"),
+    "2.7@1": new Version("2.7", 1, "2024-12-04"),
+    "2.6@2": new Version("2.6", 2, "2024-11-13"),
+    "2.6@1": new Version("2.6", 1, "2024-10-23"),
+    "2.5@2": new Version("2.5", 2, "2024-10-02"),
+    "2.5@1": new Version("2.5", 1, "2024-09-10"),
+    "2.4@2": new Version("2.4", 2, "2024-08-21"),
+    "2.4@1": new Version("2.4", 1, "2024-07-31"),
+    "2.3@2": new Version("2.3", 2, "2024-07-10"),
+    "2.3@1": new Version("2.3", 1, "2024-06-19"),
+    "2.2@2": new Version("2.2", 2, "2024-05-29"),
+    "2.2@1": new Version("2.2", 1, "2024-05-08")
 }
 var OFFICIAL_VERSIONS_KEYS = Object.keys(OFFICIAL_VERSIONS);
 var CURRENT_STAGE = "";
@@ -1568,7 +1623,33 @@ var LIGHTCONE_EVENT_WARPS = {
 };
 
 
-var ALL_WARP_POOLS = [];//盛放全部卡池代号："C3_1_2"...
+/************************************************************** */
+var keys = Object.keys(CHARACTER_EVENT_WARPS);
+var newObj = {};
+for (var i = keys.length - 1; i >= 0; i--) {
+    var thisKey = keys[i];
+    var newPool = new Pool(thisKey,
+        CHARACTER_EVENT_WARPS[thisKey].versionInfo,
+        CHARACTER_EVENT_WARPS[thisKey].type,
+        CHARACTER_EVENT_WARPS[thisKey].contents
+    );
+    newObj[thisKey] = newPool;
+}
+CHARACTER_EVENT_WARPS = newObj;
+keys = Object.keys(LIGHTCONE_EVENT_WARPS);
+newObj = {};
+for (var i = keys.length - 1; i >= 0; i--) {
+    var thisKey = keys[i];
+    var newPool = new Pool(thisKey,
+        LIGHTCONE_EVENT_WARPS[thisKey].versionInfo,
+        LIGHTCONE_EVENT_WARPS[thisKey].type,
+        LIGHTCONE_EVENT_WARPS[thisKey].contents
+    );
+    newObj[thisKey] = newPool;
+}
+LIGHTCONE_EVENT_WARPS = newObj;
+
+var ALL_WARP_POOLS = [];//盛放全部卡池代号："C3_1_2"和upName
 var TOTAL_EVENT_WARPS = { ...CHARACTER_EVENT_WARPS, ...LIGHTCONE_EVENT_WARPS };
 
 /**
@@ -1647,8 +1728,8 @@ var SELECTED_POOL_NAME = "";
 function selectPool(poolName) {
     if (TOTAL_EVENT_WARPS[poolName] == undefined) return;
     SELECTED_POOL_NAME = poolName;
-    Sup = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][0]);
-    Scommon = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][1]);
+    Sup = deepClone(TOTAL_EVENT_WARPS[poolName].contents[0]);
+    Scommon = deepClone(TOTAL_EVENT_WARPS[poolName].contents[1]);
     /**
      * 在之前(vβ5.2.0)，我为了使Scommon能直接获取最新的included的数据，不得不
      * 添加了一个判断版本时间的逻辑。即，若版本大于3.2，更新Scommon的contents的
@@ -1661,6 +1742,6 @@ function selectPool(poolName) {
         alert("错误：允许获取的5星常驻项目的数目不为7。");
         throw new Error("selectPool: Scommon的元素数目不为7！");
     }
-    Rup = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][2]);
-    Rcommon = deepClone(TOTAL_EVENT_WARPS[poolName]["contents"][3]);
+    Rup = deepClone(TOTAL_EVENT_WARPS[poolName].contents[2]);
+    Rcommon = deepClone(TOTAL_EVENT_WARPS[poolName].contents[3]);
 }

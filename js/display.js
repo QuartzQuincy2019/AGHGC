@@ -5,6 +5,9 @@ var E_FilterResult = document.getElementById("FilterResult");
 var E_Form_CharacterPoolInput = document.getElementById("Form_CharacterPoolInput");
 var E_MainForm = document.getElementById("MainForm");
 
+var Pool_Options = [];
+var E_Form_AdvPoolFilter = document.getElementById("Form_AdvPoolFilter");
+
 /**
  * 第二模块的“抽取次数”
  */
@@ -123,7 +126,7 @@ function applyPool(fromWhom) {
  */
 function modifiedScommonVersionDetection() {
     var pool = TOTAL_EVENT_WARPS[E_Form_CharacterPoolInput.value];
-    var version = OFFICIAL_VERSIONS[pool["versionInfo"]];
+    var version = OFFICIAL_VERSIONS[pool.versionInfo];
     var versionMJD = version.dateMJD;
     // console.log("modifiedScommonVersionDetection(): \n调整前：", excluded_Scommon, included_Scommon);
     if (versionMJD >= 60774) {//版本号日期在3.2之后的情况
@@ -164,22 +167,62 @@ E_Form_CharacterPoolInput.addEventListener('change', function () {
     modifiedScommonVersionDetection();
 });
 
+class PoolFilter {
+    TOKENS;
+    LINKID;
+    extractTokens() {
+        this.TOKENS = [];
+        const text = document.getElementById(this.LINKID);
+        var i = 0;
+        var token = "";
+        for (; i < text.length;) {
+            if (text[i] == ' ') {
+                i++;
+                continue;
+            }
+            if (text[i] == ',') {
+                this.TOKENS.push(token);
+                token = "";
+                i++;
+                continue;
+            }
+            token += text[i];
+            i++;
+        }
+    }
+
+}
+
 /**
  * 根据当前LANGUAGE，刷新某个selector的选项
  * @param {Element} destination 
  */
 function refreshPoolSelector(destination) {
     destination.innerHTML = '';
-    for (var j = 0; j < ALL_WARP_POOLS.length; j++) {
+    var origin = Object.keys(TOTAL_EVENT_WARPS);
+    var providedKeywords = E_Form_AdvPoolFilter.value.split(" ");
+    var filteredItemInAWP = [];
+    if (providedKeywords[0] != '') {
+        var filteredPools = origin.filter((eachPoolCode) => providedKeywords.every((singleKeyword) => TOTAL_EVENT_WARPS[eachPoolCode].keywords.includes(singleKeyword)));
+        filteredItemInAWP = ALL_WARP_POOLS.filter((each) => filteredPools.includes(each.code));
+        if (filteredPools.length == 0) filteredItemInAWP = ALL_WARP_POOLS;
+    } else {
+        filteredItemInAWP = ALL_WARP_POOLS;
+    }
+    for (var j = 0; j < filteredItemInAWP.length; j++) {
         var opt = document.createElement('option');
-        opt.setAttribute('value', ALL_WARP_POOLS[j].code);
-        let cod = ALL_WARP_POOLS[j].code;
+        opt.setAttribute('value', filteredItemInAWP[j].code);
+        let cod = filteredItemInAWP[j].code;
         let ver = OFFICIAL_VERSIONS[TOTAL_EVENT_WARPS[cod].versionInfo];
-        opt.innerHTML = "[" + cod + "] (v" + ver.versionCode + ":#" + ver.session + ")@" + ver.date + "-----" + ALL_WARP_POOLS[j].upName;
+        opt.innerHTML = "[" + cod + "] (v" + ver.versionCode + ":#" + ver.session + ")@" + ver.date + "-----" + filteredItemInAWP[j].upName;
         destination.appendChild(opt);
     }
 }
 refreshPoolSelector(E_Form_CharacterPoolInput);
+E_Form_AdvPoolFilter.addEventListener('input', () => {
+    refreshPoolSelector(E_Form_CharacterPoolInput);
+    refreshPoolSelector(PreForm_PoolInput);
+});
 
 /**
  * 给定rStatus和wStatus的组合对象，返回一个record元素
