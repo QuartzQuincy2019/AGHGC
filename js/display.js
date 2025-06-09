@@ -203,7 +203,7 @@ function refreshPoolSelector(destination) {
     var providedKeywords = E_Form_AdvPoolFilter.value.split(" ");
     var filteredItemInAWP = [];
     if (providedKeywords[0] != '') {
-        var filteredPools = origin.filter((eachPoolCode) => providedKeywords.every((singleKeyword) => TOTAL_EVENT_WARPS[eachPoolCode].keywords.includes(singleKeyword)));
+        var filteredPools = origin.filter((eachPoolCode) => providedKeywords.every((singleKeyword) => TOTAL_EVENT_WARPS[eachPoolCode].keywords.has(singleKeyword)));
         filteredItemInAWP = ALL_WARP_POOLS.filter((each) => filteredPools.includes(each.code));
         if (filteredPools.length == 0) filteredItemInAWP = ALL_WARP_POOLS;
     } else {
@@ -372,7 +372,7 @@ function moveInclusion(card) {
 
 P_Form_PFS.addEventListener('change', function () {
     var pool = TOTAL_EVENT_WARPS[P_Form_PFS.value];
-    var txt = findItem(pool["contents"][0][0]).fullName[LANGUAGE];
+    var txt = findItem(pool.contents()[0][0]).fullName[LANGUAGE];
     P_Form_STD.innerHTML = '<strong class="BoldBlue">' + txt + ' </strong>X'
 })
 

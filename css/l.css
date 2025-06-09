@@ -60,13 +60,14 @@ div.SubmitButton:active {
     font-weight: 1000;
 }
 
-.SupItemTitle{
+.SupItemTitle {
     color: #1b5cff;
     text-shadow: 1px 1px 2px #5e8bff;
     background-color: #c5ffa8;
 }
 
-#CurrentSupCharacters, #CurrentSupLightcones{
+#CurrentSupCharacters,
+#CurrentSupLightcones {
     font-weight: 1000;
 }
 
@@ -96,9 +97,18 @@ input.KeyNumberInput {
     font-size: 120%;
 }
 
-input.AdvancedPoolFilter{
-    font-size: 120%;
-    min-width: 23em;
+#AdvFilterArea {
+    display: inline-block;
+    border: 2px solid #000;
+    padding: 0.4em;
+    border-radius: 5px;
+    margin-top: 0.3em;
+}
+
+input.AdvancedPoolFilter {
+    font-size: 1.1em;
+    min-width: 26em;
+    max-width: 100%;
 }
 
 div.ScommonSelectors {
@@ -134,8 +144,9 @@ div#ScommonSelector_Inclusion div::before {
     content: "✓ ";
     color: #00bc13;
     font-weight: 1000;
-    
+
 }
+
 div#ScommonSelector_Exclusion div::before {
     color: red;
     font-weight: 1000;

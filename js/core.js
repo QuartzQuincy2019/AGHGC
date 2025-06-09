@@ -146,3 +146,8 @@ function formatFloat(value, decimals = 4, returnString = true) {
         ? rounded.toFixed(decimals)
         : rounded;
 }
+
+
+Set.prototype.getComplimentFrom = function (U) {
+    return new Set([...U].filter((element) => !this.has(element)));
+}
