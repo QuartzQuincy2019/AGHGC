@@ -298,6 +298,13 @@ var CHARACTER_LIST = [
     //3.4
     new Character("phai", 5, CombatType.physical, Path.destruction, { "zh-CN": "白厄", "en": "Phainon", "jp": "ファイノン" }),
 
+    /*
+    new Character("", 5, CombatType., Path., { "zh-CN": "■■■", "en": "█ █ █", "jp": "■■■" }),
+    new Character("hysi", 5, CombatType., Path., { "zh-CN": "海瑟音", "en": "Hysilens", "jp": "セイレンス" }),
+    new Character("cery", 5, CombatType., Path., { "zh-CN": "刻律德菈", "en": "Cerydra", "jp": "ケリュドラ" }),
+    new Character("terr", 5, CombatType., Path., { "zh-CN": "荒笛", "en": "Terravox", "jp": "荒笛" }),
+    new Character("cyre", 5, CombatType., Path., { "zh-CN": "昔涟", "en": "Cyrene", "jp": "キュレネ" }),
+    */
 
     new Character("sabe", 5, CombatType.wind, Path.destruction, { "zh-CN": "Saber", "en": "Saber", "jp": "セイバー" }),
     new Character("arch", 5, CombatType.quantum, Path.thehunt, { "zh-CN": "Archer", "en": "Archer", "jp": "アーチャー" }),
@@ -450,7 +457,7 @@ function detectStage(mjd) {
         }
     }
     if (target == -1) {
-        throw new Error("未能找到MJD为" + mjd + "对应的版本。");
+        console.log("未能找到MJD为" + mjd + "对应的版本。");
     }
     return OFFICIAL_VERSIONS_KEYS[target];
 }

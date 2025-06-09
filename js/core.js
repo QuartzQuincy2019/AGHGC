@@ -151,3 +151,16 @@ function formatFloat(value, decimals = 4, returnString = true) {
 Set.prototype.getComplimentFrom = function (U) {
     return new Set([...U].filter((element) => !this.has(element)));
 }
+
+/**
+ * 
+ * @param {number} test 
+ * @param {number} mjd_start 
+ * @param {number} mjd_end 
+ * @returns 0：在期间   1：在之后    -1：在之前
+ */
+function ofPeriod(test, mjd_start, mjd_end) {
+    if (mjd_start <= test && test <= mjd_end) return 0;
+    if (test > mjd_end) return 1;
+    if (test < mjd_start) return -1;
+}
