@@ -99,12 +99,12 @@ class ItemKeywordsGenerator {
             let name = item.fullName[eachLanguage];
             for (var i = 1; i < name.length + 1; i++) {
                 if (eachLanguage == 'en') {
-                    var sub = name.replace(' ', '_');
+                    var sub = name.replaceAll(' ', '_');
                     let converted = sub.toLowerCase();
                     kw.push(converted.slice(0, i));
                     kw.push(converted.slice(0, i));
 
-                    sub = sub.replace('_', '-');
+                    sub = sub.replaceAll('_', '-');
                     converted = sub.toLowerCase();
                     kw.push(converted.slice(0, i));
                     kw.push(converted.slice(0, i));
@@ -416,6 +416,13 @@ class Version {
 }
 var _TBP = "2026-04-26";
 var OFFICIAL_VERSIONS = {
+    "3.7@2": new Version("3.7", 2, "2025-11-26"),
+    "3.7@1": new Version("3.7", 1, "2025-11-05"),
+    "3.6@2": new Version("3.6", 2, "2025-10-15"),
+    "3.6@1": new Version("3.6", 1, "2025-09-24"),
+    "3.5@2": new Version("3.5", 2, "2025-09-03"),
+    "3.5@1": new Version("3.5", 1, "2025-08-13"),
+    "3.4@2": new Version("3.4", 2, "2025-07-23"),
     "3.4@1": new Version("3.4", 1, "2025-07-02"),
     "3.3@2": new Version("3.3", 2, "2025-06-11"),
     "3.3@1": new Version("3.3", 1, "2025-05-21"),
