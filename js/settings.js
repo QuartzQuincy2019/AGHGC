@@ -9,4 +9,4 @@ var TODAY = 0;
     let now = new Date();
     TODAY = dateToMJD(now);
 }
-// TODAY=60774;
+// TODAY=60870;

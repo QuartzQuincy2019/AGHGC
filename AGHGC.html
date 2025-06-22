@@ -17,18 +17,18 @@
 
 <body>
     <h1>Augmented Graphic HSR Gacha Calculator - AGHGC</h1>
-    <h3>vβ6.2.1</h3>
+    <h3>vβ6.3.0</h3>
     <p>目前支持部分角色和光锥卡池。其他卡池将于后续版本更新。受fandom更新频率影响，部分图片可能处于缺失状态。</p>
     <p>当前版本阶段（#1表示上半，#2表示下半）：v<span id="VersionDisplayer"></span></p>
     <p>当前Up角色：<span id="CurrentSupCharacters"></span></p>
     <p>当前Up光锥：<span id="CurrentSupLightcones"></span></p>
     <div class="SubmitButton" onclick="switchLanguage();">切换数据库语言</div>
     <span id="AdvFilterArea">
-        <p class="BoldBlue">卡池筛选或搜索</p>
-        <p>全局通用，并列关键词间以1个空格分隔，本身带空格的用"-"或"_"代替</p>
-        <p><span class="BoldYellow">支持</span>：中、英、日文名，日期202X、202X-XX、20XX-XX-XX、<br>内部代码名、版本号X.X、命途、属性
-        </p><input id="Form_AdvPoolFilter" class="AdvancedPoolFilter" title="Advanced Pool Filter"
-            placeholder='如"2025 2.7 fugue"、"记忆 3.2"、"Sunday"'>
+        <p class="BoldBlue">卡池筛选或搜索 - Pool Filter</p>
+        <p>全局通用，并列关键词间以1个空格分隔.</p>
+        <p><span class="BoldYellow">支持</span>：完整或不完整的中、英、日文名，中文别名<br>日期202X、202X-XX、202X-XX-XX，<br>版本号X.X、命途、属性
+        </p><textarea id="Form_AdvPoolFilter" class="AdvancedPoolFilter" title="Advanced Pool Filter"
+            placeholder='如"2025 2.7 忘" "大停云" "记忆 3.2" "量子" "向着" "2025-04-26" "2025-06" "incessant rain" '></textarea>
     </span>
     <h2>出货预测模块 - Frequency Distribution Prediction</h2>
     <p>将你目前的“囤积票数”全部投入后，查看能获得五星Up的个数的概率分布列（用频率估计概率）。</p>
