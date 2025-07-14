@@ -313,10 +313,11 @@ var CHARACTER_LIST = [
     new Character("phai", 5, CombatType.physical, Path.destruction, { "zh-CN": "白厄", "en": "Phainon", "jp": "ファイノン" }, { "exclusiveLc": "thusbu4" }),
     new Character("sabe", 5, CombatType.wind, Path.destruction, { "zh-CN": "Saber", "en": "Saber", "jp": "セイバー" }, { "exclusiveLc": "athank3" }),
     new Character("arch", 5, CombatType.quantum, Path.thehunt, { "zh-CN": "Archer", "en": "Archer", "jp": "アーチャー" }, { "exclusiveLc": "thehel5" }),
+    //3.5
+    new Character("hysi", 5, CombatType.physical, Path.nihility, { "zh-CN": "海瑟音", "en": "Hysilens", "jp": "セイレンス" }),
+    new Character("cery", 5, CombatType.wind, Path.harmony, { "zh-CN": "刻律德菈", "en": "Cerydra", "jp": "ケリュドラ" }),
     /*
     new Character("", 5, CombatType., Path., { "zh-CN": "■■■", "en": "█ █ █", "jp": "■■■" }),
-    new Character("hysi", 5, CombatType., Path., { "zh-CN": "海瑟音", "en": "Hysilens", "jp": "セイレンス" }),
-    new Character("cery", 5, CombatType., Path., { "zh-CN": "刻律德菈", "en": "Cerydra", "jp": "ケリュドラ" }),
     new Character("terr", 5, CombatType., Path., { "zh-CN": "荒笛", "en": "Terravox", "jp": "荒笛" }),
     new Character("cyre", 5, CombatType., Path., { "zh-CN": "昔涟", "en": "Cyrene", "jp": "キュレネ" }),
     */
@@ -496,6 +497,60 @@ const DEFAULT_INCLUDED_SCOMMON = ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt'
 
 var ALL_CHARACTER_WARP_POOLS = [];
 var CHARACTER_EVENT_WARPS = {
+    "C3_4_3-1": new Pool("C3_4_3-1", "3.4@2", "character", () => [
+        ['fire'],
+        included_Scommon,
+        ['hany', 'lynx', 'luka'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'moze', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C3_4_3-2": new Pool("C3_4_3-2", "3.4@2", "character", () => [
+        ['jliu'],
+        included_Scommon,
+        ['hany', 'lynx', 'luka'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'moze', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C3_4_3-3": new Pool("C3_4_3-3", "3.4@2", "character", () => [
+        ['blad'],
+        included_Scommon,
+        ['hany', 'lynx', 'luka'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'moze', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
     "C3_4_1": new Pool("C3_4_1", "3.4@1", "character", () => [
         ['phai'],
         included_Scommon,
