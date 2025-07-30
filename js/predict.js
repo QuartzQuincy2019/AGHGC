@@ -124,7 +124,7 @@ function startPrediction(predictionFormValueObj) {
             };
         }
         if (index < 10) {
-            setTimeout(() => startWorkerBatch(index), 100);
+            setTimeout(() => startWorkerBatch(index), 200);
         }
     }
     startWorkerBatch();

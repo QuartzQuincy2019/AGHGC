@@ -7,7 +7,10 @@ const reg_SpecialVersion_Minus = /(-)/g
 var test_Date;
 var test_Version;
 var test_SpecialVersion;
-var thisStage = detectStage(TODAY);
+{
+    let vm = new VersionManager();
+    var thisStage = vm.detectStage(TODAY, Object.values(NORMAL_VERSIONS))[0];
+}
 
 E_M3_Input.addEventListener("input", () => {
     var getValue = E_M3_Input.value;
@@ -30,29 +33,31 @@ E_M3_Input.addEventListener("input", () => {
     startM3Calculation(getValue);
 })
 function startM3Calculation(getValue) {
+    var vm = new VersionManager();
     if (test_Date == 0) {
-        var foundVersion = OFFICIAL_VERSIONS[detectStage(dateStringToMJD(getValue))];
+        console.log(getValue);
+        var foundVersion = vm.detectStage(dateStringToMJD(getValue), Object.values(NORMAL_VERSIONS))[0];
         if (!foundVersion) {
             E_M3_Result.innerHTML += "<span class='BoldRed'>该版本信息不在数据库内。若要进行计算，请使用“+”或“-”表示“下一个半版本”、“下一个子版本”。<br>比如输入'++++'来预测后续第4个半版本的时间。</span>";
             return;
         }
-        E_M3_Result.innerHTML += "检测到的版本：v" + foundVersion.versionCode + "@" + foundVersion.session + "<br>";
-        presentVersionWith(foundVersion.dateMJD, dateStringToMJD(foundVersion.endDate));
+        E_M3_Result.innerHTML += "检测到的版本：v" + foundVersion.durationCode + "<br>";
+        presentVersionWith(foundVersion.dateStart, foundVersion.lastDate);
         return;
     }
     if (test_Version == 0) {
-        var foundVersion = OFFICIAL_VERSIONS[getValue];
+        var foundVersion = VERSIONS_SET[getValue];
         if (!foundVersion) return;
-        if (foundVersion) E_M3_Result.innerHTML += "检测到的版本：v" + foundVersion.versionCode + "@" + foundVersion.session + "<br>";
-        presentVersionWith(foundVersion.dateMJD, dateStringToMJD(foundVersion.endDate));
+        if (foundVersion) E_M3_Result.innerHTML += "检测到的版本：v" + foundVersion.durationCode + "<br>";
+        presentVersionWith(foundVersion.dateStart, foundVersion.lastDate);
         return;
     }
     if (test_SpecialVersion != 0) {
-        var currentVersion = OFFICIAL_VERSIONS[thisStage];
-        var startDate = currentVersion.dateMJD + 21 * test_SpecialVersion;
-        var foundVersion = OFFICIAL_VERSIONS[detectStage(startDate)];
-        if (foundVersion) E_M3_Result.innerHTML += "检测到的版本：v" + foundVersion.versionCode + "@" + foundVersion.session + "<br>";
-        presentVersionWith(startDate, startDate + 20);
+        var currentCodeIndex = OFFICIAL_VERSIONS_KEYS.indexOf(thisStage.durationCode);
+        var foundVersion = VERSIONS_SET[OFFICIAL_VERSIONS_KEYS[currentCodeIndex - test_SpecialVersion]];
+        console.log(currentCodeIndex + test_SpecialVersion);
+        if (foundVersion) E_M3_Result.innerHTML += "检测到的版本：v" + foundVersion.durationCode + "<br>";
+        presentVersionWith(foundVersion.dateStart, foundVersion.lastDate);
         return;
     }
 }

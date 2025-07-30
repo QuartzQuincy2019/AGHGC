@@ -67,18 +67,29 @@ var MAX_ALLOWED_PULLS = 5000000;
 document.getElementById("E_MAX_ALLOWED_PULLS").innerHTML = MAX_ALLOWED_PULLS;
 E_Form_PullInput.setAttribute('max', MAX_ALLOWED_PULLS);
 
-document.getElementById("VersionDisplayer").innerHTML = OFFICIAL_VERSIONS[detectStage(TODAY)].versionCode + "&nbsp;&nbsp;#" + OFFICIAL_VERSIONS[detectStage(TODAY)].session;
+
+//写入今日
+{
+    let vm = new VersionManager();
+    /**
+     * 今天对应的版本对象实例
+     */
+    var thisVersion = vm.detectStage(TODAY,Object.values(NORMAL_VERSIONS))[0];
+    document.getElementById("VersionDisplayer").innerHTML = thisVersion.durationCode + "&nbsp;&nbsp;";
+}
+
+
 //当前Up角色和光锥的显示功能
 var E_SPAN_CurrentSupCharacters = document.getElementById("CurrentSupCharacters");
 {
-    let t = getVersionSupCharacters(detectStage(TODAY));
+    let t = getVersionSupCharacters(thisVersion.durationCode);
     for (var i = 0; i < t.length; i++) {
         E_SPAN_CurrentSupCharacters.innerHTML += "&nbsp;&nbsp;&nbsp;" + findItem(t[i]).fullName[LANGUAGE] + "&nbsp;&nbsp;&nbsp;";
     }
 }
 var E_SPAN_CurrentSupLightcones = document.getElementById("CurrentSupLightcones");
 {
-    let t = getVersionSupLightcones(detectStage(TODAY));
+    let t = getVersionSupLightcones(thisVersion.durationCode);
     for (var i = 0; i < t.length; i++) {
         E_SPAN_CurrentSupLightcones.innerHTML += "&nbsp;&nbsp;&nbsp;" + findItem(t[i]).fullName[LANGUAGE] + "&nbsp;&nbsp;&nbsp;";
     }
@@ -126,8 +137,8 @@ function applyPool(fromWhom) {
  */
 function modifiedScommonVersionDetection() {
     var pool = TOTAL_EVENT_WARPS[E_Form_CharacterPoolInput.value];
-    var version = OFFICIAL_VERSIONS[pool.versionInfo];
-    var versionMJD = version.dateMJD;
+    var version = VERSIONS_SET[pool.versionInfo];
+    var versionMJD = version.dateStart;
     // console.log("modifiedScommonVersionDetection(): \n调整前：", excluded_Scommon, included_Scommon);
     if (versionMJD >= 60774) {//版本号日期在3.2之后的情况
         E_ScommonSelector.style.display = "";
@@ -210,11 +221,13 @@ function refreshPoolSelector(destination) {
         filteredItemInAWP = ALL_WARP_POOLS;
     }
     for (var j = 0; j < filteredItemInAWP.length; j++) {
+        // console.log("filteredItemInAWP[j]： ",j,filteredItemInAWP[j]);
         var opt = document.createElement('option');
-        opt.setAttribute('value', filteredItemInAWP[j].code);
         let cod = filteredItemInAWP[j].code;
-        let ver = OFFICIAL_VERSIONS[TOTAL_EVENT_WARPS[cod].versionInfo];
-        opt.innerHTML = "[" + cod + "] (v" + ver.versionCode + ":#" + ver.session + ")@" + ver.date + "-----" + filteredItemInAWP[j].upName;
+        opt.setAttribute('value', cod);//'L2_7_4'
+        let ver = VERSIONS_SET[TOTAL_EVENT_WARPS[cod].versionInfo];
+        // console.log(ver)
+        opt.innerHTML = "[" + cod + "] (v" + ver.durationCode+ ")@" + ver.date + "-----" + filteredItemInAWP[j].upName;
         destination.appendChild(opt);
     }
 }

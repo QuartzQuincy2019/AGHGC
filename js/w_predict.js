@@ -2,6 +2,9 @@
 importScripts("./core.js");
 importScripts("./plugins/mjd.js");
 importScripts("./settings.js");
+importScripts("./lang.js");
+importScripts("./version.js");
+importScripts("./pool.js");
 importScripts("./database.js");
 importScripts("./warp.js");
 
