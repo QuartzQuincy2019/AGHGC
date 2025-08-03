@@ -74,7 +74,7 @@ E_Form_PullInput.setAttribute('max', MAX_ALLOWED_PULLS);
     /**
      * 今天对应的版本对象实例
      */
-    var thisVersion = vm.detectStage(TODAY,Object.values(NORMAL_VERSIONS))[0];
+    var thisVersion = vm.detectStage(TODAY, Object.values(NORMAL_VERSIONS))[0];
     document.getElementById("VersionDisplayer").innerHTML = thisVersion.durationCode + "&nbsp;&nbsp;";
 }
 
@@ -227,7 +227,7 @@ function refreshPoolSelector(destination) {
         opt.setAttribute('value', cod);//'L2_7_4'
         let ver = VERSIONS_SET[TOTAL_EVENT_WARPS[cod].versionInfo];
         // console.log(ver)
-        opt.innerHTML = /*"[" + cod + "]*/"(v" + ver.durationCode+ ") - " + ver.date + " ----- " + filteredItemInAWP[j].upName;
+        opt.innerHTML = /*"[" + cod + "]*/"(v" + ver.durationCode + ") - " + ver.date + " ----- " + filteredItemInAWP[j].upName;
         destination.appendChild(opt);
     }
 }
@@ -236,6 +236,17 @@ E_Form_AdvPoolFilter.addEventListener('input', () => {
     refreshPoolSelector(E_Form_CharacterPoolInput);
     refreshPoolSelector(PreForm_PoolInput);
 });
+
+function checkImageExists(path, callback) {
+    const img = new Image();
+    img.onload = function () {
+        callback(true); // 图片存在
+    };
+    img.onerror = function () {
+        callback(false); // 图片不存在
+    };
+    img.src = path;
+}
 
 /**
  * 给定rStatus和wStatus的组合对象，返回一个record元素
@@ -254,7 +265,15 @@ function translateItemInfo(obj) {
 
     var img = document.createElement("img");
     img.classList.add("ItemIcon");
-    img.src = item.icon;
+    const icon = item.icon;
+    checkImageExists(icon, function (exists) {
+        if (exists) {
+            img.src = item.icon; // 图片存在，设置src
+        } else {
+            // 图片不存在时的处理
+            img.src = './img/func/unknown.png'; // 设置备用图片
+        }
+    });
     var rightDiv = document.createElement("div");
     rightDiv.classList.add("RightColumn");
     var upDiv = document.createElement("div");
@@ -262,6 +281,7 @@ function translateItemInfo(obj) {
     let img_path = document.createElement("img");
     img_path.src = './img/i16/p_' + item.path + '.png';
     upDiv.appendChild(img_path);
+
     if (getItemType(item) != 'Lightcone') {
         let img_ct = document.createElement("img");
         img_ct.src = './img/i16/ct_' + item.combatType + '.png';
