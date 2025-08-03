@@ -34,42 +34,75 @@ E_M3_Input.addEventListener("input", () => {
 })
 function startM3Calculation(getValue) {
     var vm = new VersionManager();
+    const err = "<span class='BoldRed'>该版本不在程序数据库内，或不存在此版本。</span>";
+    const d1 = "查询到的版本：<span class='EmphasisBlue'>";
+    const d2 = "</span><br>";
     if (test_Date == 0) {
         console.log(getValue);
         var foundVersion = vm.detectStage(dateStringToMJD(getValue), Object.values(NORMAL_VERSIONS))[0];
-        if (!foundVersion) {
-            E_M3_Result.innerHTML += "<span class='BoldRed'>该版本信息不在数据库内。若要进行计算，请使用“+”或“-”表示“下一个半版本”、“下一个子版本”。<br>比如输入'++++'来预测后续第4个半版本的时间。</span>";
-            return;
+        if (foundVersion) {
+            E_M3_Result.innerHTML += d1 + foundVersion.durationCode + d2;
+            presentVersionSups(foundVersion);
+            presentVersionWith(foundVersion.dateStart, foundVersion.lastDate);
+        } else {
+            E_M3_Result.innerHTML = err;
         }
-        E_M3_Result.innerHTML += "检测到的版本：v" + foundVersion.durationCode + "<br>";
-        presentVersionWith(foundVersion.dateStart, foundVersion.lastDate);
         return;
     }
     if (test_Version == 0) {
         var foundVersion = VERSIONS_SET[getValue];
-        if (!foundVersion) return;
-        if (foundVersion) E_M3_Result.innerHTML += "检测到的版本：v" + foundVersion.durationCode + "<br>";
-        presentVersionWith(foundVersion.dateStart, foundVersion.lastDate);
+        if (foundVersion) {
+            E_M3_Result.innerHTML += d1 + foundVersion.durationCode + d2;
+            presentVersionSups(foundVersion);
+            presentVersionWith(foundVersion.dateStart, foundVersion.lastDate);
+        } else {
+            E_M3_Result.innerHTML = err;
+        }
         return;
     }
     if (test_SpecialVersion != 0) {
         var currentCodeIndex = OFFICIAL_VERSIONS_KEYS.indexOf(thisStage.durationCode);
         var foundVersion = VERSIONS_SET[OFFICIAL_VERSIONS_KEYS[currentCodeIndex - test_SpecialVersion]];
-        console.log(currentCodeIndex + test_SpecialVersion);
-        if (foundVersion) E_M3_Result.innerHTML += "检测到的版本：v" + foundVersion.durationCode + "<br>";
-        presentVersionWith(foundVersion.dateStart, foundVersion.lastDate);
+        // console.log(currentCodeIndex + test_SpecialVersion);
+        if (foundVersion) {
+            E_M3_Result.innerHTML += d1 + foundVersion.durationCode + d2;
+            presentVersionSups(foundVersion);
+            presentVersionWith(foundVersion.dateStart, foundVersion.lastDate);
+        } else {
+            E_M3_Result.innerHTML = err;
+        }
         return;
     }
 }
 
+function presentVersionSups(foundVersion) {
+    var vm = new VersionManager();
+    var sups = vm.sups(foundVersion.durationCode);
+    var str1 = "";
+    var str2 = "";
+    if (sups[0].length > 0) {
+        for (var i = 0; i < sups[0].length; i++) {
+            str1 += findItem(sups[0][i]).fullName[LANGUAGE] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+        }
+        E_M3_Result.innerHTML += "该版本UP五星角色：<span class='EmphasisPurple'>" + str1 + "</span><br>";
+    }
+    if (sups[1].length > 0) {
+        for (var i = 0; i < sups[1].length; i++) {
+            str2 += findItem(sups[1][i]).fullName[LANGUAGE] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+        }
+        E_M3_Result.innerHTML += "该版本UP五星光锥：<span class='EmphasisPurple'>" + str2 + "</span><br>";
+    }
+}
+
+
 function presentVersionWith(dateStart, dateEnd) {
     if (ofPeriod(TODAY, dateStart, dateEnd) == 1) {
-        E_M3_Result.innerHTML += "该版本已过去" + (TODAY - dateEnd) + "天。（" + MJDToDateString(dateStart) + " ~ " + MJDToDateString(dateEnd) + "）";
+        E_M3_Result.innerHTML += "该版本已过去<span class='EmphasisBlue'>" + (TODAY - dateEnd) + "</span>天。（" + MJDToDateString(dateStart) + " ~ " + MJDToDateString(dateEnd) + "）";
     }
     if (ofPeriod(TODAY, dateStart, dateEnd) == 0) {
-        E_M3_Result.innerHTML += "该版本已开始" + (TODAY - dateStart) + "天，还有" + (dateEnd - TODAY) + "天结束。";
+        E_M3_Result.innerHTML += "该版本已开始" + (TODAY - dateStart) + "天，还有<span class='EmphasisBlue'>" + (dateEnd - TODAY) + "</span>天结束。";
     }
     if (ofPeriod(TODAY, dateStart, dateEnd) == -1) {
-        E_M3_Result.innerHTML += "距离该版本还有" + (dateStart - TODAY) + "天。（" + MJDToDateString(dateStart) + " ~ " + MJDToDateString(dateEnd) + "）";
+        E_M3_Result.innerHTML += "距离该版本还有<span class='EmphasisBlue'>" + (dateStart - TODAY) + "</span>天。（" + MJDToDateString(dateStart) + " ~ " + MJDToDateString(dateEnd) + "）";
     }
 }

@@ -231,7 +231,7 @@ var CHARACTER_LIST = [
     new Character("arla", 4, CombatType.lightning, Path.destruction, { "zh-CN": "阿兰", "en": "Arlan", "jp": "アーラン" }),
     new Character("asta", 4, CombatType.fire, Path.harmony, { "zh-CN": "艾丝妲", "en": "Asta", "jp": "アスター" }),
     new Character("bail", 5, CombatType.lightning, Path.abundance, { "zh-CN": "白露", "en": "Bailu", "jp": "白露" }, { "exclusiveLc": "timewa5" }),
-    new Character("bron", 5, CombatType.wind, Path.harmony, { "zh-CN": "布洛妮娅", "en": "Bronya", "jp": "ブローニャ" }, { "exclusiveLc": "butthe5" }),
+    new Character("bron", 5, CombatType.wind, Path.harmony, { "zh-CN": "布洛妮娅", "en": "Bronya", "jp": "ブローニャ" }, { "exclusiveLc": "butthe5", "alias": ["鸭","大鸭鸭"] }),
     new Character("clar", 5, CombatType.physical, Path.destruction, { "zh-CN": "克拉拉", "en": "Clara", "jp": "クラーラ" }, { "exclusiveLc": "someth2" }),
     new Character("dhen", 4, CombatType.wind, Path.thehunt, { "zh-CN": "丹恒", "en": "Dan Heng", "jp": "丹恒" }),
     new Character("gepa", 5, CombatType.ice, Path.preservation, { "zh-CN": "杰帕德", "en": "Gepard", "jp": "ジェパード" }, { "exclusiveLc": "moment3" }),
@@ -255,11 +255,11 @@ var CHARACTER_LIST = [
     new Character("swol", 5, CombatType.quantum, Path.nihility, { "zh-CN": "银狼", "en": "Silver Wolf", "jp": "銀狼" }, { "exclusiveLc": "incess2" }),
     new Character("ykon", 4, CombatType.imaginary, Path.harmony, { "zh-CN": "驭空", "en": "Yukong", "jp": "御空" }),
     //1.2
-    new Character("blad", 5, CombatType.wind, Path.destruction, { "zh-CN": "刃", "en": "Blade", "jp": "刃" }, { "alias": ["牢刃"] }),
+    new Character("blad", 5, CombatType.wind, Path.destruction, { "zh-CN": "刃", "en": "Blade", "jp": "刃" }, { "alias": ["牢刃", "应星"] }),
     new Character("kafk", 5, CombatType.lightning, Path.nihility, { "zh-CN": "卡芙卡", "en": "Kafka", "jp": "カフカ" }, { "alias": ["卡妈"] }),
     new Character("luka", 4, CombatType.physical, Path.nihility, { "zh-CN": "卢卡", "en": "Luka", "jp": "ルカ" }),
     //1.3
-    new Character("dhil", 5, CombatType.imaginary, Path.destruction, { "zh-CN": "丹恒·饮月", "en": "Dan Heng • Imbibitor Lunae", "jp": "丹恒・飲月" }, { "alias": ["饮月君", "丹恒饮月"] }),
+    new Character("dhil", 5, CombatType.imaginary, Path.destruction, { "zh-CN": "丹恒·饮月", "en": "Dan Heng • Imbibitor Lunae", "jp": "丹恒・飲月" }, { "alias": ["饮月君", "丹恒饮月", "sp丹恒", "SP丹恒"] }),
     new Character("fxua", 5, CombatType.quantum, Path.preservation, { "zh-CN": "符玄", "en": "Fu Xuan", "jp": "符玄" }, { "alias": ["太卜"] }),
     new Character("lynx", 4, CombatType.quantum, Path.abundance, { "zh-CN": "玲可", "en": "Lynx", "jp": "リンクス" }),
     //1.4
@@ -299,7 +299,7 @@ var CHARACTER_LIST = [
     //2.6
     new Character("rapp", 5, CombatType.imaginary, Path.erudition, { "zh-CN": "乱破", "en": "Rappa", "jp": "乱破" }, { "exclusiveLc": "ninjut4" }),
     //2.7
-    new Character("fugu", 5, CombatType.fire, Path.nihility, { "zh-CN": "忘归人", "en": "Fugue", "jp": "帰忘の流離人" }, { "exclusiveLc": "longro4", "alias": ["大停云"] }),
+    new Character("fugu", 5, CombatType.fire, Path.nihility, { "zh-CN": "忘归人", "en": "Fugue", "jp": "帰忘の流離人" }, { "exclusiveLc": "longro4", "alias": ["大停云", "sp停云", "SP停云"] }),
     new Character("sund", 5, CombatType.imaginary, Path.harmony, { "zh-CN": "星期日", "en": "Sunday", "jp": "サンデー" }, { "exclusiveLc": "agroun3", "alias": ["周天哥", "周天子", "牢日"] }),
     //3.0
     new Character("agla", 5, CombatType.lightning, Path.remembrance, { "zh-CN": "阿格莱雅", "en": "Aglaea", "jp": "アグライア" }, { "exclusiveLc": "timewo4", "alias": ["金织"] }),
@@ -320,9 +320,11 @@ var CHARACTER_LIST = [
     //3.5
     new Character("hysi", 5, CombatType.physical, Path.nihility, { "zh-CN": "海瑟音", "en": "Hysilens", "jp": "セイレンス" }),
     new Character("cery", 5, CombatType.wind, Path.harmony, { "zh-CN": "刻律德菈", "en": "Cerydra", "jp": "ケリュドラ" }),
+    //3.6
+    //3.7
     /*
-    new Character("", 5, CombatType., Path.remembrance, { "zh-CN": "长夜月", "en": "Evernight", "jp": "■■■" }),
-    new Character("terr", 5, CombatType.fire, Path.preservation, { "zh-CN": "荒笛", "en": "Terravox", "jp": "荒笛" }),
+    new Character("", 5, CombatType., Path.remembrance, { "zh-CN": "长夜月", "en": "Evernight", "jp": "■■■" },{"alias": ["sp三月七","SP三月七"]}),
+    new Character("terr", 5, CombatType.fire, Path.preservation, { "zh-CN": "荒笛", "en": "Terravox", "jp": "荒笛" },{"alias": ["sp丹恒","SP丹恒"]}),
     new Character("cyre", 5, CombatType., Path.remembrance, { "zh-CN": "昔涟", "en": "Cyrene", "jp": "キュレネ" }),
     */
 
@@ -434,7 +436,25 @@ var CHARACTER_EVENT_WARPS = {
     "C3_5_3": new Pool("C3_5_3", "3.5@2", "character", () => [
         ['cery'],
         included_Scommon,
-        ['placeho'],
+        ['samp', 'qque', 'dhen'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'moze', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C3_5_4": new Pool("C3_5_4", "3.5@2", "character", () => [
+        ['swol'],
+        included_Scommon,
+        ['samp', 'qque', 'dhen'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'mish', 'moze', 'nata', 'pela',
@@ -452,7 +472,25 @@ var CHARACTER_EVENT_WARPS = {
     "C3_5_1": new Pool("C3_5_1", "3.5@1", "character", () => [
         ['hysi'],
         included_Scommon,
-        ['placeho'],
+        ['asta', 'arla', 'hook'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'moze', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C3_5_2": new Pool("C3_5_2", "3.5@1", "character", () => [
+        ['kafk'],
+        included_Scommon,
+        ['asta', 'arla', 'hook'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'mish', 'moze', 'nata', 'pela',
@@ -1959,7 +1997,7 @@ function getVersionSupCharacters(versionKey) {
     // console.log(versionKey)
     var output = []
     for (var i = 0; i < filteredOutItems.length; i++) {
-        output.push(CHARACTER_EVENT_WARPS[filteredOutItems[i]].contents()[0]);
+        output.push(CHARACTER_EVENT_WARPS[filteredOutItems[i]].contents()[0][0]);
     }
     return output;
 }
@@ -1969,7 +2007,7 @@ function getVersionSupLightcones(versionKey) {
     filteredOutItems = allLCPools.filter((every) => LIGHTCONE_EVENT_WARPS[every].versionInfo == versionKey);
     var output = []
     for (var i = 0; i < filteredOutItems.length; i++) {
-        output.push(LIGHTCONE_EVENT_WARPS[filteredOutItems[i]].contents()[0]);
+        output.push(LIGHTCONE_EVENT_WARPS[filteredOutItems[i]].contents()[0][0]);
     }
     return output;
 }

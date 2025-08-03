@@ -28,7 +28,11 @@ class Duration {
         return this.dateStart + this.last - 1;
     }
 
-    get date(){
+    get stringLastDate() {
+        return MJDToDateString(this.lastDate);
+    }
+
+    get date() {
         return MJDToDateString(this.dateStart);
     }
 }
@@ -64,7 +68,7 @@ class DurationManager {
 class Version extends Duration {
     session;
     mainVersion;
-    constructor(_versionCode, _session, _dateStart, _last = 20, _isPermanent = false) {
+    constructor(_versionCode, _session, _dateStart, _last = 21, _isPermanent = false) {
         super("" + _versionCode + "@" + _session, dateStringToMJD(_dateStart), _last, _isPermanent);
         this.session = _session;
         this.mainVersion = _versionCode;
@@ -72,6 +76,14 @@ class Version extends Duration {
 }
 
 var NORMAL_VERSIONS = {
+    "4.2@2": new Version("4.2", 2, "2026-05-13"),
+    "4.2@1": new Version("4.2", 1, "2026-04-22"),
+    "4.1@2": new Version("4.1", 2, "2026-04-01"),
+    "4.1@1": new Version("4.1", 1, "2026-03-11"),
+    "4.0@2": new Version("4.0", 2, "2026-02-18"),
+    "4.0@1": new Version("4.0", 1, "2026-01-28"),
+    "3.8@2": new Version("3.8", 2, "2026-01-07"),
+    "3.8@1": new Version("3.8", 1, "2025-12-17"),
     "3.7@2": new Version("3.7", 2, "2025-11-26"),
     "3.7@1": new Version("3.7", 1, "2025-11-05"),
     "3.6@2": new Version("3.6", 2, "2025-10-15"),
@@ -122,12 +134,23 @@ class VersionManager extends DurationManager {
         }
         return output;
     }
+
+    /**
+     * 获取当期版本的五星Up角色和光锥的内部代码
+     * @param {string} durationCode 版本代号
+     * @returns [角色内部代码[], 光锥内部代码[]]
+     */
+    sups = function (durationCode) {
+        var c = getVersionSupCharacters(durationCode);
+        var l = getVersionSupLightcones(durationCode);
+        return [c, l];
+    }
 }
 
 /**
  * 全部版本组成的对象，包括键值对
  */
-var VERSIONS_SET = {...NORMAL_VERSIONS,...SPECIAL_VERSIONS};
+var VERSIONS_SET = { ...NORMAL_VERSIONS, ...SPECIAL_VERSIONS };
 
 var globalVersionManager = new VersionManager();
 /**
@@ -136,7 +159,7 @@ var globalVersionManager = new VersionManager();
  */
 var ALL_VERSIONS = globalVersionManager.sortDurationsByStart(Object.values({ ...NORMAL_VERSIONS, ...SPECIAL_VERSIONS })).reverse();
 
-var ALL_MAIN_VERSION_CODE = [...new Set(ALL_VERSIONS.map((eachVersion)=>eachVersion.mainVersion))];
+var ALL_MAIN_VERSION_CODE = [...new Set(ALL_VERSIONS.map((eachVersion) => eachVersion.mainVersion))];
 
 
 var OFFICIAL_VERSIONS_KEYS = Object.keys(NORMAL_VERSIONS);
