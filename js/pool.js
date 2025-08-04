@@ -10,7 +10,6 @@
 function rearrangeAllWarpPools(allPoolsObj, referenceVersions) {
     var ingredients = Object.keys(allPoolsObj);//poolnames
     rearranged = [];
-    console.log(ingredients,referenceVersions);
     for (eachVersion of referenceVersions) {
         let results = ingredients.filter((eachPoolName) => allPoolsObj[eachPoolName].versionInfo == eachVersion);
         if (results.length > 0) {

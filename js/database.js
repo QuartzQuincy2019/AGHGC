@@ -227,6 +227,7 @@ function refreshPoolKeywords(pool) {
 }
 
 var CHARACTER_LIST = [
+    new Character("c000", 4, CombatType.physical, Path.destruction, { "zh-CN": "四星陪跑", "en": "4*Up", "jp": "4*Up" }),
     //1.0
     new Character("arla", 4, CombatType.lightning, Path.destruction, { "zh-CN": "阿兰", "en": "Arlan", "jp": "アーラン" }),
     new Character("asta", 4, CombatType.fire, Path.harmony, { "zh-CN": "艾丝妲", "en": "Asta", "jp": "アスター" }),
@@ -259,7 +260,7 @@ var CHARACTER_LIST = [
     new Character("kafk", 5, CombatType.lightning, Path.nihility, { "zh-CN": "卡芙卡", "en": "Kafka", "jp": "カフカ" }, { "alias": ["卡妈"] }),
     new Character("luka", 4, CombatType.physical, Path.nihility, { "zh-CN": "卢卡", "en": "Luka", "jp": "ルカ" }),
     //1.3
-    new Character("dhil", 5, CombatType.imaginary, Path.destruction, { "zh-CN": "丹恒·饮月", "en": "Dan Heng • Imbibitor Lunae", "jp": "丹恒・飲月" }, { "alias": ["饮月君", "丹恒饮月", "sp丹恒", "SP丹恒"] }),
+    new Character("dhil", 5, CombatType.imaginary, Path.destruction, { "zh-CN": "丹恒·饮月", "en": "Dan Heng • Imbibitor Lunae", "jp": "丹恒・飲月" }, { "alias": ["饮月君", "丹恒饮月", "sp丹恒", "SP丹恒", "饮月"] }),
     new Character("fxua", 5, CombatType.quantum, Path.preservation, { "zh-CN": "符玄", "en": "Fu Xuan", "jp": "符玄" }, { "alias": ["太卜"] }),
     new Character("lynx", 4, CombatType.quantum, Path.abundance, { "zh-CN": "玲可", "en": "Lynx", "jp": "リンクス" }),
     //1.4
@@ -321,8 +322,8 @@ var CHARACTER_LIST = [
     new Character("hysi", 5, CombatType.physical, Path.nihility, { "zh-CN": "海瑟音", "en": "Hysilens", "jp": "セイレンス" }, { "exclusiveLc": "whydoe5" }),
     new Character("cery", 5, CombatType.wind, Path.harmony, { "zh-CN": "刻律德菈", "en": "Cerydra", "jp": "ケリュドラ" }, { "exclusiveLc": "epoche5" }),
     //3.6
-    new Character("ever", 5, CombatType.ice, Path.remembrance, { "zh-CN": "长夜月", "en": "Evernight", "jp": "長夜月" }, { "alias": ["sp三月七", "SP三月七"] }),
-    new Character("terr", 5, CombatType.fire, Path.preservation, { "zh-CN": "荒笛", "en": "Terravox", "jp": "荒笛" }, { "alias": ["sp丹恒", "SP丹恒"] }),
+    new Character("ever", 5, CombatType.ice, Path.remembrance, { "zh-CN": "长夜月", "en": "Evernight", "jp": "長夜月" }, { "alias": ["sp三月七", "SP三月七", "伞月七", "黑三月七", "Darch"] }),
+    new Character("dhpt", 5, CombatType.physical, Path.preservation, { "zh-CN": "丹恒·腾荒", "en": "Dan Heng • Permansor Terrae", "jp": "丹恒・騰荒" }, { "alias": ["sp丹恒", "SP丹恒", "丹恒腾荒", "腾荒"] }),
     //3.7
     // new Character("cyre", 5, CombatType.ice, Path.remembrance, { "zh-CN": "昔涟", "en": "Cyrene", "jp": "キュレネ" }),
     //3.8
@@ -330,7 +331,8 @@ var CHARACTER_LIST = [
 ];
 
 var LIGHTCONE_LIST = [
-    new Lightcone("placeho", 4, Path.destruction, { "zh-CN": "?", "en": "?", "jp": "?" }),
+    new Lightcone("l000000", 4, Path.destruction, { "zh-CN": "四星陪跑", "en": "4*Up", "jp": "4*Up" }),
+    // 
     new Lightcone("aftert4", 4, Path.erudition, { "zh-CN": "谐乐静默之后", "en": "After the Charmony Fall", "jp": "調和が沈黙した後" }),
     new Lightcone("asecre3", 4, Path.destruction, { "zh-CN": "秘密誓心", "en": "A Secret Vow", "jp": "秘密の誓い" }),
     new Lightcone("boundl2", 4, Path.nihility, { "zh-CN": "无边曼舞", "en": "Boundless Choreo", "jp": "終わりなき舞踏" }),
@@ -437,7 +439,7 @@ var CHARACTER_EVENT_WARPS = {
     "C3_6_1": new Pool("C3_6_1", "3.6@1", "character", () => [
         ['ever'],
         included_Scommon,
-        ['placeho'],
+        ['c000'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'mish', 'moze', 'nata', 'pela',
@@ -1245,7 +1247,7 @@ var LIGHTCONE_EVENT_WARPS = {
     "L3_5_3": new Pool("L3_5_3", "3.5@2", "lightcone", () => [
         ['epoche5'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
-        ['placeho'],
+        ['l000000'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'moze', 'mish', 'nata', 'pela',
@@ -1264,7 +1266,7 @@ var LIGHTCONE_EVENT_WARPS = {
     "L3_5_4": new Pool("L3_5_4", "3.5@2", "lightcone", () => [
         ['incess2'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
-        ['placeho'],
+        ['l000000'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'moze', 'mish', 'nata', 'pela',
@@ -1283,7 +1285,7 @@ var LIGHTCONE_EVENT_WARPS = {
     "L3_5_1": new Pool("L3_5_1", "3.5@1", "lightcone", () => [
         ['whydoe5'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
-        ['placeho'],
+        ['l000000'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'moze', 'mish', 'nata', 'pela',
@@ -1302,7 +1304,7 @@ var LIGHTCONE_EVENT_WARPS = {
     "L3_5_2": new Pool("L3_5_2", "3.5@1", "lightcone", () => [
         ['patien5'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
-        ['placeho'],
+        ['l000000'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'moze', 'mish', 'nata', 'pela',
