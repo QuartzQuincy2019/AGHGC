@@ -257,7 +257,7 @@ var CHARACTER_LIST = [
     new Character("ykon", 4, CombatType.imaginary, Path.harmony, { "zh-CN": "驭空", "en": "Yukong", "jp": "御空" }),
     //1.2
     new Character("blad", 5, CombatType.wind, Path.destruction, { "zh-CN": "刃", "en": "Blade", "jp": "刃" }, { "alias": ["牢刃", "应星"] }),
-    new Character("kafk", 5, CombatType.lightning, Path.nihility, { "zh-CN": "卡芙卡", "en": "Kafka", "jp": "カフカ" }, { "alias": ["卡妈"] }),
+    new Character("kafk", 5, CombatType.lightning, Path.nihility, { "zh-CN": "卡芙卡", "en": "Kafka", "jp": "カフカ" }, { "alias": ["卡妈"], "exclusiveLc": "patien5" }),
     new Character("luka", 4, CombatType.physical, Path.nihility, { "zh-CN": "卢卡", "en": "Luka", "jp": "ルカ" }),
     //1.3
     new Character("dhil", 5, CombatType.imaginary, Path.destruction, { "zh-CN": "丹恒·饮月", "en": "Dan Heng • Imbibitor Lunae", "jp": "丹恒・飲月" }, { "alias": ["饮月君", "丹恒饮月", "sp丹恒", "SP丹恒", "饮月"] }),
@@ -268,15 +268,15 @@ var CHARACTER_LIST = [
     new Character("jliu", 5, CombatType.ice, Path.destruction, { "zh-CN": "镜流", "en": "Jingliu", "jp": "鏡流" }),
     new Character("tonu", 5, CombatType.fire, Path.thehunt, { "zh-CN": "托帕&账账", "en": "Topaz & Numby", "jp": "トパーズ＆カブ" }),
     //1.5
-    new Character("arge", 5, CombatType.physical, Path.erudition, { "zh-CN": "银枝", "en": "Argenti", "jp": "アルジェンティ" }),
+    new Character("arge", 5, CombatType.physical, Path.erudition, { "zh-CN": "银枝", "en": "Argenti", "jp": "アルジェンティ" }, { "exclusiveLc": "aninst5" }),
     new Character("hany", 4, CombatType.physical, Path.harmony, { "zh-CN": "寒鸦", "en": "Hanya", "jp": "寒鴉" }),
     new Character("hhuo", 5, CombatType.wind, Path.abundance, { "zh-CN": "藿藿", "en": "Huohuo", "jp": "フォフォ" }, { "exclusiveLc": "nighto3" }),
     //1.6
     new Character("rati", 5, CombatType.imaginary, Path.thehunt, { "zh-CN": "真理医生", "en": "Dr.Ratio", "jp": "Dr.レイシオ" }, { "exclusiveLc": "baptis4" }),
-    new Character("rmei", 5, CombatType.ice, Path.harmony, { "zh-CN": "阮·梅", "en": "Ruan Mei", "jp": "ルアン・メェイ" }, { "alias": ["阮梅"] }),
+    new Character("rmei", 5, CombatType.ice, Path.harmony, { "zh-CN": "阮·梅", "en": "Ruan Mei", "jp": "ルアン・メェイ" }, { "alias": ["阮梅"], "exclusiveLc": "pastse4" }),
     new Character("xuey", 4, CombatType.quantum, Path.destruction, { "zh-CN": "雪衣", "en": "Xueyi", "jp": "雪衣" }),
     //2.0
-    new Character("blsw", 5, CombatType.wind, Path.nihility, { "zh-CN": "黑天鹅", "en": "Black Swan", "jp": "ブラックスワン" }),
+    new Character("blsw", 5, CombatType.wind, Path.nihility, { "zh-CN": "黑天鹅", "en": "Black Swan", "jp": "ブラックスワン" }, { "exclusiveLc": "reforg2" }),
     new Character("mish", 4, CombatType.ice, Path.destruction, { "zh-CN": "米沙", "en": "Misha", "jp": "ミーシャ" }),
     new Character("spar", 5, CombatType.quantum, Path.harmony, { "zh-CN": "花火", "en": "Sparkle", "jp": "花火" }, { "exclusiveLc": "earthl2" }),
     //2.1
@@ -366,6 +366,7 @@ var LIGHTCONE_LIST = [
     //5 stars
     new Lightcone("agroun3", 5, Path.harmony, { "zh-CN": "回到大地的飞行", "en": "A Grounded Ascent", "jp": "大地より天を目指して" }),
     new Lightcone("alongt4", 5, Path.nihility, { "zh-CN": "行于流逝的岸", "en": "Along the Passing Shore", "jp": "流れ逝く岸を歩いて" }),
+    new Lightcone("aninst5", 5, Path.erudition, { "zh-CN": "片刻，留在眼底", "en": "An Instant Before A Gaze", "jp": "その一刻、目に焼き付けて" }),
     new Lightcone("athank3", 5, Path.destruction, { "zh-CN": "没有回报的加冕", "en": "A Thankless Coronation", "jp": "報われぬ戴冠" }),
     new Lightcone("baptis4", 5, Path.thehunt, { "zh-CN": "纯粹思维的洗礼", "en": "Baptism of Pure Thought", "jp": "純粋なる思惟の洗礼" }),
     new Lightcone("before2", 5, Path.erudition, { "zh-CN": "拂晓之前", "en": "Before Dawn", "jp": "夜明け前" }),
@@ -392,7 +393,9 @@ var LIGHTCONE_LIST = [
     new Lightcone("nighto3", 5, Path.abundance, { "zh-CN": "惊魂夜", "en": "Night of Fright", "jp": "驚魂の夜" }),
     new Lightcone("nighto5", 5, Path.erudition, { "zh-CN": "银河铁道之夜", "en": "Night on the Milky Way", "jp": "銀河鉄道の夜" }),
     new Lightcone("ninjut4", 5, Path.erudition, { "zh-CN": "忍法帖•缭乱破魔", "en": "Ninjutsu Inscription: Dazzling Evilbreaker", "jp": "忍法帖・繚乱破魔" }),
+    new Lightcone("pastse4", 5, Path.harmony, { "zh-CN": "镜中故我", "en": "Past Self in Mirror", "jp": "鏡の中の私" }),
     new Lightcone("patien5", 5, Path.nihility, { "zh-CN": "只需等待", "en": "Patience Is All You Need", "jp": "待つのみ" }),
+    new Lightcone("reforg2", 5, Path.nihility, { "zh-CN": "重塑时光之忆", "en": "Reforged Remembrance", "jp": "時間の記憶を再構築して" }),
     new Lightcone("saling5", 5, Path.thehunt, { "zh-CN": "驶向第二次生命", "en": "Sailing Towards a Second Life", "jp": "二度目の生に向かって" }),
     new Lightcone("scenta4", 5, Path.abundance, { "zh-CN": "唯有香如故", "en": "Scent Alone Stays True", "jp": "昔日の香りは今も猶" }),
     new Lightcone("sleepl4", 5, Path.thehunt, { "zh-CN": "如泥酣眠", "en": "Sleep Like the Dead", "jp": "泥の如き眠り" }),
@@ -1102,7 +1105,7 @@ var CHARACTER_EVENT_WARPS = {
             'thebir5', 'themol4', 'trendo5', 'undert4'
         ]
     ]),
-    //2024-12-04
+    //2.7
     "C2_7_1": new Pool("C2_7_1", "2.7@1", "character", () => [
         ['sund'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
@@ -1137,7 +1140,7 @@ var CHARACTER_EVENT_WARPS = {
             'thebir5', 'themol4', 'trendo5', 'undert4'
         ]
     ]),
-    //2024-11-13
+    //2.6
     "C2_6_3": new Pool("C2_6_3", "2.6@2", "character", () => [
         ['ache'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
@@ -1206,6 +1209,7 @@ var CHARACTER_EVENT_WARPS = {
             'thebir5', 'themol4', 'trendo5', 'undert4'
         ]
     ]),
+    //2.5
     "C2_5_3": new Pool("C2_5_3", "2.5@2", "character", () => [
         ['lsha'],
         ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
@@ -1219,7 +1223,7 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'shared2', "subscr3", 'swordp1',
             'thebir5', 'themol4', 'trendo5', 'undert4'
         ]
     ]),
@@ -1236,7 +1240,215 @@ var CHARACTER_EVENT_WARPS = {
             'geniusr', 'goodni5', 'indeli2', 'landau2',
             'maketh4', 'memori4', 'onlysi3', 'perfec2',
             'planet2', 'postop2', 'resolu6',
-            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C2_5_1": new Pool("C2_5_1", "2.5@1", "character", () => [
+        ['fxia'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['moze', 'asta', 'luka'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'moze', 'nata', 'pela', 'qque',
+            'samp', 'serv', 'ssha', 'tyun', 'lynx', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'postop2', 'resolu6',
+            'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C2_5_2-1": new Pool("C2_5_2-1", "2.5@1", "character", () => [
+        ['kafk'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['moze', 'asta', 'luka'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'moze', 'nata', 'pela', 'qque',
+            'samp', 'serv', 'ssha', 'tyun', 'lynx', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'postop2', 'resolu6',
+            'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C2_5_2-2": new Pool("C2_5_2-2", "2.5@1", "character", () => [
+        ['blsw'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['moze', 'asta', 'luka'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'moze', 'nata', 'pela', 'qque',
+            'samp', 'serv', 'ssha', 'tyun', 'lynx', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'postop2', 'resolu6',
+            'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C2_5_2-3": new Pool("C2_5_2-3", "2.5@1", "character", () => [
+        ['robi'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['moze', 'asta', 'luka'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'moze', 'nata', 'pela', 'qque',
+            'samp', 'serv', 'ssha', 'tyun', 'lynx', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'postop2', 'resolu6',
+            'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    //2.4
+    "C2_4_3": new Pool("C2_4_3", "2.4@2", "character", () => [
+        ['jqiu'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['hook', 'guin', 'arla'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'nata', 'pela', 'qque',
+            'samp', 'serv', 'ssha', 'tyun', 'lynx', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'postop2', 'resolu6',
+            'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C2_4_4": new Pool("C2_4_4", "2.4@2", "character", () => [
+        ['spar'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['hook', 'guin', 'arla'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'nata', 'pela', 'qque',
+            'samp', 'serv', 'ssha', 'tyun', 'lynx', 'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'postop2', 'resolu6',
+            'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C2_4_1": new Pool("C2_4_1", "2.4@1", "character", () => [
+        ['yunl'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['hany', 'ykon', 'lynx'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'nata', 'pela', 'qque', 'samp',
+            'serv', 'ssha', 'tyun', 'lynx', 'xuey',
+            'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4', 'geniusr',
+            'goodni5', 'indeli2', 'landau2', 'maketh4',
+            'memori4', 'onlysi3', 'perfec2', 'planet2',
+            'postop2', 'resolu6', 'shared2', "subscr3",
+            'swordp1', 'thebir5', 'themol4', 'trendo5',
+            'undert4'
+        ]
+    ]),
+    "C2_4_2": new Pool("C2_4_2", "2.4@1", "character", () => [
+        ['hhuo'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['hany', 'ykon', 'lynx'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'nata', 'pela', 'qque', 'samp',
+            'serv', 'ssha', 'tyun', 'lynx', 'xuey',
+            'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4', 'geniusr',
+            'goodni5', 'indeli2', 'landau2', 'maketh4',
+            'memori4', 'onlysi3', 'perfec2', 'planet2',
+            'postop2', 'resolu6', 'shared2', "subscr3",
+            'swordp1', 'thebir5', 'themol4', 'trendo5',
+            'undert4'
+        ]
+    ]),
+    //2.3
+    "C2_3_3": new Pool("C2_3_3", "2.3@2", "character", () => [
+        ['jade'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['serv', 'nata', 'asta'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'nata', 'pela', 'qque', 'samp',
+            'serv', 'ssha', 'tyun', 'lynx', 'xuey',
+            'ykon',
+            'asecre3', 'boundl2', 'concer3', 'danced3',
+            'dayone6', 'eyesof4', 'geniusr', 'goodni5',
+            'indeli2', 'landau2', 'maketh4', 'memori4',
+            'onlysi3', 'perfec2', 'planet2', 'postop2',
+            'resolu6', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C2_3_4": new Pool("C2_3_4", "2.3@2", "character", () => [
+        ['arge'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['serv', 'nata', 'asta'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'nata', 'pela', 'qque', 'samp',
+            'serv', 'ssha', 'tyun', 'lynx', 'xuey',
+            'ykon',
+            'asecre3', 'boundl2', 'concer3', 'danced3',
+            'dayone6', 'eyesof4', 'geniusr', 'goodni5',
+            'indeli2', 'landau2', 'maketh4', 'memori4',
+            'onlysi3', 'perfec2', 'planet2', 'postop2',
+            'resolu6', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C2_3_1": new Pool("C2_3_1", "2.3@1", "character", () => [
+        ['fire'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['gall', 'mish', 'xuey'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'nata', 'pela', 'qque', 'samp',
+            'serv', 'ssha', 'tyun', 'lynx', 'xuey',
+            'ykon',
+            'asecre3', 'boundl2', 'concer3', 'danced3',
+            'dayone6', 'eyesof4', 'geniusr', 'goodni5',
+            'indeli2', 'landau2', 'maketh4', 'memori4',
+            'onlysi3', 'perfec2', 'planet2', 'postop2',
+            'resolu6', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "C2_3_2": new Pool("C2_3_2", "2.3@1", "character", () => [
+        ['rmei'],
+        ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt', 'yqin'],
+        ['gall', 'mish', 'xuey'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'marP',
+            'mish', 'nata', 'pela', 'qque', 'samp',
+            'serv', 'ssha', 'tyun', 'lynx', 'xuey',
+            'ykon',
+            'asecre3', 'boundl2', 'concer3', 'danced3',
+            'dayone6', 'eyesof4', 'geniusr', 'goodni5',
+            'indeli2', 'landau2', 'maketh4', 'memori4',
+            'onlysi3', 'perfec2', 'planet2', 'postop2',
+            'resolu6', 'shared2', "subscr3", 'swordp1',
             'thebir5', 'themol4', 'trendo5', 'undert4'
         ]
     ]),
@@ -1975,6 +2187,7 @@ var LIGHTCONE_EVENT_WARPS = {
             'undert4', 'indeli2', 'resolu6', 'concer3'
         ]
     ]),
+    //2.6
     "L2_6_3": new Pool("L2_6_3", "2.6@2", "lightcone", () => [
         ['alongt4'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
@@ -2047,13 +2260,14 @@ var LIGHTCONE_EVENT_WARPS = {
             'undert4', 'indeli2', 'resolu6', 'concer3'
         ]
     ]),
+    //2.5
     "L2_5_3": new Pool("L2_5_3", "2.5@2", "lightcone", () => [
         ['scenta4'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
         ['shadow3', 'shared2', 'planet2'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
-            'marP', 'moze', 'mish', 'nata', 'pela',
+            'marP', 'mish', 'nata', 'pela',
             'qque', 'samp', 'serv', 'ssha', 'tyun',
             'xuey', 'ykon',
             'aftert4', 'asecre3', 'boundl2', 'concer3',
@@ -2071,7 +2285,7 @@ var LIGHTCONE_EVENT_WARPS = {
         ['shadow3', 'shared2', 'planet2'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
-            'marP', 'moze', 'mish', 'nata', 'pela',
+            'marP', 'mish', 'nata', 'pela',
             'qque', 'samp', 'serv', 'ssha', 'tyun',
             'xuey', 'ykon',
             'aftert4', 'asecre3', 'boundl2', 'concer3',
@@ -2081,6 +2295,222 @@ var LIGHTCONE_EVENT_WARPS = {
             'postop2', 'resolu6', 'shadow3', 'shared2',
             "subscr3", 'swordp1', 'thebir5', 'themol4',
             'trendo5', 'undert4'
+        ]
+    ]),
+    "L2_5_1": new Pool("L2_5_1", "2.5@1", "lightcone", () => [
+        ['iventu5'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['swordp1', 'resolu6', 'thebir5'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'aftert4', 'asecre3', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4', 'geniusr',
+            'goodni5', 'indeli2', 'landau2', 'maketh4',
+            'memori4', 'onlysi3', 'perfec2', 'planet2',
+            'postop2', 'resolu6', 'shared2',
+            "subscr3", 'swordp1', 'thebir5', 'themol4',
+            'trendo5', 'undert4'
+        ]
+    ]),
+    "L2_5_2-1": new Pool("L2_5_2-1", "2.5@1", "lightcone", () => [
+        ['patien5'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['swordp1', 'resolu6', 'thebir5'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'aftert4', 'asecre3', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4', 'geniusr',
+            'goodni5', 'indeli2', 'landau2', 'maketh4',
+            'memori4', 'onlysi3', 'perfec2', 'planet2',
+            'postop2', 'resolu6', 'shared2',
+            "subscr3", 'swordp1', 'thebir5', 'themol4',
+            'trendo5', 'undert4'
+        ]
+    ]),
+    "L2_5_2-2": new Pool("L2_5_2-2", "2.5@1", "lightcone", () => [
+        ['reforg2'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['swordp1', 'resolu6', 'thebir5'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'aftert4', 'asecre3', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4', 'geniusr',
+            'goodni5', 'indeli2', 'landau2', 'maketh4',
+            'memori4', 'onlysi3', 'perfec2', 'planet2',
+            'postop2', 'resolu6', 'shared2',
+            "subscr3", 'swordp1', 'thebir5', 'themol4',
+            'trendo5', 'undert4'
+        ]
+    ]),
+    "L2_5_2-3": new Pool("L2_5_2-3", "2.5@1", "lightcone", () => [
+        ['flowin2'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['swordp1', 'resolu6', 'thebir5'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'aftert4', 'asecre3', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4', 'geniusr',
+            'goodni5', 'indeli2', 'landau2', 'maketh4',
+            'memori4', 'onlysi3', 'perfec2', 'planet2',
+            'postop2', 'resolu6', 'shared2',
+            "subscr3", 'swordp1', 'thebir5', 'themol4',
+            'trendo5', 'undert4'
+        ]
+    ]),
+    //2.4
+    "L2_4_3": new Pool("L2_4_3", "2.4@2", "lightcone", () => [
+        ['thosem3'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['poised3', 'eyesof4', 'asecre3'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'aftert4', 'asecre3', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4', 'geniusr',
+            'goodni5', 'indeli2', 'landau2', 'maketh4',
+            'memori4', 'onlysi3', 'perfec2', 'planet2',
+            'postop2', 'resolu6', 'shared2', "subscr3",
+            'swordp1', 'thebir5', 'themol4', 'trendo5',
+            'undert4'
+        ]
+    ]),
+    "L2_4_4": new Pool("L2_4_4", "2.4@2", "lightcone", () => [
+        ['earthl2'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['poised3', 'eyesof4', 'asecre3'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'aftert4', 'asecre3', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4', 'geniusr',
+            'goodni5', 'indeli2', 'landau2', 'maketh4',
+            'memori4', 'onlysi3', 'perfec2', 'planet2',
+            'postop2', 'resolu6', 'shared2', "subscr3",
+            'swordp1', 'thebir5', 'themol4', 'trendo5',
+            'undert4'
+        ]
+    ]),
+    "L2_4_1": new Pool("L2_4_1", "2.4@1", "lightcone", () => [
+        ['dancea3'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['themol4', 'perfec2', 'thebir5'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'aftert4', 'asecre3', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4', 'geniusr',
+            'goodni5', 'indeli2', 'landau2', 'maketh4',
+            'memori4', 'onlysi3', 'perfec2', 'planet2',
+            'postop2', 'resolu6', 'shared2', "subscr3",
+            'swordp1', 'thebir5', 'themol4', 'trendo5',
+            'undert4'
+        ]
+    ]),
+    "L2_4_2": new Pool("L2_4_2", "2.4@1", "lightcone", () => [
+        ['nighto3'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['themol4', 'perfec2', 'thebir5'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'aftert4', 'asecre3', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'eyesof4', 'geniusr',
+            'goodni5', 'indeli2', 'landau2', 'maketh4',
+            'memori4', 'onlysi3', 'perfec2', 'planet2',
+            'postop2', 'resolu6', 'shared2', "subscr3",
+            'swordp1', 'thebir5', 'themol4', 'trendo5',
+            'undert4'
+        ]
+    ]),
+    //2.3
+    "L2_3_3": new Pool("L2_3_3", "2.3@2", "lightcone", () => [
+        ['yethop4'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['shared2', 'trendo5', 'aftert4'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'asecre3', 'boundl2', 'concer3', 'danced3',
+            'dayone6', 'eyesof4', 'geniusr', 'goodni5',
+            'indeli2', 'landau2', 'maketh4', 'memori4',
+            'onlysi3', 'perfec2', 'planet2', 'postop2',
+            'resolu6', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4',
+            'aftert4'
+        ]
+    ]),
+    "L2_3_4": new Pool("L2_3_4", "2.3@2", "lightcone", () => [
+        ['aninst5'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['shared2', 'trendo5', 'aftert4'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'asecre3', 'boundl2', 'concer3', 'danced3',
+            'dayone6', 'eyesof4', 'geniusr', 'goodni5',
+            'indeli2', 'landau2', 'maketh4', 'memori4',
+            'onlysi3', 'perfec2', 'planet2', 'postop2',
+            'resolu6', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4',
+            'aftert4'
+        ]
+    ]),
+    "L2_3_1": new Pool("L2_3_1", "2.3@1", "lightcone", () => [
+        ['wherea4'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['memori4', 'dayone6', 'eyesof4'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'asecre3', 'boundl2', 'concer3', 'danced3',
+            'dayone6', 'eyesof4', 'geniusr', 'goodni5',
+            'indeli2', 'landau2', 'maketh4', 'memori4',
+            'onlysi3', 'perfec2', 'planet2', 'postop2',
+            'resolu6', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
+    "L2_3_2": new Pool("L2_3_2", "2.3@1", "lightcone", () => [
+        ['pastse4'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['memori4', 'dayone6', 'eyesof4'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'asecre3', 'boundl2', 'concer3', 'danced3',
+            'dayone6', 'eyesof4', 'geniusr', 'goodni5',
+            'indeli2', 'landau2', 'maketh4', 'memori4',
+            'onlysi3', 'perfec2', 'planet2', 'postop2',
+            'resolu6', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
         ]
     ]),
 };
