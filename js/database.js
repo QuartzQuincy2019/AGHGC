@@ -1459,7 +1459,7 @@ var LIGHTCONE_EVENT_WARPS = {
     "L3_5_3": new Pool("L3_5_3", "3.5@2", "lightcone", () => [
         ['epoche5'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
-        ['l000000'],
+        ['thebir5','swordp1','goodni5'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'moze', 'mish', 'nata', 'pela',
@@ -1478,7 +1478,7 @@ var LIGHTCONE_EVENT_WARPS = {
     "L3_5_4": new Pool("L3_5_4", "3.5@2", "lightcone", () => [
         ['incess2'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
-        ['l000000'],
+        ['thebir5','swordp1','goodni5'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'moze', 'mish', 'nata', 'pela',
@@ -1497,7 +1497,7 @@ var LIGHTCONE_EVENT_WARPS = {
     "L3_5_1": new Pool("L3_5_1", "3.5@1", "lightcone", () => [
         ['whydoe5'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
-        ['l000000'],
+        ['eyesof4','poised3','indeli2'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'moze', 'mish', 'nata', 'pela',
@@ -1516,7 +1516,7 @@ var LIGHTCONE_EVENT_WARPS = {
     "L3_5_2": new Pool("L3_5_2", "3.5@1", "lightcone", () => [
         ['patien5'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
-        ['l000000'],
+        ['eyesof4','poised3','indeli2'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'moze', 'mish', 'nata', 'pela',
