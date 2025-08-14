@@ -403,9 +403,11 @@ var LIGHTCONE_LIST = [
     new Lightcone("thehel5", 5, Path.thehunt, { "zh-CN": "理想燃烧的地狱", "en": "The Hell Where Ideals Burn", "jp": "理想を焼く奈落で" }),
     new Lightcone("theunr3", 5, Path.destruction, { "zh-CN": "到不了的彼岸", "en": "The Unreachable Side", "jp": "着かない彼岸" }),
     new Lightcone("thosem3", 5, Path.nihility, { "zh-CN": "那无数个春天", "en": "Those Many Springs", "jp": "幾度目かの春" }),
+    new Lightcone("though3", 5, Path.preservation, { "zh-CN": "纵然山河万程", "en": "Though Worlds Apart", "jp": "万里の山河を越えて" }),
     new Lightcone("thusbu4", 5, Path.destruction, { "zh-CN": "黎明恰如此燃烧", "en": "Thus Burns the Dawn", "jp": "燃え盛る黎明のように" }),
     new Lightcone("timewa5", 5, Path.abundance, { "zh-CN": "时节不居", "en": "Time Waits for No One", "jp": "時節は居らず" }),
     new Lightcone("timewo4", 5, Path.remembrance, { "zh-CN": "将光阴织成黄金", "en": "Time Woven Into Gold", "jp": "光陰を織り黄金と成す" }),
+    new Lightcone("toever3", 5, Path.remembrance, { "zh-CN": "致长夜的星光", "en": "To Evernight's Stars", "jp": "長き夜に光る星へ" }),
     new Lightcone("wherea4", 5, Path.destruction, { "zh-CN": "梦应归于何处", "en": "Whereabouts Should Dreams Rest", "jp": "夢が帰り着く場所" }),
     new Lightcone("whydoe5", 5, Path.nihility, { "zh-CN": "海洋为何而歌", "en": "Why Does the Ocean Sing", "jp": "海の歌は何がため" }),
     new Lightcone("worris2", 5, Path.thehunt, { "zh-CN": "烦恼着，幸福着", "en": "Worrisome, Blissful", "jp": "悩んで笑って" }),
@@ -1456,6 +1458,25 @@ var CHARACTER_EVENT_WARPS = {
 
 var ALL_LIGHTCONE_WARP_POOLS = [];
 var LIGHTCONE_EVENT_WARPS = {
+    "L3_6_1": new Pool("L3_6_1", "3.6@1", "lightcone", () => [
+        ['toever3'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['l000000'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'moze', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'aftert4', 'asecre3', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusg', 'geniusr', 'goodni5', 'indeli2',
+            'landau2', 'maketh4', 'memori4', 'onlysi3',
+            'perfec2', 'planet2', 'poised3', 'postop2',
+            'resolu6', 'shadow3', 'shared2', "subscr3",
+            'swordp1', 'thebir5', 'themol4', 'trendo5',
+            'undert4', 'thesto4'
+        ]
+    ]),
     "L3_5_3": new Pool("L3_5_3", "3.5@2", "lightcone", () => [
         ['epoche5'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
