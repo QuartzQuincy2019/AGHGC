@@ -78,6 +78,8 @@ E_Form_PullInput.setAttribute('max', MAX_ALLOWED_PULLS);
     document.getElementById("VersionDisplayer").innerHTML = thisVersion.durationCode + "&nbsp;&nbsp;";
 }
 
+document.getElementById("DisplayerPoolQuantity").innerHTML += "本程序记录在内的卡池总数量：<strong>" + Object.keys(TOTAL_EVENT_WARPS).length + "</strong>个。";
+
 
 //当前Up角色和光锥的显示功能
 var E_SPAN_CurrentSupCharacters = document.getElementById("CurrentSupCharacters");
