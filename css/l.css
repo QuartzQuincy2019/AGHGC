@@ -93,6 +93,7 @@ div.SubmitButton:active {
 }
 
 table {
+    font-family: 'Times New Roman', Times, serif;
     margin: 0.1em;
     max-height: 2em;
 }
@@ -103,13 +104,9 @@ td {
     max-height: 1em;
 }
 
-td:first-child {
+td:nth-child(odd) {
+    font-family: Arial, Helvetica, sans-serif;
     font-weight: 1000;
-}
-
-tr:nth-child(2) {
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 800;
 }
 
 #M3_E_Result{

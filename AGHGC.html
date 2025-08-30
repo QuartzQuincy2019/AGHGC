@@ -19,7 +19,7 @@
 
 <body>
     <h1>Augmented Graphic HSR Gacha Calculator - AGHGC</h1>
-    <h3>vβ7.0.14</h3>
+    <h3>vβ8.0.0</h3>
     <p>目前支持部分角色和光锥卡池。其他卡池将于后续版本更新。受fandom更新频率影响，部分图片可能处于缺失状态。</p>
     <p>当前版本阶段（@1表示上半，@2表示下半）：<span id="VersionDisplayer" class="BoldBlue"></span></p>
     <p>当前Up角色：<span id="CurrentSupCharacters"></span></p>
@@ -34,20 +34,22 @@
         </p><textarea id="Form_AdvPoolFilter" class="AdvancedPoolFilter" title="Advanced Pool Filter"
             placeholder='如："2025 2.7 忘归"  "大停云"  "出手女"  "记忆 3.2"  "phainon"  "量子 3.1"  "向着不可"  "2025-04-26"  "2025-08"  "incessant rain" '></textarea>
     </div>
-    <h2>出货预测模块 - Frequency Distribution Prediction</h2>
-    <p>将你目前的“囤积票数”全部投入后，查看能获得五星Up的个数的概率分布列（用频率估计概率）。</p>
+    <h2>概率分布模块 - Frequency Distribution Prediction</h2>
+    <p>将不同囤积的票数全部投入后，能获得目标个数五星Up的的概率。</p>
+    <p>如某角色卡池抽取目标数量为3，则表格中计算值“203/19.369%”表示“若投入卡池203抽，将有19.369%概率获得3个及以上五星Up”</p>
+    <p>概率误差：±0.0001%（准确概率，非蒙特卡洛）</p>
     <form id="PredictionForm">
         <p class="BoldBlue">卡池选择：</p><select id="PreForm_PoolInput" title="Select Pool"></select><br>
         <p>是否5星大保底（是：1；否：0）</p><input id="PreForm_GuaranteeInput" title="Is Guaranteed" type="number" min="0" max="1"
             value="0"><br>
         <p>已多少抽未出五星（若上一抽是5星，则为0，以此类推）</p><input id="PreForm_SCountInput" title="SCount Input" type="number" min="0"
             max="89" value="0"><br>
-        <p>囤积票数(最大值:1200)：</p><input id="PreForm_PullInput" class="KeyNumberInput" title="Simulate Times" type="number"
-            min="1" max="1200" value="0"><br>
+        <!-- <p>囤积票数(最大值:1200)：</p><input id="PreForm_PullInput" class="KeyNumberInput" title="Simulate Times" type="number" -->
+            <!-- min="1" max="1200" value="0"><br> -->
         <p>抽取目标数量(最大值:7)：</p>
         <p id="PreForm_SupTargetDisplay">该卡池5星Up角色/光锥 x</p><input id="PreForm_SupInput" class="KeyNumberInput"
             title="Target: Sup" type="number" min="0" max="7" value="0"><br>
-        <div class="SubmitButton" onclick="startPrediction(getPredictionFormValue());">开始预测</div>
+        <div class="SubmitButton" onclick="predict();">开始计算</div>
     </form>
     <div id="PredictionTableArea"></div>
     <hr>
@@ -110,6 +112,7 @@
     </div>
     <script src="./js/warp.js"></script>
     <script src="./js/display.js"></script>
+    <script src="./js/prob.js"></script>
     <script src="./js/predict.js"></script>
     <script src="./js/M3.js"></script>
     <p>Copyright Quartz Studio 2019-2025 & By Quincy K.</p>

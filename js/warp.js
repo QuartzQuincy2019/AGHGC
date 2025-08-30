@@ -152,18 +152,35 @@ function getProbability(status) {
     // 常规概率计算
     const s = calculateSProbability(sCount);
     const r = 0.051; // 四星基础概率
-    return [s, s+r];
+    return [s, s + r];
 }
 
 /**
  * 计算五星基础概率（内部辅助函数）
  */
-function calculateSProbability(sCount) {
-    if (sCount + 1 <= 73) {
-        return 0.006;
-    } else {
-        return 0.006 + (sCount + 1 - 73) * 0.06;
+function calculateSProbability(sCount, poolType = CURRENT_POOLTYPE) {
+    if (poolType == PoolType.Character) {
+        // 角色池规则：前73抽概率0.6%，从第74抽开始每抽递增6%，直至100%
+        if (sCount < 73) {
+            return 0.006; // 0.6%
+        } else if (sCount < 89) {
+            // 从第74抽(sCount=73)开始递增，每抽增加6%
+            return Math.min(0.006 + 0.06 * (sCount - 72), 1.0);
+        } else {
+            return 1.0; // 第90抽及以后必出
+        }
+    } else if (poolType == PoolType.LightCone) {
+        // 光锥池规则：前65抽概率0.8%，从第66抽开始每抽递增7%，直至100%
+        if (sCount < 65) {
+            return 0.008; // 0.8%
+        } else if (sCount < 79) {
+            // 从第66抽(sCount=65)开始递增，每抽增加7%
+            return Math.min(0.008 + 0.07 * (sCount - 64), 1.0);
+        } else {
+            return 1.0; // 第80抽及以后必出
+        }
     }
+    return 0; // 默认返回值
 }
 
 /**
@@ -185,11 +202,17 @@ function determineQuality(status) {
 
 function determineUp() {
     var u = Math.random();
-    if (u <= 0.625) return 10;//未确定
-    return 0;
+    if (CURRENT_POOLTYPE == PoolType.LightCone) {
+        if (u <= 0.78125) return 10;
+        return 0;
+    }
+    if (CURRENT_POOLTYPE == PoolType.Character) {
+        if (u <= 0.5625) return 10;
+        return 0;
+    }
 }
 
-function warpWithInfo(status,obtained) {
+function warpWithInfo(status, obtained) {
     var item = [null, null];
     //随机数抽取（决定：5/4/3）
     item[0] = determineQuality(status);
@@ -206,7 +229,7 @@ function warpWithInfo(status,obtained) {
     //mode
     var mode = item[0] + item[1];
     // console.log("mode="+mode);
-    status.total ++;//这两者顺序不能颠倒
+    status.total++;//这两者顺序不能颠倒
     //currentInfo应记录：
     //1.这一抽是第几抽，因此total应先加一
     //2.在这一抽之前，有多少抽未出5星（即垫数）
@@ -217,7 +240,7 @@ function warpWithInfo(status,obtained) {
         case 15: {
             result = Sup[0];
             resultStatus = new ResultStatus(result, 15);
-            status.RCount ++;
+            status.RCount++;
             status.SCount = 0;
             status.SupSwitch = false;
             break;
@@ -225,7 +248,7 @@ function warpWithInfo(status,obtained) {
         case 5: {
             result = getRandomElement(Scommon);
             resultStatus = new ResultStatus(result, 5);
-            status.RCount ++;
+            status.RCount++;
             status.SCount = 0;
             status.SupSwitch = true;
             break;
@@ -234,7 +257,7 @@ function warpWithInfo(status,obtained) {
             result = getRandomElement(Rup);
             resultStatus = new ResultStatus(result, 14);
             status.RCount = 0;
-            status.SCount ++;
+            status.SCount++;
             status.RupSwitch = false;
             break;
         }
@@ -242,18 +265,18 @@ function warpWithInfo(status,obtained) {
             result = getRandomElement(Rcommon);
             resultStatus = new ResultStatus(result, 4);
             status.RCount = 0;
-            status.SCount ++;
+            status.SCount++;
             status.RupSwitch = true;
             break;
         }
         case 3: {
-            status.RCount ++;
-            status.SCount ++;
+            status.RCount++;
+            status.SCount++;
             break;
         }
         case 13: {
-            status.RCount ++;
-            status.SCount ++;
+            status.RCount++;
+            status.SCount++;
             break;
         }
         default: throw new Error("未出现预期情况。");
@@ -266,7 +289,7 @@ function warpWithInfo(status,obtained) {
 
 function warpWithInfoFor(pulls) {
     for (var i = 0; i < pulls; i++) {
-        warpWithInfo(GLOBAL_WARP_STATUS,OBTAINED_ITEMS);
+        warpWithInfo(GLOBAL_WARP_STATUS, OBTAINED_ITEMS);
     }
 }
 
@@ -281,7 +304,7 @@ function translateWarpInfo(obj) {
     span0.classList.add("ItemTitle");
     if (Scommon.includes(obj.rStatus.codeName)) span0.classList.add("BoldRed");
     if (Sup.includes(obj.rStatus.codeName)) {
-        span0.classList.add("BoldBlue","SupItemTitle");
+        span0.classList.add("BoldBlue", "SupItemTitle");
     };
     span0.innerHTML = item.fullName[LANGUAGE] + '<br>';
 
@@ -297,10 +320,10 @@ function translateWarpInfo(obj) {
 
     span1 = document.createElement('span');
     if (obj.wStatus.SCount >= 77) {
-        span1.classList.add('BoldRed','ItemTitle');
+        span1.classList.add('BoldRed', 'ItemTitle');
     }
     if (obj.wStatus.SCount <= 35 && Sup.includes(obj.rStatus.codeName)) {
-        span1.classList.add('BoldGreen','ItemTitle');
+        span1.classList.add('BoldGreen', 'ItemTitle');
     };
     span1.innerHTML = obj.wStatus.SCount;
 

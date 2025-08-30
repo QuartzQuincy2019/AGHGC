@@ -26,6 +26,12 @@ var Path = {
     remembrance: 8
 }
 
+var PoolType = {
+    Character: 0,
+    LightCone: 1
+}
+var CURRENT_POOLTYPE = PoolType.Character;
+
 var STAR_NUMBER = [4, 5];
 
 class Character {
@@ -208,7 +214,8 @@ class Pool {
     constructor(_code, _versionInfo, _type, _contents) {
         this.code = _code;
         this.versionInfo = _versionInfo;
-        this.type = _type;
+        if (_type === 'character') this.type = PoolType.Character;
+        if (_type === 'lightcone') this.type = PoolType.LightCone;
         this.contents = _contents;
         let kg = new KeywordsGenerator();
         kg.itemCode = this.contents()[0][0];
@@ -2927,6 +2934,7 @@ var SELECTED_POOL_NAME = "";
 function selectPool(poolName) {
     if (TOTAL_EVENT_WARPS[poolName] == undefined) return;
     SELECTED_POOL_NAME = poolName;
+    CURRENT_POOLTYPE = TOTAL_EVENT_WARPS[poolName].type;
     Sup = deepClone(TOTAL_EVENT_WARPS[poolName].contents()[0]);
     Scommon = deepClone(TOTAL_EVENT_WARPS[poolName].contents()[1]);
     /**
