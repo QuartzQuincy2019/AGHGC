@@ -1,4 +1,22 @@
 /* l.css */
+body {
+    background:
+        linear-gradient(#8ffbff,
+            transparent),
+        linear-gradient(90deg,
+            #ffdcd6,
+            transparent),
+        linear-gradient(-90deg,
+            #ffefbc,
+            transparent);
+    background-blend-mode: screen;
+}
+
+
+p {
+    margin: 6px;
+}
+
 form p {
     display: inline;
 }
@@ -32,12 +50,24 @@ div.SubmitButton {
     transition-property: all;
 }
 
-div.SubmitButton:hover {
-    background-color: aquamarine;
+.ArtisticButton1 {
+    font-weight: auto;
+    transition-duration: 300ms;
+    transition-property: all;
 }
 
-div.SubmitButton:active {
-    background-color: #f9ff7f;
+.ArtisticButton1:hover {
+    scale: 1.1;
+    background:
+        linear-gradient(limegreen,
+            transparent),
+        linear-gradient(90deg,
+            skyblue,
+            transparent),
+        linear-gradient(-90deg,
+            coral,
+            transparent);
+    background-blend-mode: screen;
 }
 
 .BoldRed {
@@ -65,19 +95,24 @@ div.SubmitButton:active {
     font-weight: 1000;
 }
 
-.EmphasisBlue{
+.BoldGrey {
+    color: grey;
+    font-weight: 1000;
+}
+
+.EmphasisBlue {
     display: inline-block;
     font-weight: 900;
     background-color: #a9fff9;
-    color:#00469d;
+    color: #00469d;
     text-shadow: 1px 1px 2px #8dc0ff;
 }
 
-.EmphasisPurple{
+.EmphasisPurple {
     display: inline-block;
     font-weight: 900;
     background-color: #fee0ff;
-    color:#89004b;
+    color: #89004b;
     text-shadow: 1px 1px 2px #ff6abc;
 }
 
@@ -92,98 +127,15 @@ div.SubmitButton:active {
     font-weight: 1000;
 }
 
-table {
-    font-family: 'Times New Roman', Times, serif;
-    margin: 0.1em;
-    max-height: 2em;
-}
-
-td {
+select {
+    max-width: 100%;
+    size: border-box;
     padding: 0.2em;
-    border: 1px solid #000;
-    max-height: 1em;
-}
-
-td:nth-child(odd) {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 1000;
-}
-
-#M3_E_Result{
-    font-size: 1.3em;
-}
-
-#M3_Input {
-    box-sizing: border-box;
-    font-size: 1em;
-    min-width: 100%;
-}
-
-div.group{
-    border: 2px solid #000;
-    padding: 0.4em;
-    border-radius: 8px;
-    margin: 0.3em;
-    padding: 0.3em;
-}
-
-input.KeyNumberInput {
-    margin: 0;
-    font-weight: 800;
-    font-size: 120%;
-}
-
-textarea.AdvancedPoolFilter {
-    box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.2em;
-    font-weight: 800;
-    min-height: 3em;
-    min-width: 100%;
-    resize: vertical;
-}
-
-textarea.AdvancedPoolFilter:focus {
-    background-color: #f9ff7f;
-    text-shadow: 0px 0px 2px #c4c4c4;
-}
-
-div.ScommonSelectors div div.card {
-    display: inline-block;
-    border: 2px solid #000;
-    border-radius: 5px;
-    padding: 0.3em;
-    margin: 0.2em;
-    cursor: pointer;
-    transition-property: all;
-    transition-duration: 200ms;
-}
-
-div.ScommonSelectors div div.card:hover {
-    color: #fff;
-    background-color: #9f9f9f;
-    text-shadow: 1px 1px 3px #fff;
+    font-size: 1.4em;
 }
 
 .CenteredText {
     text-align: center;
-}
-
-div#ScommonSelector_Inclusion,
-div#ScommonSelector_Exclusion {
-    font-weight: 800;
-}
-
-
-div#ScommonSelector_Inclusion div::before {
-    content: "✓ ";
-    color: #00bc13;
-
-}
-
-div#ScommonSelector_Exclusion div::before {
-    color: red;
-    content: "× ";
 }
 
 @keyframes gradient-move-total {

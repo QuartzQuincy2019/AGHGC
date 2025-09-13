@@ -2,6 +2,9 @@
 var E_ResultDisplayer = document.getElementById("ResultDisplayer");
 var E_FilterResult = document.getElementById("FilterResult");
 
+/**
+ * 全局卡池选择下拉菜单
+ */
 var E_Form_CharacterPoolInput = document.getElementById("Form_CharacterPoolInput");
 var E_MainForm = document.getElementById("MainForm");
 
@@ -49,6 +52,9 @@ var P_Form_PredictionTableArea = document.getElementById("PredictionTableArea");
  * 五星常驻自选
  */
 var E_ScommonSelector = document.getElementById("ScommonSelector");
+
+var E_PoolInformer = document.getElementById("PoolInformer");
+var E_PreForm_SupTargetDisplay = document.getElementById("PreForm_SupTargetDisplay");
 
 /**
  * 在展示“所有记录”时，若大于this抽，则不再显示记录
@@ -229,14 +235,13 @@ function refreshPoolSelector(destination) {
         opt.setAttribute('value', cod);//'L2_7_4'
         let ver = VERSIONS_SET[TOTAL_EVENT_WARPS[cod].versionInfo];
         // console.log(ver)
-        opt.innerHTML = /*"[" + cod + "]*/"(v" + ver.durationCode + ") - " + ver.date + " ----- " + filteredItemInAWP[j].upName;
+        opt.innerHTML = /*"[" + cod + "]*/"(v" + ver.durationCode + ") - (" + ver.date + ") ------- " + filteredItemInAWP[j].upName;
         destination.appendChild(opt);
     }
 }
 refreshPoolSelector(E_Form_CharacterPoolInput);
 E_Form_AdvPoolFilter.addEventListener('input', () => {
     refreshPoolSelector(E_Form_CharacterPoolInput);
-    refreshPoolSelector(PreForm_PoolInput);
 });
 
 function checkImageExists(path, callback) {
@@ -405,11 +410,16 @@ function moveInclusion(card) {
     }
 }
 
-P_Form_PFS.addEventListener('change', function () {
-    var pool = TOTAL_EVENT_WARPS[P_Form_PFS.value];
+E_Form_CharacterPoolInput.addEventListener('change', function () {
+    var pool = TOTAL_EVENT_WARPS[E_Form_CharacterPoolInput.value];
     var txt = findItem(pool.contents()[0][0]).fullName[LANGUAGE];
-    P_Form_STD.innerHTML = '<strong class="BoldBlue">' + txt + ' </strong>X'
-})
+    P_Form_STD.innerHTML = '<strong class="BoldBlue">' + txt + ' </strong>X';
+    E_PoolInformer.innerHTML = '<p>当前选择：<span class="BoldBlue">' + txt + '</span>卡池</p>';
+    E_PreForm_SupTargetDisplay.innerHTML = '<p><span class="BoldBlue">' + txt + '</span> x</p>';
+});
+
+E_PoolInformer.innerHTML = '<p>当前选择：<span class="BoldBlue">' + findItem(TOTAL_EVENT_WARPS[E_Form_CharacterPoolInput.value].contents()[0][0]).fullName[LANGUAGE] + '</span>卡池</p>';
+E_PreForm_SupTargetDisplay.innerHTML = '<p><span class="BoldBlue">' + findItem(TOTAL_EVENT_WARPS[E_Form_CharacterPoolInput.value].contents()[0][0]).fullName[LANGUAGE] + '</span> x</p>';
 
 
 modifiedScommonVersionDetection();//  这个只能放在最后，否则就会报错。
