@@ -458,8 +458,8 @@ var CHARACTER_LIST = [
         { "zh-CN": "丹恒·腾荒", "en": "Dan Heng • Permansor Terrae", "jp": "丹恒・騰荒" },
         { "exclusiveLc": "though3", "alias": ["sp丹恒", "SP丹恒", "丹恒腾荒", "腾荒", "蛋黄", "DHPT", "dhpt", "PT", "pt"] }),
     //3.7
-    // new Character("cyre", 5, CombatType.ice, Path.remembrance,
-    //{ "zh-CN": "昔涟", "en": "Cyrene", "jp": "キュレネ" }),
+    new Character("cyre", 5, CombatType.ice, Path.remembrance,
+        { "zh-CN": "昔涟", "en": "Cyrene", "jp": "キュレネ" }, { "alias": ["大昔涟"] }),
     //3.8
     // new Character("", 5, CombatType., Path.,
     //{ "zh-CN": "", "en": "", "jp": "" }),
@@ -655,11 +655,30 @@ const DEFAULT_INCLUDED_SCOMMON = ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt'
 
 var ALL_CHARACTER_WARP_POOLS = [];
 var CHARACTER_EVENT_WARPS = {
+    //3.7
+    "C3_7_1": new Pool("C3_7_1", "3.7@1", "character", () => [
+        ['cyre'],
+        included_Scommon,
+        ['c000'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'moze', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
     //3.6
     "C3_6_3": new Pool("C3_6_3", "3.6@2", "character", () => [
         ['dhpt'],
         included_Scommon,
-        ['c000'],
+        ['hany', 'ssha', 'serv'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'mish', 'moze', 'nata', 'pela',
@@ -677,7 +696,7 @@ var CHARACTER_EVENT_WARPS = {
     "C3_6_4": new Pool("C3_6_4", "3.6@2", "character", () => [
         ['anax'],
         included_Scommon,
-        ['c000'],
+        ['hany', 'ssha', 'serv'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'mish', 'moze', 'nata', 'pela',
@@ -695,7 +714,7 @@ var CHARACTER_EVENT_WARPS = {
     "C3_6_1": new Pool("C3_6_1", "3.6@1", "character", () => [
         ['ever'],
         included_Scommon,
-        ['c000'],
+        ['mish', 'guin', 'xuey'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'mish', 'moze', 'nata', 'pela',
@@ -711,9 +730,9 @@ var CHARACTER_EVENT_WARPS = {
         ]
     ]),
     "C3_6_2": new Pool("C3_6_2", "3.6@1", "character", () => [
-        ['cast'],
+        ['ther'],
         included_Scommon,
-        ['c000'],
+        ['mish', 'guin', 'xuey'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'mish', 'moze', 'nata', 'pela',
@@ -1731,7 +1750,7 @@ var LIGHTCONE_EVENT_WARPS = {
     "L3_6_3": new Pool("L3_6_3", "3.6@2", "lightcone", () => [
         ['though3'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
-        ['l000000'],
+        ['landau2', 'onlysi3', 'perfec2'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'moze', 'mish', 'nata', 'pela',
@@ -1750,7 +1769,7 @@ var LIGHTCONE_EVENT_WARPS = {
     "L3_6_4": new Pool("L3_6_4", "3.6@2", "lightcone", () => [
         ['lifesh6'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
-        ['l000000'],
+        ['landau2', 'onlysi3', 'perfec2'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'moze', 'mish', 'nata', 'pela',
@@ -1769,7 +1788,7 @@ var LIGHTCONE_EVENT_WARPS = {
     "L3_6_1": new Pool("L3_6_1", "3.6@1", "lightcone", () => [
         ['toever3'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
-        ['l000000'],
+        ['dreams2', 'aftert4', 'danced3'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'moze', 'mish', 'nata', 'pela',
@@ -1786,9 +1805,9 @@ var LIGHTCONE_EVENT_WARPS = {
         ]
     ]),
     "L3_6_2": new Pool("L3_6_2", "3.6@1", "lightcone", () => [
-        ['makefa4'],
+        ['intoth4'],
         ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
-        ['l000000'],
+        ['dreams2', 'aftert4', 'danced3'],
         ['arla', 'asta', 'dhen', 'gall', 'guin',
             'hany', 'hert', 'hook', 'luka', 'lynx',
             'marP', 'moze', 'mish', 'nata', 'pela',
