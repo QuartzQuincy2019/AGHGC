@@ -1,5 +1,4 @@
 // predict.js
-const PRECISION = 5; //概率显示精度(百分比小数点后x位)
 
 refreshPoolSelector(E_Form_CharacterPoolInput);
 function getPredictionFormValue() {
@@ -11,7 +10,8 @@ function getPredictionFormValue() {
     // var pull = document.getElementById("PreForm_PullInput").value;
     var SupNumber = document.getElementById("PreForm_SupInput").value;
     selectPool(pool);
-    document.getElementById("PreForm_SupTargetDisplay").innerHTML = "<strong>" + findItem(Sup).fullName[LANGUAGE] + "&nbsp;&nbsp;&nbsp;x</strong>";
+    document.getElementById("PreForm_SupTargetDisplay").innerHTML = "<p class='BoldBlue'>" + findItem(Sup).fullName[LANGUAGE] + "&nbsp;&nbsp;&nbsp;x</p>";
+E_PreForm_SupTargetDisplay.innerHTML = '<p><span class="BoldBlue">' + findItem(Sup).fullName[LANGUAGE] + '</span> x</p>';
     P_Form_PredictionTableArea.innerHTML = '“抽取目标数量”不允许多于65。对抽取过程进行计算，最多需要20秒钟。期间请勿再次按下“开始计算”按钮。';
     return {
         selectedPool: pool, //所选卡池
@@ -20,9 +20,6 @@ function getPredictionFormValue() {
         targetQty: Number(SupNumber) //目标五星Up个数
     };
 }
-
-var PREDICTION_RESULTS;
-var FINAL_PREDICTED_P = 1;
 
 function predict() {
     var predictionFormValueObj = getPredictionFormValue();
@@ -69,6 +66,7 @@ function predict() {
     for (var i = 1; i <= res.length; i++) {
         seq.push(i);
     }
+    //计算期望
     var exp = calculateExpectedPulls(predictionFormValueObj.targetQty, warpStatus, poolType);
     const PREDICTION_RESULTS = {
         Xs: seq,
@@ -138,3 +136,6 @@ function predict() {
     document.getElementById("PredictionExpectationArea").innerHTML = "达成抽取目标的期望抽数：<span class='BoldBlue'>" + formatFloat(PREDICTION_RESULTS.E, PRECISION) + "</span>";
     document.getElementById("PredictionTableArea").appendChild(_table);
 }
+
+
+//AGHGC后期将更新复合概率计算功能，采用蒙特卡洛模拟概率。

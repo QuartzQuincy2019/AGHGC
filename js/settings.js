@@ -10,3 +10,6 @@ var TODAY = 0;
     TODAY = dateToMJD(now);
 }
 // TODAY=60870;
+
+const BOXED_COLUMN = 15;//每行展示的记录数
+const PRECISION = 5; //概率显示精度(百分比小数点后x位)

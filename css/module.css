@@ -39,25 +39,29 @@ textarea.AdvancedPoolFilter:focus {
 
 /* 第一模块 */
 
-table {
+#PredictionTableArea table {
     margin: 0.1em;
     border-spacing: 6px;
 }
 
-#PredictionTableArea {
+.BoxedExhibition table{
+    border-spacing: 0;
+}
+
+#PredictionTableArea, .BoxedExhibition {
     overflow-x: scroll;
 }
 
 #PredictionTableArea td {
     padding: 0.3em;
     max-height: 1.3em;
-    font-size: 1.15em;
+    font-size: 1.1em;
 }
 
 #PredictionTableArea td:nth-child(odd) {
     font-family: '等线', Arial, Helvetica, sans-serif;
     font-weight: 1000;
-    border: 3px outset #000;
+    border: 3px ridge #000;
 }
 
 #PredictionTableArea td:nth-child(even) {

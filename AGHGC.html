@@ -21,11 +21,11 @@
 <body>
     <h1>Augmented Graphic HSR Gacha Calculator - AGHGC</h1>
     <h3>《崩坏：星穹铁道》抽卡计算器</h3>
-    <h3>v1.0.0</h3>
+    <h3>v1.1.0</h3>
     <p>目前支持部分角色和光锥卡池。其他卡池将于后续版本更新。受fandom更新频率影响，部分图片可能处于缺失状态。</p>
     <div class="SubmitButton ArtisticButton1" onclick="switchLanguage();">切换数据库语言</div>
     <div class="module">
-        <h2>当前卡池信息 - Current Pool Information</h2>
+        <h2>当前卡池信息 - Current Pool Status</h2>
         <p>当前版本阶段（@1表示上半，@2表示下半）：<span id="VersionDisplayer" class="BoldBlue"></span></p>
         <p>当前Up角色：<span id="CurrentSupCharacters"></span></p>
         <p>当前Up光锥：<span id="CurrentSupLightcones"></span></p>
@@ -47,8 +47,9 @@
         </div>
     </div>
     <div class="module">
-        <h2>概率分布模块 - Frequency Distribution Prediction</h2>
-        <p>展示将囤积的票数全部投入后，能获得(至少)目标个数五星Up的的概率。</p>
+        <h2>概率分布模块 - Probability Distribution Calculation</h2>
+        <p>展示投入不同票数后，能获得(至少)目标个数五星Up的的概率。</p>
+        <p class="CenteredText BoldYellow">说 明</p>
         <p>概率以表格形式呈现。如某角色卡池抽取目标数量为3，小保底，0垫数，则表格中计算值“203/19.36850%”表示“以小保底0五星垫数为起点，若向卡池投入203抽，则将有19.36850%的概率获得(至少)3个五星Up”
         </p>
         <p>“达成抽取目标的期望抽数”表示达成抽取目标所需要的平均抽数。如小保底、0垫数，抽取3个五星Up的期望抽数是“268.65724”，则表示“以小保底0垫数为起点，平均需要268.65724抽就能抽出(至少)3个五星Up”
@@ -71,6 +72,7 @@
         <div id="PredictionExpectationArea"></div>
         <div id="PredictionTableArea"></div>
     </div>
+
     <div class="module">
         <h2>抽卡模拟模块 - Simple Pull Simulation</h2>
         <p>抽取总次数：最大值<span id="E_MAX_ALLOWED_PULLS" class="BoldRed">?</span>。</p>
@@ -89,9 +91,9 @@
                 <span class="BoldBlue">点击项目(而不是拖曳)可以切换其上下位置。</span>
             </p>
             <hr>
-            <div id="ScommonSelector_Inclusion">***可歪五星***</div>
+            <div id="ScommonSelector_Inclusion">***已选中***</div>
             <hr>
-            <div id="ScommonSelector_Exclusion">***不可歪五星***</div>
+            <div id="ScommonSelector_Exclusion">***未选中***</div>
         </div>
         <div class="group">
             <form id="MainForm">
@@ -112,16 +114,16 @@
                     style="min-width: 100px;"></select>
             </form>
         </div>
-        <h4>筛选结果：</h4>
+        <h4>筛选结果(向右滑动查看更多)：</h4>
         <div class="BoxedExhibition" id="FilterResult"></div>
         <hr>
-        <h4>获取总览：</h4>
+        <h4>获取总览(向右滑动查看更多)：</h4>
         <div class="BoxedExhibition" id="ResultDisplayer"></div>
     </div>
     <div class="module">
-        <h2>版本计算模块 - Version Date Calculation</h2>
+        <h2>版本查询模块 - Version Date Inquiry</h2>
         <div class="group">
-            <p><span class="BoldBlue">版本日期查询 - Version Date Information</span></p>
+            <p><span class="BoldBlue">版本日期查询</span></p>
             <p>在文本框中输入完整日期(如"2025-02-01"，<span class="BoldRed">一定要补0</span>)可查询对应版本；输入版本则查询对应日期。
                 <br>输入n个“+”则可查询<span class="BoldPurple">n个半版本之后的信息</span>，n个“-”则相反。
                 <br>查询到的结果中，<span class="BoldPurple">@1表示上半，@2表示下半。</span>
@@ -130,6 +132,38 @@
             <input type="text" title="Enter a date (YYYY-MM-dd)" id="M3_Input"
                 placeholder='形如"v3.3上半"、"3.3@1"、"v3.3#1"、"3.3 1"等格式，或"++"、"-----"皆被允许'>
             <p id="M3_E_Result"></p>
+        </div>
+    </div>
+
+    <div class="module">
+        <h2>复合概率模块 - Complex Frequency Simulation</h2>
+        <p class="BoldRed">模块四正在开发中……</p>
+        <p>投入固定的抽数，按照某个抽卡策略，抽取到“C+L”的概率。</p>
+        <p>囿于程序限制，本模块无法计算准确概率。以下所有的结果都是经过蒙特卡洛模拟得出的。</p>
+        <div class="group">
+            <p class="BoldBlue">角色卡池</p>
+            <p>是否5星大保底（是：1；否：0）<input id="M4_C_5G_Input" title="Is Guaranteed" type="number" min="0" max="1" value="0">
+            </p>
+            <p>已多少抽未出5星（若上一抽是5星，则为0，以此类推）<input id="M4_C_Count_Input" title="SCount Input" type="number" min="0"
+                    max="89" value="0"></p>
+            <p class="BoldBlue">光锥卡池</p>
+            <p>是否5星大保底（是：1；否：0）<input id="M4_L_5G_Input" title="Is Guaranteed" type="number" min="0" max="1" value="0">
+            </p>
+            <p>已多少抽未出5星（若上一抽是5星，则为0，以此类推）<input id="M4_L_Count_Input" title="SCount Input" type="number" min="0"
+                    max="79" value="0"></p>
+            <p class="BoldBlue">抽取策略</p>
+            <ol>
+                <li>先角色后光锥</li>
+                <li>先光锥后角色</li>
+                <li>一角色一光锥</li>
+                <li>一光锥一角色</li>
+            </ol>
+            <p>选择抽取策略：<input id="M4_Strategy_Input" title="Strategy" type="number" min="1" max="4" value="1"></p>
+            <p class="BoldBlue">投入抽数</p>
+            <p>投入总抽数：<input id="M4_Investment" class="KeyNumberInput" title="Invested Pulls" type="number" min="1"
+                    max="1800" value="0"></p>
+            <div class="SubmitButton ArtisticButton1" onclick="">开始模拟</div>
+            </form>
         </div>
     </div>
     <script src="./js/warp.js"></script>

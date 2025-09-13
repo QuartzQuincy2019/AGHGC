@@ -26,12 +26,7 @@ form * {
 }
 
 div.BoxedExhibition {
-    padding: 0;
-    width: 98%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-    /* 自动填充，最小200px */
-    gap: 0.3em;
+    padding: 3px;
 }
 
 
@@ -76,7 +71,7 @@ div.SubmitButton {
 }
 
 .BoldGreen {
-    color: #00bc13;
+    color: #009d10;
     font-weight: 1000;
 }
 
@@ -86,7 +81,7 @@ div.SubmitButton {
 }
 
 .BoldYellow {
-    color: #c39800;
+    color: #cf7f00;
     font-weight: 1000;
 }
 

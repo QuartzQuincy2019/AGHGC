@@ -1,4 +1,5 @@
 //display.js
+
 var E_ResultDisplayer = document.getElementById("ResultDisplayer");
 var E_FilterResult = document.getElementById("FilterResult");
 
@@ -320,14 +321,25 @@ function showObtainedInfo(obj, destination) {
 
 /**
  * 用于第二模块，根据OBTAINED_ITEMS中的所有信息，展示“所有记录”
- * @returns 0
  */
 function showAllObtainedInfo() {
     E_ResultDisplayer.innerHTML = "";
     if (E_Form_PullInput.value > MAX_GENERAL_RECORD_QUANTITY) return 0;
-    for (var i = 0; i < OBTAINED_ITEMS.length; i++) {
-        showObtainedInfo(OBTAINED_ITEMS[i], E_ResultDisplayer);
+    var table = document.createElement("table");
+    var col = BOXED_COLUMN;
+    var row = Math.ceil(OBTAINED_ITEMS.length / col);
+    for (var i = 0; i < row; i++) {
+        var tr = document.createElement("tr");
+        for (var j = 0; j < col; j++) {
+            var idx = i * col + j;
+            var td = document.createElement("td");
+            td.appendChild(translateItemInfo(OBTAINED_ITEMS[idx]));
+            tr.appendChild(td);
+            if (idx >= OBTAINED_ITEMS.length - 1) break;
+        }
+        table.appendChild(tr);
     }
+    E_ResultDisplayer.appendChild(table);
     return 0;
 }
 
@@ -340,9 +352,21 @@ function refreshFilterBoxDisplay() {
     E_FilterResult.innerHTML = '';
     if (E_Form_PullInput.value > MAX_FILTERED_RECORD_QUANTITY) return 0;
     var results = collectRecordsByCodeName(OBTAINED_ITEMS, code);
-    for (var i = 0; i < results.length; i++) {
-        showObtainedInfo(results[i], E_FilterResult);
+    var table = document.createElement("table");
+    var col = BOXED_COLUMN;
+    var row = Math.ceil(results.length / col);
+    for (var i = 0; i < row; i++) {
+        var tr = document.createElement("tr");
+        for (var j = 0; j < col; j++) {
+            var idx = i * col + j;
+            var td = document.createElement("td");
+            td.appendChild(translateItemInfo(results[idx]));
+            tr.appendChild(td);
+            if (idx >= results.length - 1) break;
+        }
+        table.appendChild(tr);
     }
+    E_FilterResult.appendChild(table);
 }
 
 E_Form_CFS.addEventListener('change', function () {
