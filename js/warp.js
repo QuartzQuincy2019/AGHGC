@@ -134,7 +134,7 @@ class ResultStatus {
  * @param {WarpStatus} status 
  * @returns {[number, number]} 
  */
-function getProbability(status) {
+function getProbability(status, poolType = CURRENT_POOLTYPE) {
     const sCount = Number(status.SCount);
     const rCount = Number(status.RCount);
 
@@ -145,12 +145,12 @@ function getProbability(status) {
 
     // 处理四星保底
     if (rCount + 1 >= 10) {
-        let s = calculateSProbability(sCount);
+        let s = calculateSProbability(sCount, poolType);
         return [s, 1]; // 四星概率 = 1 - 五星概率 = 1 - s
     }
 
     // 常规概率计算
-    const s = calculateSProbability(sCount);
+    const s = calculateSProbability(sCount, poolType);
     const r = 0.051; // 四星基础概率
     return [s, s + r];
 }
@@ -187,8 +187,8 @@ function calculateSProbability(sCount, poolType = CURRENT_POOLTYPE) {
  * 
  * @param {WarpStatus} status 
  */
-function determineQuality(status) {
-    var probArray = getProbability(status);
+function determineQuality(status, poolType = CURRENT_POOLTYPE) {
+    var probArray = getProbability(status, poolType);
     var randomed = Math.random();
     // console.log("randomed="+randomed,'probArray='+probArray);
     if (randomed < probArray[0]) {
@@ -200,22 +200,22 @@ function determineQuality(status) {
     }
 }
 
-function determineUp() {
+function determineUp(poolType = CURRENT_POOLTYPE) {
     var u = Math.random();
-    if (CURRENT_POOLTYPE == PoolType.LightCone) {
+    if (poolType == PoolType.LightCone) {
         if (u <= 0.78125) return 10;
         return 0;
     }
-    if (CURRENT_POOLTYPE == PoolType.Character) {
+    if (poolType == PoolType.Character) {
         if (u <= 0.5625) return 10;
         return 0;
     }
 }
 
-function warpWithInfo(status, obtained) {
+function warpWithInfo(status, obtained, poolType = CURRENT_POOLTYPE) {
     var item = [null, null];
     //随机数抽取（决定：5/4/3）
-    item[0] = determineQuality(status);
+    item[0] = determineQuality(status, poolType);
 
     if (status.SupSwitch == true) {
         item[1] = 10;
@@ -223,7 +223,7 @@ function warpWithInfo(status, obtained) {
         item[1] = 10;
     } else {
         //随机数抽取（决定：10/0）
-        item[1] = determineUp();
+        item[1] = determineUp(poolType);
     }
 
     //mode
@@ -285,6 +285,7 @@ function warpWithInfo(status, obtained) {
         // console.log(currentInfo);
         obtained.push({ rStatus: resultStatus, wStatus: currentInfo });
     }
+    return mode;
 }
 
 function warpWithInfoFor(pulls) {
