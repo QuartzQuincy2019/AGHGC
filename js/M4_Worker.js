@@ -20,32 +20,34 @@ self.onmessage = function (event) {
         return sC >= event.data.TargetCQty && sL >= event.data.TargetLQty;
     }
     console.log('Worker 收到消息:', event.data);
-    const selfData = deepClone(event.data);
-    var selfStatusC = selfData.CharacterStatus;
-    var selfStatusL = selfData.LightconeStatus;
+    const selfData = deepClone(event.data);//各线程初始值
+    var variableStatusC = deepClone(selfData.CharacterStatus);
+    var variableStatusL = deepClone(selfData.LightconeStatus);
+    var index = selfData.BatchIndex;
     function initializeStatus() {
-        selfStatusC = selfData.CharacterStatus;
-        selfStatusL = selfData.LightconeStatus;
+        variableStatusC = deepClone(selfData.CharacterStatus);
+        variableStatusL = deepClone(selfData.LightconeStatus);
     }
-    var pt = PoolType.Character;
     var sC = 0, sL = 0;//获得数
     var meet = 0;//达成数
     var obtained = [];
-    const investment = event.data.Investment;
+    const investment = selfData.Investment;
     var invested = 0;
-    switch (event.data.Strategy) {
+    switch (selfData.Strategy) {
         case 1: {//先C后L
             for (var i = 0; i < selfData.SimulationTimes; i++) {
-                var pt = PoolType.Character;
-                sC = 0; sL = 0; invested = 0; obtained = [];
+                var pt = PoolType.Character;//初始卡池类型
                 initializeStatus();
+                sC = 0; sL = 0; invested = 0; obtained = [];
                 while (invested < investment) {
                     var mode = 0;
-                    if (pt == PoolType.Character) mode = warpWithInfo(selfStatusC, obtained, pt);
-                    if (pt == PoolType.Lightcone) mode = warpWithInfo(selfStatusL, obtained, pt);
+                    if (pt == PoolType.Character) mode = warpWithInfo(variableStatusC, obtained, pt);
+                    if (pt == PoolType.LightCone) mode = warpWithInfo(variableStatusL, obtained, pt);
                     if (mode == 15 && pt == PoolType.Character) sC++;
-                    if (mode == 15 && pt == PoolType.Lightcone) sL++;
-                    if (sC == event.data.TargetCQty) pt = PoolType.Lightcone;//切换卡池
+                    if (mode == 15 && pt == PoolType.LightCone) sL++;
+                    if (sC == selfData.TargetCQty) {
+                        pt = PoolType.LightCone;//切换卡池
+                    }//切换卡池
                     invested++;
                     if (isAchieved(sC, sL)) {
                         meet++;
@@ -57,16 +59,18 @@ self.onmessage = function (event) {
         }
         case 2: {//先L后C
             for (var i = 0; i < selfData.SimulationTimes; i++) {
-                var pt = PoolType.Lightcone;
-                sC = 0; sL = 0; invested = 0; obtained = [];
+                var pt = PoolType.LightCone;//初始卡池类型
                 initializeStatus();
+                sC = 0; sL = 0; invested = 0; obtained = [];
                 while (invested < investment) {
                     var mode = 0;
-                    if (pt == PoolType.Character) mode = warpWithInfo(selfStatusC, obtained, pt);
-                    if (pt == PoolType.Lightcone) mode = warpWithInfo(selfStatusL, obtained, pt);
+                    if (pt == PoolType.Character) mode = warpWithInfo(variableStatusC, obtained, pt);
+                    if (pt == PoolType.LightCone) mode = warpWithInfo(variableStatusL, obtained, pt);
                     if (mode == 15 && pt == PoolType.Character) sC++;
-                    if (mode == 15 && pt == PoolType.Lightcone) sL++;
-                    if (sL == event.data.TargetLQty) pt = PoolType.Character;//切换卡池
+                    if (mode == 15 && pt == PoolType.LightCone) sL++;
+                    if (sL == selfData.TargetLQty) {
+                        pt = PoolType.Character;//切换卡池
+                    }//切换卡池
                     invested++;
                     if (isAchieved(sC, sL)) {
                         meet++;

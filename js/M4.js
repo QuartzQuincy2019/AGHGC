@@ -37,8 +37,6 @@ function getM4Status() {
 }
 
 function executeM4() {
-    const SIMULATION_TIMES = 10000;
-    const MAX_WORKERS = Math.min(navigator.hardwareConcurrency || 4, 10);
     var workersResults = [];
     var completedWorkers = 0;
     var sum = 0;
@@ -77,7 +75,7 @@ function executeM4() {
                 console.log(completedWorkers + '/' + MAX_WORKERS + ' Worker 完成计算:', event.data);
                 if (completedWorkers == MAX_WORKERS) {
                     sum = merge();
-    E_M4_Result.innerHTML = "计算完成，概率约 " + (sum / (SIMULATION_TIMES * MAX_WORKERS) * 100).toFixed(2) + "%";
+                    E_M4_Result.innerHTML = "计算完成，概率约<span class='BoldBlue'> " + (sum / (SIMULATION_TIMES * MAX_WORKERS) * 100).toFixed(1) + "%</span>";
                 }
             };
         }
