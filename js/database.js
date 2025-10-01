@@ -429,7 +429,7 @@ var CHARACTER_LIST = [
     //3.3
     new Character("hyac", 5, CombatType.wind, Path.remembrance,
         { "zh-CN": "风堇", "en": "Hyacine", "jp": "ヒアンシー" },
-        { "exclusiveLc": "longma6" }),
+        { "exclusiveLc": "longma6", "alias": ["风宝"] }),
     new Character("ciph", 5, CombatType.quantum, Path.nihility,
         { "zh-CN": "赛飞儿", "en": "Cipher", "jp": "サフェル" },
         { "exclusiveLc": "liesda5", "alias": ["飞儿", "赛菲尔", "赛菲儿", "赛飞尔", "塞飞尔", "塞菲尔", "Cifera", "cifera", "cifra"] }),
@@ -453,13 +453,14 @@ var CHARACTER_LIST = [
     //3.6
     new Character("ever", 5, CombatType.ice, Path.remembrance,
         { "zh-CN": "长夜月", "en": "Evernight", "jp": "長夜月" },
-        { "exclusiveLc": "toever3", "alias": ["sp三月七", "SP三月七", "伞月七", "黑三月七", "Darch", "darch"] }),
+        { "exclusiveLc": "toever3", "alias": ["sp三月七", "SP三月七", "伞月七", "黑三月七", "Darch", "darch", "长月夜"] }),
     new Character("dhpt", 5, CombatType.physical, Path.preservation,
         { "zh-CN": "丹恒·腾荒", "en": "Dan Heng • Permansor Terrae", "jp": "丹恒・騰荒" },
         { "exclusiveLc": "though3", "alias": ["sp丹恒", "SP丹恒", "丹恒腾荒", "腾荒", "蛋黄", "DHPT", "dhpt", "PT", "pt"] }),
     //3.7
     new Character("cyre", 5, CombatType.ice, Path.remembrance,
-        { "zh-CN": "昔涟", "en": "Cyrene", "jp": "キュレネ" }, { "alias": ["大昔涟"] }),
+        { "zh-CN": "昔涟", "en": "Cyrene", "jp": "キュレネ" },
+        { "exclusiveLc": "thislo3", "alias": ["大昔涟", "PhiLia093", "爱莉希雅", "Elysia", "elysia"] }),
     //3.8
     // new Character("", 5, CombatType., Path.,
     //{ "zh-CN": "", "en": "", "jp": "" }),
@@ -606,6 +607,8 @@ var LIGHTCONE_LIST = [
         { "zh-CN": "理想燃烧的地狱", "en": "The Hell Where Ideals Burn", "jp": "理想を焼く奈落で" }),
     new Lightcone("theunr3", 5, Path.destruction,
         { "zh-CN": "到不了的彼岸", "en": "The Unreachable Side", "jp": "着かない彼岸" }),
+    new Lightcone("thislo3", 5, Path.remembrance,
+        { "zh-CN": "爱如此刻永恒", "en": "This Love, Forever", "jp": "愛は永遠の今" }),
     new Lightcone("thosem3", 5, Path.nihility,
         { "zh-CN": "那无数个春天", "en": "Those Many Springs", "jp": "幾度目かの春" }),
     new Lightcone("though3", 5, Path.preservation,
@@ -1746,6 +1749,26 @@ var CHARACTER_EVENT_WARPS = {
 
 var ALL_LIGHTCONE_WARP_POOLS = [];
 var LIGHTCONE_EVENT_WARPS = {
+    //3.7
+    "L3_7_1": new Pool("L3_7_1", "3.7@1", "lightcone", () => [
+        ['thislo3'],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['l000000'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'moze', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'aftert4', 'asecre3', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusg', 'geniusr', 'goodni5', 'indeli2',
+            'landau2', 'maketh4', 'memori4', 'onlysi3',
+            'perfec2', 'planet2', 'poised3', 'postop2',
+            'resolu6', 'shadow3', 'shared2', "subscr3",
+            'swordp1', 'thebir5', 'themol4', 'trendo5',
+            'undert4', 'thesto4'
+        ]
+    ]),
     //3.6
     "L3_6_3": new Pool("L3_6_3", "3.6@2", "lightcone", () => [
         ['though3'],
