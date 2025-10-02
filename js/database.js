@@ -70,7 +70,7 @@ class Lightcone {
     star;
     path;//命途
     fullName;//光锥名称
-
+    params;
     icon;//74*74
     /**
      * 
@@ -79,12 +79,13 @@ class Lightcone {
      * @param {Path} path 
      * @param {object} fullName 
      */
-    constructor(code, star, path, fullName) {
+    constructor(code, star, path, fullName, _params = {}) {
         this.code = code;
         this.star = star;
         this.icon = './img/lc74/' + this.code + '.png';
         this.path = path;
         this.fullName = fullName;
+        this.params = _params;
     }
     get keywords() {
         var itemKg = new ItemKeywordsGenerator(this.code);
@@ -235,9 +236,11 @@ function refreshPoolKeywords(pool) {
 
 var CHARACTER_LIST = [
     new Character("c000", 4, CombatType.physical, Path.destruction,
-        { "zh-CN": "四星陪跑", "en": "4*Up", "jp": "4*Up" }),
+        { "zh-CN": "四星陪跑", "en": "4*Up", "jp": "4*Up" },
+        { "type": "placeholder" }),
     new Character("c001", 5, CombatType.physical, Path.destruction,
-        { "zh-CN": "未确定", "en": "TBP", "jp": "?" }),
+        { "zh-CN": "未确定", "en": "TBP", "jp": "?" },
+        { "type": "placeholder" }),
     //1.0
     new Character("arla", 4, CombatType.lightning, Path.destruction,
         { "zh-CN": "阿兰", "en": "Arlan", "jp": "アーラン" }),
@@ -468,7 +471,8 @@ var CHARACTER_LIST = [
 
 var LIGHTCONE_LIST = [
     new Lightcone("l000000", 4, Path.destruction,
-        { "zh-CN": "四星陪跑", "en": "4*Up", "jp": "4*Up" }),
+        { "zh-CN": "四星陪跑", "en": "4*Up", "jp": "4*Up" },
+        { "type": "placeholder" }),
     // 4 stars
     new Lightcone("aftert4", 4, Path.erudition,
         { "zh-CN": "谐乐静默之后", "en": "After the Charmony Fall", "jp": "調和が沈黙した後" }),

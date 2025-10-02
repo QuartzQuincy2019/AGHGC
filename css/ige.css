@@ -1,0 +1,72 @@
+/* ige.css */
+
+#Header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+#SideBarButton {
+    display: none;
+}
+
+#SideBar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 18%;
+    overflow-y: scroll;
+}
+
+.ItemArea{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 4px;
+    justify-items: center;
+}
+.SidebarItem {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.SidebarItem:hover {
+    transform: scale(1.1);
+}
+.SidebarItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+    #SideBarButton {
+        display: block;
+        position: fixed;
+        right: 5px;
+        width: 18px;
+        height: 18px;
+        text-align: center;
+        background-color: #f1f1f1;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+    #SideBarButton:hover {
+        background-color: #ddd;
+    }
+
+    #SideBar {
+        position: fixed;
+        left: 0;
+        height: 100%;
+        width: 85%;
+    }
+}
