@@ -35,6 +35,14 @@ function findLightcone(lightconeCode) {
     return _lc;
 }
 
+function isCharacter(item){
+    return item instanceof Character;
+}
+
+function isLightcone(item){
+    return item instanceof Lightcone;
+}
+
 function findItem(code) {
     if (characterMap.hasOwnProperty(code)) return findCharacter(code);
     if (lightconeMap.hasOwnProperty(code)) return findLightcone(code);

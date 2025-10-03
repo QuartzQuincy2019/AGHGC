@@ -1,10 +1,7 @@
 /* ige.css */
-
-#Header {
-    background-color: #4CAF50;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
+#IGE_Container {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
 }
 
 #SideBarButton {
@@ -12,39 +9,78 @@
 }
 
 #SideBar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 18%;
+    height: 100vh;
     overflow-y: scroll;
+    background-color: azure;
 }
 
-.ItemArea{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-    gap: 4px;
-    justify-items: center;
+#Information {
+    padding: 30px;
 }
+
+.ItemArea {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 3px;
+    justify-items: center;
+    margin: 4px;
+    box-sizing: border-box;
+}
+
 .SidebarItem {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 50px;
+    height: 50px;
+    border: 2px solid #7d7d7d;
+    border-radius: 6px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.2s;
 }
+
 .SidebarItem:hover {
     transform: scale(1.1);
 }
+
 .SidebarItem img {
-    width: 100%;
-    height: 100%;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
 }
 
+#IGE_IllustrationArea {
+    background-color: #333333;
+    display: block;
+    float: right;
+    border: 1px solid #ccc;
+    border-radius: 18px;
+}
+
+#IGE_Illustration_Caption {
+    text-align: center;
+    padding: 12px;
+    font-size: 22px;
+    font-weight: bold;
+    background-color: beige;
+    font-family: 'Times New Roman', Times, serif, '宋体';
+    border-radius: 18px 18px 0 0;
+}
+
+img#IGE_Illustration {
+    /* 控制图片大小 */
+    width: 450px;
+    height: auto;
+    vertical-align: middle;
+}
+
 @media screen and (max-width: 768px) {
+    #IGE_Container {
+        display: block;
+    }
+
+    #Information {
+        padding: 0;
+    }
+
     #SideBarButton {
         display: block;
         position: fixed;
@@ -69,4 +105,29 @@
         height: 100%;
         width: 85%;
     }
+
+    #IGE_IllustrationArea {
+        display: block;
+        float: none;
+        border: 1px solid #ccc;
+        border-radius: 18px;
+    }
+
+    img#IGE_Illustration {
+        /* 控制图片大小 */
+        width: 100vw;
+        height: auto;
+        vertical-align: middle;
+    }
+}
+
+#IGE_Title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif, '宋体';
+}
+
+.ige_subtitle{
+    font-family: 'Times New Roman', Times, serif, '宋体';
 }

@@ -1,4 +1,5 @@
 //lang.js
+
 var lang = {
     "zh-CN": {
         "languangeName": "简体中文",
@@ -40,6 +41,9 @@ var lang = {
         "totalCount":"#",
         "character":"角色",
         "lightcone":"光锥",
+        "poolCode":"卡池代号",
+        "versionInfo":"版本",
+        "ige_frequency":"总出现次数",
         "FileNotFound":"文件不存在"
     },
     "en": {
@@ -82,6 +86,9 @@ var lang = {
         "totalCount":"#",
         "character":"character",
         "lightcone":"lightcone",
+        "poolCode":"Pool Code",
+        "versionInfo":"Version",
+        "ige_frequency":"Total Frequency",
         "FileNotFound":"The file doesn't exist."
     },
     "jp": {
@@ -124,6 +131,9 @@ var lang = {
         "totalCount":"#",
         "character":"キャラクター",
         "lightcone":"光円錐",
+        "poolCode":"プールコード",
+        "versionInfo":"バージョン",
+        "ige_frequency":"総出現回数",
         "FileNotFound":"ファイルは存在しません"
     }
 }

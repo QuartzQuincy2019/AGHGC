@@ -41,6 +41,7 @@ class Character {
     path;//角色命途
     fullName;//全名
     icon;//40*40肖像
+    artwork;
     params;//其他信息
     /**
      * 
@@ -54,6 +55,7 @@ class Character {
         this.code = code;
         this.star = star;
         this.icon = './img/p40/' + this.code + '.png';
+        this.artwork = './img/aC/' + this.code + '.png';
         this.combatType = combatType;
         this.path = path;
         this.fullName = fullName;
@@ -72,6 +74,7 @@ class Lightcone {
     fullName;//光锥名称
     params;
     icon;//74*74
+    artwork;
     /**
      * 
      * @param {string} code 
@@ -83,6 +86,7 @@ class Lightcone {
         this.code = code;
         this.star = star;
         this.icon = './img/lc74/' + this.code + '.png';
+        this.artwork = './img/aL/' + this.code + '.png';
         this.path = path;
         this.fullName = fullName;
         this.params = _params;
@@ -223,6 +227,14 @@ class Pool {
         kg.versionCode = this.versionInfo;
         kg.insdinctiveCode = this.code;
         this.keywords = kg.keywords;
+    }
+    getInfo() {
+        let text = "";
+        text = lang[LANGUAGE].poolCode + ": " + this.code
+            + " | " + lang[LANGUAGE].versionInfo + ": " + this.versionInfo
+            + " | " + MJDToDateString(VERSIONS_SET[this.versionInfo].dateStart) + " ~ " + MJDToDateString(VERSIONS_SET[this.versionInfo].lastDate)
+            + " | " + "Up: " + findItem(this.contents()[0][0]).fullName[LANGUAGE];
+        return text;
     }
 }
 

@@ -1,8 +1,4 @@
 // ige_sidebar.js
-var E_SideBarButton = document.getElementById('SideBarButton');
-var E_SideBar = document.getElementById('SideBar');
-var E_IGE_Sidebar_Characters = document.getElementById('IGE_Sidebar_Characters');
-var E_IGE_Sidebar_Lightcones = document.getElementById('IGE_Sidebar_Lightcones');
 
 function toggleSideBarLayout() {
     if (window.innerWidth <= 768) {//移动端
@@ -52,6 +48,15 @@ function fillItemArea(database, itemArea) {
         let item = document.createElement('div');
         item.title = database[i].fullName[LANGUAGE] + " (" + lang[LANGUAGE]._Path[database[i].path] + ")";
         item.classList.add('SidebarItem');
+        item.onclick = () => {
+            _IGE_Status.selectedItemCode = database[i].code;
+            if (isCharacter(database[i])) {
+                _IGE_Status.selectedItemType = "Character";
+            } else if (isLightcone(database[i])) {
+                _IGE_Status.selectedItemType = "LightCone";
+            }
+            switchPage(database[i].code);
+        }
         let img = document.createElement('img');
         img.src = database[i].icon;
         item.appendChild(img);

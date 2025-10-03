@@ -18,11 +18,26 @@
 
 <body>
     <div id="SideBarButton"></div>
-    <div id="SideBar">
-        <p>角色项目 - Character Items</p>
-        <div class="ItemArea" id="IGE_Sidebar_Characters"></div>
-        <p>光锥项目 - Lightcone Items</p>
-        <div class="ItemArea" id="IGE_Sidebar_Lightcones"></div>
+    <div id="IGE_Container">
+        <div id="SideBar">
+            <p>角色项目 - Character Items</p>
+            <div class="ItemArea" id="IGE_Sidebar_Characters"></div>
+            <p>光锥项目 - Lightcone Items</p>
+            <div class="ItemArea" id="IGE_Sidebar_Lightcones"></div>
+        </div>
+        <div id="Information">
+            <div id="IGE_Title">标题</div>
+            <hr><hr>
+            <div id="IGE_IllustrationArea">
+                <div id="IGE_Illustration_Caption">插图标题</div>
+                <img id="IGE_Illustration" src="" alt="插图不存在或未加载">
+                <div id="IGE_Illustration_DetailsArea"></div>
+            </div>
+            <div>返回<a href="./AGHGC.html" target="_self">AGHGC</a></div>
+            <h2 id="IGE_Frequency" class="ige_subtitle">总出现次数</h2>
+            <div id="IGE_Frequency_Detail">出处</div>
+        </div>
     </div>
+    <script src="./js/ige.js"></script>
     <script src="./js/ige_sidebar.js"></script>
 </body>
