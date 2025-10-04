@@ -1,7 +1,9 @@
 /* ige.css */
 #IGE_Container {
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 3fr;
+    align-content: stretch;
+    align-items: stretch;
 }
 
 #SideBarButton {
@@ -10,15 +12,39 @@
 
 #SideBar {
     height: 100vh;
+    left: 0;
     overflow-y: scroll;
-    background-color: azure;
+    background-color: #f0ffffc0;
 }
 
 #Information {
-    padding: 30px;
+    height: 100vh;
+    overflow-y: scroll;
+    padding-left: 30px;
 }
 
-.ItemArea {
+.SidebarItemGroup {
+    margin-top: 18px;
+}
+
+.SidebarItemGroup hr {
+    margin: 2px;
+    border-color: #000;
+}
+
+.SidebarItemGroupTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 0;
+    padding-left: 0;
+    font-family: 'Times New Roman', Times, serif, '宋体';
+}
+
+.SidebarItemGroupTitle::before {
+    content: "★";
+}
+
+.SidebarItemGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
     gap: 3px;
@@ -37,6 +63,10 @@
     transition: transform 0.2s;
 }
 
+.InlineItem{
+    display: inline-block;
+}
+
 .SidebarItem:hover {
     transform: scale(1.1);
 }
@@ -45,6 +75,14 @@
     width: 50px;
     height: 50px;
     object-fit: cover;
+}
+
+.Star5Item {
+    background-color: rgb(225, 200, 122);
+}
+
+.Star4Item {
+    background-color: rgb(193, 153, 253);
 }
 
 #IGE_IllustrationArea {
@@ -58,16 +96,46 @@
 #IGE_Illustration_Caption {
     text-align: center;
     padding: 12px;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
     background-color: beige;
     font-family: 'Times New Roman', Times, serif, '宋体';
-    border-radius: 18px 18px 0 0;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
 }
+
+.IID {
+    text-align: center;
+    padding: 6px;
+    font-size: 14px;
+    color: #555;
+    background-color: #f9f9f9;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.Elegant {
+    text-align: center;
+    padding: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #444;
+    background-color: #f9f9f9;
+    font-family: 'Times New Roman', Times, serif, '宋体';
+}
+
+#IGE_InnerCode::before {
+    content: "Code in AGHGC: ";
+}
+
+#IGE_IllustrationArea:last-child {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
 
 img#IGE_Illustration {
     /* 控制图片大小 */
-    width: 450px;
+    width: 400px;
     height: auto;
     vertical-align: middle;
 }
@@ -85,13 +153,13 @@ img#IGE_Illustration {
         display: block;
         position: fixed;
         right: 5px;
-        width: 18px;
-        height: 18px;
+        width: 36px;
+        height: 36px;
         text-align: center;
         background-color: #f1f1f1;
         border: none;
         cursor: pointer;
-        font-size: 14px;
+        font-size: 30px;
         transition: background-color 0.3s;
     }
 
@@ -108,6 +176,8 @@ img#IGE_Illustration {
 
     #IGE_IllustrationArea {
         display: block;
+        box-sizing: border-box;
+        width: 100%;
         float: none;
         border: 1px solid #ccc;
         border-radius: 18px;
@@ -115,7 +185,7 @@ img#IGE_Illustration {
 
     img#IGE_Illustration {
         /* 控制图片大小 */
-        width: 100vw;
+        width: inherit;
         height: auto;
         vertical-align: middle;
     }
@@ -128,6 +198,6 @@ img#IGE_Illustration {
     font-family: 'Times New Roman', Times, serif, '宋体';
 }
 
-.ige_subtitle{
+.ige_subtitle {
     font-family: 'Times New Roman', Times, serif, '宋体';
 }

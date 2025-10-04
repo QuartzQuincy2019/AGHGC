@@ -37,31 +37,72 @@ E_SideBarButton.onclick = () => {
 }
 
 window.addEventListener('resize', function () {
-    toggleSideBarLayout();
+    toggleSideBarLayout(); toggleSideBar(); toggleSideBar();
 });
 
-//E_IGE_Sidebar_Characters
-function fillItemArea(database, itemArea) {
-    itemArea.innerHTML = "";//清空
-    for (let i = 0; i < database.length; i++) {
-        if (database[i].params.type === "placeholder") continue;
-        let item = document.createElement('div');
-        item.title = database[i].fullName[LANGUAGE] + " (" + lang[LANGUAGE]._Path[database[i].path] + ")";
-        item.classList.add('SidebarItem');
-        item.onclick = () => {
-            _IGE_Status.selectedItemCode = database[i].code;
-            if (isCharacter(database[i])) {
-                _IGE_Status.selectedItemType = "Character";
-            } else if (isLightcone(database[i])) {
-                _IGE_Status.selectedItemType = "LightCone";
-            }
-            switchPage(database[i].code);
+function generateItemButton(item) {
+    var div = document.createElement('div');
+    div.classList.add('SidebarItem','InlineItem');
+    if (item.star == 4) div.classList.add("Star4Item");
+    if (item.star == 5) div.classList.add("Star5Item");
+    let img = document.createElement('img');
+    img.src = item.icon;
+    div.appendChild(img);
+    div.onclick = () => {
+        _IGE_Status.selectedItemCode = item.code;
+        if (isCharacter(item)) {
+            _IGE_Status.selectedItemType = "Character";
+        } else if (isLightcone(item)) {
+            _IGE_Status.selectedItemType = "LightCone";
         }
-        let img = document.createElement('img');
-        img.src = database[i].icon;
-        item.appendChild(img);
-        itemArea.appendChild(item);
+        switchPage(item.code);
+    }
+    return div;
+}
+
+//E_IGE_Sidebar_Characters
+function fillItemArea(classificationObj, itemArea) {
+    itemArea.innerHTML = "";//清空
+    for (let i = 0; i < classificationObj.classified.length; i++) {
+        var itemGroup = document.createElement('div');
+        itemGroup.classList.add('SidebarItemGroup');
+        var itemGroupTitle = document.createElement('div');
+        itemGroupTitle.classList.add('SidebarItemGroupTitle');
+        itemGroupTitle.innerText = lang[LANGUAGE][classificationObj.standard][i];//分类标题
+        itemGroup.appendChild(itemGroupTitle);
+        itemGroup.appendChild(document.createElement('hr'));
+        var gridArea = document.createElement('div');
+        gridArea.classList.add('SidebarItemGrid');
+        for (let j = 0; j < classificationObj.classified[i].length; j++) {
+            const thisItem = findItem(classificationObj.classified[i][j]);
+            let gridItem = document.createElement('div');
+            gridItem.title = thisItem.fullName[LANGUAGE] + " (" + lang[LANGUAGE]._Path[thisItem.path] + ")";
+            gridItem.classList.add('SidebarItem');
+            gridItem.onclick = () => {
+                _IGE_Status.selectedItemCode = thisItem.code;
+                if (isCharacter(thisItem)) {
+                    _IGE_Status.selectedItemType = "Character";
+                } else if (isLightcone(thisItem)) {
+                    _IGE_Status.selectedItemType = "LightCone";
+                }
+                switchPage(thisItem.code);
+            }
+            if (thisItem.star == 4) gridItem.classList.add("Star4Item");
+            if (thisItem.star == 5) gridItem.classList.add("Star5Item");
+            let img = document.createElement('img');
+            img.src = thisItem.icon;
+            gridItem.appendChild(img);
+            gridArea.appendChild(gridItem);
+        }
+        itemGroup.appendChild(gridArea);
+        itemArea.appendChild(itemGroup);
     }
 }
-fillItemArea(CHARACTER_LIST, E_IGE_Sidebar_Characters);
-fillItemArea(LIGHTCONE_LIST, E_IGE_Sidebar_Lightcones);
+fillItemArea(classifyCharacters("_Party"), E_IGE_Sidebar_Characters);
+fillItemArea(classifyLightcones("_Path"), E_IGE_Sidebar_Lightcones);
+
+function sidebarCharacterReclassify() {
+    let select = document.getElementById("CharacterReclassify");
+    let classification = select.value;
+    fillItemArea(classifyCharacters(classification), E_IGE_Sidebar_Characters);
+}

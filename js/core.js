@@ -35,11 +35,11 @@ function findLightcone(lightconeCode) {
     return _lc;
 }
 
-function isCharacter(item){
+function isCharacter(item) {
     return item instanceof Character;
 }
 
-function isLightcone(item){
+function isLightcone(item) {
     return item instanceof Lightcone;
 }
 
@@ -171,4 +171,18 @@ function ofPeriod(test, mjd_start, mjd_end) {
     if (mjd_start <= test && test <= mjd_end) return 0;
     if (test > mjd_end) return 1;
     if (test < mjd_start) return -1;
+}
+
+Array.prototype.remove = function (val) {
+    const index = this.indexOf(val);
+    if (index > -1) {
+        this.splice(index, 1);
+    }
+}
+
+Array.prototype.toRemoved = function (val) {
+    const index = this.indexOf(val);
+    if (index > -1) {
+        return this.toSpliced(index, 1);
+    }
 }

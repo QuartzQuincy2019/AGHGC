@@ -21,19 +21,32 @@
     <div id="IGE_Container">
         <div id="SideBar">
             <p>角色项目 - Character Items</p>
+            <select title="角色重排" id="CharacterReclassify" onchange="sidebarCharacterReclassify()">
+                <option value="_Party">按阵营分类</option>
+                <option value="_CombatType">按属性分类</option>
+                <option value="_Path">按命途分类</option>
+            </select>
             <div class="ItemArea" id="IGE_Sidebar_Characters"></div>
+            <hr>
+            <hr>
+            <hr>
             <p>光锥项目 - Lightcone Items</p>
             <div class="ItemArea" id="IGE_Sidebar_Lightcones"></div>
         </div>
         <div id="Information">
             <div id="IGE_Title">标题</div>
-            <hr><hr>
+            <hr>
+            <hr>
             <div id="IGE_IllustrationArea">
                 <div id="IGE_Illustration_Caption">插图标题</div>
                 <img id="IGE_Illustration" src="" alt="插图不存在或未加载">
-                <div id="IGE_Illustration_DetailsArea"></div>
+                <div id="IGE_EnglishName" class="Elegant"></div>
+                <div id="IGE_Path" class="Elegant"></div>
+                <div id="IGE_InnerCode" class="IID"></div>
             </div>
             <div>返回<a href="./AGHGC.html" target="_self">AGHGC</a></div>
+            <h2 class="ige_subtitle">Info</h2>
+            <div id="IGE_ExclusiveLc"></div>
             <h2 id="IGE_Frequency" class="ige_subtitle">总出现次数</h2>
             <div id="IGE_Frequency_Detail">出处</div>
         </div>
