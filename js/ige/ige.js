@@ -18,8 +18,7 @@ var E_IGE_Timer = document.getElementById('IGE_Timer');
 
 
 var _IGE_Status = {
-    selectedItemCode: null,
-    selectedItemType: null, // "Character" or "LightCone"
+    selectedItemCode: null
 }
 
 function calculateRerun() {
@@ -54,40 +53,59 @@ function calculateRerun() {
     return rerunCalculations.sort((pre, next) => next.lastRerun - pre.lastRerun);
 }
 
+function generateItemButton(item) {
+    var div = document.createElement('div');
+    div.classList.add('SidebarItem', 'InlineItem');
+    if (item.star == 4) div.classList.add("Star4Item");
+    if (item.star == 5) div.classList.add("Star5Item");
+    let img = document.createElement('img');
+    img.src = item.icon;
+    div.title = item.fullName[LANGUAGE];
+    div.appendChild(img);
+    if (item.params.type == "placeholder") {
+        return div;
+    }
+    div.onclick = () => {
+        _IGE_Status.selectedItemCode = item.code;
+        switchPage(item.code);
+    }
+    return div;
+}
+
 function switchPage(code) {
     //清空显示
     E_IGE_ExclusiveLc.innerHTML = "";
     E_IGE_Timer.innerHTML = "";
     E_IGE_Frequency_Detail.innerHTML = "";
+    E_IGE_Illustration_Caption.innerText = "";
+    E_IGE_Path.innerText = "";
+    E_IGE_InnerCode.innerText = "";
+    E_IGE_EnglishName.innerText = "";
+    E_IGE_Frequency.innerText = "";
+    //填充显示
 
 
     let item = findItem(code);
-    E_IGE_Title.innerText = item.fullName[LANGUAGE];
-    E_IGE_Illustration.src = item.artwork;
-    E_IGE_Illustration_Caption.innerText = item.fullName[LANGUAGE];
-    E_IGE_EnglishName.innerText = item.fullName["en"];
-    E_IGE_Path.innerText = lang[LANGUAGE]._Path[item.path];
     if (isCharacter(item)) {
-        E_IGE_Path.innerText += " - " + lang[LANGUAGE]._CombatType[item.combatType];
+        E_IGE_Path.innerText = lang[LANGUAGE]._Path[item.path] + " - " + lang[LANGUAGE]._CombatType[item.combatType];
         if (item.star == 5) {
-            let exclusiveLc = findItem(item.params.exclusiveLc);
-            E_IGE_ExclusiveLc.innerHTML += lang[LANGUAGE].exclusive_lc + ": <span class='BoldBlue'>" + exclusiveLc.fullName[LANGUAGE] + "</span>";
-            E_IGE_ExclusiveLc.appendChild(generateItemButton(exclusiveLc));
+            if (item.params.exclusiveLc) {
+                let exclusiveLc = findItem(item.params.exclusiveLc);
+                E_IGE_ExclusiveLc.innerHTML += lang[LANGUAGE].exclusive_lc + ": <span class='BoldBlue'>" + exclusiveLc.fullName[LANGUAGE] + "</span>";
+                E_IGE_ExclusiveLc.appendChild(generateItemButton(exclusiveLc));
+            }
         }
     }
     if (isLightcone(item)) {
+        E_IGE_Path.innerText = lang[LANGUAGE]._Path[item.path];
         if (item.star == 5) {
-            let exclusiveCh;
-            for (characterCode of CHARACTER_CODES) {
-                if (findItem(characterCode).params.exclusiveLc == item.code) {
-                    exclusiveCh = findItem(characterCode);
-                }
+            let exclusiveCh = findItem(findExclusiveCharacterCode(item.code));
+            if (exclusiveCh != null) {
+                E_IGE_ExclusiveLc.innerHTML += lang[LANGUAGE].exclusive_ch + ": <span class='BoldBlue'>" + exclusiveCh.fullName[LANGUAGE] + "</span>";
+                E_IGE_ExclusiveLc.appendChild(generateItemButton(exclusiveCh));
             }
-            E_IGE_ExclusiveLc.innerHTML += lang[LANGUAGE].exclusive_ch + ": <span class='BoldBlue'>" + exclusiveCh.fullName[LANGUAGE] + "</span>";
-            E_IGE_ExclusiveLc.appendChild(generateItemButton(exclusiveCh));
         }
     }
-    E_IGE_InnerCode.innerText = item.code;
     var pools = [];
     for (pool in TOTAL_EVENT_WARPS) {
         if (TOTAL_EVENT_WARPS[pool].contents()[0][0] == code || TOTAL_EVENT_WARPS[pool].contents()[2].includes(code)) {
@@ -96,15 +114,25 @@ function switchPage(code) {
     }
     for (var i = 0; i < pools.length; i++) {
         let li = document.createElement("li");
-        li.innerHTML = pools[i].getInfo();
+        li.innerHTML += pools[i].getInfo();
+        // if (findItem(pools[i].contents()[2][0]).params.type == "placeholder") continue;
+        li.appendChild(generateItemButton(findItem(pools[i].contents()[0][0])));
+        li.appendChild(generateItemButton(findItem(pools[i].contents()[2][0])));
+        li.appendChild(generateItemButton(findItem(pools[i].contents()[2][1])));
+        li.appendChild(generateItemButton(findItem(pools[i].contents()[2][2])));
         E_IGE_Frequency_Detail.append(li);
     }
     if (pools.length > 0) {
         for (pool of pools) {
+            console.log(pool.code);
             if (pool.code == "C3_4_A-1" || pool.code == "C3_4_A-2" || pool.code == "L3_4_A-1" || pool.code == "L3_4_A-2") {
                 continue;
             }
-            if (ofPeriod(TODAY, pool.dateStart, pool.getLastDateMjd()) == 1) {
+            if (ofPeriod(TODAY, pool.getFirstDateMjd(), pool.getLastDateMjd()) < 1) {
+                E_IGE_Timer.innerHTML = "";
+                break;
+            }
+            if (ofPeriod(TODAY, pool.getFirstDateMjd(), pool.getLastDateMjd()) == 1) {
                 let diff = TODAY - pool.getLastDateMjd();
                 //上次复刻天数
                 E_IGE_Timer.innerHTML = lang[LANGUAGE].lastRerun + ": <span class='BoldBlue'>" + diff + "</span> " + lang[LANGUAGE].daysAgo;
@@ -113,6 +141,11 @@ function switchPage(code) {
         }
     }
     E_IGE_Frequency.innerText = lang[LANGUAGE].ige_frequency + ": " + pools.length;
+    E_IGE_Title.innerText = item.fullName[LANGUAGE];
+    E_IGE_Illustration.src = item.artwork;
+    E_IGE_Illustration_Caption.innerText = item.fullName[LANGUAGE];
+    E_IGE_EnglishName.innerText = item.fullName["en"];
+    E_IGE_InnerCode.innerText = item.code;
 }
 
 function classifyCharacters(mode) {
@@ -150,7 +183,7 @@ function classifyCharacters(mode) {
 
 function classifyLightcones(mode) {
     var classifiedLightcones = [];
-    var removedLightcones = LIGHTCONE_CODES.toRemoved("l000000");
+    var removedLightcones = LIGHTCONE_CODES.toRemoved("l000000").toRemoved("NOTAVAI");
     switch (mode) {
         case "_Path": {
             for (path in Path) {
@@ -178,8 +211,5 @@ function switchIgeLanguage() {
     sidebarCharacterReclassify();
     fillItemArea(classifyLightcones("_Path"), E_IGE_Sidebar_Lightcones);
     let code = _IGE_Status.selectedItemCode;
-    let type = "";
-    if (isCharacter(findItem(code))) type = "Character";
-    if (isLightcone(findItem(code))) type = "LightCone";
-    switchPage(_IGE_Status.selectedItemCode);
+    switchPage(code);
 }

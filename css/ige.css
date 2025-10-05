@@ -65,8 +65,15 @@
     transition: transform 0.2s;
 }
 
+ol#IGE_Frequency_Detail li{
+    border: 1px solid #000;
+    margin: 2px;
+    padding: 5px;
+}
+
 .InlineItem{
     display: inline-block;
+    margin: 0 3px 0 3px;
 }
 
 .SidebarItem:hover {

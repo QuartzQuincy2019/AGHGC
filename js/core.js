@@ -168,6 +168,9 @@ Set.prototype.getComplimentFrom = function (U) {
  * @returns 0：在期间   1：在之后    -1：在之前
  */
 function ofPeriod(test, mjd_start, mjd_end) {
+    if (!test || !mjd_start || !mjd_end) {
+        throw new Error("ofPeriod: MJD指定出现错误：\n" + test + "\n" + mjd_start + "\n" + mjd_end);
+    }
     if (mjd_start <= test && test <= mjd_end) return 0;
     if (test > mjd_end) return 1;
     if (test < mjd_start) return -1;

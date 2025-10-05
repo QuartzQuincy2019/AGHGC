@@ -32,7 +32,6 @@ function toggleSideBar() {
 toggleSideBar(); toggleSideBar();
 
 E_SideBarButton.onclick = () => {
-    console.log('SideBar button clicked');
     toggleSideBar();
 }
 
@@ -40,25 +39,7 @@ window.addEventListener('resize', function () {
     toggleSideBarLayout(); toggleSideBar(); toggleSideBar();
 });
 
-function generateItemButton(item) {
-    var div = document.createElement('div');
-    div.classList.add('SidebarItem', 'InlineItem');
-    if (item.star == 4) div.classList.add("Star4Item");
-    if (item.star == 5) div.classList.add("Star5Item");
-    let img = document.createElement('img');
-    img.src = item.icon;
-    div.appendChild(img);
-    div.onclick = () => {
-        _IGE_Status.selectedItemCode = item.code;
-        if (isCharacter(item)) {
-            _IGE_Status.selectedItemType = "Character";
-        } else if (isLightcone(item)) {
-            _IGE_Status.selectedItemType = "LightCone";
-        }
-        switchPage(item.code);
-    }
-    return div;
-}
+
 
 //E_IGE_Sidebar_Characters
 function fillItemArea(classificationObj, itemArea) {
