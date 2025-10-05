@@ -236,7 +236,7 @@ function refreshPoolSelector(destination) {
         opt.setAttribute('value', cod);//'L2_7_4'
         let ver = VERSIONS_SET[TOTAL_EVENT_WARPS[cod].versionInfo];
         // console.log(ver)
-        opt.innerHTML = /*"[" + cod + "]*/"(v" + ver.durationCode + ") - (" + ver.date + ") ------- " + filteredItemInAWP[j].upName;
+        opt.innerHTML = /*"[" + cod + "]*/"(v" + ver.durationCode + ")"+ ver.versionTitle[LANGUAGE] +" - (" + ver.date + ") ------- " + filteredItemInAWP[j].upName;
         destination.appendChild(opt);
     }
 }

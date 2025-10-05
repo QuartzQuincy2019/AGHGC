@@ -41,7 +41,7 @@ function startM3Calculation(getValue) {
         console.log(getValue);
         var foundVersion = vm.detectStage(dateStringToMJD(getValue), Object.values(NORMAL_VERSIONS))[0];
         if (foundVersion) {
-            E_M3_Result.innerHTML += d1 + foundVersion.durationCode + d2;
+            E_M3_Result.innerHTML += d1 + foundVersion.durationCode + "&nbsp;&nbsp;&nbsp;" + foundVersion.versionTitle[LANGUAGE] + d2;
             presentVersionSups(foundVersion);
             presentVersionWith(foundVersion.dateStart, foundVersion.lastDate);
         } else {
@@ -52,7 +52,7 @@ function startM3Calculation(getValue) {
     if (test_Version == 0) {
         var foundVersion = VERSIONS_SET[getValue];
         if (foundVersion) {
-            E_M3_Result.innerHTML += d1 + foundVersion.durationCode + d2;
+            E_M3_Result.innerHTML += d1 + foundVersion.durationCode + "&nbsp;&nbsp;&nbsp;" + foundVersion.versionTitle[LANGUAGE] + d2;
             presentVersionSups(foundVersion);
             presentVersionWith(foundVersion.dateStart, foundVersion.lastDate);
         } else {
@@ -65,7 +65,7 @@ function startM3Calculation(getValue) {
         var foundVersion = VERSIONS_SET[OFFICIAL_VERSIONS_KEYS[currentCodeIndex - test_SpecialVersion]];
         // console.log(currentCodeIndex + test_SpecialVersion);
         if (foundVersion) {
-            E_M3_Result.innerHTML += d1 + foundVersion.durationCode + d2;
+            E_M3_Result.innerHTML += d1 + foundVersion.durationCode + "&nbsp;&nbsp;&nbsp;" + foundVersion.versionTitle[LANGUAGE] + d2;
             presentVersionSups(foundVersion);
             presentVersionWith(foundVersion.dateStart, foundVersion.lastDate);
         } else {

@@ -58,6 +58,7 @@ function switchPage(code) {
     //清空显示
     E_IGE_ExclusiveLc.innerHTML = "";
     E_IGE_Timer.innerHTML = "";
+    E_IGE_Frequency_Detail.innerHTML = "";
 
 
     let item = findItem(code);
@@ -93,21 +94,25 @@ function switchPage(code) {
             pools.push(TOTAL_EVENT_WARPS[pool]);
         }
     }
-    let text = "";
     for (var i = 0; i < pools.length; i++) {
-        text += pools[i].getInfo() + " \n";
+        let li = document.createElement("li");
+        li.innerHTML = pools[i].getInfo();
+        E_IGE_Frequency_Detail.append(li);
     }
     if (pools.length > 0) {
         for (pool of pools) {
-            if (pool.getLastDateMjd() < TODAY) {
+            if (pool.code == "C3_4_A-1" || pool.code == "C3_4_A-2" || pool.code == "L3_4_A-1" || pool.code == "L3_4_A-2") {
+                continue;
+            }
+            if (ofPeriod(TODAY, pool.dateStart, pool.getLastDateMjd()) == 1) {
                 let diff = TODAY - pool.getLastDateMjd();
+                //上次复刻天数
                 E_IGE_Timer.innerHTML = lang[LANGUAGE].lastRerun + ": <span class='BoldBlue'>" + diff + "</span> " + lang[LANGUAGE].daysAgo;
                 break;
             }
         }
     }
     E_IGE_Frequency.innerText = lang[LANGUAGE].ige_frequency + ": " + pools.length;
-    E_IGE_Frequency_Detail.innerText = text;
 }
 
 function classifyCharacters(mode) {

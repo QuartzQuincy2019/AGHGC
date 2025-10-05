@@ -247,17 +247,17 @@ class Pool {
     getInfo() {
         let text = "";
         text = lang[LANGUAGE].poolCode + ": " + this.code
-            + " || " + lang[LANGUAGE].versionInfo + ": " + this.versionInfo
+            + " || " + lang[LANGUAGE].versionInfo + ": " + this.versionInfo + "(" + VERSIONS_SET[this.versionInfo].versionTitle[LANGUAGE] + ")"
             + " || " + MJDToDateString(VERSIONS_SET[this.versionInfo].dateStart) + " ~ " + MJDToDateString(VERSIONS_SET[this.versionInfo].lastDate)
             + " || " + "Up: " + findItem(this.contents()[0][0]).fullName[LANGUAGE];
         return text;
     }
 
-    getLastDateMjd(){
+    getLastDateMjd() {
         return VERSIONS_SET[this.versionInfo].lastDate;
     }
 
-    getLastDateString(){
+    getLastDateString() {
         return MJDToDateString(VERSIONS_SET[this.versionInfo].lastDate);
     }
 }
