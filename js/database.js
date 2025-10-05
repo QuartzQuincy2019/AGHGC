@@ -57,7 +57,9 @@ class Character {
     path;//角色命途
     fullName;//全名
     icon;//40*40肖像
-    artwork;
+    artwork;//背景立绘
+    portrait;//无背景立绘
+    profile;//特殊头像
     params;//其他信息
     /**
      * 
@@ -72,6 +74,8 @@ class Character {
         this.star = star;
         this.icon = './img/p40/' + this.code + '.png';
         this.artwork = './img/aC/' + this.code + '.png';
+        this.portrait = './img/port/' + this.code + '.png';
+        this.profile = './img/prof5/' + this.code + '.png';
         this.combatType = combatType;
         this.path = path;
         this.fullName = fullName;

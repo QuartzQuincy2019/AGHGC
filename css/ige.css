@@ -94,6 +94,19 @@ ol#IGE_Frequency_Detail li{
     background-color: rgb(193, 153, 253);
 }
 
+.MediaImg{
+    height: 200px;
+    width: auto;
+    border: 1px solid #e7e7e7;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px auto;
+}
+
+.MediaImg[src=""]{
+    display: none;
+}
+
 #IGE_IllustrationArea {
     max-width: 400px;
     background-color: #333333;
@@ -151,6 +164,9 @@ img#IGE_Illustration {
     height: auto;
     vertical-align: middle;
 }
+img#IGE_Illustration[src=""]{
+    display: none;
+}
 
 @media screen and (max-width: 768px) {
     #IGE_Container {
@@ -201,6 +217,11 @@ img#IGE_Illustration {
         height: auto;
         vertical-align: middle;
     }
+    
+    .MediaImg{
+    height: 30vw;
+    width: auto;
+}
 }
 
 #IGE_Title {

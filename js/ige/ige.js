@@ -16,6 +16,10 @@ var E_IGE_Path = document.getElementById('IGE_Path');
 var E_IGE_InnerCode = document.getElementById('IGE_InnerCode');
 var E_IGE_Timer = document.getElementById('IGE_Timer');
 
+var E_IGE_Title_Media = document.getElementById("IGE_Title_Media");
+var E_IGE_Profile = document.getElementById('IGE_Profile');
+var E_IGE_Splash = document.getElementById("IGE_Splash");
+var E_IGE_Portrait = document.getElementById('IGE_Portrait');
 
 var _IGE_Status = {
     selectedItemCode: null
@@ -82,18 +86,24 @@ function switchPage(code) {
     E_IGE_InnerCode.innerText = "";
     E_IGE_EnglishName.innerText = "";
     E_IGE_Frequency.innerText = "";
+    E_IGE_Profile.src = "";
+    E_IGE_Portrait.src = "";
+    E_IGE_Splash.src = "";
     //填充显示
 
 
     let item = findItem(code);
     if (isCharacter(item)) {
         E_IGE_Path.innerText = lang[LANGUAGE]._Path[item.path] + " - " + lang[LANGUAGE]._CombatType[item.combatType];
+        E_IGE_Portrait.src = item.portrait;
+        E_IGE_Splash.src = item.artwork;
         if (item.star == 5) {
             if (item.params.exclusiveLc) {
                 let exclusiveLc = findItem(item.params.exclusiveLc);
                 E_IGE_ExclusiveLc.innerHTML += lang[LANGUAGE].exclusive_lc + ": <span class='BoldBlue'>" + exclusiveLc.fullName[LANGUAGE] + "</span>";
                 E_IGE_ExclusiveLc.appendChild(generateItemButton(exclusiveLc));
             }
+            E_IGE_Profile.src = item.profile;
         }
     }
     if (isLightcone(item)) {
@@ -115,7 +125,6 @@ function switchPage(code) {
     for (var i = 0; i < pools.length; i++) {
         let li = document.createElement("li");
         li.innerHTML += pools[i].getInfo();
-        // if (findItem(pools[i].contents()[2][0]).params.type == "placeholder") continue;
         li.appendChild(generateItemButton(findItem(pools[i].contents()[0][0])));
         li.appendChild(generateItemButton(findItem(pools[i].contents()[2][0])));
         li.appendChild(generateItemButton(findItem(pools[i].contents()[2][1])));
@@ -124,7 +133,6 @@ function switchPage(code) {
     }
     if (pools.length > 0) {
         for (pool of pools) {
-            console.log(pool.code);
             if (pool.code == "C3_4_A-1" || pool.code == "C3_4_A-2" || pool.code == "L3_4_A-1" || pool.code == "L3_4_A-2") {
                 continue;
             }
@@ -140,6 +148,7 @@ function switchPage(code) {
             }
         }
     }
+    E_IGE_Title_Media.innerHTML = lang[LANGUAGE].media;
     E_IGE_Frequency.innerText = lang[LANGUAGE].ige_frequency + ": " + pools.length;
     E_IGE_Title.innerText = item.fullName[LANGUAGE];
     E_IGE_Illustration.src = item.artwork;
