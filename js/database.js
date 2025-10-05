@@ -651,7 +651,7 @@ var LIGHTCONE_LIST = [
         { "zh-CN": "谎言在风中飘扬", "en": "Lies Dance on the Breeze", "jp": "風に揺蕩う虚言" }),
     new Lightcone("lifesh6", 5, Path.erudition,
         { "zh-CN": "生命当付之一炬", "en": "Life Should Be Cast to Flames", "jp": "生命、焼滅すべし" }),
-    new Lightcone("longma6", 5, Path.abundance,
+    new Lightcone("longma6", 5, Path.remembrance,
         { "zh-CN": "愿虹光永驻天空", "en": "Long May Rainbows Adorn the Sky", "jp": "空の虹が消えぬように" }),
     new Lightcone("longro4", 5, Path.nihility,
         { "zh-CN": "长路终有归途", "en": "Long Road Leads Home", "jp": "長途はやがて帰途へと続く" }),
