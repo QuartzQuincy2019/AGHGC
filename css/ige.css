@@ -4,6 +4,8 @@
     grid-template-columns: 1fr 3fr;
     align-content: stretch;
     align-items: stretch;
+    margin: 0;
+    padding: 0;
 }
 
 #SideBarButton {
@@ -86,6 +88,7 @@
 }
 
 #IGE_IllustrationArea {
+    max-width: 400px;
     background-color: #333333;
     display: block;
     float: right;
@@ -99,6 +102,7 @@
     font-size: 24px;
     font-weight: bold;
     background-color: beige;
+    overflow-x: auto;
     font-family: 'Times New Roman', Times, serif, '宋体';
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
@@ -118,6 +122,7 @@
     padding: 6px;
     font-size: 16px;
     font-weight: bold;
+    font-style: oblique;
     color: #444;
     background-color: #f9f9f9;
     font-family: 'Times New Roman', Times, serif, '宋体';

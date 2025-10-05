@@ -6,6 +6,9 @@ var lang = {
         "colon": "：",
         "breakLine": "\n",
         "exclusive_lc":"专属光锥",
+        "exclusive_ch":"对应角色",
+        "lastRerun":"上次复刻",
+        "daysAgo":"天前",
         "CombatType": "属性",
         _CombatType:{
             0: "物理",
@@ -64,6 +67,9 @@ var lang = {
         "colon": ": ",
         "breakLine": "\n",
         "exclusive_lc":"Exclusive Lightcone",
+        "exclusive_ch":"Exclusive Character",
+        "lastRerun":"Last Rerun",
+        "daysAgo":"day(s) ago",
         "CombatType": "Combat Type",
         _CombatType:{
             0: "Physical",
@@ -122,6 +128,9 @@ var lang = {
         "colon": ": ",
         "breakLine": "\n",
         "exclusive_lc":"専属光円錐",
+        "exclusive_ch":"専属キャラ",
+        "lastRerun":"前回の復刻",
+        "daysAgo":"日前",
         "CombatType": "戦闘属性",
         _CombatType:{
             0: "物理",

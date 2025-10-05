@@ -424,12 +424,12 @@ function moveInclusion(card) {
     if (card.parentElement.getAttribute("id") == E_in_id) {
         let dest = E_ex_id;
         cardMove(card, dest);
-        included_Scommon.deleteElement(code);
+        included_Scommon.remove(code);
         excluded_Scommon.push(code);
     } else if (card.parentElement.getAttribute("id") == E_ex_id) {
         let dest = E_in_id;
         cardMove(card, dest);
-        excluded_Scommon.deleteElement(code);
+        excluded_Scommon.remove(code);
         included_Scommon.push(code);
     }
 }

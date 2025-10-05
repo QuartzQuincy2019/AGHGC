@@ -42,7 +42,7 @@ window.addEventListener('resize', function () {
 
 function generateItemButton(item) {
     var div = document.createElement('div');
-    div.classList.add('SidebarItem','InlineItem');
+    div.classList.add('SidebarItem', 'InlineItem');
     if (item.star == 4) div.classList.add("Star4Item");
     if (item.star == 5) div.classList.add("Star5Item");
     let img = document.createElement('img');

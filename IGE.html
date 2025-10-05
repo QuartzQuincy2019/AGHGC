@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AGHGC - Infographic Encyclopedia</title>
-    <script src="./js/plugins/ZERBO.js"></script>
     <script src="./js/plugins/mjd.js"></script>
     <script src="./js/settings.js"></script>
     <script src="./js/core.js"></script>
@@ -14,12 +13,18 @@
     <script src="./js/pool.js"></script>
     <script src="./js/database.js"></script>
     <link rel="stylesheet" href=".\css\ige.css">
+    <link rel="stylesheet" href=".\css\l.css">
+    <script>
+        console.log("IGE - Infographic Encyclopedia");
+        console.log("创建日期：2025年10月3日");
+    </script>
 </head>
 
 <body>
     <div id="SideBarButton"></div>
     <div id="IGE_Container">
         <div id="SideBar">
+            <h3>卡池图鉴 - Infographic Encyclopedia</h3>
             <p>角色项目 - Character Items</p>
             <select title="角色重排" id="CharacterReclassify" onchange="sidebarCharacterReclassify()">
                 <option value="_Party">按阵营分类</option>
@@ -38,19 +43,21 @@
             <hr>
             <hr>
             <div id="IGE_IllustrationArea">
-                <div id="IGE_Illustration_Caption">插图标题</div>
+                <div id="IGE_Illustration_Caption"></div>
                 <img id="IGE_Illustration" src="" alt="插图不存在或未加载">
                 <div id="IGE_EnglishName" class="Elegant"></div>
                 <div id="IGE_Path" class="Elegant"></div>
                 <div id="IGE_InnerCode" class="IID"></div>
             </div>
-            <div>返回<a href="./AGHGC.html" target="_self">AGHGC</a></div>
-            <h2 class="ige_subtitle">Info</h2>
+            <div class="SubmitButton ArtisticButton1"><a href="./AGHGC.html" target="_self">返回主页</a></div>
+            <div class="SubmitButton ArtisticButton1" onclick="switchIgeLanguage();sidebarCharacterReclassify();">切换界面语言</div>
+            <h2 class="ige_subtitle"></h2>
             <div id="IGE_ExclusiveLc"></div>
-            <h2 id="IGE_Frequency" class="ige_subtitle">总出现次数</h2>
-            <div id="IGE_Frequency_Detail">出处</div>
+            <h2 id="IGE_Frequency" class="ige_subtitle"></h2>
+            <div id="IGE_Timer"></div>
+            <div id="IGE_Frequency_Detail"></div>
         </div>
     </div>
-    <script src="./js/ige.js"></script>
-    <script src="./js/ige_sidebar.js"></script>
+    <script src="./js/ige/ige.js"></script>
+    <script src="./js/ige/ige_sidebar.js"></script>
 </body>

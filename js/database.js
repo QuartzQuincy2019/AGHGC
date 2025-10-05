@@ -247,10 +247,18 @@ class Pool {
     getInfo() {
         let text = "";
         text = lang[LANGUAGE].poolCode + ": " + this.code
-            + " | " + lang[LANGUAGE].versionInfo + ": " + this.versionInfo
-            + " | " + MJDToDateString(VERSIONS_SET[this.versionInfo].dateStart) + " ~ " + MJDToDateString(VERSIONS_SET[this.versionInfo].lastDate)
-            + " | " + "Up: " + findItem(this.contents()[0][0]).fullName[LANGUAGE];
+            + " || " + lang[LANGUAGE].versionInfo + ": " + this.versionInfo
+            + " || " + MJDToDateString(VERSIONS_SET[this.versionInfo].dateStart) + " ~ " + MJDToDateString(VERSIONS_SET[this.versionInfo].lastDate)
+            + " || " + "Up: " + findItem(this.contents()[0][0]).fullName[LANGUAGE];
         return text;
+    }
+
+    getLastDateMjd(){
+        return VERSIONS_SET[this.versionInfo].lastDate;
+    }
+
+    getLastDateString(){
+        return MJDToDateString(VERSIONS_SET[this.versionInfo].lastDate);
     }
 }
 
@@ -375,7 +383,7 @@ var CHARACTER_LIST = [
         { "exclusiveLc": "ishall6", "party": Party.XianzhouAlliance }),
     new Character("tonu", 5, CombatType.fire, Path.thehunt,
         { "zh-CN": "托帕&账账", "en": "Topaz & Numby", "jp": "トパーズ＆カブ" },
-        { "party": Party.IPC }),
+        { "exclusiveLc": "worris2", "party": Party.IPC }),
     //1.5
     new Character("arge", 5, CombatType.physical, Path.erudition,
         { "zh-CN": "银枝", "en": "Argenti", "jp": "アルジェンティ" },
@@ -711,6 +719,8 @@ var LIGHTCONE_CODES = [];//所有光锥的代号
 for (var i = 0; i < LIGHTCONE_LIST.length; i++) {
     LIGHTCONE_CODES.push(LIGHTCONE_LIST[i].code);
 }
+
+const ALL_ITEM_CODES = CHARACTER_CODES.concat(LIGHTCONE_CODES);
 
 
 

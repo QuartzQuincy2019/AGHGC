@@ -47,6 +47,7 @@ div.SubmitButton {
 }
 
 div.SubmitButton a {
+    display: block;
     text-decoration: none;
     color: inherit;
 }
