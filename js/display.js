@@ -224,10 +224,10 @@ function refreshPoolSelector(destination) {
     var filteredItemInAWP = [];
     if (providedKeywords[0] != '') {
         var filteredPools = origin.filter((eachPoolCode) => providedKeywords.every((singleKeyword) => TOTAL_EVENT_WARPS[eachPoolCode].keywords.has(singleKeyword)));
-        filteredItemInAWP = ALL_WARP_POOLS.filter((each) => filteredPools.includes(each.code));
-        if (filteredPools.length == 0) filteredItemInAWP = ALL_WARP_POOLS;
+        filteredItemInAWP = ORDERED_ALL_WARP_CAPTIONS.filter((each) => filteredPools.includes(each.code));
+        if (filteredPools.length == 0) filteredItemInAWP = ORDERED_ALL_WARP_CAPTIONS;
     } else {
-        filteredItemInAWP = ALL_WARP_POOLS;
+        filteredItemInAWP = ORDERED_ALL_WARP_CAPTIONS;
     }
     for (var j = 0; j < filteredItemInAWP.length; j++) {
         // console.log("filteredItemInAWP[j]： ",j,filteredItemInAWP[j]);
@@ -244,17 +244,6 @@ refreshPoolSelector(E_Form_CharacterPoolInput);
 E_Form_AdvPoolFilter.addEventListener('input', () => {
     refreshPoolSelector(E_Form_CharacterPoolInput);
 });
-
-function checkImageExists(path, callback) {
-    const img = new Image();
-    img.onload = function () {
-        callback(true); // 图片存在
-    };
-    img.onerror = function () {
-        callback(false); // 图片不存在
-    };
-    img.src = path;
-}
 
 /**
  * 给定rStatus和wStatus的组合对象，返回一个record元素

@@ -60,13 +60,19 @@ function calculateRerun() {
 function generateItemButton(item) {
     var div = document.createElement('div');
     div.classList.add('SidebarItem', 'InlineItem');
+    div.title = item.fullName[LANGUAGE];
     if (item.star == 4) div.classList.add("Star4Item");
     if (item.star == 5) div.classList.add("Star5Item");
     let img = document.createElement('img');
     img.src = item.icon;
-    div.title = item.fullName[LANGUAGE];
+    checkImageExists(img.src, (exists) => {//检查图片是否存在，不存在则替换为默认图片
+        if (!exists) {
+            img.src = "img/func/unknown.png";
+            div.title += "\u000a图片加载失败、不存在或丢失";
+        }
+    });
     div.appendChild(img);
-    if (item.params.type == "placeholder") {
+    if (item.params.type == "placeholder") {//若item是占位符，则不赋予点击事件
         return div;
     }
     div.onclick = () => {
@@ -79,23 +85,32 @@ function generateItemButton(item) {
 function switchPage(code) {
     //清空显示
     E_IGE_ExclusiveLc.innerHTML = "";
-    E_IGE_Timer.innerHTML = "";
-    E_IGE_Frequency_Detail.innerHTML = "";
+    //大图区域
     E_IGE_Illustration_Caption.innerText = "";
     E_IGE_Path.innerText = "";
     E_IGE_InnerCode.innerText = "";
     E_IGE_EnglishName.innerText = "";
+    //频率区域
     E_IGE_Frequency.innerText = "";
+    E_IGE_Timer.innerHTML = "";
+    E_IGE_Frequency_Detail.innerHTML = "";
+    //媒体区域
+    E_IGE_Title_Media.innerText = "";
     E_IGE_Profile.src = "";
     E_IGE_Portrait.src = "";
     E_IGE_Splash.src = "";
     //填充显示
-
-
     let item = findItem(code);
     if (isCharacter(item)) {
         E_IGE_Path.innerText = lang[LANGUAGE]._Path[item.path] + " - " + lang[LANGUAGE]._CombatType[item.combatType];
         E_IGE_Portrait.src = item.portrait;
+        checkImageExists(E_IGE_Portrait.src, (exists) => {
+            if (!exists) {
+                E_IGE_Portrait.style.display = "none";
+            }else{
+                E_IGE_Portrait.style.display = "inline-block";
+            }
+        });
         E_IGE_Splash.src = item.artwork;
         if (item.star == 5) {
             if (item.params.exclusiveLc) {
@@ -104,7 +119,15 @@ function switchPage(code) {
                 E_IGE_ExclusiveLc.appendChild(generateItemButton(exclusiveLc));
             }
             E_IGE_Profile.src = item.profile;
+            checkImageExists(E_IGE_Profile.src, (exists) => {
+                if (!exists) {
+                    E_IGE_Profile.style.display = "none";
+                }else{
+                    E_IGE_Profile.style.display = "inline-block";
+                }
+            });
         }
+        E_IGE_Title_Media.innerHTML = lang[LANGUAGE].media;
     }
     if (isLightcone(item)) {
         E_IGE_Path.innerText = lang[LANGUAGE]._Path[item.path];
@@ -148,7 +171,6 @@ function switchPage(code) {
             }
         }
     }
-    E_IGE_Title_Media.innerHTML = lang[LANGUAGE].media;
     E_IGE_Frequency.innerText = lang[LANGUAGE].ige_frequency + ": " + pools.length;
     E_IGE_Title.innerText = item.fullName[LANGUAGE];
     E_IGE_Illustration.src = item.artwork;

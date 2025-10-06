@@ -155,7 +155,11 @@ function formatFloat(value, decimals = 4, returnString = true) {
         : rounded;
 }
 
-
+/**
+ * 获取该集合对于全集的补集。
+ * @param {Set} U 全集
+ * @returns 
+ */
 Set.prototype.getComplimentFrom = function (U) {
     return new Set([...U].filter((element) => !this.has(element)));
 }
@@ -188,4 +192,27 @@ Array.prototype.toRemoved = function (val) {
     if (index > -1) {
         return this.toSpliced(index, 1);
     }
+}
+
+/**
+ * 
+ * @param {string} path 
+ * @param {*} callback 接受一个布尔值参数，表示图片是否存在
+ * 应用示例：
+ * checkImageExists('path/to/image.jpg', function(exists) {
+ *     if (exists) {
+ *         console.log('图片存在');
+ *     } else {
+ *        console.log('图片不存在');
+ *     }
+ */
+function checkImageExists(path, callback) {
+    const img = new Image();
+    img.onload = function () {
+        callback(true); // 图片存在
+    };
+    img.onerror = function () {
+        callback(false); // 图片不存在
+    };
+    img.src = path;
 }

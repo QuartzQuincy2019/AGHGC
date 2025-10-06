@@ -65,6 +65,11 @@
     transition: transform 0.2s;
 }
 
+ol#IGE_Frequency_Detail{
+    list-style-type: lower-roman;
+    list-style-position: outside;
+}
+
 ol#IGE_Frequency_Detail li{
     border: 1px solid #000;
     margin: 2px;
@@ -113,7 +118,7 @@ ol#IGE_Frequency_Detail li{
     display: block;
     float: right;
     border: 1px solid #ccc;
-    border-radius: 18px;
+    border-radius: 12px;
 }
 
 #IGE_Illustration_Caption {
@@ -152,9 +157,9 @@ ol#IGE_Frequency_Detail li{
     content: "Code in AGHGC: ";
 }
 
-#IGE_IllustrationArea:last-child {
-    border-bottom-left-radius: inherit;
-    border-bottom-right-radius: inherit;
+#IGE_InnerCode {
+    border-bottom-left-radius: inherit !important;
+    border-bottom-right-radius: inherit !important;
 }
 
 
@@ -164,6 +169,7 @@ img#IGE_Illustration {
     height: auto;
     vertical-align: middle;
 }
+
 img#IGE_Illustration[src=""]{
     display: none;
 }

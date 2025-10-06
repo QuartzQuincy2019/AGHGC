@@ -72,6 +72,12 @@ function fillItemArea(classificationObj, itemArea) {
             if (thisItem.star == 5) gridItem.classList.add("Star5Item");
             let img = document.createElement('img');
             img.src = thisItem.icon;
+            checkImageExists(img.src, (exists) => {//检查图片是否存在，不存在则替换为默认图片
+                if (!exists) {
+                    img.src = "img/func/unknown.png";
+                    gridItem.title += "\u000a图片加载失败、不存在或丢失";
+                }
+            });
             gridItem.appendChild(img);
             gridArea.appendChild(gridItem);
         }
