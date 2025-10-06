@@ -1,4 +1,8 @@
 /* l.css */
+* {
+    font-family: Arial, sans-serif, '宋体';
+}
+
 body {
     background:
         linear-gradient(#8ffbff,

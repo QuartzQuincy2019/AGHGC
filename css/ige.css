@@ -1,4 +1,8 @@
 /* ige.css */
+* {
+    font-family:  Arial, sans-serif, '宋体';
+}
+
 #IGE_Container {
     display: grid;
     grid-template-columns: 1fr 3fr;
@@ -65,18 +69,18 @@
     transition: transform 0.2s;
 }
 
-ol#IGE_Frequency_Detail{
+ol#IGE_Frequency_Detail {
     list-style-type: lower-roman;
     list-style-position: outside;
 }
 
-ol#IGE_Frequency_Detail li{
+ol#IGE_Frequency_Detail li {
     border: 1px solid #000;
     margin: 2px;
     padding: 5px;
 }
 
-.InlineItem{
+.InlineItem {
     display: inline-block;
     margin: 0 3px 0 3px;
 }
@@ -99,7 +103,7 @@ ol#IGE_Frequency_Detail li{
     background-color: rgb(193, 153, 253);
 }
 
-.MediaImg{
+.MediaImg {
     height: 200px;
     width: auto;
     border: 1px solid #e7e7e7;
@@ -108,7 +112,7 @@ ol#IGE_Frequency_Detail li{
     margin: 10px auto;
 }
 
-.MediaImg[src=""]{
+.MediaImg[src=""] {
     display: none;
 }
 
@@ -170,7 +174,7 @@ img#IGE_Illustration {
     vertical-align: middle;
 }
 
-img#IGE_Illustration[src=""]{
+img#IGE_Illustration[src=""] {
     display: none;
 }
 
@@ -223,11 +227,11 @@ img#IGE_Illustration[src=""]{
         height: auto;
         vertical-align: middle;
     }
-    
-    .MediaImg{
-    height: 30vw;
-    width: auto;
-}
+
+    .MediaImg {
+        height: 30vw;
+        width: auto;
+    }
 }
 
 #IGE_Title {
