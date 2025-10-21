@@ -756,6 +756,25 @@ const DEFAULT_INCLUDED_SCOMMON = ['bail', 'bron', 'clar', 'gepa', 'hime', 'welt'
 
 var ALL_CHARACTER_WARP_POOLS = [];
 var CHARACTER_EVENT_WARPS = {
+    //3.8
+    "C3_8_1": new Pool("C3_8_1", "3.8@1", "character", () => [
+        ['dahl'],
+        included_Scommon,
+        ['c000', 'c000', 'c000'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'mish', 'moze', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'asecre3', 'aftert4', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusr', 'goodni5', 'indeli2', 'landau2',
+            'maketh4', 'memori4', 'onlysi3', 'perfec2',
+            'planet2', 'poised3', 'postop2', 'resolu6',
+            'shadow3', 'shared2', "subscr3", 'swordp1',
+            'thebir5', 'themol4', 'trendo5', 'undert4'
+        ]
+    ]),
     //3.7
     "C3_7_1": new Pool("C3_7_1", "3.7@1", "character", () => [
         ['cyre'],
