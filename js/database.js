@@ -41,7 +41,8 @@ var Party = {
     IPC: 6,
     Cosmic: 7,
     Amphoreus: 8,
-    Collaboration: 9
+    Collaboration: 98,
+    Upcoming: 99
 }
 
 
@@ -535,8 +536,8 @@ var CHARACTER_LIST = [
         { "exclusiveLc": "thislo3", "alias": ["大昔涟", "PhiLia093", "爱莉希雅", "Elysia", "elysia"], "party": Party.Amphoreus }),
     //3.8
     new Character("dahl", 5, CombatType.fire, Path.nihility,
-        { "zh-CN": "大丽花", "en": "The Dahlia", "jp": "ダリア" }, 
-        { "alias": ["康士坦丝", "Constance", "コンスタンス"], "party": Party.Cosmic })
+        { "zh-CN": "大丽花", "en": "The Dahlia", "jp": "ダリア" },
+        { "alias": ["康士坦丝", "Constance", "コンスタンス"], "party": Party.Upcoming }),
 ];
 
 var LIGHTCONE_LIST = [

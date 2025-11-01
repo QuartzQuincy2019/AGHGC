@@ -107,7 +107,7 @@ function switchPage(code) {
         checkImageExists(E_IGE_Portrait.src, (exists) => {
             if (!exists) {
                 E_IGE_Portrait.style.display = "none";
-            }else{
+            } else {
                 E_IGE_Portrait.style.display = "inline-block";
             }
         });
@@ -122,7 +122,7 @@ function switchPage(code) {
             checkImageExists(E_IGE_Profile.src, (exists) => {
                 if (!exists) {
                     E_IGE_Profile.style.display = "none";
-                }else{
+                } else {
                     E_IGE_Profile.style.display = "inline-block";
                 }
             });
@@ -184,23 +184,32 @@ function classifyCharacters(mode) {
     var removedCharacters = CHARACTER_CODES.toRemoved("c000").toRemoved("c001").toRemoved("marH");
     switch (mode) {
         case "_Path": {
-            for (path in Path) {
-                let thisClass = removedCharacters.filter(code => findItem(code).path == Path[path]);
-                classifiedCharacters.push(thisClass);
+            for (const pathCode of Object.values(Path)) {
+                let thisClass = removedCharacters.filter(code => findItem(code).path == pathCode);
+                classifiedCharacters.push({
+                    classificationIdentifier: pathCode,
+                    content: thisClass
+                });
             }
             break;
         }
         case "_CombatType": {
-            for (ct in CombatType) {
-                let thisClass = removedCharacters.filter(code => findItem(code).combatType == CombatType[ct]);
-                classifiedCharacters.push(thisClass);
+            for (const combatTypeCode of Object.values(CombatType)) {
+                let thisClass = removedCharacters.filter(code => findItem(code).combatType == combatTypeCode);
+                classifiedCharacters.push({
+                    classificationIdentifier: combatTypeCode,
+                    content: thisClass
+                });
             }
             break;
         }
         case "_Party": {
-            for (party in Party) {
-                let thisClass = removedCharacters.filter(code => findItem(code).params.party == Party[party]);
-                classifiedCharacters.push(thisClass);
+            for (const partyCode of Object.values(Party)) {
+                let thisClass = removedCharacters.filter(code => findItem(code).params.party == partyCode);
+                classifiedCharacters.push({
+                    classificationIdentifier: partyCode,
+                    content: thisClass
+                });
             }
             break;
         }
@@ -217,9 +226,12 @@ function classifyLightcones(mode) {
     var removedLightcones = LIGHTCONE_CODES.toRemoved("l000000").toRemoved("NOTAVAI");
     switch (mode) {
         case "_Path": {
-            for (path in Path) {
-                let thisClass = removedLightcones.filter(code => findItem(code).path == Path[path]);
-                classifiedLightcones.push(thisClass);
+            for (const pathCode of Object.values(Path)) {
+                let thisClass = removedLightcones.filter(code => findItem(code).path == pathCode);
+                classifiedLightcones.push({
+                    classificationIdentifier: pathCode,
+                    content: thisClass
+                });
             }
             break;
         }

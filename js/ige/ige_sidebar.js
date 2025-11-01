@@ -44,18 +44,18 @@ window.addEventListener('resize', function () {
 //E_IGE_Sidebar_Characters
 function fillItemArea(classificationObj, itemArea) {
     itemArea.innerHTML = "";//清空
-    for (let i = 0; i < classificationObj.classified.length; i++) {
+    for (let i = 0; i < classificationObj.classified.length; i++) {//对每一个类单独处理
         var itemGroup = document.createElement('div');
         itemGroup.classList.add('SidebarItemGroup');
         var itemGroupTitle = document.createElement('div');
         itemGroupTitle.classList.add('SidebarItemGroupTitle');
-        itemGroupTitle.innerText = lang[LANGUAGE][classificationObj.standard][i];//分类标题
+        itemGroupTitle.innerText = lang[LANGUAGE][classificationObj.standard][classificationObj.classified[i].classificationIdentifier];//分类标题
         itemGroup.appendChild(itemGroupTitle);
         itemGroup.appendChild(document.createElement('hr'));
         var gridArea = document.createElement('div');
         gridArea.classList.add('SidebarItemGrid');
-        for (let j = 0; j < classificationObj.classified[i].length; j++) {
-            const thisItem = findItem(classificationObj.classified[i][j]);
+        for (let j = 0; j < classificationObj.classified[i].content.length; j++) {//对每个类的每个元素处理
+            const thisItem = findItem(classificationObj.classified[i].content[j]);
             let gridItem = document.createElement('div');
             gridItem.title = thisItem.fullName[LANGUAGE] + " (" + lang[LANGUAGE]._Path[thisItem.path] + ")";
             gridItem.classList.add('SidebarItem');
