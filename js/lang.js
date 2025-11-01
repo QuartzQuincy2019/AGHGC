@@ -113,7 +113,7 @@ var lang = {
             false:"On 4-Star 50/50"
         },
         _SGuarantee:{
-            true:"Guar.",
+            true:"Guaranteed",
             false:"50/50"
         },
         "RCount":"4Star Pity Counts",
@@ -176,8 +176,8 @@ var lang = {
             false:"★4通常"
         },
         _SGuarantee:{
-            true:"確定",
-            false:"通常"
+            true:"★5確定",
+            false:"★5通常"
         },
         "RCount":"★4進捗",
         "SCount":"★5進捗",

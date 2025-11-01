@@ -118,15 +118,15 @@ function switchPage(code) {
                 E_IGE_ExclusiveLc.innerHTML += lang[LANGUAGE].exclusive_lc + ": <span class='BoldBlue'>" + exclusiveLc.fullName[LANGUAGE] + "</span>";
                 E_IGE_ExclusiveLc.appendChild(generateItemButton(exclusiveLc));
             }
-            E_IGE_Profile.src = item.profile;
-            checkImageExists(E_IGE_Profile.src, (exists) => {
-                if (!exists) {
-                    E_IGE_Profile.style.display = "none";
-                } else {
-                    E_IGE_Profile.style.display = "inline-block";
-                }
-            });
         }
+        E_IGE_Profile.src = item.profile;
+        checkImageExists(E_IGE_Profile.src, (exists) => {
+            if (!exists) {
+                E_IGE_Profile.style.display = "none";
+            } else {
+                E_IGE_Profile.style.display = "inline-block";
+            }
+        });
         E_IGE_Title_Media.innerHTML = lang[LANGUAGE].media;
     }
     if (isLightcone(item)) {
@@ -146,8 +146,10 @@ function switchPage(code) {
         }
     }
     for (var i = 0; i < pools.length; i++) {
-        let li = document.createElement("li");
+        let li = document.createElement("div");
+        li.innerHTML += "&nbsp;[" + (i + 1) + "]<br>";
         li.innerHTML += pools[i].getInfo();
+        li.innerHTML += "<br>";
         li.appendChild(generateItemButton(findItem(pools[i].contents()[0][0])));
         li.appendChild(generateItemButton(findItem(pools[i].contents()[2][0])));
         li.appendChild(generateItemButton(findItem(pools[i].contents()[2][1])));

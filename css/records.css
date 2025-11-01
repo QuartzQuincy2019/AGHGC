@@ -1,7 +1,8 @@
 div.RecordBox {
-    width: 9rem;
-    min-width: 9rem;
-    max-height: 7em;
+    margin: auto 0.2em auto 0.2em;
+    width: 11rem;
+    min-width: 11rem;
+    max-height: 8em;
     padding: 0;
     border: 1px solid;
     border-radius: 4px;
@@ -24,5 +25,5 @@ div.RecordBox p {
 }
 
 .ItemTitle {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }

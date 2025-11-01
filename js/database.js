@@ -460,10 +460,10 @@ var CHARACTER_LIST = [
     //2.5
     new Character("fxia", 5, CombatType.wind, Path.thehunt,
         { "zh-CN": "飞霄", "en": "Feixiao", "jp": "飛霄" },
-        { "exclusiveLc": "iventu5", "alias": ["将军", "天击将军"], "party": Party.XianzhouAlliance }),
+        { "exclusiveLc": "iventu5", "alias": ["飞宵", "将军", "天击将军"], "party": Party.XianzhouAlliance }),
     new Character("lsha", 5, CombatType.fire, Path.abundance,
         { "zh-CN": "灵砂", "en": "Lingsha", "jp": "霊砂" },
-        { "exclusiveLc": "scenta4", "party": Party.XianzhouAlliance }),
+        { "exclusiveLc": "scenta4", "alias": ["菱纱", "灵沙"], "party": Party.XianzhouAlliance }),
     new Character("moze", 4, CombatType.lightning, Path.thehunt,
         { "zh-CN": "貊泽", "en": "Moze", "jp": "モゼ" },
         { "party": Party.XianzhouAlliance }),
@@ -491,7 +491,7 @@ var CHARACTER_LIST = [
         { "exclusiveLc": "flameo6", "party": Party.Amphoreus }),
     new Character("trib", 5, CombatType.quantum, Path.harmony,
         { "zh-CN": "缇宝", "en": "Tribbie", "jp": "トリビー" },
-        { "exclusiveLc": "iftime5", "party": Party.Amphoreus }),
+        { "exclusiveLc": "iftime5", "alias": ["提宝", "题宝"], "party": Party.Amphoreus }),
     //3.2
     new Character("cast", 5, CombatType.quantum, Path.remembrance,
         { "zh-CN": "遐蝶", "en": "Castorice", "jp": "キャストリス" },
@@ -529,11 +529,11 @@ var CHARACTER_LIST = [
         { "exclusiveLc": "toever3", "alias": ["sp三月七", "SP三月七", "伞月七", "黑三月七", "Darch", "darch", "长月夜"], "party": Party.Amphoreus }),
     new Character("dhpt", 5, CombatType.physical, Path.preservation,
         { "zh-CN": "丹恒·腾荒", "en": "Dan Heng • Permansor Terrae", "jp": "丹恒・騰荒" },
-        { "exclusiveLc": "though3", "alias": ["sp丹恒", "SP丹恒", "丹恒腾荒", "腾荒", "蛋黄", "DHPT", "dhpt", "PT", "pt"], "party": Party.Amphoreus }),
+        { "exclusiveLc": "though3", "alias": ["sp丹恒", "SP丹恒", "丹恒腾荒", "腾荒", "蛋黄", "盾丹", "荒丹", "腾丹", "DHPT", "dhpt", "PT", "pt"], "party": Party.Amphoreus }),
     //3.7
     new Character("cyre", 5, CombatType.ice, Path.remembrance,
         { "zh-CN": "昔涟", "en": "Cyrene", "jp": "キュレネ" },
-        { "exclusiveLc": "thislo3", "alias": ["大昔涟", "PhiLia093", "爱莉希雅", "Elysia", "elysia"], "party": Party.Amphoreus }),
+        { "exclusiveLc": "thislo3", "alias": ["大昔涟", "牢大", "PhiLia093", "爱莉希雅", "Elysia", "elysia"], "party": Party.Amphoreus }),
     //3.8
     new Character("dahl", 5, CombatType.fire, Path.nihility,
         { "zh-CN": "大丽花", "en": "The Dahlia", "jp": "ダリア" },

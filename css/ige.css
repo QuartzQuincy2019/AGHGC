@@ -53,46 +53,45 @@
 .SidebarItemGrid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-    gap: 5px;
+    gap: 3px;
     justify-items: center;
     margin: 4px;
     box-sizing: border-box;
 }
 
 .SidebarItem {
+    box-sizing: border-box;
     width: 50px;
     height: 50px;
-    border: 2px solid #7d7d7d;
+    border: 1px solid #3c3c3c;
     border-radius: 6px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.2s;
 }
 
-ol#IGE_Frequency_Detail {
-    list-style-type: lower-roman;
-    list-style-position: outside;
+.SidebarItem:hover {
+    transform: scale(1.15);
+    border: 2px solid #000;
+    box-shadow: 0 0 5px #666;
 }
 
-ol#IGE_Frequency_Detail li {
-    border: 1px solid #000;
-    margin: 2px;
-    padding: 5px;
+.SidebarItem img {
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+#IGE_Frequency_Detail>div {
+    border: 2px solid #000;
+    padding: 2px;
+    margin: 5px;
 }
 
 .InlineItem {
     display: inline-block;
     margin: 0 3px 0 3px;
-}
-
-.SidebarItem:hover {
-    transform: scale(1.1);
-}
-
-.SidebarItem img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
 }
 
 .Star5Item {
