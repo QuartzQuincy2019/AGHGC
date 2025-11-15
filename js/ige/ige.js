@@ -17,6 +17,7 @@ var E_IGE_InnerCode = document.getElementById('IGE_InnerCode');
 var E_IGE_Timer = document.getElementById('IGE_Timer');
 
 var E_IGE_Title_Media = document.getElementById("IGE_Title_Media");
+var E_IGE_OtherMedia = document.getElementById("IGE_OtherMedia");
 var E_IGE_Profile = document.getElementById('IGE_Profile');
 var E_IGE_Splash = document.getElementById("IGE_Splash");
 var E_IGE_Portrait = document.getElementById('IGE_Portrait');
@@ -99,6 +100,7 @@ function switchPage(code) {
     E_IGE_Profile.src = "";
     E_IGE_Portrait.src = "";
     E_IGE_Splash.src = "";
+    E_IGE_OtherMedia.innerHTML = "";
     //填充显示
     let item = findItem(code);
     if (isCharacter(item)) {
@@ -111,6 +113,16 @@ function switchPage(code) {
                 E_IGE_Portrait.style.display = "inline-block";
             }
         });
+        if(item.params.miscellaneousMedia){
+            for(const mediaItem of item.params.miscellaneousMedia){
+                let img = document.createElement("img");
+                img.classList.add("MediaImg");
+                img.src = mediaItem;
+                img.alt = "Additional Media of " + item.fullName[LANGUAGE];
+                img.title = "Additional Media of " + item.fullName[LANGUAGE];
+                E_IGE_OtherMedia.appendChild(img);
+            }
+        }
         E_IGE_Splash.src = item.artwork;
         if (item.star == 5) {
             if (item.params.exclusiveLc) {

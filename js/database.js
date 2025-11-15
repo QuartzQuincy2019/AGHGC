@@ -477,39 +477,69 @@ var CHARACTER_LIST = [
         { "exclusiveLc": "longro4", "alias": ["大停云", "sp停云", "SP停云"], "party": Party.XianzhouAlliance }),
     new Character("sund", 5, CombatType.imaginary, Path.harmony,
         { "zh-CN": "星期日", "en": "Sunday", "jp": "サンデー" },
-        { "exclusiveLc": "agroun3", "alias": ["周天哥", "周天子", "牢日"], "party": Party.Cosmic }),
+        {
+            "exclusiveLc": "agroun3", "alias": ["周天哥", "周天子", "牢日"], "party": Party.Cosmic,
+            "miscellaneousMedia": ["./img/media/Sunday_Gift_of_Odyssey_2.7.png"]
+        }),
     //3.0
     new Character("agla", 5, CombatType.lightning, Path.remembrance,
         { "zh-CN": "阿格莱雅", "en": "Aglaea", "jp": "アグライア" },
-        { "exclusiveLc": "timewo4", "alias": ["阿雅", "Agly", "agly"], "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "timewo4", "alias": ["阿雅", "Agly", "agly"], "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/aiw_agla.png"]
+        }),
     new Character("ther", 5, CombatType.ice, Path.erudition,
         { "zh-CN": "大黑塔", "en": "The Herta", "jp": "マダム・ヘルタ" },
-        { "exclusiveLc": "intoth4", "party": Party.HertaSpaceStation }),
+        {
+            "exclusiveLc": "intoth4", "party": Party.HertaSpaceStation,
+            "miscellaneousMedia": ["./img/media/The_Herta_Gift_of_Odyssey_3.0.png"]
+        }),
     //3.1
     new Character("myde", 5, CombatType.imaginary, Path.destruction,
         { "zh-CN": "万敌", "en": "Mydei", "jp": "モーディス" },
-        { "exclusiveLc": "flameo6", "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "flameo6", "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/aiw_myde.png"]
+        }),
     new Character("trib", 5, CombatType.quantum, Path.harmony,
         { "zh-CN": "缇宝", "en": "Tribbie", "jp": "トリビー" },
-        { "exclusiveLc": "iftime5", "alias": ["提宝", "题宝"], "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "iftime5", "alias": ["提宝", "题宝"], "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/Tribbie_Gift_of_Odyssey_3.1.png", "./img/media/aiw_trib.png"]
+        }),
     //3.2
     new Character("cast", 5, CombatType.quantum, Path.remembrance,
         { "zh-CN": "遐蝶", "en": "Castorice", "jp": "キャストリス" },
-        { "exclusiveLc": "makefa4", "alias": ["蝶", "霞蝶", "瑕蝶"], "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "makefa4", "alias": ["蝶", "霞蝶", "瑕蝶"], "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/aiw_cast.png"]
+        }),
     new Character("anax", 5, CombatType.wind, Path.erudition,
         { "zh-CN": "那刻夏", "en": "Anaxa", "jp": "アナイクス" },
-        { "exclusiveLc": "lifesh6", "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "lifesh6", "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/aiw_anax.png"]
+        }),
     //3.3
     new Character("hyac", 5, CombatType.wind, Path.remembrance,
         { "zh-CN": "风堇", "en": "Hyacine", "jp": "ヒアンシー" },
-        { "exclusiveLc": "longma6", "alias": ["风宝"], "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "longma6", "alias": ["风宝"], "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/Hyacine_Gift_of_Odyssey_3.3.png", "./img/media/aiw_hyac.png"]
+        }),
     new Character("ciph", 5, CombatType.quantum, Path.nihility,
         { "zh-CN": "赛飞儿", "en": "Cipher", "jp": "サフェル" },
-        { "exclusiveLc": "liesda5", "alias": ["飞儿", "赛菲尔", "赛菲儿", "赛飞尔", "塞飞尔", "塞菲尔", "Cifera", "cifera", "cifra"], "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "liesda5", "alias": ["飞儿", "赛菲尔", "赛菲儿", "赛飞尔", "塞飞尔", "塞菲尔", "Cifera", "cifera", "cifra"], "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/aiw_ciph.png"]
+        }),
     //3.4
     new Character("phai", 5, CombatType.physical, Path.destruction,
         { "zh-CN": "白厄", "en": "Phainon", "jp": "ファイノン" },
-        { "exclusiveLc": "thusbu4", "alias": ["小白", "白垩", "拜厄", "卡俄斯", "卡厄斯", "卡厄斯兰那", "Khaslana", "khaslana"], "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "thusbu4", "alias": ["小白", "白垩", "拜厄", "卡俄斯", "卡厄斯", "卡厄斯兰那", "Khaslana", "khaslana"], "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/Phainon_Gift_of_Odyssey_3.4.png", "./img/media/aiw_phai.png"]
+        }),
     new Character("sabe", 5, CombatType.wind, Path.destruction,
         { "zh-CN": "Saber", "en": "Saber", "jp": "セイバー" },
         { "exclusiveLc": "athank3", "party": Party.Collaboration }),
@@ -519,25 +549,40 @@ var CHARACTER_LIST = [
     //3.5
     new Character("hysi", 5, CombatType.physical, Path.nihility,
         { "zh-CN": "海瑟音", "en": "Hysilens", "jp": "セイレンス" },
-        { "exclusiveLc": "whydoe5", "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "whydoe5", "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/aiw_hele.png", "./img/media/Hysilens_Gift_of_Odyssey_3.5.png"]
+        }),
     new Character("cery", 5, CombatType.wind, Path.harmony,
         { "zh-CN": "刻律德菈", "en": "Cerydra", "jp": "ケリュドラ" },
-        { "exclusiveLc": "epoche5", "alias": ["凯撒", "恺撒", "女皇", "Caesar", "caesar"], "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "epoche5", "alias": ["凯撒", "恺撒", "女皇", "Caesar", "caesar"], "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/aiw_cery.png"]
+        }),
     //3.6
     new Character("ever", 5, CombatType.ice, Path.remembrance,
         { "zh-CN": "长夜月", "en": "Evernight", "jp": "長夜月" },
-        { "exclusiveLc": "toever3", "alias": ["sp三月七", "SP三月七", "伞月七", "黑三月七", "Darch", "darch", "长月夜"], "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "toever3", "alias": ["sp三月七", "SP三月七", "伞月七", "黑三月七", "Darch", "darch", "长月夜"], "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/Evernight_Gift_of_Odyssey_3.6.png", "./img/media/aiw_ever.png"]
+        }),
     new Character("dhpt", 5, CombatType.physical, Path.preservation,
         { "zh-CN": "丹恒·腾荒", "en": "Dan Heng • Permansor Terrae", "jp": "丹恒・騰荒" },
-        { "exclusiveLc": "though3", "alias": ["sp丹恒", "SP丹恒", "丹恒腾荒", "腾荒", "蛋黄", "盾丹", "荒丹", "腾丹", "DHPT", "dhpt", "PT", "pt"], "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "though3", "alias": ["sp丹恒", "SP丹恒", "丹恒腾荒", "腾荒", "蛋黄", "盾丹", "荒丹", "腾丹", "DHPT", "dhpt", "PT", "pt"], "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/aiw_terr.png"]
+        }),
     //3.7
     new Character("cyre", 5, CombatType.ice, Path.remembrance,
         { "zh-CN": "昔涟", "en": "Cyrene", "jp": "キュレネ" },
-        { "exclusiveLc": "thislo3", "alias": ["大昔涟", "牢大", "PhiLia093", "爱莉希雅", "Elysia", "elysia"], "party": Party.Amphoreus }),
+        {
+            "exclusiveLc": "thislo3", "alias": ["大昔涟", "牢大", "PhiLia093", "爱莉希雅", "Elysia", "elysia"], "party": Party.Amphoreus,
+            "miscellaneousMedia": ["./img/media/Ripples_of_Past_Reverie_-_Keeping_Promise.png", "./img/media/Cyrene_Gift_of_Odyssey_3.7.png", "./img/media/aiw_cyre.png"]
+        }),
     //3.8
     new Character("dahl", 5, CombatType.fire, Path.nihility,
         { "zh-CN": "大丽花", "en": "The Dahlia", "jp": "ダリア" },
-        { "alias": ["康士坦丝", "Constance", "コンスタンス"], "party": Party.Upcoming }),
+        { "exclusiveLc": "neverf4", "alias": ["康士坦丝", "Constance", "コンスタンス"], "party": Party.Upcoming }),
 ];
 
 var LIGHTCONE_LIST = [
@@ -665,6 +710,8 @@ var LIGHTCONE_LIST = [
         { "zh-CN": "让告别，更美一些", "en": "Make Farewells More Beautiful", "jp": "永訣よ美しくあれ" }),
     new Lightcone("moment3", 5, Path.preservation,
         { "zh-CN": "制胜的瞬间", "en": "Moment of Victory", "jp": "勝利の刹那" }),
+    new Lightcone("neverf4", 5, Path.nihility,
+        { "zh-CN": "勿忘她的火焰", "en": "Never Forget Her Flame", "jp": "彼女の炎を忘れずに" }),
     new Lightcone("nighto3", 5, Path.abundance,
         { "zh-CN": "惊魂夜", "en": "Night of Fright", "jp": "驚魂の夜" }),
     new Lightcone("nighto5", 5, Path.erudition,
@@ -692,7 +739,7 @@ var LIGHTCONE_LIST = [
     new Lightcone("theunr3", 5, Path.destruction,
         { "zh-CN": "到不了的彼岸", "en": "The Unreachable Side", "jp": "着かない彼岸" }),
     new Lightcone("thislo3", 5, Path.remembrance,
-        { "zh-CN": "爱如此刻永恒", "en": "This Love, Forever", "jp": "愛は永遠の今" }),
+        { "zh-CN": "爱如此刻永恒", "en": "This Love, Forever", "jp": "愛はいま永遠に" }),
     new Lightcone("thosem3", 5, Path.nihility,
         { "zh-CN": "那无数个春天", "en": "Those Many Springs", "jp": "幾度目かの春" }),
     new Lightcone("though3", 5, Path.preservation,
@@ -704,7 +751,7 @@ var LIGHTCONE_LIST = [
     new Lightcone("timewo4", 5, Path.remembrance,
         { "zh-CN": "将光阴织成黄金", "en": "Time Woven Into Gold", "jp": "光陰を織り黄金と成す" }),
     new Lightcone("toever3", 5, Path.remembrance,
-        { "zh-CN": "致长夜的星光", "en": "To Evernight's Stars", "jp": "長き夜に光る星へ" }),
+        { "zh-CN": "致长夜的星光", "en": "To Evernight's Stars", "jp": "長き夜に輝く星へ" }),
     new Lightcone("wherea4", 5, Path.destruction,
         { "zh-CN": "梦应归于何处", "en": "Whereabouts Should Dreams Rest", "jp": "夢が帰り着く場所" }),
     new Lightcone("whydoe5", 5, Path.nihility,
@@ -2390,6 +2437,26 @@ var CHARACTER_EVENT_WARPS = {
 
 var ALL_LIGHTCONE_WARP_POOLS = [];
 var LIGHTCONE_EVENT_WARPS = {
+    //3.8
+    "L3_8_1": new Pool("L3_8_1", "3.8@1", "lightcone", () => [
+        [findItem("dahl").params.exclusiveLc],
+        ['butthe5', 'inthen6', 'moment3', 'nighto5', 'sleepl4', 'someth2', 'timewa5'],
+        ['l000000', 'l000000', 'l000000'],
+        ['arla', 'asta', 'dhen', 'gall', 'guin',
+            'hany', 'hert', 'hook', 'luka', 'lynx',
+            'marP', 'moze', 'mish', 'nata', 'pela',
+            'qque', 'samp', 'serv', 'ssha', 'tyun',
+            'xuey', 'ykon',
+            'aftert4', 'asecre3', 'boundl2', 'concer3',
+            'danced3', 'dayone6', 'dreams2', 'eyesof4',
+            'geniusg', 'geniusr', 'goodni5', 'indeli2',
+            'landau2', 'maketh4', 'memori4', 'onlysi3',
+            'perfec2', 'planet2', 'poised3', 'postop2',
+            'resolu6', 'shadow3', 'shared2', "subscr3",
+            'swordp1', 'thebir5', 'themol4', 'trendo5',
+            'undert4', 'thesto4'
+        ]
+    ]),
     //3.7
     "L3_7_5": new Pool("L3_7_5", "3.7@2", "lightcone", () => [
         [findItem("cyre").params.exclusiveLc],
