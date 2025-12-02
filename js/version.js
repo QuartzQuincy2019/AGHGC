@@ -81,14 +81,14 @@ class Version extends Duration {
 // 3.5@2的开始日期是2025-09-02，实际开始时间是2025-09-02 12:00。
 
 var NORMAL_VERSIONS = {
-    "4.2@2": new Version("4.2", 2, "2026-05-13", 21, false),
-    "4.2@1": new Version("4.2", 1, "2026-04-22", 21, false),
-    "4.1@2": new Version("4.1", 2, "2026-04-01", 21, false),
-    "4.1@1": new Version("4.1", 1, "2026-03-11", 21, false),
-    "4.0@2": new Version("4.0", 2, "2026-02-18", 21, false),
-    "4.0@1": new Version("4.0", 1, "2026-01-28", 21, false),
-    "3.8@2": new Version("3.8", 2, "2026-01-07", 21, false),
-    "3.8@1": new Version("3.8", 1, "2025-12-17", 21, false),
+    // "4.2@2": new Version("4.2", 2, "2026-05-13", 21, false),
+    // "4.2@1": new Version("4.2", 1, "2026-04-22", 21, false),
+    // "4.1@2": new Version("4.1", 2, "2026-04-01", 21, false),
+    // "4.1@1": new Version("4.1", 1, "2026-03-11", 21, false),
+    // "4.0@2": new Version("4.0", 2, "2026-02-18", 21, false),
+    "4.0@1": new Version("4.0", 1, "2099-12-11", 21, false),//修改前为2026-01-28
+    "3.8@2": new Version("3.8", 2, "2026-01-07", 21, false, { "zh-CN": "记忆是梦的开场白", "en": "Memories are the Prelude to Dreams", "jp": "記憶は夢のプロローグ" }),
+    "3.8@1": new Version("3.8", 1, "2025-12-17", 21, false, { "zh-CN": "记忆是梦的开场白", "en": "Memories are the Prelude to Dreams", "jp": "記憶は夢のプロローグ" }),
     "3.7@2": new Version("3.7", 2, "2025-11-26", 21, false, { "zh-CN": "成为昨日的明天", "en": "As Tomorrow Became Yesterday", "jp": "明日は昨日に" }),
     "3.7@1": new Version("3.7", 1, "2025-11-05", 21, false, { "zh-CN": "成为昨日的明天", "en": "As Tomorrow Became Yesterday", "jp": "明日は昨日に" }),
     "3.6@2": new Version("3.6", 2, "2025-10-15", 21, false, { "zh-CN": "于长夜重返大地", "en": "Back to Earth in Evernight", "jp": "長き夜に再び大地へ" }),
