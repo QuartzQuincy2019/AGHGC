@@ -582,7 +582,12 @@ var CHARACTER_LIST = [
     //3.8
     new Character("dahl", 5, CombatType.fire, Path.nihility,
         { "zh-CN": "大丽花", "en": "The Dahlia", "jp": "ダリア" },
-        { "exclusiveLc": "neverf4", "alias": ["康士坦丝", "Constance", "コンスタンス"], "party": Party.Upcoming }),
+        {
+            "exclusiveLc": "neverf4", "alias": ["康士坦丝", "Constance", "コンスタンス"], "party": Party.Cosmic,
+            "miscellaneousMedia": ["./img/media/The_Dahlia_Gift_of_Odyssey_3.8.png"]
+        }),
+    //4.0
+    
 ];
 
 var LIGHTCONE_LIST = [
