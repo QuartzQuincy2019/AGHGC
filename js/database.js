@@ -23,7 +23,8 @@ var Path = {
     nihility: 4,
     preservation: 5,
     abundance: 6,
-    remembrance: 7
+    remembrance: 7,
+    elation: 8
 }
 
 var PoolType = {
@@ -41,6 +42,7 @@ var Party = {
     IPC: 6,
     Cosmic: 7,
     Amphoreus: 8,
+    Planacadia: 9,
     Collaboration: 98,
     Upcoming: 99
 }
@@ -587,7 +589,17 @@ var CHARACTER_LIST = [
             "miscellaneousMedia": ["./img/media/The_Dahlia_Gift_of_Odyssey_3.8.png"]
         }),
     //4.0
-    
+    new Character("ygua", 5, CombatType.physical, Path.elation,
+        { "zh-CN": "爻光", "en": "Yao Guang", "jp": "爻光" },
+        {
+            "party": Party.Upcoming
+        }),
+    new Character("spax", 5, CombatType.fire, Path.elation,
+        { "zh-CN": "火花", "en": "Sparxie", "jp": "火花" },
+        {
+            "party": Party.Upcoming
+        }),
+
 ];
 
 var LIGHTCONE_LIST = [
