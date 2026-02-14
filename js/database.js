@@ -592,18 +592,28 @@ var CHARACTER_LIST = [
     new Character("ygua", 5, CombatType.physical, Path.elation,
         { "zh-CN": "爻光", "en": "Yao Guang", "jp": "爻光" },
         {
-            "exclusiveLc": "whensh5", "alias": ["戎韬", "戎韬将军"], "party": Party.Upcoming
+            "exclusiveLc": "whensh5", "alias": ["戎韬", "戎韬将军", "爻老板"], "party": Party.XianzhouAlliance,
+            "miscellaneousMedia": ["./img/media/Yao_Guang_Gift_of_Odyssey_4.0.png"]
         }),
     new Character("spax", 5, CombatType.fire, Path.elation,
         { "zh-CN": "火花", "en": "Sparxie", "jp": "火花" },
         {
-            "exclusiveLc": "dazzle5", "party": Party.Upcoming
+            "exclusiveLc": "dazzle5", "alias": ["火花花"], "party": Party.Planacadia
         }),
+    //4.1
     new Character("ashv", 5, CombatType.lightning, Path.thehunt,
         { "zh-CN": "不死途", "en": "Ashveil", "jp": "不死途" },
         {
             "exclusiveLc": "thefin5", "party": Party.Upcoming
-        }),
+        })
+    //Upcoming
+    /*
+    new Character("evan", 5, CombatType.physical, Path.destruction,
+        { "zh-CN": "绯英", "en": "Evanescia", "jp": "緋英" },
+    ),
+    new Character("nihi", 5, CombatType.physical, Path.destruction,
+        { "zh-CN": "虚照", "en": "Nihilux", "jp": "虚照" },
+    ),*/
 
 ];
 

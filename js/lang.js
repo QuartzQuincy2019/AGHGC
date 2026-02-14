@@ -63,6 +63,7 @@ var lang = {
         "poolCode": "卡池代号",
         "versionInfo": "版本",
         "ige_frequency": "总出现次数",
+        "ige_currentlyRerunning": "正在复刻",
         "media": "媒体",
         "FileNotFound": "文件不存在"
     },
@@ -128,6 +129,7 @@ var lang = {
         "poolCode": "Pool Code",
         "versionInfo": "Version",
         "ige_frequency": "Total Frequency",
+        "ige_currentlyRerunning": "Currently Rerunning",
         "media": "Media",
         "FileNotFound": "The file doesn't exist."
     },
@@ -193,6 +195,7 @@ var lang = {
         "poolCode": "プールコード",
         "versionInfo": "バージョン",
         "ige_frequency": "総出現回数",
+        "ige_currentlyRerunning": "現在復刻中",
         "media": "メディア",
         "FileNotFound": "ファイルは存在しません"
     }

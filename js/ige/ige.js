@@ -113,8 +113,8 @@ function switchPage(code) {
                 E_IGE_Portrait.style.display = "inline-block";
             }
         });
-        if(item.params.miscellaneousMedia){
-            for(const mediaItem of item.params.miscellaneousMedia){
+        if (item.params.miscellaneousMedia) {
+            for (const mediaItem of item.params.miscellaneousMedia) {
                 let img = document.createElement("img");
                 img.classList.add("MediaImg");
                 img.src = mediaItem;
@@ -173,14 +173,18 @@ function switchPage(code) {
             if (pool.code == "C3_4_A-1" || pool.code == "C3_4_A-2" || pool.code == "L3_4_A-1" || pool.code == "L3_4_A-2") {
                 continue;
             }
-            if (ofPeriod(TODAY, pool.getFirstDateMjd(), pool.getLastDateMjd()) < 1) {
-                E_IGE_Timer.innerHTML = "";
+            if (ofPeriod(TODAY, pool.getFirstDateMjd(), pool.getLastDateMjd()) == 0) {
+                E_IGE_Timer.innerHTML = "<span class='BoldBlue'>" + lang[LANGUAGE].ige_currentlyRerunning + "</span>";
                 break;
             }
-            if (ofPeriod(TODAY, pool.getFirstDateMjd(), pool.getLastDateMjd()) == 1) {
+            if (ofPeriod(TODAY, pool.getFirstDateMjd(), pool.getLastDateMjd()) == 1) {//今天在结束日期之后
                 let diff = TODAY - pool.getLastDateMjd();
                 //上次复刻天数
                 E_IGE_Timer.innerHTML = lang[LANGUAGE].lastRerun + ": <span class='BoldBlue'>" + diff + "</span> " + lang[LANGUAGE].daysAgo;
+                break;
+            }
+            if (ofPeriod(TODAY, pool.getFirstDateMjd(), pool.getLastDateMjd()) == -1) {
+                E_IGE_Timer.innerHTML = "";
                 break;
             }
         }
